@@ -22,6 +22,8 @@ The sync step scans configured project folders, selects each project’s public 
 
 `npm run dev` and `npm run build` synchronize the current Obsidian source automatically. Use `npm run content:sync` when only the content snapshot needs refreshing.
 
+`npm run build:vercel` runs the native Next.js build used by Vercel. The regular `npm run build` remains the Cloudflare-compatible Sites build.
+
 ## Version policy
 
 - Small, reversible content and style improvements may be committed directly to `main`.

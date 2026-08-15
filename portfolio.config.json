@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "site": {
+    "name": "Lexi Liang",
+    "roleEn": "Interaction designer for AI products and smart hardware",
+    "roleZh": "专注 AI 产品与智能硬件的交互设计师",
+    "locationEn": "Beijing · Open to Shenzhen",
+    "locationZh": "现居北京 · 期待深圳机会",
+    "introEn": "I design interfaces that help people understand, decide and act with intelligent systems.",
+    "introZh": "我设计人与智能系统共同理解、判断和行动的方式。",
+    "current": "Li Auto",
+    "previous": ["Microsoft", "SenseTime"],
+    "contacts": [
+      { "label": "Email", "href": "" },
+      { "label": "GitHub", "href": "" },
+      { "label": "LinkedIn", "href": "" },
+      { "label": "CV", "href": "" }
+    ]
+  },
+  "projects": [
+    {
+      "folder": "01 Alive Briefing 活字简报",
+      "slug": "alive-briefing",
+      "entry": "Case Study V2.md",
+      "order": 1,
+      "featured": true,
+      "protected": true,
+      "previewOnly": false,
+      "title": "Alive Briefing",
+      "eyebrowEn": "Future Interaction · AI–UX",
+      "eyebrowZh": "未来交互 · AI–UX",
+      "year": "2025",
+      "accent": "acid",
+      "summaryEn": "An actionable information interface that turns AI reasoning into timely decisions, controls and feedback.",
+      "summaryZh": "把复杂 AI 推理转译为及时、易读、可行动、会随状态更新的信息界面。",
+      "heroEn": "What if AI stopped outputting answers—and started organizing attention?",
+      "heroZh": "如果 AI 不再只输出答案，而是开始组织人的注意力？",
+      "startAt": "# 01 — Provocation",
+      "endBefore": "# Portfolio Editing Notes"
+    },
+    {
+      "folder": "02 Livis 理想AI眼镜",
+      "slug": "livis",
+      "order": 2,
+      "featured": true,
+      "protected": true,
+      "previewOnly": true,
+      "title": "Livis",
+      "eyebrowEn": "AI Glasses · Spatial Interaction",
+      "eyebrowZh": "AI 眼镜 · 空间交互",
+      "year": "2026",
+      "accent": "sky",
+      "summaryEn": "Exploring a lightweight interaction language for intelligent glasses. Case materials are being prepared.",
+      "summaryZh": "探索智能眼镜上的轻量交互语言；项目材料正在整理中。",
+      "heroEn": "Intelligence at the edge of attention.",
+      "heroZh": "让智能停留在注意力的边缘。"
+    },
+    {
+      "folder": "03 Degree Project 毕业设计",
+      "slug": "from-query-to-quest",
+      "entry": "Degree Project 作品集呈现 (草稿).md",
+      "order": 3,
+      "featured": true,
+      "protected": true,
+      "previewOnly": true,
+      "title": "From Query to Quest",
+      "eyebrowEn": "Master’s Thesis · Critical Design",
+      "eyebrowZh": "硕士毕业设计 · 批判性设计",
+      "year": "2025",
+      "accent": "clay",
+      "summaryEn": "A speculative interaction framework that reframes AI prompting from answer-seeking to reflective thinking.",
+      "summaryZh": "把 AI 提示从“索取答案”重新定义为一段保护能动性与深度思考的旅程。",
+      "heroEn": "What if AI helped us think—instead of thinking for us?",
+      "heroZh": "如果 AI 帮助我们思考，而不是替我们思考？",
+      "startAt": "## Title",
+      "endBefore": "## reference"
+    }
+  ]
+}

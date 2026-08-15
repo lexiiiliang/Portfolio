@@ -4,10 +4,11 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const siteRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const defaultContentRoot = path.resolve(siteRoot, "../Lexi's Second Brain/02_Portfolio");
+const defaultContentRoot = "/Users/lexiliang/Documents/Obsidian/Lexi's Second Brain/02_Portfolio";
 const contentRoot = path.resolve(process.env.PORTFOLIO_CONTENT_ROOT || defaultContentRoot);
 const outputFile = path.join(siteRoot, "content/portfolio.generated.json");
 const mediaRoot = path.join(siteRoot, "public/media/projects");
+const configPath = path.resolve(process.env.PORTFOLIO_CONFIG_PATH || path.join(siteRoot, "portfolio.config.json"));
 
 const exists = async (filePath) => {
   try {
@@ -26,7 +27,6 @@ if (!(await exists(contentRoot))) {
   throw new Error(`Portfolio source not found at ${contentRoot}`);
 }
 
-const configPath = path.join(contentRoot, "site.config.json");
 const config = JSON.parse(await readFile(configPath, "utf8"));
 const vaultRoot = path.resolve(contentRoot, "..");
 

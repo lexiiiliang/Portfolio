@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "site": {
+    "name": "Lexi Liang",
+    "roleEn": "Interaction designer for AI products and smart hardware",
+    "roleZh": "专注 AI 产品与智能硬件的交互设计师",
+    "locationEn": "Beijing · Open to Shenzhen",
+    "locationZh": "现居北京 · 期待深圳机会",
+    "introEn": "I design interfaces that help people understand, decide and act with intelligent systems.",
+    "introZh": "我设计人与智能系统共同理解、判断和行动的方式。",
+    "current": "Li Auto",
+    "previous": [
+      "Microsoft",
+      "SenseTime"
+    ],
+    "contacts": [
+      {
+        "label": "Email",
+        "href": ""
+      },
+      {
+        "label": "GitHub",
+        "href": ""
+      },
+      {
+        "label": "LinkedIn",
+        "href": ""
+      },
+      {
+        "label": "CV",
+        "href": ""
+      }
+    ]
+  },
+  "projects": [
+    {
+      "folder": "01 Alive Briefing 活字简报",
+      "slug": "alive-briefing",
+      "entry": "Case Study V2.md",
+      "order": 1,
+      "featured": true,
+      "protected": true,
+      "previewOnly": false,
+      "title": "Alive Briefing",
+      "eyebrowEn": "Future Interaction · AI–UX",
+      "eyebrowZh": "未来交互 · AI–UX",
+      "year": "2025",
+      "accent": "acid",
+      "summaryEn": "An actionable information interface that turns AI reasoning into timely decisions, controls and feedback.",
+      "summaryZh": "把复杂 AI 推理转译为及时、易读、可行动、会随状态更新的信息界面。",
+      "heroEn": "What if AI stopped outputting answers—and started organizing attention?",
+      "heroZh": "如果 AI 不再只输出答案，而是开始组织人的注意力？",
+      "startAt": "# 01 — Provocation",
+      "endBefore": "# Portfolio Editing Notes",
+      "hasSource": true,
+      "sourceFile": "01 Alive Briefing 活字简报/Case Study V2.md",
+      "sourceChecksum": "71759a372e23",
+      "status": "published",
+      "body": "# 01 — Provocation\n\n## AI 会回答，但不一定会沟通\n\n在传统聊天界面中，模型完成推理后，通常把结果作为长文本或 TTS 交给用户。\n\n这要求用户自己完成最后一公里：\n\n1. 从完整回答中找重点；\n2. 记住与自己有关的条件；\n3. 判断应该采取什么行动；\n4. 再去另一个界面完成操作。\n\n对于驾驶、可穿戴设备等低注意力场景，“模型回答正确”并不等于“用户能够及时使用”。\n\n### 原问题\n\n> 如何把 AI 的回答变短？\n\n### 重新定义后\n\n> **AI 应该如何在正确时机组织人的注意力，并把复杂推理转化为可信、可逆的行动？**\n\n这个项目因此从一个文案压缩问题，转变成了一个 **attention orchestration 与 decision interface** 问题。\n\n---\n\n# 02 — Design Thesis\n\n## AI 不应该默认输出答案，而应该呈现正在发生的事情\n\n传统 GUI 的基本单位是页面与功能；Chatbot 的基本单位是问题与回答。\n\nAlive Briefing 尝试把 AI 界面的基本单位重新定义为：\n\n> **事件 → 影响 → 建议 → 行动 → 回执**\n\n由此形成三个设计原则：\n\n### 真 / Trust\n\n准确、克制、来源清晰；允许解释、纠错和撤销。\n\n### 快 / Flow\n\n结论先行，只呈现此刻最关键的冲突与下一步。\n\n### 活 / Resonance\n\n内容随情境、状态和用户选择更新，并在文字、控件和富媒体之间自然切换。\n\n> **优先级：真 > 快 > 活。**\n\n视觉表现只有在帮助理解、行动或反馈时才有价值。\n\n---\n\n# 03 — Interaction Model\n\n## 从一句文案扩展为一条完整交互链\n\n项目早期使用“状态 / 事件 + 建议 / 行动 + 详情”描述 Briefing。进一步整理后，可以把它拆成五个 interaction primitives：\n\n```mermaid\nflowchart LR\n    A[Sense<br/>感知变化] --> B[Distill<br/>提炼影响]\n    B --> C[Brief<br/>呈现简报]\n    C --> D[Act<br/>确认或调整]\n    D --> E[Evolve<br/>更新与回执]\n```\n\n### Sense\n\n系统读取天气、路线、能耗、日程、设备状态与对话上下文。\n\n### Distill\n\n判断信息是否值得打断，并选择当前最重要的冲突。\n\n### Brief\n\n先展示结论、影响和建议，依据渐进展开。\n\n### Act\n\n通过语音、按钮、滑块、步进器或 A/B 选择完成行动。\n\n### Evolve\n\n操作结果即时回写；信息变化时更新、过期或进入历史。\n\n这五个 primitives 是整个 Case Study 的主轴。后续所有界面都应证明它们如何工作，而不是只展示不同卡片皮肤。\n\n---\n\n# 04 — Challenge 01\n\n## 什么时候应该 Briefing，什么时候不应该？\n\n### Claim\n\n如果所有内容都被压缩成 Briefing，它只会变成另一种卡片或通知中心。\n\n### Evidence\n\nCCA 意图数据中包含 **47,758 条单一功能需求**：工具、游戏和车辆控制占主要部分。混合功能需求又明显集中在工具和车控场景。\n\n但高频不等于适合：\n\n- 时钟、倒计时、指南针已经足够直接，不需要再总结。\n- 游戏、计算器依赖持续操作，不能被一句建议替代。\n- 百科、长计划、复杂步骤需要完整结构，过度压缩会损失理解。\n\n### Options\n\n| 方向 | 优点 | 为什么不成立 / 局限 |\n| --- | --- | --- |\n| 所有 AI 内容统一 Briefing 化 | 视觉一致、概念强 | 造成过度压缩和 Briefing 疲劳 |\n| 只给传统卡片增加标题 | 实现简单 | 只改变样式，没有改变决策与行动路径 |\n| **根据任务特征选择性 Briefing 化** | 保留场景优势，也能明确退出条件 | 需要建立适配判断规则 |\n\n### Decision\n\n选择性采用 Briefing。核心适用条件是：\n\n1. 信息会变化；\n2. 与当前情境相关；\n3. 能形成明确判断或行动；\n4. 可以先给结论、再展开依据。\n\n### Artifact\n\n| 信息复杂度 / 行动性 | 低行动性 | 高行动性 |\n| --- | --- | --- |\n| 低复杂度 | GUI / 普通状态组件 | 快捷控件 |\n| 中复杂度 | 摘要卡 | **Alive Briefing** |\n| 高复杂度 | 结构化详情 / 报告 | Briefing 作为入口，再进入分步流程 |\n\n### Impact\n\n把“Briefing 长什么样”升级为“系统在什么时候调用 Briefing”的产品规则。实际采用范围与业务结果 **[待补]**。\n\n---\n\n# 05 — Challenge 02\n\n## 如何压缩信息，而不制造虚假的确定感？\n\n### Claim\n\n更短不一定更好。压缩错误会隐藏关键条件，并让 AI 看起来比实际更确定。\n\n### Evidence\n\n同一复杂场景可以形成三种输出：\n\n**完整推理**\n\n> 即将进入大雨路段；能见度、湿滑风险和能耗同时变化，需要在安全与效率之间权衡。\n\n**TTS**\n\n> 20 分钟后大雨，建议进入节能与湿滑路面模式。\n\n**Briefing**\n\n> 20 分钟后大雨 🌧  \n> 开启湿滑路面 + 节能\n\nBriefing 扫读最快，但也最容易丢失依据、置信度和影响范围。\n\n### Options\n\n| 方向 | 优点 | 问题 |\n| --- | --- | --- |\n| 固定 8–12 字、三行以内 | 极致扫读 | 无法适应跨设备和高风险信息 |\n| 首屏完整展示推理 | 信息充分 | 重新回到长回答 |\n| **结论优先 + 渐进展开** | 同时兼顾速度与可信度 | 需要定义信息层级和展开规则 |\n\n### Decision\n\n采用分层信息结构：\n\n> **信号 → Briefing → 解释 → 原始依据 → 行动 / 撤销**\n\n“三行”是车内默认信息预算，而不是所有设备的硬性规范。\n\n### System Rule\n\n每条 Briefing 在系统中至少需要：\n\n- headline：发生了什么\n- impact：为什么与用户有关\n- recommendation：建议什么\n- action：可以做什么\n- evidence：依据和来源\n- confidence：置信度与假设\n- timestamp / expiry：数据时间与失效条件\n- status / undo：执行状态与撤销\n\n### Artifact\n\n![Project artifact](/media/projects/alive-briefing/Alive-Briefing设计探索-diagram-1-09856e2.png)\n\n### Impact\n\n形成了从文案规范走向信息 schema 的基础。真实理解时间、正确复述率与信任指标 **[待验证]**。\n\n---\n\n# 06 — Challenge 03\n\n## 如何让 AI 的建议直接变成行动，而不是重新跳回 GUI？\n\n### Claim\n\n如果 Briefing 只能被阅读，它仍然只是一个摘要组件。\n\n### Evidence\n\n天气、补能、空调、路线选择等场景都存在同一个断点：AI 已经给出建议，但用户仍需寻找功能并手动设置。\n\n### Options\n\n| 方向 | 优点 | 问题 |\n| --- | --- | --- |\n| 点击后统一跳转 App | 复用现有 GUI | 打断上下文，路径仍然长 |\n| 把完整控制面板塞进 Briefing | 功能完整 | 信息拥挤，失去一眼可读 |\n| **嵌入最小必要控件，复杂任务再跳转** | 保持上下文并完成高频行动 | 需要清晰的控件准入规则 |\n\n### Decision\n\n将控件分成三类：\n\n- **Adjustment**：Slider / Stepper，用于数值微调。\n- **Action**：多态按钮 / Toggle，用于执行或切换状态。\n- **Navigation**：Tab / Button，用于 A/B 权衡或进入复杂界面。\n\n并遵循：\n\n1. 与系统原有控件保持一致；\n2. 文字在脱离控件时仍语义完整；\n3. 操作结果立即回写到 Briefing；\n4. 有副作用的操作必须可撤销或安全回退。\n\n### Artifact\n\n![Project artifact](/media/projects/alive-briefing/Alive-Briefing-规范与评价体系-diagram-15-8bfd86c.png)\n\n### Impact\n\nBriefing 从信息展示转变为可形成任务闭环的 interaction model。控件使用率不能单独代表成功，需要与任务完成、误触、撤销和恢复共同评价。\n\n---\n\n# 07 — The Experience\n\n## 一次 Alive Briefing 如何工作\n\n以低电补能为例：\n\n### 01 Sense — 发现风险\n\n系统结合剩余电量、目的地距离、路线和充电桩状态，判断车辆无法直接到达。\n\n### 02 Brief — 呈现关键冲突\n\n> 18% 无法到达目的地  \n> 建议补能\n\n### 03 Clarify — 给出必要详情\n\n> 3 个空桩 · 5 分钟到达\n\n### 04 Act — 完成决策\n\n用户确认补能地点，或切换到其他候选。\n\n### 05 Evolve — 状态回写\n\n系统发起导航，Briefing 更新为到达时间、充电状态或异常提示。\n\n![Project artifact](/media/projects/alive-briefing/Alive-Briefing设计探索-diagram-1-09856e2.png)\n\n\n---\n\n# 08 — System Thinking\n\n## 不是一张 Happy-path 卡片，而是一套生成与控制规则\n\n```mermaid\nflowchart TD\n    I[Inputs<br/>Voice · Touch · Context · Device State] --> U[Understanding<br/>Intent · Entity · Constraint · Confidence]\n    U --> G{Should it become<br/>a Briefing?}\n    G -->|No| X[GUI · Structured Card · Full Answer]\n    G -->|Yes| B[Briefing Schema<br/>Event · Impact · Advice · Action]\n    B --> P[Presentation<br/>Text · Control · Media · Voice]\n    P --> A[Action]\n    A --> F[Feedback · Undo · Recovery]\n    F --> M[Update · Expire · Memory]\n```\n\n这套系统需要处理的不只是内容生成，还包括：\n\n- 优先级与打扰阈值\n- 多条 Briefing 的竞争与合并\n- 数据来源、时间与置信度\n- 操作权限和风险等级\n- 失败恢复与人工接管\n- 用户偏好的确认、查看和删除\n\n---\n\n# 09 — Scaling the Model\n\n## 从车机组件走向跨端 interaction language\n\nAlive Briefing 的可扩展性不在于所有设备使用同一种卡片，而在于复用同一信息与行动模型。\n\n| 设备 | 注意力条件 | Briefing 形态 |\n| --- | --- | --- |\n| 车机 | 低注意力、高安全要求 | 两行结论、语音协同、最小控件 |\n| 眼镜 / 耳机 | 极少视觉空间 | 语音为主、视觉锚点、即时确认 |\n| 手机 | 中等空间、可触控 | 摘要 + 证据展开 + 快捷行动 |\n| PC | 高信息容量 | 多 Briefing 聚合、历史与复杂控制 |\n\n当前材料主要证明了车机和卡片层的探索。眼镜、手机、PC 仍应写成 **scaling hypothesis**，除非补充相应 prototype。\n\n---\n\n# 10 — Prototype as Evidence\n\n项目已形成两个内部网页 Demo，并探索：\n\n- 文字的逐步出现与状态更新\n- 连续对话中的内容刷新\n- 文字、控件与富媒体组合\n- 桌面信息流和问答卡适配\n\n作品集不应只放 Demo 链接，而应剪成三个短片：\n\n1. **Compression**：长回答怎样变成 Briefing。\n2. **Action**：建议怎样通过控件完成。\n3. **Evolve**：新信息怎样更新原有 Briefing。\n\n\n---\n\n# 11 — Outcome\n\n## 当前能够证明的变化\n\n### Design\n\n- 将“AI 回复样式”重新定义为连接事件、决策与行动的界面模型。\n- 从“真、快、活”发展出内容、Emoji、控件和组合形态规范。\n- 明确了适用 / 不适用范围，避免所有内容被统一卡片化。\n\n### System\n\n- 建立内容层、控制层和表现层的评价框架。\n- 为天气、导航、能耗、车控、娱乐和问答建立可复用模式。\n- 形成跨设备扩展所需的共同信息语法雏形。\n\n### Product / User\n\n上线范围、团队采用、用户理解效率、任务完成和业务结果 **[待补真实证据]**。\n\n> [!warning] 不可误用\n> 文档中的 `>99.5%`、`>80%`、`>4.2 分` 是目标值，不是实际结果。没有实验记录时，不放在作品集 Impact 中。\n\n---\n\n# 12 — Reflection\n\n## 这个项目改变了我对 AI 界面的理解\n\n我最初把问题理解为：如何让 AI 少说一点。\n\n后来我意识到，真正的问题不是回答长度，而是：\n\n> **AI 应该如何以最低注意力成本，在正确的时机建立共同理解，并把用户安全地带到下一步。**\n\n这意味着未来的 AI 界面不只是生成内容，还需要决定：\n\n- 什么值得出现；\n- 什么应该被隐藏；\n- 什么需要解释；\n- 什么可以自动执行；\n- 什么必须交还给用户。\n\n下一步，我会优先验证三个问题：\n\n1. Briefing 是否真的缩短理解与决策时间？\n2. 压缩是否影响用户发现错误和理解依据？\n3. 动态建议在什么时候开始变成打扰？\n\n---",
+      "headings": [
+        {
+          "depth": 1,
+          "label": "Provocation",
+          "id": "01-provocation"
+        },
+        {
+          "depth": 2,
+          "label": "AI 会回答，但不一定会沟通",
+          "id": "ai-会回答-但不一定会沟通"
+        },
+        {
+          "depth": 1,
+          "label": "Design Thesis",
+          "id": "02-design-thesis"
+        },
+        {
+          "depth": 2,
+          "label": "AI 不应该默认输出答案，而应该呈现正在发生的事情",
+          "id": "ai-不应该默认输出答案-而应该呈现正在发生的事情"
+        },
+        {
+          "depth": 1,
+          "label": "Interaction Model",
+          "id": "03-interaction-model"
+        },
+        {
+          "depth": 2,
+          "label": "从一句文案扩展为一条完整交互链",
+          "id": "从一句文案扩展为一条完整交互链"
+        },
+        {
+          "depth": 1,
+          "label": "Challenge 01",
+          "id": "04-challenge-01"
+        },
+        {
+          "depth": 2,
+          "label": "什么时候应该 Briefing，什么时候不应该？",
+          "id": "什么时候应该-briefing-什么时候不应该"
+        },
+        {
+          "depth": 1,
+          "label": "Challenge 02",
+          "id": "05-challenge-02"
+        },
+        {
+          "depth": 2,
+          "label": "如何压缩信息，而不制造虚假的确定感？",
+          "id": "如何压缩信息-而不制造虚假的确定感"
+        },
+        {
+          "depth": 1,
+          "label": "Challenge 03",
+          "id": "06-challenge-03"
+        },
+        {
+          "depth": 2,
+          "label": "如何让 AI 的建议直接变成行动，而不是重新跳回 GUI？",
+          "id": "如何让-ai-的建议直接变成行动-而不是重新跳回-gui"
+        },
+        {
+          "depth": 1,
+          "label": "The Experience",
+          "id": "07-the-experience"
+        },
+        {
+          "depth": 2,
+          "label": "一次 Alive Briefing 如何工作",
+          "id": "一次-alive-briefing-如何工作"
+        },
+        {
+          "depth": 1,
+          "label": "System Thinking",
+          "id": "08-system-thinking"
+        },
+        {
+          "depth": 2,
+          "label": "不是一张 Happy-path 卡片，而是一套生成与控制规则",
+          "id": "不是一张-happy-path-卡片-而是一套生成与控制规则"
+        },
+        {
+          "depth": 1,
+          "label": "Scaling the Model",
+          "id": "09-scaling-the-model"
+        },
+        {
+          "depth": 2,
+          "label": "从车机组件走向跨端 interaction language",
+          "id": "从车机组件走向跨端-interaction-language"
+        },
+        {
+          "depth": 1,
+          "label": "Prototype as Evidence",
+          "id": "10-prototype-as-evidence"
+        },
+        {
+          "depth": 1,
+          "label": "Outcome",
+          "id": "11-outcome"
+        },
+        {
+          "depth": 2,
+          "label": "当前能够证明的变化",
+          "id": "当前能够证明的变化"
+        },
+        {
+          "depth": 1,
+          "label": "Reflection",
+          "id": "12-reflection"
+        },
+        {
+          "depth": 2,
+          "label": "这个项目改变了我对 AI 界面的理解",
+          "id": "这个项目改变了我对-ai-界面的理解"
+        }
+      ]
+    },
+    {
+      "folder": "02 Livis 理想AI眼镜",
+      "slug": "livis",
+      "order": 2,
+      "featured": true,
+      "protected": true,
+      "previewOnly": true,
+      "title": "Livis",
+      "eyebrowEn": "AI Glasses · Spatial Interaction",
+      "eyebrowZh": "AI 眼镜 · 空间交互",
+      "year": "2026",
+      "accent": "sky",
+      "summaryEn": "Exploring a lightweight interaction language for intelligent glasses. Case materials are being prepared.",
+      "summaryZh": "探索智能眼镜上的轻量交互语言；项目材料正在整理中。",
+      "heroEn": "Intelligence at the edge of attention.",
+      "heroZh": "让智能停留在注意力的边缘。",
+      "hasSource": false,
+      "sourceFile": null,
+      "sourceChecksum": null,
+      "status": "in-progress",
+      "body": "",
+      "headings": []
+    },
+    {
+      "folder": "03 Degree Project 毕业设计",
+      "slug": "from-query-to-quest",
+      "entry": "Degree Project 作品集呈现 (草稿).md",
+      "order": 3,
+      "featured": true,
+      "protected": true,
+      "previewOnly": true,
+      "title": "From Query to Quest",
+      "eyebrowEn": "Master’s Thesis · Critical Design",
+      "eyebrowZh": "硕士毕业设计 · 批判性设计",
+      "year": "2025",
+      "accent": "clay",
+      "summaryEn": "A speculative interaction framework that reframes AI prompting from answer-seeking to reflective thinking.",
+      "summaryZh": "把 AI 提示从“索取答案”重新定义为一段保护能动性与深度思考的旅程。",
+      "heroEn": "What if AI helped us think—instead of thinking for us?",
+      "heroZh": "如果 AI 帮助我们思考，而不是替我们思考？",
+      "startAt": "## Title",
+      "endBefore": "## reference",
+      "hasSource": true,
+      "sourceFile": "03 Degree Project 毕业设计/Degree Project 作品集呈现 (草稿).md",
+      "sourceChecksum": "4e651c193c27",
+      "status": "in-progress",
+      "body": "",
+      "headings": []
+    }
+  ]
+}

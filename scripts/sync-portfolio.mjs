@@ -48,8 +48,13 @@ const slugify = (value) => toAnchor(value).replace(/^\d+-?/, "") || "project";
 
 const stripFrontmatter = (markdown) => markdown.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, "");
 
+const stripEditorialReferences = (markdown) => markdown.replace(
+  /<details>\s*<summary>[\s\S]*?<\/summary>[\s\S]*?<\/details>\s*/gi,
+  "",
+).replace(/<br\s*\/?>/gi, "");
+
 const selectPublicRange = (markdown, project) => {
-  let selected = stripFrontmatter(markdown);
+  let selected = stripEditorialReferences(stripFrontmatter(markdown));
   if (project.startAt) {
     const start = selected.indexOf(project.startAt);
     if (start >= 0) selected = selected.slice(start);

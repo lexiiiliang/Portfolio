@@ -5,7 +5,11 @@ import type { ProjectHeading } from "@/lib/portfolio";
 import { Localized } from "./Localized";
 
 export function ProjectToc({ headings }: { headings: ProjectHeading[] }) {
-  const primary = headings.filter((heading) => heading.depth === 1).slice(0, 12);
+  const numberedSections = headings.filter((heading) =>
+    /^(?:\d{2}\s*[·—–-]|Afterword\b)/i.test(heading.label),
+  );
+  const topLevel = headings.filter((heading) => heading.depth === 1);
+  const primary = (numberedSections.length > 1 ? numberedSections : topLevel).slice(0, 12);
   const [active, setActive] = useState(primary[0]?.id || "");
 
   useEffect(() => {
@@ -36,7 +40,7 @@ export function ProjectToc({ headings }: { headings: ProjectHeading[] }) {
           <li key={heading.id} className={active === heading.id ? "is-active" : ""}>
             <a href={`#${heading.id}`}>
               <span>{String(index + 1).padStart(2, "0")}</span>
-              {heading.label}
+              {heading.label.replace(/^\d{2}\s*[·—–-]\s*/, "")}
             </a>
           </li>
         ))}

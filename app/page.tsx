@@ -15,7 +15,6 @@ export default function Home() {
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-overline">
             <span><Localized en={site.roleEn} zh={site.roleZh} /></span>
-            <span className="availability"><i aria-hidden="true" /> <Localized en="Selected work · 2026" zh="精选作品 · 2026" /></span>
           </div>
           <div className="hero-grid">
             <div className="hero-copy">
@@ -90,7 +89,6 @@ export default function Home() {
       </main>
       <footer className="site-footer">
         <span>© 2026 Lexi Liang</span>
-        <span><Localized en="Designed in Beijing · Versioned from Obsidian" zh="设计于北京 · 内容版本来自 Obsidian" /></span>
         <a href="#top"><Localized en="Back to top ↑" zh="回到顶部 ↑" /></a>
       </footer>
     </>

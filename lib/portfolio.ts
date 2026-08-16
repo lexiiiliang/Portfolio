@@ -27,6 +27,12 @@ export type PortfolioProject = {
   summaryZh: string;
   heroEn: string;
   heroZh: string;
+  video?: {
+    embedUrl: string;
+    pageUrl: string;
+    title: string;
+    aspectRatio: string;
+  };
   hasSource: boolean;
   sourceFile: string | null;
   sourceChecksum: string | null;

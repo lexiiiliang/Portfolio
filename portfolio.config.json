@@ -62,7 +62,7 @@
       "order": 3,
       "featured": true,
       "protected": true,
-      "previewOnly": true,
+      "previewOnly": false,
       "title": "From Query to Quest",
       "eyebrowEn": "Master’s Thesis · Critical Design",
       "eyebrowZh": "硕士毕业设计 · 批判性设计",
@@ -72,8 +72,14 @@
       "summaryZh": "把 AI 提示从“索取答案”重新定义为一段保护能动性与深度思考的旅程。",
       "heroEn": "What if AI helped us think—instead of thinking for us?",
       "heroZh": "如果 AI 帮助我们思考，而不是替我们思考？",
-      "startAt": "## Title",
-      "endBefore": "## reference"
+      "video": {
+        "embedUrl": "https://player.vimeo.com/video/1218556665?badge=0&autopause=0&player_id=0&app_id=58479&muted=1&loop=1",
+        "pageUrl": "https://vimeo.com/1218556665",
+        "title": "From Query to Quest @UID25 Degree Show",
+        "aspectRatio": "4 / 3"
+      },
+      "startAt": "## What if AI helped us think—instead of thinking for us?",
+      "endBefore": "## Archived Reference"
     }
   ]
 }

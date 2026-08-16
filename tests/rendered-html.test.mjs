@@ -25,6 +25,8 @@ test("server-renders Lexi's portfolio landing page", async () => {
   assert.match(html, /I design how people/);
   assert.match(html, /Alive Briefing/);
   assert.match(html, /From Query to Quest/);
+  assert.doesNotMatch(html, /Selected work · 2026/i);
+  assert.doesNotMatch(html, /Versioned from Obsidian/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
 
@@ -38,5 +40,14 @@ test("keeps a versioned portfolio content snapshot", async () => {
   assert.equal(snapshot.projects[0].status, "published");
   assert.ok(snapshot.projects[0].sourceChecksum);
   assert.ok(snapshot.projects[0].body.includes("# 01 — Provocation"));
+  const degreeProject = snapshot.projects.find((project) => project.slug === "from-query-to-quest");
+  assert.equal(degreeProject.status, "published");
+  assert.ok(degreeProject.body.includes("## 01 · Provocation"));
+  assert.ok(degreeProject.body.includes("## Afterword · 2026"));
+  assert.doesNotMatch(degreeProject.body, /```text[\s\S]*?Dialogue[–-]Action Loop/);
+  assert.doesNotMatch(degreeProject.body, /Reference ·|Archived Reference/);
+  assert.doesNotMatch(degreeProject.body, /<br\s*\/?\s*>/i);
+  assert.ok(degreeProject.body.includes("Project type / 项目类型"));
+  assert.equal(degreeProject.video.pageUrl, "https://vimeo.com/1218556665");
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));
 });

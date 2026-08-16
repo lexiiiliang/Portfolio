@@ -61,6 +61,30 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <ProjectVisual project={project} />
         </section>
 
+        {project.video ? (
+          <section className="project-video" aria-labelledby="project-video-title">
+            <div className="project-video-heading">
+              <div>
+                <p className="micro-label"><Localized en="THREE-MINUTE PITCH" zh="三分钟项目介绍" /></p>
+                <h2 id="project-video-title">{project.video.title}</h2>
+              </div>
+              <a href={project.video.pageUrl} target="_blank" rel="noreferrer">
+                <Localized en="Watch on Vimeo ↗" zh="在 Vimeo 观看 ↗" />
+              </a>
+            </div>
+            <div className="project-video-frame" style={{ aspectRatio: project.video.aspectRatio }}>
+              <iframe
+                src={project.video.embedUrl}
+                title={project.video.title}
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          </section>
+        ) : null}
+
         {project.previewOnly ? (
           <section className="preview-note">
             <p className="micro-label"><Localized en="WORK IN PROGRESS" zh="案例整理中" /></p>

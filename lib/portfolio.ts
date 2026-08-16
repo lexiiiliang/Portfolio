@@ -46,7 +46,9 @@ export const portfolio = portfolioSnapshot as {
     introEn: string;
     introZh: string;
     current: string;
+    currentZh: string;
     previous: string[];
+    previousZh: string[];
     contacts: LocalizedLink[];
   };
   projects: PortfolioProject[];

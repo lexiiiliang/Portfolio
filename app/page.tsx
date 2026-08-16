@@ -13,26 +13,42 @@ export default function Home() {
       <SiteHeader />
       <main id="top" className="home-page">
         <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-overline">
-            <span><Localized en={site.roleEn} zh={site.roleZh} /></span>
-            <span className="availability"><i aria-hidden="true" /> <Localized en="Selected work · 2026" zh="精选作品 · 2026" /></span>
-          </div>
-          <div className="hero-grid">
-            <div className="hero-copy">
-              <h1 id="hero-title">
+          <PortraitToy />
+          <div className="hero-copy">
+            <p className="hero-eyebrow">
+              <Localized
+                en={site.roleEn}
+                zh={site.roleZh}
+              />
+            </p>
+            <h1 id="hero-title">
+              <Localized
+                en={site.introEn}
+                zh={site.introZh}
+              />
+            </h1>
+            <div className="hero-details">
+              <p>
                 <Localized
-                  en={<>I design how people <em>think</em> and <em>act</em> with AI.</>}
-                  zh={<>我设计人与 AI 共同<em>思考</em>和<em>行动</em>的方式。</>}
+                  en={(
+                    <>
+                      Currently @ <strong>{site.current}</strong> <span aria-hidden="true">|</span> Prev @ <strong>{site.previous[0]}</strong> &amp; <strong>{site.previous[1]}</strong>
+                    </>
+                  )}
+                  zh={(
+                    <>
+                      现就职于 <strong>{site.currentZh}</strong><span aria-hidden="true">｜</span>前 <strong>{site.previousZh[0]}</strong> &amp; <strong>{site.previousZh[1]}</strong>
+                    </>
+                  )}
                 />
-              </h1>
-              <p><Localized en={site.introEn} zh={site.introZh} /></p>
+              </p>
+              <p>
+                <Localized
+                  en={<>📍 {site.locationEn}</>}
+                  zh={<>📍 {site.locationZh}</>}
+                />
+              </p>
             </div>
-            <PortraitToy />
-          </div>
-          <div className="hero-footnote">
-            <span><Localized en={`Currently @${site.current}`} zh={`现任 @${site.current}`} /></span>
-            <span><Localized en={`Previously @${site.previous.join(" · @")}`} zh={`曾任 @${site.previous.join(" · @")}`} /></span>
-            <span><Localized en={site.locationEn} zh={site.locationZh} /></span>
           </div>
         </section>
 

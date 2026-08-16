@@ -22,7 +22,11 @@ test("server-renders Lexi's portfolio landing page", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Lexi Liang — Interaction Designer<\/title>/i);
-  assert.match(html, /I design how people/);
+  assert.match(html, /I design how humans naturally converse with AI and physical hardware\./);
+  assert.match(html, /我致力于设计人类与 AI 及物理硬件之间最自然的交互体验。/);
+  assert.match(html, /\/media\/cursor-tracker\/cursor-sprite\.webp/);
+  assert.match(html, /Currently @/);
+  assert.doesNotMatch(html, /Selected work · 2026/i);
   assert.match(html, /Alive Briefing/);
   assert.match(html, /From Query to Quest/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);

@@ -15,9 +15,9 @@
       <div class="header-inner">
         <div class="wordmark" aria-label="Lexi Liang">LEXI<span aria-hidden="true">↗</span></div>
         <div class="header-meta" aria-label="Interaction instructions">
-          <span>MOVE HORIZONTALLY</span>
+          <span>MOVE AROUND</span>
           <span>CLICK TO WINK</span>
-          <span>SENSITIVITY 0.8</span>
+          <span>2D GRID 11×11</span>
         </div>
       </div>
     </header>
@@ -28,7 +28,7 @@
           class="portrait"
           id="portrait"
           type="button"
-          aria-label="Interactive portrait. Move the pointer horizontally to change the gaze, then click to wink."
+          aria-label="Interactive portrait. Move the pointer around the page to change the gaze, then click to wink."
         >
           <span class="portrait-media" aria-hidden="true">
             <video
@@ -51,24 +51,25 @@
             </video>
           </span>
           <span class="portrait-ring" aria-hidden="true"></span>
-          <span class="portrait-hint" aria-hidden="true">MOVE · CLICK</span>
+          <span class="portrait-hint" aria-hidden="true">LOOK · WINK</span>
         </button>
 
         <div class="hero-copy">
           <p class="eyebrow">INTERACTION DESIGNER · AI EXPERIENCES · BEIJING</p>
           <h1 id="hero-title">
-            Move the cursor.<br />
+            Move around.<br />
             <span>She follows.</span>
           </h1>
           <p class="lede">
-            A motion study built from two local video assets. Move left and right to scrub the gaze;
-            click anywhere to trigger the wink.
+            A two-dimensional gaze study built from two local video assets. Move anywhere around the
+            portrait to guide her attention; click to trigger the wink.
           </p>
         </div>
 
         <div class="telemetry" aria-live="polite">
           <span class="telemetry-label">PORTRAIT STATE</span>
           <span id="tracker-status">Loading video…</span>
+          <span id="tracker-grid">GRID X 0 · Y 0</span>
           <span id="tracker-time">0.00 / 0.00s</span>
         </div>
       </section>

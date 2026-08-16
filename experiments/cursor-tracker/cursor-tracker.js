@@ -1,18 +1,22 @@
-const SENSITIVITY = 0.8;
+const GRID_SIZE = 11;
+const GRID_CENTER = Math.floor(GRID_SIZE / 2);
+const CENTER_TIME_RATIO = 0.3;
 const SEEK_EPSILON = 0.001;
+const FULL_TURN = Math.PI * 2;
 
 const portrait = document.querySelector("#portrait");
 const cursorVideo = document.querySelector("#cursor-video");
 const winkVideo = document.querySelector("#wink-video");
 const statusLabel = document.querySelector("#tracker-status");
+const gridLabel = document.querySelector("#tracker-grid");
 const timeLabel = document.querySelector("#tracker-time");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-let prevX = null;
 let targetTime = 0;
 let queuedTime = null;
 let seekInFlight = false;
 let cursorReady = false;
+let activeCell = `${GRID_CENTER}:${GRID_CENTER}`;
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -22,9 +26,38 @@ function formatTime(value) {
   return Number.isFinite(value) ? value.toFixed(2) : "0.00";
 }
 
-function renderTelemetry(state = "Tracking cursor") {
+function renderTelemetry(state = "Tracking in 2D") {
   statusLabel.textContent = state;
   timeLabel.textContent = `${formatTime(cursorVideo.currentTime)} / ${formatTime(cursorVideo.duration)}s`;
+}
+
+function renderGrid(column, row) {
+  const x = column - GRID_CENTER;
+  const y = row - GRID_CENTER;
+  gridLabel.textContent = `GRID X ${x} · Y ${y}`;
+}
+
+function normalizePointerAxis(value, center, negativeLimit, positiveLimit) {
+  const distance = value - center;
+  const availableDistance = distance < 0 ? negativeLimit : positiveLimit;
+  return clamp(distance / Math.max(availableDistance, 1), -1, 1);
+}
+
+function quantizeAxis(value) {
+  return Math.round(((value + 1) / 2) * (GRID_SIZE - 1));
+}
+
+function timeForGridCell(column, row) {
+  const gridX = column - GRID_CENTER;
+  const gridY = row - GRID_CENTER;
+
+  if (gridX === 0 && gridY === 0) {
+    return cursorVideo.duration * CENTER_TIME_RATIO;
+  }
+
+  const angle = Math.atan2(gridY, gridX);
+  const clockwiseProgress = ((angle % FULL_TURN) + FULL_TURN) % FULL_TURN;
+  return (clockwiseProgress / FULL_TURN) * cursorVideo.duration;
 }
 
 function requestSeek() {
@@ -52,16 +85,30 @@ function queueSeek(nextTime) {
 function handleMouseMove(event) {
   if (!cursorReady || reduceMotion.matches) return;
 
-  if (prevX === null) {
-    prevX = event.clientX;
-    return;
-  }
+  const rect = portrait.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+  const normalizedX = normalizePointerAxis(
+    event.clientX,
+    centerX,
+    centerX,
+    window.innerWidth - centerX,
+  );
+  const normalizedY = normalizePointerAxis(
+    event.clientY,
+    centerY,
+    centerY,
+    window.innerHeight - centerY,
+  );
+  const column = quantizeAxis(normalizedX);
+  const row = quantizeAxis(normalizedY);
+  const nextCell = `${column}:${row}`;
 
-  const delta = event.clientX - prevX;
-  prevX = event.clientX;
+  if (nextCell === activeCell) return;
 
-  const timeOffset = (delta / window.innerWidth) * SENSITIVITY * cursorVideo.duration;
-  queueSeek(targetTime + timeOffset);
+  activeCell = nextCell;
+  renderGrid(column, row);
+  queueSeek(timeForGridCell(column, row));
 }
 
 async function triggerWink() {
@@ -95,9 +142,10 @@ function initializeCursorVideo() {
     return;
   }
 
-  targetTime = cursorVideo.duration / 2;
+  targetTime = cursorVideo.duration * CENTER_TIME_RATIO;
   queuedTime = targetTime;
-  renderTelemetry(reduceMotion.matches ? "Reduced motion" : "Tracking cursor");
+  renderGrid(GRID_CENTER, GRID_CENTER);
+  renderTelemetry(reduceMotion.matches ? "Reduced motion" : "Tracking in 2D");
   requestSeek();
 }
 
@@ -117,12 +165,8 @@ winkVideo.addEventListener("error", finishWink);
 
 window.addEventListener("mousemove", handleMouseMove, { passive: true });
 window.addEventListener("click", triggerWink);
-window.addEventListener("blur", () => {
-  prevX = null;
-});
 
 reduceMotion.addEventListener("change", () => {
-  prevX = null;
   if (reduceMotion.matches) {
     winkVideo.pause();
     finishWink();

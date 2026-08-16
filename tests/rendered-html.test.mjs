@@ -2,8 +2,6 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-const root = new URL("../", import.meta.url);
-
 async function renderHome() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
@@ -22,7 +20,10 @@ test("server-renders Lexi's portfolio landing page", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Lexi Liang — Interaction Designer<\/title>/i);
-  assert.match(html, /I design how people/);
+  assert.match(html, /I design how humans naturally converse with AI and physical hardware\./);
+  assert.match(html, /我致力于设计人类与 AI 及物理硬件之间最自然的交互体验。/);
+  assert.match(html, /\/media\/cursor-tracker\/cursor-sprite\.webp/);
+  assert.match(html, /Currently @/);
   assert.match(html, /Alive Briefing/);
   assert.match(html, /From Query to Quest/);
   assert.doesNotMatch(html, /Selected work · 2026/i);

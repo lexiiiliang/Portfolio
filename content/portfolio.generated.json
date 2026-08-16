@@ -2,16 +2,21 @@
   "schemaVersion": 1,
   "site": {
     "name": "Lexi Liang",
-    "roleEn": "Interaction designer for AI products and smart hardware",
-    "roleZh": "专注 AI 产品与智能硬件的交互设计师",
-    "locationEn": "Beijing · Open to Shenzhen",
-    "locationZh": "现居北京 · 期待深圳机会",
-    "introEn": "I design interfaces that help people understand, decide and act with intelligent systems.",
-    "introZh": "我设计人与智能系统共同理解、判断和行动的方式。",
+    "roleEn": "Interaction designer · AI products · Smart hardware",
+    "roleZh": "交互设计师 · AI 产品 · 智能硬件",
+    "locationEn": "Based in Beijing | Relocating to Shenzhen",
+    "locationZh": "现居北京｜寻求深圳发展机会",
+    "introEn": "I design how humans naturally converse with AI and physical hardware.",
+    "introZh": "我致力于设计人类与 AI 及物理硬件之间最自然的交互体验。",
     "current": "Li Auto",
+    "currentZh": "理想汽车",
     "previous": [
       "Microsoft",
       "SenseTime"
+    ],
+    "previousZh": [
+      "微软",
+      "商汤科技"
     ],
     "contacts": [
       {

@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
     <title>Cursor portrait experiment — Lexi Liang</title>
+    <link
+      rel="preload"
+      href="../../media/cursor%20tracker/cursor-sprite.webp"
+      as="image"
+      type="image/webp"
+    />
     <link rel="stylesheet" href="./styles.css" />
     <script src="./cursor-tracker.js" defer></script>
   </head>
@@ -17,7 +23,7 @@
         <div class="header-meta" aria-label="Interaction instructions">
           <span>MOVE AROUND</span>
           <span>CLICK TO WINK</span>
-          <span>2D GRID 11×11</span>
+          <span>110 FRAME SPRITE</span>
         </div>
       </div>
     </header>
@@ -31,15 +37,16 @@
           aria-label="Interactive portrait. Move the pointer around the page to change the gaze, then click to wink."
         >
           <span class="portrait-media" aria-hidden="true">
-            <video
-              id="cursor-video"
-              class="portrait-video cursor-video"
-              muted
-              playsinline
-              preload="auto"
-            >
-              <source src="../../media/cursor%20tracker/cursor%20sprite.mp4" type="video/mp4" />
-            </video>
+            <img
+              id="cursor-sprite"
+              class="cursor-sprite"
+              src="../../media/cursor%20tracker/cursor-sprite.webp"
+              alt=""
+              width="2816"
+              height="2560"
+              fetchpriority="high"
+              draggable="false"
+            />
             <video
               id="wink-video"
               class="portrait-video wink-video"
@@ -61,16 +68,16 @@
             <span>She follows.</span>
           </h1>
           <p class="lede">
-            A two-dimensional gaze study built from two local video assets. Move anywhere around the
-            portrait to guide her attention; click to trigger the wink.
+            A two-dimensional gaze study rendered from 110 locally generated sprite frames. Move
+            anywhere around the portrait to guide her attention; click to trigger the wink.
           </p>
         </div>
 
         <div class="telemetry" aria-live="polite">
           <span class="telemetry-label">PORTRAIT STATE</span>
           <span id="tracker-status">Loading video…</span>
-          <span id="tracker-grid">GRID X 0 · Y 0</span>
-          <span id="tracker-time">0.00 / 0.00s</span>
+          <span id="tracker-grid">X +0.00 · Y +0.00</span>
+          <span id="tracker-time">FRAME 034 / 110</span>
         </div>
       </section>
     </main>

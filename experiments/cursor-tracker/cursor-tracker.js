@@ -1,40 +1,104 @@
-const GRID_SIZE = 11;
-const GRID_CENTER = Math.floor(GRID_SIZE / 2);
-const CENTER_TIME_RATIO = 0.3;
-const SEEK_EPSILON = 0.001;
+const SPRITE_COLUMNS = 11;
+const SPRITE_ROWS = 10;
+const FRAME_COUNT = SPRITE_COLUMNS * SPRITE_ROWS;
+const CENTER_FRAME = 33;
+const CENTER_DEAD_ZONE = 0.075;
+const RESPONSE_RATE = 22;
+const MAX_PROGRESS_PER_SECOND = 1.25;
+const SETTLE_THRESHOLD = 0.0004;
 const FULL_TURN = Math.PI * 2;
 
 const portrait = document.querySelector("#portrait");
-const cursorVideo = document.querySelector("#cursor-video");
+const cursorSprite = document.querySelector("#cursor-sprite");
 const winkVideo = document.querySelector("#wink-video");
 const statusLabel = document.querySelector("#tracker-status");
-const gridLabel = document.querySelector("#tracker-grid");
-const timeLabel = document.querySelector("#tracker-time");
+const vectorLabel = document.querySelector("#tracker-grid");
+const frameLabel = document.querySelector("#tracker-time");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-let targetTime = 0;
-let queuedTime = null;
-let seekInFlight = false;
-let cursorReady = false;
-let activeCell = `${GRID_CENTER}:${GRID_CENTER}`;
+let spriteReady = false;
+let currentFrame = -1;
+let targetProgress = CENTER_FRAME / FRAME_COUNT;
+let displayedProgress = targetProgress;
+let animationFrameId = null;
+let previousTimestamp = null;
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
 
-function formatTime(value) {
-  return Number.isFinite(value) ? value.toFixed(2) : "0.00";
+function wrapProgress(value) {
+  return ((value % 1) + 1) % 1;
 }
 
-function renderTelemetry(state = "Tracking in 2D") {
+function shortestProgressDelta(from, to) {
+  return ((to - from + 1.5) % 1) - 0.5;
+}
+
+function formatCoordinate(value) {
+  const rounded = Math.abs(value) < 0.005 ? 0 : value;
+  return `${rounded >= 0 ? "+" : ""}${rounded.toFixed(2)}`;
+}
+
+function renderTelemetry(state = "Tracking smoothly") {
   statusLabel.textContent = state;
-  timeLabel.textContent = `${formatTime(cursorVideo.currentTime)} / ${formatTime(cursorVideo.duration)}s`;
+  frameLabel.textContent = `FRAME ${String(Math.max(currentFrame + 1, 1)).padStart(3, "0")} / ${FRAME_COUNT}`;
 }
 
-function renderGrid(column, row) {
-  const x = column - GRID_CENTER;
-  const y = row - GRID_CENTER;
-  gridLabel.textContent = `GRID X ${x} · Y ${y}`;
+function renderVector(x, y) {
+  vectorLabel.textContent = `X ${formatCoordinate(x)} · Y ${formatCoordinate(y)}`;
+}
+
+function renderFrame(frameIndex) {
+  const normalizedFrame = ((frameIndex % FRAME_COUNT) + FRAME_COUNT) % FRAME_COUNT;
+  if (normalizedFrame === currentFrame) return;
+
+  currentFrame = normalizedFrame;
+  const column = normalizedFrame % SPRITE_COLUMNS;
+  const row = Math.floor(normalizedFrame / SPRITE_COLUMNS);
+  const xPercent = column * (100 / SPRITE_COLUMNS);
+  const yPercent = row * (100 / SPRITE_ROWS);
+
+  cursorSprite.style.transform = `translate3d(${-xPercent}%, ${-yPercent}%, 0)`;
+  renderTelemetry();
+}
+
+function animateTowardsTarget(timestamp) {
+  if (!spriteReady || reduceMotion.matches) {
+    animationFrameId = null;
+    previousTimestamp = null;
+    return;
+  }
+
+  if (previousTimestamp === null) previousTimestamp = timestamp;
+
+  const elapsedSeconds = clamp((timestamp - previousTimestamp) / 1000, 0, 0.05);
+  const delta = shortestProgressDelta(displayedProgress, targetProgress);
+  const interpolation = 1 - Math.exp(-RESPONSE_RATE * elapsedSeconds);
+  const progressStep = clamp(
+    delta * interpolation,
+    -MAX_PROGRESS_PER_SECOND * elapsedSeconds,
+    MAX_PROGRESS_PER_SECOND * elapsedSeconds,
+  );
+
+  displayedProgress = wrapProgress(displayedProgress + progressStep);
+  renderFrame(Math.round(displayedProgress * FRAME_COUNT) % FRAME_COUNT);
+  previousTimestamp = timestamp;
+
+  if (Math.abs(shortestProgressDelta(displayedProgress, targetProgress)) > SETTLE_THRESHOLD) {
+    animationFrameId = requestAnimationFrame(animateTowardsTarget);
+    return;
+  }
+
+  displayedProgress = targetProgress;
+  renderFrame(Math.round(displayedProgress * FRAME_COUNT) % FRAME_COUNT);
+  animationFrameId = null;
+  previousTimestamp = null;
+}
+
+function requestFrameUpdate() {
+  if (animationFrameId !== null || reduceMotion.matches) return;
+  animationFrameId = requestAnimationFrame(animateTowardsTarget);
 }
 
 function normalizePointerAxis(value, center, negativeLimit, positiveLimit) {
@@ -43,47 +107,8 @@ function normalizePointerAxis(value, center, negativeLimit, positiveLimit) {
   return clamp(distance / Math.max(availableDistance, 1), -1, 1);
 }
 
-function quantizeAxis(value) {
-  return Math.round(((value + 1) / 2) * (GRID_SIZE - 1));
-}
-
-function timeForGridCell(column, row) {
-  const gridX = column - GRID_CENTER;
-  const gridY = row - GRID_CENTER;
-
-  if (gridX === 0 && gridY === 0) {
-    return cursorVideo.duration * CENTER_TIME_RATIO;
-  }
-
-  const angle = Math.atan2(gridY, gridX);
-  const clockwiseProgress = ((angle % FULL_TURN) + FULL_TURN) % FULL_TURN;
-  return (clockwiseProgress / FULL_TURN) * cursorVideo.duration;
-}
-
-function requestSeek() {
-  if (!cursorReady || seekInFlight || queuedTime === null) return;
-
-  const nextTime = queuedTime;
-  queuedTime = null;
-
-  if (Math.abs(nextTime - cursorVideo.currentTime) <= SEEK_EPSILON) {
-    renderTelemetry();
-    return;
-  }
-
-  seekInFlight = true;
-  renderTelemetry("Seeking…");
-  cursorVideo.currentTime = nextTime;
-}
-
-function queueSeek(nextTime) {
-  targetTime = clamp(nextTime, 0, cursorVideo.duration);
-  queuedTime = targetTime;
-  requestSeek();
-}
-
 function handleMouseMove(event) {
-  if (!cursorReady || reduceMotion.matches) return;
+  if (!spriteReady || reduceMotion.matches) return;
 
   const rect = portrait.getBoundingClientRect();
   const centerX = rect.left + rect.width / 2;
@@ -100,19 +125,22 @@ function handleMouseMove(event) {
     centerY,
     window.innerHeight - centerY,
   );
-  const column = quantizeAxis(normalizedX);
-  const row = quantizeAxis(normalizedY);
-  const nextCell = `${column}:${row}`;
+  const radius = Math.hypot(normalizedX, normalizedY);
 
-  if (nextCell === activeCell) return;
+  renderVector(normalizedX, normalizedY);
 
-  activeCell = nextCell;
-  renderGrid(column, row);
-  queueSeek(timeForGridCell(column, row));
+  if (radius < CENTER_DEAD_ZONE) {
+    targetProgress = CENTER_FRAME / FRAME_COUNT;
+  } else {
+    const angle = Math.atan2(normalizedY, normalizedX);
+    targetProgress = wrapProgress(angle / FULL_TURN);
+  }
+
+  requestFrameUpdate();
 }
 
 async function triggerWink() {
-  if (!cursorReady || reduceMotion.matches) return;
+  if (!spriteReady || reduceMotion.matches) return;
 
   winkVideo.pause();
   winkVideo.currentTime = 0;
@@ -132,33 +160,24 @@ function finishWink() {
   renderTelemetry();
 }
 
-function initializeCursorVideo() {
-  if (cursorReady) return;
+function initializeSprite() {
+  if (spriteReady) return;
 
-  cursorReady = Number.isFinite(cursorVideo.duration) && cursorVideo.duration > 0;
-
-  if (!cursorReady) {
-    renderTelemetry("Video unavailable");
+  spriteReady = cursorSprite.complete && cursorSprite.naturalWidth > 0;
+  if (!spriteReady) {
+    renderTelemetry("Sprite unavailable");
     return;
   }
 
-  targetTime = cursorVideo.duration * CENTER_TIME_RATIO;
-  queuedTime = targetTime;
-  renderGrid(GRID_CENTER, GRID_CENTER);
-  renderTelemetry(reduceMotion.matches ? "Reduced motion" : "Tracking in 2D");
-  requestSeek();
+  displayedProgress = CENTER_FRAME / FRAME_COUNT;
+  targetProgress = displayedProgress;
+  renderFrame(CENTER_FRAME);
+  renderVector(0, 0);
+  renderTelemetry(reduceMotion.matches ? "Reduced motion" : "Tracking smoothly");
 }
 
-cursorVideo.addEventListener("loadeddata", initializeCursorVideo, { once: true });
-cursorVideo.addEventListener("seeked", () => {
-  seekInFlight = false;
-  renderTelemetry();
-
-  if (queuedTime !== null && Math.abs(queuedTime - cursorVideo.currentTime) > SEEK_EPSILON) {
-    requestSeek();
-  }
-});
-cursorVideo.addEventListener("error", () => renderTelemetry("Video unavailable"));
+cursorSprite.addEventListener("load", initializeSprite, { once: true });
+cursorSprite.addEventListener("error", () => renderTelemetry("Sprite unavailable"));
 
 winkVideo.addEventListener("ended", finishWink);
 winkVideo.addEventListener("error", finishWink);
@@ -168,14 +187,21 @@ window.addEventListener("click", triggerWink);
 
 reduceMotion.addEventListener("change", () => {
   if (reduceMotion.matches) {
+    if (animationFrameId !== null) cancelAnimationFrame(animationFrameId);
+    animationFrameId = null;
+    previousTimestamp = null;
     winkVideo.pause();
     finishWink();
+    displayedProgress = CENTER_FRAME / FRAME_COUNT;
+    targetProgress = displayedProgress;
+    renderFrame(CENTER_FRAME);
+    renderVector(0, 0);
     renderTelemetry("Reduced motion");
   } else {
     renderTelemetry();
   }
 });
 
-if (cursorVideo.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
-  initializeCursorVideo();
+if (cursorSprite.complete) {
+  initializeSprite();
 }

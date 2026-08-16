@@ -138,25 +138,36 @@ video {
   transform: translateZ(0);
 }
 
-.portrait-video {
+.portrait-video,
+.cursor-sprite {
   position: absolute;
-  inset: 0;
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   pointer-events: none;
 }
 
-.cursor-video {
+.portrait-video {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cursor-sprite {
+  top: 0;
+  left: 0;
+  width: 1100%;
+  max-width: none;
+  height: 1000%;
   opacity: 1;
+  user-select: none;
+  will-change: transform;
 }
 
 .wink-video {
   opacity: 0;
 }
 
-.portrait.is-winking .cursor-video {
+.portrait.is-winking .cursor-sprite {
   opacity: 0;
 }
 

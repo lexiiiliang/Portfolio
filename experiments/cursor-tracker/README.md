@@ -16,6 +16,12 @@ Open:
 http://127.0.0.1:4173/experiments/cursor-tracker/
 ```
 
+## Vercel preview
+
+The `experiment/cursor-tracker` branch prepares this standalone page inside Next.js `public/`
+during development and builds, then redirects the branch root to the generated experiment page.
+This configuration exists only on the experiment branch and does not alter `main`.
+
 ## Interaction model
 
 - `cursor-sprite.webp` contains 110 sequential frames in an 11×10 sheet, matching the supplied `avatar-sprite.webp` reference structure.

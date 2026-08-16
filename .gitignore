@@ -41,3 +41,7 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# generated experiment deployment assets
+/public/experiments/cursor-tracker/
+/public/media/cursor tracker/

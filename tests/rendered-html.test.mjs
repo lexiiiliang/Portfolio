@@ -2,8 +2,6 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-const root = new URL("../", import.meta.url);
-
 async function renderHome() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
@@ -15,17 +13,25 @@ async function renderHome() {
   );
 }
 
-test("server-renders Lexi's portfolio landing page", async () => {
+test("redirects the experiment branch root to its standalone page", async () => {
   const response = await renderHome();
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+  assert.equal(response.status, 307);
+  assert.match(
+    response.headers.get("location") ?? "",
+    /\/experiments\/cursor-tracker\/index\.html$/,
+  );
 
-  const html = await response.text();
-  assert.match(html, /<title>Lexi Liang — Interaction Designer<\/title>/i);
-  assert.match(html, /I design how people/);
-  assert.match(html, /Alive Briefing/);
-  assert.match(html, /From Query to Quest/);
-  assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
+  const html = await readFile(
+    new URL("../public/experiments/cursor-tracker/index.html", import.meta.url),
+    "utf8",
+  );
+  assert.match(html, /Move around\./);
+  assert.match(html, /She follows\./);
+  assert.match(html, /cursor-sprite\.webp/);
+  await access(new URL("../public/experiments/cursor-tracker/styles.css", import.meta.url));
+  await access(new URL("../public/experiments/cursor-tracker/cursor-tracker.js", import.meta.url));
+  await access(new URL("../public/media/cursor tracker/cursor-sprite.webp", import.meta.url));
+  await access(new URL("../public/media/cursor tracker/click wink.mp4", import.meta.url));
 });
 
 test("keeps a versioned portfolio content snapshot", async () => {

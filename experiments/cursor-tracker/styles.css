@@ -1,0 +1,322 @@
+:root {
+  --color-canvas: oklch(0.985 0.003 265);
+  --color-ink: oklch(0.16 0.01 265);
+  --color-muted: oklch(0.53 0.015 265);
+  --color-border-subtle: rgba(15, 18, 24, 0.09);
+  --color-accent: oklch(0.62 0.22 264);
+  --font-sans: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --page-gutter: clamp(24px, 6.25vw, 128px);
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    linear-gradient(var(--color-border-subtle) 1px, transparent 1px) 0 0 / 100% 9rem no-repeat,
+    var(--color-canvas);
+}
+
+button,
+video {
+  font: inherit;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+  padding: 10px 14px;
+  color: var(--color-canvas);
+  background: var(--color-ink);
+  transform: translateY(-160%);
+  transition: transform 160ms var(--ease-out-quart);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.site-header {
+  height: 9rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100%, 1600px);
+  height: 100%;
+  margin: 0 auto;
+  padding-inline: var(--page-gutter);
+}
+
+.wordmark {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.wordmark span {
+  margin-left: 2px;
+  color: var(--color-accent);
+}
+
+.header-meta {
+  display: flex;
+  gap: clamp(20px, 3vw, 52px);
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+}
+
+.hero {
+  min-height: calc(100vh - 9rem);
+}
+
+.hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.38fr);
+  grid-template-areas:
+    "portrait portrait"
+    "copy telemetry";
+  align-content: start;
+  width: min(100%, 1600px);
+  min-height: calc(100vh - 9rem);
+  margin: 0 auto;
+  padding: clamp(112px, 14vh, 176px) var(--page-gutter) 48px;
+}
+
+.portrait {
+  grid-area: portrait;
+  position: relative;
+  width: clamp(176px, 15vw, 248px);
+  aspect-ratio: 1;
+  margin: 0 0 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: var(--color-ink);
+  background: transparent;
+  cursor: pointer;
+  isolation: isolate;
+  transition: transform 150ms var(--ease-out-quart);
+}
+
+.portrait:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 8px;
+}
+
+.portrait:active {
+  transform: scale(0.97);
+}
+
+.portrait-media {
+  position: absolute;
+  inset: 8px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: oklch(0.97 0.004 265);
+  transform: translateZ(0);
+}
+
+.portrait-video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.cursor-video {
+  opacity: 1;
+}
+
+.wink-video {
+  opacity: 0;
+}
+
+.portrait.is-winking .cursor-video {
+  opacity: 0;
+}
+
+.portrait.is-winking .wink-video {
+  opacity: 1;
+}
+
+.portrait-ring {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 1px solid rgba(15, 18, 24, 0.16);
+  border-radius: inherit;
+  box-shadow:
+    0 1px 1px rgba(15, 18, 24, 0.03),
+    0 5px 16px rgba(15, 18, 24, 0.04),
+    0 18px 42px rgba(15, 18, 24, 0.03);
+  pointer-events: none;
+}
+
+.portrait-hint {
+  position: absolute;
+  right: -26px;
+  bottom: 20px;
+  z-index: 3;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 999px;
+  color: var(--color-muted);
+  background: color-mix(in oklch, var(--color-canvas) 92%, transparent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  pointer-events: none;
+  transform: rotate(-5deg);
+}
+
+.hero-copy {
+  grid-area: copy;
+  max-width: 1040px;
+}
+
+.eyebrow,
+.telemetry {
+  font-family: var(--font-mono);
+  font-size: clamp(10px, 0.9vw, 13px);
+  letter-spacing: 0.16em;
+}
+
+.eyebrow {
+  margin: 0 0 30px;
+  color: var(--color-muted);
+}
+
+h1 {
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(56px, 7.7vw, 124px);
+  font-weight: 650;
+  letter-spacing: -0.065em;
+  line-height: 0.9;
+  text-wrap: balance;
+}
+
+h1 span {
+  color: var(--color-accent);
+}
+
+.lede {
+  max-width: 58ch;
+  margin: clamp(34px, 4vw, 54px) 0 0;
+  color: oklch(0.38 0.012 265);
+  font-size: clamp(17px, 1.65vw, 25px);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.telemetry {
+  grid-area: telemetry;
+  align-self: end;
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+  padding-bottom: 10px;
+  color: var(--color-muted);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.telemetry-label {
+  color: var(--color-ink);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .portrait:hover {
+    transform: translateY(-3px);
+  }
+
+  .portrait:hover:active {
+    transform: translateY(0) scale(0.97);
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    background:
+      linear-gradient(var(--color-border-subtle) 1px, transparent 1px) 0 0 / 100% 6rem no-repeat,
+      var(--color-canvas);
+  }
+
+  .site-header {
+    height: 6rem;
+  }
+
+  .header-meta span:not(:first-child) {
+    display: none;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "portrait"
+      "copy"
+      "telemetry";
+    min-height: calc(100svh - 6rem);
+    padding-top: clamp(64px, 11vh, 104px);
+  }
+
+  .portrait {
+    margin-bottom: 26px;
+  }
+
+  .eyebrow {
+    margin-bottom: 22px;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: clamp(50px, 16vw, 78px);
+  }
+
+  .telemetry {
+    justify-items: start;
+    align-self: auto;
+    margin-top: 46px;
+    padding-top: 18px;
+    border-top: 1px solid var(--color-border-subtle);
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link,
+  .portrait {
+    transition: none;
+  }
+
+  .portrait:active,
+  .portrait:hover,
+  .portrait:hover:active {
+    transform: none;
+  }
+}

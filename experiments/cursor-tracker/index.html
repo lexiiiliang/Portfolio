@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Cursor portrait experiment — Lexi Liang</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./cursor-tracker.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#experiment">Skip to experiment</a>
+
+    <header class="site-header" aria-label="Experiment header">
+      <div class="header-inner">
+        <div class="wordmark" aria-label="Lexi Liang">LEXI<span aria-hidden="true">↗</span></div>
+        <div class="header-meta" aria-label="Interaction instructions">
+          <span>MOVE HORIZONTALLY</span>
+          <span>CLICK TO WINK</span>
+          <span>SENSITIVITY 0.8</span>
+        </div>
+      </div>
+    </header>
+
+    <main id="experiment" class="hero">
+      <section class="hero-inner" aria-labelledby="hero-title">
+        <button
+          class="portrait"
+          id="portrait"
+          type="button"
+          aria-label="Interactive portrait. Move the pointer horizontally to change the gaze, then click to wink."
+        >
+          <span class="portrait-media" aria-hidden="true">
+            <video
+              id="cursor-video"
+              class="portrait-video cursor-video"
+              muted
+              playsinline
+              preload="auto"
+            >
+              <source src="../../media/cursor%20tracker/cursor%20sprite.mp4" type="video/mp4" />
+            </video>
+            <video
+              id="wink-video"
+              class="portrait-video wink-video"
+              muted
+              playsinline
+              preload="auto"
+            >
+              <source src="../../media/cursor%20tracker/click%20wink.mp4" type="video/mp4" />
+            </video>
+          </span>
+          <span class="portrait-ring" aria-hidden="true"></span>
+          <span class="portrait-hint" aria-hidden="true">MOVE · CLICK</span>
+        </button>
+
+        <div class="hero-copy">
+          <p class="eyebrow">INTERACTION DESIGNER · AI EXPERIENCES · BEIJING</p>
+          <h1 id="hero-title">
+            Move the cursor.<br />
+            <span>She follows.</span>
+          </h1>
+          <p class="lede">
+            A motion study built from two local video assets. Move left and right to scrub the gaze;
+            click anywhere to trigger the wink.
+          </p>
+        </div>
+
+        <div class="telemetry" aria-live="polite">
+          <span class="telemetry-label">PORTRAIT STATE</span>
+          <span id="tracker-status">Loading video…</span>
+          <span id="tracker-time">0.00 / 0.00s</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

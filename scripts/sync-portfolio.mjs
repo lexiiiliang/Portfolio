@@ -130,7 +130,10 @@ const directories = (await readdir(contentRoot, { withFileTypes: true }))
   .filter((entry) => entry.isDirectory() && !entry.name.startsWith("."))
   .map((entry) => entry.name);
 
-const configuredFolders = new Set(config.projects.map((project) => project.folder));
+const configuredFolders = new Set(config.projects.flatMap((project) => [
+  project.folder,
+  project.folder.split(path.sep)[0],
+]));
 const automaticProjects = directories
   .filter((folder) => !configuredFolders.has(folder))
   .map((folder, index) => ({
@@ -163,12 +166,24 @@ for (const project of [...config.projects, ...automaticProjects]) {
     .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".md"))
     .map((entry) => entry.name)
     .sort();
-  const entry = project.entry || availableMarkdown[0] || null;
-  const sourcePath = entry ? path.join(folderPath, entry) : null;
-  const raw = sourcePath && await exists(sourcePath) ? await readFile(sourcePath, "utf8") : "";
-  const selected = selectPublicRange(raw, project);
-  const body = project.previewOnly ? "" : await rewriteMedia(selected, path.dirname(sourcePath || folderPath), project.slug);
-  const headings = body.split(/\r?\n/)
+  const fallbackEntry = project.entry || availableMarkdown[0] || null;
+  const entryEn = project.entryEn || fallbackEntry;
+  const entryZh = project.entryZh || fallbackEntry;
+  const sourcePathEn = entryEn ? path.join(folderPath, entryEn) : null;
+  const sourcePathZh = entryZh ? path.join(folderPath, entryZh) : null;
+  const rawEn = sourcePathEn && await exists(sourcePathEn) ? await readFile(sourcePathEn, "utf8") : "";
+  const rawZh = sourcePathZh && await exists(sourcePathZh) ? await readFile(sourcePathZh, "utf8") : "";
+  const bodyEn = project.previewOnly ? "" : await rewriteMedia(
+    selectPublicRange(rawEn, project),
+    path.dirname(sourcePathEn || folderPath),
+    project.slug,
+  );
+  const bodyZh = project.previewOnly ? "" : await rewriteMedia(
+    selectPublicRange(rawZh, project),
+    path.dirname(sourcePathZh || folderPath),
+    project.slug,
+  );
+  const extractHeadings = (body) => body.split(/\r?\n/)
     .map((line) => line.match(/^(#{1,2})\s+(.+)$/))
     .filter(Boolean)
     .map((match) => ({
@@ -176,15 +191,25 @@ for (const project of [...config.projects, ...automaticProjects]) {
       label: cleanText(match[2]).replace(/^\d+\s*[—–-]\s*/, ""),
       id: toAnchor(match[2]),
     }));
+  const headingsEn = extractHeadings(bodyEn);
+  const headingsZh = extractHeadings(bodyZh);
 
   projects.push({
     ...project,
-    hasSource: Boolean(raw),
-    sourceFile: sourcePath ? path.relative(contentRoot, sourcePath) : null,
-    sourceChecksum: raw ? createHash("sha256").update(raw).digest("hex").slice(0, 12) : null,
-    status: project.previewOnly || !raw ? "in-progress" : "published",
-    body,
-    headings,
+    hasSource: Boolean(rawEn && rawZh),
+    sourceFile: sourcePathZh ? path.relative(contentRoot, sourcePathZh) : null,
+    sourceFileEn: sourcePathEn ? path.relative(contentRoot, sourcePathEn) : null,
+    sourceFileZh: sourcePathZh ? path.relative(contentRoot, sourcePathZh) : null,
+    sourceChecksum: rawEn && rawZh
+      ? createHash("sha256").update(`${rawEn}\n${rawZh}`).digest("hex").slice(0, 12)
+      : null,
+    status: project.previewOnly || !rawEn || !rawZh ? "in-progress" : "published",
+    body: bodyEn,
+    bodyEn,
+    bodyZh,
+    headings: headingsEn,
+    headingsEn,
+    headingsZh,
   });
 }
 

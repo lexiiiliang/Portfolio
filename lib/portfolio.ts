@@ -38,7 +38,11 @@ export type PortfolioProject = {
   sourceChecksum: string | null;
   status: "in-progress" | "published";
   body: string;
+  bodyEn: string;
+  bodyZh: string;
   headings: ProjectHeading[];
+  headingsEn: ProjectHeading[];
+  headingsZh: ProjectHeading[];
 };
 
 export const portfolio = portfolioSnapshot as {

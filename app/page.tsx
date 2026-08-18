@@ -4,9 +4,53 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { SiteHeader } from "@/components/SiteHeader";
 import { portfolio } from "@/lib/portfolio";
 
+function ContactIcon({ label }: { label: string }) {
+  const iconProps = {
+    className: "contact-icon",
+    viewBox: "0 0 24 24",
+    "aria-hidden": true,
+  } as const;
+
+  switch (label.toLowerCase()) {
+    case "email":
+      return (
+        <svg {...iconProps} fill="none">
+          <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.7" />
+          <path d="m4 7 8 6 8-6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "github":
+      return (
+        <svg {...iconProps} fill="currentColor">
+          <path d="M12 2.5a9.7 9.7 0 0 0-3.07 18.9c.48.09.66-.2.66-.46v-1.7c-2.68.58-3.25-1.14-3.25-1.14-.44-1.11-1.07-1.4-1.07-1.4-.88-.6.06-.59.06-.59.97.07 1.48 1 1.48 1 .86 1.47 2.26 1.05 2.81.8.09-.62.34-1.05.61-1.29-2.14-.24-4.39-1.07-4.39-4.77 0-1.05.38-1.91 1-2.59-.1-.24-.43-1.22.09-2.55 0 0 .81-.26 2.67.99A9.3 9.3 0 0 1 12 7.37a9.3 9.3 0 0 1 2.43.33c1.85-1.25 2.67-.99 2.67-.99.52 1.33.19 2.31.09 2.55.62.68 1 1.54 1 2.59 0 3.71-2.26 4.52-4.4 4.76.35.3.65.88.65 1.79v2.54c0 .26.18.55.66.46A9.7 9.7 0 0 0 12 2.5Z" />
+        </svg>
+      );
+    case "linkedin":
+      return (
+        <svg {...iconProps} fill="currentColor">
+          <path d="M5.35 7.4A1.85 1.85 0 1 0 5.34 3.7a1.85 1.85 0 0 0 .01 3.7ZM3.75 20.3h3.2V9.4h-3.2v10.9ZM9.2 9.4h3.07v1.49h.04c.43-.81 1.47-1.67 3.03-1.67 3.24 0 3.84 2.13 3.84 4.9v6.18h-3.2v-5.48c0-1.31-.03-2.99-1.82-2.99-1.82 0-2.1 1.42-2.1 2.89v5.58H9.2V9.4Z" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...iconProps} fill="none">
+          <path d="M6 3.5h8l4 4v13H6v-17Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+          <path d="M14 3.5v4h4M9 12h6M9 15.5h4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+  }
+}
+
+function ArrowUpRightIcon() {
+  return (
+    <svg className="contact-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export default function Home() {
   const { site, projects } = portfolio;
-  const visibleContacts = site.contacts.filter((contact) => contact.href);
 
   return (
     <>
@@ -90,17 +134,30 @@ export default function Home() {
         <section className="contact-section" id="contact" aria-labelledby="contact-title">
           <p className="micro-label">03 / SAY HELLO</p>
           <div className="contact-grid">
-            <h2 id="contact-title"><Localized en={<>Working on an interaction that does not exist yet?<br />Let’s talk.</>} zh={<>正在设计一种还不存在的交互？<br />聊聊吧。</>} /></h2>
-            <div className="contact-links">
-              {visibleContacts.length ? visibleContacts.map((contact) => (
-                <a key={contact.label} href={contact.href}>{contact.label}<span aria-hidden="true">↗</span></a>
-              )) : (
-                <div className="contact-placeholder">
-                  <span>Email · GitHub · LinkedIn · CV</span>
-                  <small><Localized en="Links are being added to the content configuration." zh="联系方式会在内容配置中补充。" /></small>
-                </div>
-              )}
-            </div>
+            <h2 id="contact-title"><Localized en="Working on something interesting? Say hello." zh="在做有意思的事？欢迎联络。" /></h2>
+            <ul className="contact-links" aria-label="Contact links">
+              {site.contacts.map((contact) => (
+                <li key={contact.label}>
+                  {contact.href ? (
+                    <a
+                      className="contact-link"
+                      href={contact.href}
+                      target={contact.href.startsWith("http") ? "_blank" : undefined}
+                      rel={contact.href.startsWith("http") ? "noreferrer" : undefined}
+                    >
+                      <span className="contact-icon-frame"><ContactIcon label={contact.label} /></span>
+                      <strong className="contact-link-label">{contact.label}</strong>
+                      <ArrowUpRightIcon />
+                    </a>
+                  ) : (
+                    <div className="contact-link is-disabled" aria-disabled="true">
+                      <span className="contact-icon-frame"><ContactIcon label={contact.label} /></span>
+                      <strong className="contact-link-label">{contact.label}</strong>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       </main>

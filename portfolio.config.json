@@ -13,17 +13,18 @@
     "previous": ["Microsoft", "SenseTime"],
     "previousZh": ["微软", "商汤科技"],
     "contacts": [
-      { "label": "Email", "href": "" },
-      { "label": "GitHub", "href": "" },
-      { "label": "LinkedIn", "href": "" },
+      { "label": "Email", "href": "mailto:lexiliang.design@outlook.com" },
+      { "label": "GitHub", "href": "https://github.com/lexiiiliang" },
+      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/lezhi-liang/" },
       { "label": "CV", "href": "" }
     ]
   },
   "projects": [
     {
-      "folder": "01 Alive Briefing 活字简报",
+      "folder": "02 Project Gallery/Project01 Alive Briefing 活字简报",
       "slug": "alive-briefing",
-      "entry": "Case Study V2.md",
+      "entryEn": "Web Case.en.md",
+      "entryZh": "Web Case.zh.md",
       "order": 1,
       "featured": true,
       "protected": true,
@@ -36,12 +37,10 @@
       "summaryEn": "An actionable information interface that turns AI reasoning into timely decisions, controls and feedback.",
       "summaryZh": "把复杂 AI 推理转译为及时、易读、可行动、会随状态更新的信息界面。",
       "heroEn": "What if AI stopped outputting answers—and started organizing attention?",
-      "heroZh": "如果 AI 不再只输出答案，而是开始组织人的注意力？",
-      "startAt": "# 01 — Provocation",
-      "endBefore": "# Portfolio Editing Notes"
+      "heroZh": "如果 AI 不再只输出答案，而是开始组织人的注意力？"
     },
     {
-      "folder": "02 Livis 理想AI眼镜",
+      "folder": "02 Project Gallery/Project02 Livis 理想AI眼镜",
       "slug": "livis",
       "order": 2,
       "featured": true,
@@ -58,9 +57,10 @@
       "heroZh": "让智能停留在注意力的边缘。"
     },
     {
-      "folder": "03 Degree Project 毕业设计",
+      "folder": "02 Project Gallery/Project03 Degree Project 毕业设计",
       "slug": "from-query-to-quest",
-      "entry": "Degree Project 作品集呈现 (草稿).md",
+      "entryEn": "Web Case.en.md",
+      "entryZh": "Web Case.zh.md",
       "order": 3,
       "featured": true,
       "protected": true,
@@ -78,10 +78,8 @@
         "embedUrl": "https://player.vimeo.com/video/1218556665?badge=0&autopause=0&player_id=0&app_id=58479&muted=1&loop=1",
         "pageUrl": "https://vimeo.com/1218556665",
         "title": "From Query to Quest @UID25 Degree Show",
-        "aspectRatio": "4 / 3"
-      },
-      "startAt": "## What if AI helped us think—instead of thinking for us?",
-      "endBefore": "## Archived Reference"
+        "aspectRatio": "16 / 9"
+      }
     }
   ]
 }

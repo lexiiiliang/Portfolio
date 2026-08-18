@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Localized } from "@/components/Localized";
 import { MarkdownCase } from "@/components/MarkdownCase";
+import { ProjectTransitionLink } from "@/components/ProjectTransitionLink";
 import { ProjectToc } from "@/components/ProjectToc";
 import { ProjectVisual } from "@/components/ProjectVisual";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -36,53 +36,56 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     if (!allowed) redirect(`/unlock?next=${encodeURIComponent(`/projects/${project.slug}`)}`);
   }
 
-  const index = portfolio.projects.findIndex((item) => item.slug === project.slug);
-  const nextProject = portfolio.projects[(index + 1) % portfolio.projects.length];
+  const caseProjects = portfolio.projects.filter((item) => item.featured);
+  const index = caseProjects.findIndex((item) => item.slug === project.slug);
+  const nextProject = caseProjects[(index + 1) % caseProjects.length] ?? project;
+  const isDistilledCase = project.slug === "alive-briefing" || project.slug === "from-query-to-quest";
 
   return (
     <>
       <SiteHeader compact />
       <main id="top" className={`project-page accent-${project.accent}`}>
-        <section className="project-hero">
-          <div className="project-hero-meta">
-            <span>{project.eyebrowEn}</span>
-            <span>{project.year}</span>
-            <span>{project.status === "published" ? "CASE STUDY" : "PREVIEW"}</span>
-          </div>
+        <section className={`project-hero ${isDistilledCase ? "is-distilled" : ""}`}>
+          {!isDistilledCase ? (
+            <div className="project-hero-meta">
+              <span>{project.eyebrowEn}</span>
+              <span>{project.year}</span>
+              <span>{project.status === "published" ? "CASE STUDY" : "PREVIEW"}</span>
+            </div>
+          ) : null}
           <h1>{project.title}</h1>
           <p className="project-hero-thesis"><Localized en={project.heroEn} zh={project.heroZh} /></p>
           <div className="project-hero-summary">
             <p><Localized en={project.summaryEn} zh={project.summaryZh} /></p>
-            <div className="snapshot-stamp">
-              <span><Localized en="Content snapshot" zh="内容快照" /></span>
-              <code>{project.sourceChecksum || "awaiting-source"}</code>
-            </div>
+            {!isDistilledCase ? (
+              <div className="snapshot-stamp">
+                <span><Localized en="Content snapshot" zh="内容快照" /></span>
+                <code>{project.sourceChecksum || "awaiting-source"}</code>
+              </div>
+            ) : null}
           </div>
           <ProjectVisual project={project} />
         </section>
 
         {project.video ? (
-          <section className="project-video" aria-labelledby="project-video-title">
-            <div className="project-video-heading">
-              <div>
-                <p className="micro-label"><Localized en="THREE-MINUTE PITCH" zh="三分钟项目介绍" /></p>
-                <h2 id="project-video-title">{project.video.title}</h2>
-              </div>
+          <figure className="project-video">
+            <iframe
+              className="project-video-embed"
+              style={{ aspectRatio: project.video.aspectRatio }}
+              src={project.video.embedUrl}
+              title={project.video.title}
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              loading="lazy"
+            />
+            <figcaption className="project-video-caption">
+              <span>{project.video.title}</span>
               <a href={project.video.pageUrl} target="_blank" rel="noreferrer">
-                <Localized en="Watch on Vimeo ↗" zh="在 Vimeo 观看 ↗" />
+                <Localized en="Vimeo ↗" zh="Vimeo ↗" />
               </a>
-            </div>
-            <div className="project-video-frame" style={{ aspectRatio: project.video.aspectRatio }}>
-              <iframe
-                src={project.video.embedUrl}
-                title={project.video.title}
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-                loading="lazy"
-              />
-            </div>
-          </section>
+            </figcaption>
+          </figure>
         ) : null}
 
         {project.previewOnly ? (
@@ -98,17 +101,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </section>
         ) : (
           <div className="case-layout">
-            <ProjectToc headings={project.headings} />
-            <MarkdownCase markdown={project.body} />
+            <ProjectToc headingsEn={project.headingsEn} headingsZh={project.headingsZh} />
+            <MarkdownCase markdownEn={project.bodyEn} markdownZh={project.bodyZh} />
           </div>
         )}
 
         <section className="next-project">
-          <p className="micro-label"><Localized en="NEXT CASE" zh="下一个项目" /></p>
-          <Link href={`/projects/${nextProject.slug}`}>
+          <p className="next-project-kicker">
+            <Localized en="You might also like…" zh="不妨再看看…" />
+          </p>
+          <ProjectTransitionLink href={`/projects/${nextProject.slug}`}>
             <span>{nextProject.title}</span>
             <span aria-hidden="true">↗</span>
-          </Link>
+          </ProjectTransitionLink>
         </section>
       </main>
     </>

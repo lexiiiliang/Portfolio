@@ -21,15 +21,15 @@
     "contacts": [
       {
         "label": "Email",
-        "href": ""
+        "href": "mailto:lexiliang.design@outlook.com"
       },
       {
         "label": "GitHub",
-        "href": ""
+        "href": "https://github.com/lexiiiliang"
       },
       {
         "label": "LinkedIn",
-        "href": ""
+        "href": "https://www.linkedin.com/in/lezhi-liang/"
       },
       {
         "label": "CV",
@@ -39,9 +39,10 @@
   },
   "projects": [
     {
-      "folder": "01 Alive Briefing 活字简报",
+      "folder": "02 Project Gallery/Project01 Alive Briefing 活字简报",
       "slug": "alive-briefing",
-      "entry": "Case Study V2.md",
+      "entryEn": "Web Case.en.md",
+      "entryZh": "Web Case.zh.md",
       "order": 1,
       "featured": true,
       "protected": true,
@@ -55,133 +56,174 @@
       "summaryZh": "把复杂 AI 推理转译为及时、易读、可行动、会随状态更新的信息界面。",
       "heroEn": "What if AI stopped outputting answers—and started organizing attention?",
       "heroZh": "如果 AI 不再只输出答案，而是开始组织人的注意力？",
-      "startAt": "# 01 — Provocation",
-      "endBefore": "# Portfolio Editing Notes",
       "hasSource": true,
-      "sourceFile": "01 Alive Briefing 活字简报/Case Study V2.md",
-      "sourceChecksum": "71759a372e23",
+      "sourceFile": "02 Project Gallery/Project01 Alive Briefing 活字简报/Web Case.zh.md",
+      "sourceFileEn": "02 Project Gallery/Project01 Alive Briefing 活字简报/Web Case.en.md",
+      "sourceFileZh": "02 Project Gallery/Project01 Alive Briefing 活字简报/Web Case.zh.md",
+      "sourceChecksum": "29306522bdb1",
       "status": "published",
-      "body": "# 01 — Provocation\n\n## AI 会回答，但不一定会沟通\n\n在传统聊天界面中，模型完成推理后，通常把结果作为长文本或 TTS 交给用户。\n\n这要求用户自己完成最后一公里：\n\n1. 从完整回答中找重点；\n2. 记住与自己有关的条件；\n3. 判断应该采取什么行动；\n4. 再去另一个界面完成操作。\n\n对于驾驶、可穿戴设备等低注意力场景，“模型回答正确”并不等于“用户能够及时使用”。\n\n### 原问题\n\n> 如何把 AI 的回答变短？\n\n### 重新定义后\n\n> **AI 应该如何在正确时机组织人的注意力，并把复杂推理转化为可信、可逆的行动？**\n\n这个项目因此从一个文案压缩问题，转变成了一个 **attention orchestration 与 decision interface** 问题。\n\n---\n\n# 02 — Design Thesis\n\n## AI 不应该默认输出答案，而应该呈现正在发生的事情\n\n传统 GUI 的基本单位是页面与功能；Chatbot 的基本单位是问题与回答。\n\nAlive Briefing 尝试把 AI 界面的基本单位重新定义为：\n\n> **事件 → 影响 → 建议 → 行动 → 回执**\n\n由此形成三个设计原则：\n\n### 真 / Trust\n\n准确、克制、来源清晰；允许解释、纠错和撤销。\n\n### 快 / Flow\n\n结论先行，只呈现此刻最关键的冲突与下一步。\n\n### 活 / Resonance\n\n内容随情境、状态和用户选择更新，并在文字、控件和富媒体之间自然切换。\n\n> **优先级：真 > 快 > 活。**\n\n视觉表现只有在帮助理解、行动或反馈时才有价值。\n\n---\n\n# 03 — Interaction Model\n\n## 从一句文案扩展为一条完整交互链\n\n项目早期使用“状态 / 事件 + 建议 / 行动 + 详情”描述 Briefing。进一步整理后，可以把它拆成五个 interaction primitives：\n\n```mermaid\nflowchart LR\n    A[Sense感知变化] --> B[Distill提炼影响]\n    B --> C[Brief呈现简报]\n    C --> D[Act确认或调整]\n    D --> E[Evolve更新与回执]\n```\n\n### Sense\n\n系统读取天气、路线、能耗、日程、设备状态与对话上下文。\n\n### Distill\n\n判断信息是否值得打断，并选择当前最重要的冲突。\n\n### Brief\n\n先展示结论、影响和建议，依据渐进展开。\n\n### Act\n\n通过语音、按钮、滑块、步进器或 A/B 选择完成行动。\n\n### Evolve\n\n操作结果即时回写；信息变化时更新、过期或进入历史。\n\n这五个 primitives 是整个 Case Study 的主轴。后续所有界面都应证明它们如何工作，而不是只展示不同卡片皮肤。\n\n---\n\n# 04 — Challenge 01\n\n## 什么时候应该 Briefing，什么时候不应该？\n\n### Claim\n\n如果所有内容都被压缩成 Briefing，它只会变成另一种卡片或通知中心。\n\n### Evidence\n\nCCA 意图数据中包含 **47,758 条单一功能需求**：工具、游戏和车辆控制占主要部分。混合功能需求又明显集中在工具和车控场景。\n\n但高频不等于适合：\n\n- 时钟、倒计时、指南针已经足够直接，不需要再总结。\n- 游戏、计算器依赖持续操作，不能被一句建议替代。\n- 百科、长计划、复杂步骤需要完整结构，过度压缩会损失理解。\n\n### Options\n\n| 方向 | 优点 | 为什么不成立 / 局限 |\n| --- | --- | --- |\n| 所有 AI 内容统一 Briefing 化 | 视觉一致、概念强 | 造成过度压缩和 Briefing 疲劳 |\n| 只给传统卡片增加标题 | 实现简单 | 只改变样式，没有改变决策与行动路径 |\n| **根据任务特征选择性 Briefing 化** | 保留场景优势，也能明确退出条件 | 需要建立适配判断规则 |\n\n### Decision\n\n选择性采用 Briefing。核心适用条件是：\n\n1. 信息会变化；\n2. 与当前情境相关；\n3. 能形成明确判断或行动；\n4. 可以先给结论、再展开依据。\n\n### Artifact\n\n| 信息复杂度 / 行动性 | 低行动性 | 高行动性 |\n| --- | --- | --- |\n| 低复杂度 | GUI / 普通状态组件 | 快捷控件 |\n| 中复杂度 | 摘要卡 | **Alive Briefing** |\n| 高复杂度 | 结构化详情 / 报告 | Briefing 作为入口，再进入分步流程 |\n\n### Impact\n\n把“Briefing 长什么样”升级为“系统在什么时候调用 Briefing”的产品规则。实际采用范围与业务结果 **[待补]**。\n\n---\n\n# 05 — Challenge 02\n\n## 如何压缩信息，而不制造虚假的确定感？\n\n### Claim\n\n更短不一定更好。压缩错误会隐藏关键条件，并让 AI 看起来比实际更确定。\n\n### Evidence\n\n同一复杂场景可以形成三种输出：\n\n**完整推理**\n\n> 即将进入大雨路段；能见度、湿滑风险和能耗同时变化，需要在安全与效率之间权衡。\n\n**TTS**\n\n> 20 分钟后大雨，建议进入节能与湿滑路面模式。\n\n**Briefing**\n\n> 20 分钟后大雨 🌧  \n> 开启湿滑路面 + 节能\n\nBriefing 扫读最快，但也最容易丢失依据、置信度和影响范围。\n\n### Options\n\n| 方向 | 优点 | 问题 |\n| --- | --- | --- |\n| 固定 8–12 字、三行以内 | 极致扫读 | 无法适应跨设备和高风险信息 |\n| 首屏完整展示推理 | 信息充分 | 重新回到长回答 |\n| **结论优先 + 渐进展开** | 同时兼顾速度与可信度 | 需要定义信息层级和展开规则 |\n\n### Decision\n\n采用分层信息结构：\n\n> **信号 → Briefing → 解释 → 原始依据 → 行动 / 撤销**\n\n“三行”是车内默认信息预算，而不是所有设备的硬性规范。\n\n### System Rule\n\n每条 Briefing 在系统中至少需要：\n\n- headline：发生了什么\n- impact：为什么与用户有关\n- recommendation：建议什么\n- action：可以做什么\n- evidence：依据和来源\n- confidence：置信度与假设\n- timestamp / expiry：数据时间与失效条件\n- status / undo：执行状态与撤销\n\n### Artifact\n\n![Project artifact](/media/projects/alive-briefing/Alive-Briefing设计探索-diagram-1-09856e2.png)\n\n### Impact\n\n形成了从文案规范走向信息 schema 的基础。真实理解时间、正确复述率与信任指标 **[待验证]**。\n\n---\n\n# 06 — Challenge 03\n\n## 如何让 AI 的建议直接变成行动，而不是重新跳回 GUI？\n\n### Claim\n\n如果 Briefing 只能被阅读，它仍然只是一个摘要组件。\n\n### Evidence\n\n天气、补能、空调、路线选择等场景都存在同一个断点：AI 已经给出建议，但用户仍需寻找功能并手动设置。\n\n### Options\n\n| 方向 | 优点 | 问题 |\n| --- | --- | --- |\n| 点击后统一跳转 App | 复用现有 GUI | 打断上下文，路径仍然长 |\n| 把完整控制面板塞进 Briefing | 功能完整 | 信息拥挤，失去一眼可读 |\n| **嵌入最小必要控件，复杂任务再跳转** | 保持上下文并完成高频行动 | 需要清晰的控件准入规则 |\n\n### Decision\n\n将控件分成三类：\n\n- **Adjustment**：Slider / Stepper，用于数值微调。\n- **Action**：多态按钮 / Toggle，用于执行或切换状态。\n- **Navigation**：Tab / Button，用于 A/B 权衡或进入复杂界面。\n\n并遵循：\n\n1. 与系统原有控件保持一致；\n2. 文字在脱离控件时仍语义完整；\n3. 操作结果立即回写到 Briefing；\n4. 有副作用的操作必须可撤销或安全回退。\n\n### Artifact\n\n![Project artifact](/media/projects/alive-briefing/Alive-Briefing-规范与评价体系-diagram-15-8bfd86c.png)\n\n### Impact\n\nBriefing 从信息展示转变为可形成任务闭环的 interaction model。控件使用率不能单独代表成功，需要与任务完成、误触、撤销和恢复共同评价。\n\n---\n\n# 07 — The Experience\n\n## 一次 Alive Briefing 如何工作\n\n以低电补能为例：\n\n### 01 Sense — 发现风险\n\n系统结合剩余电量、目的地距离、路线和充电桩状态，判断车辆无法直接到达。\n\n### 02 Brief — 呈现关键冲突\n\n> 18% 无法到达目的地  \n> 建议补能\n\n### 03 Clarify — 给出必要详情\n\n> 3 个空桩 · 5 分钟到达\n\n### 04 Act — 完成决策\n\n用户确认补能地点，或切换到其他候选。\n\n### 05 Evolve — 状态回写\n\n系统发起导航，Briefing 更新为到达时间、充电状态或异常提示。\n\n![Project artifact](/media/projects/alive-briefing/Alive-Briefing设计探索-diagram-1-09856e2.png)\n\n\n---\n\n# 08 — System Thinking\n\n## 不是一张 Happy-path 卡片，而是一套生成与控制规则\n\n```mermaid\nflowchart TD\n    I[InputsVoice · Touch · Context · Device State] --> U[UnderstandingIntent · Entity · Constraint · Confidence]\n    U --> G{Should it becomea Briefing?}\n    G -->|No| X[GUI · Structured Card · Full Answer]\n    G -->|Yes| B[Briefing SchemaEvent · Impact · Advice · Action]\n    B --> P[PresentationText · Control · Media · Voice]\n    P --> A[Action]\n    A --> F[Feedback · Undo · Recovery]\n    F --> M[Update · Expire · Memory]\n```\n\n这套系统需要处理的不只是内容生成，还包括：\n\n- 优先级与打扰阈值\n- 多条 Briefing 的竞争与合并\n- 数据来源、时间与置信度\n- 操作权限和风险等级\n- 失败恢复与人工接管\n- 用户偏好的确认、查看和删除\n\n---\n\n# 09 — Scaling the Model\n\n## 从车机组件走向跨端 interaction language\n\nAlive Briefing 的可扩展性不在于所有设备使用同一种卡片，而在于复用同一信息与行动模型。\n\n| 设备 | 注意力条件 | Briefing 形态 |\n| --- | --- | --- |\n| 车机 | 低注意力、高安全要求 | 两行结论、语音协同、最小控件 |\n| 眼镜 / 耳机 | 极少视觉空间 | 语音为主、视觉锚点、即时确认 |\n| 手机 | 中等空间、可触控 | 摘要 + 证据展开 + 快捷行动 |\n| PC | 高信息容量 | 多 Briefing 聚合、历史与复杂控制 |\n\n当前材料主要证明了车机和卡片层的探索。眼镜、手机、PC 仍应写成 **scaling hypothesis**，除非补充相应 prototype。\n\n---\n\n# 10 — Prototype as Evidence\n\n项目已形成两个内部网页 Demo，并探索：\n\n- 文字的逐步出现与状态更新\n- 连续对话中的内容刷新\n- 文字、控件与富媒体组合\n- 桌面信息流和问答卡适配\n\n作品集不应只放 Demo 链接，而应剪成三个短片：\n\n1. **Compression**：长回答怎样变成 Briefing。\n2. **Action**：建议怎样通过控件完成。\n3. **Evolve**：新信息怎样更新原有 Briefing。\n\n\n---\n\n# 11 — Outcome\n\n## 当前能够证明的变化\n\n### Design\n\n- 将“AI 回复样式”重新定义为连接事件、决策与行动的界面模型。\n- 从“真、快、活”发展出内容、Emoji、控件和组合形态规范。\n- 明确了适用 / 不适用范围，避免所有内容被统一卡片化。\n\n### System\n\n- 建立内容层、控制层和表现层的评价框架。\n- 为天气、导航、能耗、车控、娱乐和问答建立可复用模式。\n- 形成跨设备扩展所需的共同信息语法雏形。\n\n### Product / User\n\n上线范围、团队采用、用户理解效率、任务完成和业务结果 **[待补真实证据]**。\n\n> [!warning] 不可误用\n> 文档中的 `>99.5%`、`>80%`、`>4.2 分` 是目标值，不是实际结果。没有实验记录时，不放在作品集 Impact 中。\n\n---\n\n# 12 — Reflection\n\n## 这个项目改变了我对 AI 界面的理解\n\n我最初把问题理解为：如何让 AI 少说一点。\n\n后来我意识到，真正的问题不是回答长度，而是：\n\n> **AI 应该如何以最低注意力成本，在正确的时机建立共同理解，并把用户安全地带到下一步。**\n\n这意味着未来的 AI 界面不只是生成内容，还需要决定：\n\n- 什么值得出现；\n- 什么应该被隐藏；\n- 什么需要解释；\n- 什么可以自动执行；\n- 什么必须交还给用户。\n\n下一步，我会优先验证三个问题：\n\n1. Briefing 是否真的缩短理解与决策时间？\n2. 压缩是否影响用户发现错误和理解依据？\n3. 动态建议在什么时候开始变成打扰？\n\n---",
+      "body": "# Provocation\n\n## AI reasoning still ends as an answer\n\nMost chat interfaces deliver model reasoning as long text or TTS. The user still has to find the important condition, judge its impact, and move to another interface to act.\n\nIn low-attention environments such as driving and wearables, a correct answer is not necessarily usable information.\n\n# Opportunity\n\n## The gap between understanding and action\n\nAlive Briefing packages a change, its impact, a recommendation, and an action into one state-aware unit. It is used only when the content:\n\n- changes over time;\n- is relevant to the current context;\n- supports a clear judgment or action;\n- can lead with a conclusion while keeping evidence available.\n\nStatic tools, continuous controls, long plans, and complex procedures remain in GUI, full-answer, or step-by-step formats.\n\n# Direction\n\n## Alive Briefing\n\nThe core information structure is **event → impact → recommendation → action → receipt**.\n\n### Selective presentation\n\nBriefing is not a universal skin for AI content. The system evaluates the task before choosing a briefing, a standard status component, a full answer, or a guided flow.\n\n### Conclusion first, evidence available\n\nThe in-car default fits within three lines, while the system retains source, confidence, timestamp, expiry, execution state, and undo. Compression cannot conceal risk or imply false certainty.\n\n![Project artifact](/media/projects/alive-briefing/Alive-Briefing设计探索-diagram-1-09856e2.png)\n\n### Minimum necessary controls\n\nA briefing contains only the control needed for the current action: adjustment, state change, option selection, or entry into a complex flow. Results update in place, and consequential actions remain reversible or safely recoverable.\n\n![Project artifact](/media/projects/alive-briefing/Alive-Briefing-规范与评价体系-diagram-15-8bfd86c.png)\n\n# Concept in Use\n\n## A low-battery charging flow\n\n1. **Sense**: combine remaining range, destination distance, route, and charger availability to identify that the vehicle cannot arrive directly.\n2. **Distill**: select the conflict that requires attention now.\n3. **Brief**: show “18% — destination out of range; charging recommended,” with essential evidence available.\n4. **Act**: let the driver confirm a charger or choose another option.\n5. **Evolve**: start navigation and update the briefing with arrival time, charging status, or an exception.\n\n# Evidence and Limits\n\n## What the current work demonstrates\n\nInternal web demos explored progressive text reveal, state updates, continuity across turns, and combinations of text, controls, and rich media. The available material covers in-car and card-level interaction design.\n\nGlasses, mobile, and desktop remain scaling hypotheses. There is no public evidence yet for team adoption, comprehension gains, task completion, or business impact.\n\nThe next validation round focuses on three questions:\n\n1. Does the briefing reduce comprehension and decision time?\n2. Does compression affect error detection or understanding of evidence?\n3. When does a dynamic recommendation become an interruption?",
+      "bodyEn": "# Provocation\n\n## AI reasoning still ends as an answer\n\nMost chat interfaces deliver model reasoning as long text or TTS. The user still has to find the important condition, judge its impact, and move to another interface to act.\n\nIn low-attention environments such as driving and wearables, a correct answer is not necessarily usable information.\n\n# Opportunity\n\n## The gap between understanding and action\n\nAlive Briefing packages a change, its impact, a recommendation, and an action into one state-aware unit. It is used only when the content:\n\n- changes over time;\n- is relevant to the current context;\n- supports a clear judgment or action;\n- can lead with a conclusion while keeping evidence available.\n\nStatic tools, continuous controls, long plans, and complex procedures remain in GUI, full-answer, or step-by-step formats.\n\n# Direction\n\n## Alive Briefing\n\nThe core information structure is **event → impact → recommendation → action → receipt**.\n\n### Selective presentation\n\nBriefing is not a universal skin for AI content. The system evaluates the task before choosing a briefing, a standard status component, a full answer, or a guided flow.\n\n### Conclusion first, evidence available\n\nThe in-car default fits within three lines, while the system retains source, confidence, timestamp, expiry, execution state, and undo. Compression cannot conceal risk or imply false certainty.\n\n![Project artifact](/media/projects/alive-briefing/Alive-Briefing设计探索-diagram-1-09856e2.png)\n\n### Minimum necessary controls\n\nA briefing contains only the control needed for the current action: adjustment, state change, option selection, or entry into a complex flow. Results update in place, and consequential actions remain reversible or safely recoverable.\n\n![Project artifact](/media/projects/alive-briefing/Alive-Briefing-规范与评价体系-diagram-15-8bfd86c.png)\n\n# Concept in Use\n\n## A low-battery charging flow\n\n1. **Sense**: combine remaining range, destination distance, route, and charger availability to identify that the vehicle cannot arrive directly.\n2. **Distill**: select the conflict that requires attention now.\n3. **Brief**: show “18% — destination out of range; charging recommended,” with essential evidence available.\n4. **Act**: let the driver confirm a charger or choose another option.\n5. **Evolve**: start navigation and update the briefing with arrival time, charging status, or an exception.\n\n# Evidence and Limits\n\n## What the current work demonstrates\n\nInternal web demos explored progressive text reveal, state updates, continuity across turns, and combinations of text, controls, and rich media. The available material covers in-car and card-level interaction design.\n\nGlasses, mobile, and desktop remain scaling hypotheses. There is no public evidence yet for team adoption, comprehension gains, task completion, or business impact.\n\nThe next validation round focuses on three questions:\n\n1. Does the briefing reduce comprehension and decision time?\n2. Does compression affect error detection or understanding of evidence?\n3. When does a dynamic recommendation become an interruption?",
+      "bodyZh": "# Provocation\n\n## AI 的推理结果仍停在一段回答里\n\n在传统聊天界面中，模型完成推理后，通常把结果作为长文本或语音交给用户。用户还要自己找重点、判断影响，再进入另一个界面完成操作。\n\n在驾驶和可穿戴设备等低注意力场景中，回答正确并不等于信息可用。\n\n# Opportunity\n\n## 从信息理解到行动之间仍有断点\n\nAlive Briefing 将变化、影响、建议和行动组织成一个会随状态更新的信息单位。它只用于同时满足以下条件的内容：\n\n- 信息正在变化；\n- 与当前情境直接相关；\n- 能形成明确判断或行动；\n- 可以先给结论，再展开依据。\n\n静态工具、持续操作、长计划和复杂步骤仍由图形界面、完整回答或分步流程承载。\n\n# Direction\n\n## Alive Briefing｜活字简报\n\n核心信息结构为：**事件 → 影响 → 建议 → 行动 → 回执**。\n\n### 选择性呈现\n\n活字简报不是所有 AI 内容的统一外观。系统先判断任务特征，再决定使用简报、普通状态组件、完整回答或分步流程。\n\n### 结论先行，依据可查\n\n车内场景默认控制在三行以内，但系统仍保留来源、置信度、数据时间、失效条件、执行状态和撤销能力。信息压缩不能隐藏风险或制造确定感。\n\n![Project artifact](/media/projects/alive-briefing/Alive-Briefing设计探索-diagram-1-09856e2.png)\n\n### 最小必要控件\n\n简报只承载完成当前行动所需的控件：数值调整、状态切换、候选选择或进入复杂界面的入口。操作结果立即回写；有副作用的动作必须可撤销或安全回退。\n\n![Project artifact](/media/projects/alive-briefing/Alive-Briefing-规范与评价体系-diagram-15-8bfd86c.png)\n\n# Concept in Use\n\n## 一次低电补能如何完成闭环\n\n1. **Sense｜感知**：系统结合剩余电量、目的地距离、路线和充电桩状态，识别无法直接到达的风险。\n2. **Distill｜提炼**：从多个变化中选出当前最需要处理的冲突。\n3. **Brief｜简报**：呈现“18% 无法到达目的地；建议补能”，并提供必要依据。\n4. **Act｜行动**：用户确认补能地点或切换候选。\n5. **Evolve｜更新**：系统发起导航，简报更新为到达时间、充电状态或异常提示。\n\n# Evidence and Limits\n\n## 当前已有的设计证据\n\n内部网页演示原型已用于探索文字逐步出现、状态更新、连续对话刷新，以及文字、控件和富媒体的组合方式。现有材料覆盖车机和卡片层的交互设计。\n\n眼镜、手机和桌面端仍属于扩展假设。团队采用范围、用户理解效率、任务完成和业务结果尚无可公开证据。\n\n下一步验证聚焦三个问题：\n\n1. 简报是否缩短理解与决策时间；\n2. 信息压缩是否影响错误识别与依据理解；\n3. 动态建议在什么条件下会变成打扰。",
       "headings": [
         {
           "depth": 1,
           "label": "Provocation",
-          "id": "01-provocation"
+          "id": "provocation"
         },
         {
           "depth": 2,
-          "label": "AI 会回答，但不一定会沟通",
-          "id": "ai-会回答-但不一定会沟通"
+          "label": "AI reasoning still ends as an answer",
+          "id": "ai-reasoning-still-ends-as-an-answer"
         },
         {
           "depth": 1,
-          "label": "Design Thesis",
-          "id": "02-design-thesis"
+          "label": "Opportunity",
+          "id": "opportunity"
         },
         {
           "depth": 2,
-          "label": "AI 不应该默认输出答案，而应该呈现正在发生的事情",
-          "id": "ai-不应该默认输出答案-而应该呈现正在发生的事情"
+          "label": "The gap between understanding and action",
+          "id": "the-gap-between-understanding-and-action"
         },
         {
           "depth": 1,
-          "label": "Interaction Model",
-          "id": "03-interaction-model"
+          "label": "Direction",
+          "id": "direction"
         },
         {
           "depth": 2,
-          "label": "从一句文案扩展为一条完整交互链",
-          "id": "从一句文案扩展为一条完整交互链"
+          "label": "Alive Briefing",
+          "id": "alive-briefing"
         },
         {
           "depth": 1,
-          "label": "Challenge 01",
-          "id": "04-challenge-01"
+          "label": "Concept in Use",
+          "id": "concept-in-use"
         },
         {
           "depth": 2,
-          "label": "什么时候应该 Briefing，什么时候不应该？",
-          "id": "什么时候应该-briefing-什么时候不应该"
+          "label": "A low-battery charging flow",
+          "id": "a-low-battery-charging-flow"
         },
         {
           "depth": 1,
-          "label": "Challenge 02",
-          "id": "05-challenge-02"
+          "label": "Evidence and Limits",
+          "id": "evidence-and-limits"
         },
         {
           "depth": 2,
-          "label": "如何压缩信息，而不制造虚假的确定感？",
-          "id": "如何压缩信息-而不制造虚假的确定感"
-        },
+          "label": "What the current work demonstrates",
+          "id": "what-the-current-work-demonstrates"
+        }
+      ],
+      "headingsEn": [
         {
           "depth": 1,
-          "label": "Challenge 03",
-          "id": "06-challenge-03"
+          "label": "Provocation",
+          "id": "provocation"
         },
         {
           "depth": 2,
-          "label": "如何让 AI 的建议直接变成行动，而不是重新跳回 GUI？",
-          "id": "如何让-ai-的建议直接变成行动-而不是重新跳回-gui"
+          "label": "AI reasoning still ends as an answer",
+          "id": "ai-reasoning-still-ends-as-an-answer"
         },
         {
           "depth": 1,
-          "label": "The Experience",
-          "id": "07-the-experience"
+          "label": "Opportunity",
+          "id": "opportunity"
         },
         {
           "depth": 2,
-          "label": "一次 Alive Briefing 如何工作",
-          "id": "一次-alive-briefing-如何工作"
+          "label": "The gap between understanding and action",
+          "id": "the-gap-between-understanding-and-action"
         },
         {
           "depth": 1,
-          "label": "System Thinking",
-          "id": "08-system-thinking"
+          "label": "Direction",
+          "id": "direction"
         },
         {
           "depth": 2,
-          "label": "不是一张 Happy-path 卡片，而是一套生成与控制规则",
-          "id": "不是一张-happy-path-卡片-而是一套生成与控制规则"
+          "label": "Alive Briefing",
+          "id": "alive-briefing"
         },
         {
           "depth": 1,
-          "label": "Scaling the Model",
-          "id": "09-scaling-the-model"
+          "label": "Concept in Use",
+          "id": "concept-in-use"
         },
         {
           "depth": 2,
-          "label": "从车机组件走向跨端 interaction language",
-          "id": "从车机组件走向跨端-interaction-language"
+          "label": "A low-battery charging flow",
+          "id": "a-low-battery-charging-flow"
         },
         {
           "depth": 1,
-          "label": "Prototype as Evidence",
-          "id": "10-prototype-as-evidence"
-        },
-        {
-          "depth": 1,
-          "label": "Outcome",
-          "id": "11-outcome"
+          "label": "Evidence and Limits",
+          "id": "evidence-and-limits"
         },
         {
           "depth": 2,
-          "label": "当前能够证明的变化",
-          "id": "当前能够证明的变化"
-        },
+          "label": "What the current work demonstrates",
+          "id": "what-the-current-work-demonstrates"
+        }
+      ],
+      "headingsZh": [
         {
           "depth": 1,
-          "label": "Reflection",
-          "id": "12-reflection"
+          "label": "Provocation",
+          "id": "provocation"
         },
         {
           "depth": 2,
-          "label": "这个项目改变了我对 AI 界面的理解",
-          "id": "这个项目改变了我对-ai-界面的理解"
+          "label": "AI 的推理结果仍停在一段回答里",
+          "id": "ai-的推理结果仍停在一段回答里"
+        },
+        {
+          "depth": 1,
+          "label": "Opportunity",
+          "id": "opportunity"
+        },
+        {
+          "depth": 2,
+          "label": "从信息理解到行动之间仍有断点",
+          "id": "从信息理解到行动之间仍有断点"
+        },
+        {
+          "depth": 1,
+          "label": "Direction",
+          "id": "direction"
+        },
+        {
+          "depth": 2,
+          "label": "Alive Briefing｜活字简报",
+          "id": "alive-briefing-活字简报"
+        },
+        {
+          "depth": 1,
+          "label": "Concept in Use",
+          "id": "concept-in-use"
+        },
+        {
+          "depth": 2,
+          "label": "一次低电补能如何完成闭环",
+          "id": "一次低电补能如何完成闭环"
+        },
+        {
+          "depth": 1,
+          "label": "Evidence and Limits",
+          "id": "evidence-and-limits"
+        },
+        {
+          "depth": 2,
+          "label": "当前已有的设计证据",
+          "id": "当前已有的设计证据"
         }
       ]
     },
     {
-      "folder": "02 Livis 理想AI眼镜",
+      "folder": "02 Project Gallery/Project02 Livis 理想AI眼镜",
       "slug": "livis",
       "order": 2,
       "featured": true,
@@ -196,17 +238,24 @@
       "summaryZh": "探索智能眼镜上的轻量交互语言；项目材料正在整理中。",
       "heroEn": "Intelligence at the edge of attention.",
       "heroZh": "让智能停留在注意力的边缘。",
-      "hasSource": false,
-      "sourceFile": null,
-      "sourceChecksum": null,
+      "hasSource": true,
+      "sourceFile": "02 Project Gallery/Project02 Livis 理想AI眼镜/Livis cron job.md",
+      "sourceFileEn": "02 Project Gallery/Project02 Livis 理想AI眼镜/Livis cron job.md",
+      "sourceFileZh": "02 Project Gallery/Project02 Livis 理想AI眼镜/Livis cron job.md",
+      "sourceChecksum": "064880294cb1",
       "status": "in-progress",
       "body": "",
-      "headings": []
+      "bodyEn": "",
+      "bodyZh": "",
+      "headings": [],
+      "headingsEn": [],
+      "headingsZh": []
     },
     {
-      "folder": "03 Degree Project 毕业设计",
+      "folder": "02 Project Gallery/Project03 Degree Project 毕业设计",
       "slug": "from-query-to-quest",
-      "entry": "Degree Project 作品集呈现 (草稿).md",
+      "entryEn": "Web Case.en.md",
+      "entryZh": "Web Case.zh.md",
       "order": 3,
       "featured": true,
       "protected": true,
@@ -224,60 +273,443 @@
         "embedUrl": "https://player.vimeo.com/video/1218556665?badge=0&autopause=0&player_id=0&app_id=58479&muted=1&loop=1",
         "pageUrl": "https://vimeo.com/1218556665",
         "title": "From Query to Quest @UID25 Degree Show",
-        "aspectRatio": "4 / 3"
+        "aspectRatio": "16 / 9"
       },
-      "startAt": "## What if AI helped us think—instead of thinking for us?",
-      "endBefore": "## Archived Reference",
       "hasSource": true,
-      "sourceFile": "03 Degree Project 毕业设计/Degree Project 作品集呈现 (草稿).md",
-      "sourceChecksum": "5ca098e3c0f8",
+      "sourceFile": "02 Project Gallery/Project03 Degree Project 毕业设计/Web Case.zh.md",
+      "sourceFileEn": "02 Project Gallery/Project03 Degree Project 毕业设计/Web Case.en.md",
+      "sourceFileZh": "02 Project Gallery/Project03 Degree Project 毕业设计/Web Case.zh.md",
+      "sourceChecksum": "ffdd14173e67",
       "status": "published",
-      "body": "## What if AI helped us think—instead of thinking for us?\n\n> **当 AI 越来越擅长给出答案，真正紧迫的设计问题不再只是如何获得更好的输出，而是如何避免人把形成问题、检验假设与作出判断的过程也一并外包。**\n\n这是一个关于 **AI 交互范式** 的概念研究，而不是一个更高效的 Prompt 工具。项目重新定义了 prompting：它不应只是一次“提出请求—获得答案”的交易，而可以成为一段帮助人从模糊出发、展开探索，并在现实行动中形成判断的旅程。\n\n**核心转向**\n\n> From writing better prompts to framing better quests.\n> 从“写出更好的提示词”，转向“展开更值得探索的问题”。\n\n---\n\n---\n\n## Project Snapshot\n\n| | |\n|---|---|\n| **Project type / 项目类型** | Master’s Thesis · Individual Project / 硕士毕业设计 · 个人项目 |\n| **Duration / 项目周期** | 4 months / 4 个月 |\n| **Research approach / 研究方法** | Critical Design + Participatory Design / 批判性设计 + 参与式设计 |\n| **Design output / 设计产出** | 3 design principles · 1 conceptual journey · scenario-based interaction patterns / 3 项设计原则 · 1 段概念旅程 · 基于场景的交互模式 |\n| **Focus / 研究焦点** | Text-based conversational AI in moments of ambiguity, uncertainty and stuckness / 人在模糊、不确定与卡住时刻使用的文字型对话 AI |\n| **Status / 项目状态** | Conceptual framework and scenario prototypes—not a launched product / 概念框架与场景原型，并非已经上线的产品 |\n\n---\n\n---\n\n---\n\n## 01 · Provocation — 当答案变得廉价，思考过程成为新的设计对象\n\n主流聊天式 AI 建立在一条高效路径上：用户提出要求，AI 生成结果，用户继续修正，直到答案可用。\n\n> **Request → Refinement → Result**\n\n当用户已经知道自己要什么，这个范式非常有效；但当一个人只是隐约不适、情绪过载，或尚未找到正确的问题时，它会过早地把模糊和overwhelm压缩成未经审视的任务，把思考和反思倒向不假思索的执行。\n\n以“帮我润色简历”为例，系统可以准确完成表层请求，却可能绕过更重要的问题：我真的想离职吗？困住我的是工作本身，还是一次尚未被理解的冲突？当系统只奖励清晰指令和即时结果，用户最初说出的答案，很容易被误认为真正的方向。\n\n因此，本项目不把“模糊”视为输入质量不足，而把它视为**思考尚在生成的状态**。设计目标也从优化单次回答，转向保护一段仍未定形的思考旅程：\n\n> **Initiation → Exploratory Development → Dialogue–Action Loop**\n\n| 结果导向的 Prompting | Query-to-Quest 的重新框定 |\n|---|---|\n| 从明确指令开始 | 允许从情绪、直觉与模糊开始 |\n| 尽快收敛到结果 | 先展开、挑战并重组问题 |\n| 把持续参与等同于专注 | 容纳聚焦、偏离、暂停与重连 |\n| 回答即终点 | 让对话进入行动，再让行动反馈回对话 |\n| AI 是执行者 | AI 是思考的催化剂，而非替代者 |\n\n### Design Challenge\n\n> **How might we shape prompting as an inceptive and reflective journey that protects and reinforces people’s capacity for deep thinking?**\n\n如何把 prompting 设计成一段能够发起思考、支持反思的旅程，从而保护并增强人在不确定中持续聚焦、批判分析与自我校准的能力？\n\n### Scope\n\n本研究聚焦于：\n\n- 文字型对话 AI（chatbot）；\n- 日常生活中的探索性使用；\n- 意图尚不明确的用户；\n- 不确定、犹豫或卡住的时刻。\n\n它不讨论企业级 AI agent、专业自动化工作流或具身智能。这个边界让我能够专注于一个更基础的问题：**在人还不知道该问什么时，AI 应该如何参与？**\n\n---\n\n---\n\n## 02 · Research Approach — 不是验证一个产品，而是寻找对话中的认知模式\n\n这个问题无法仅靠优化界面解决：如果效率、即时性和指令服从本身就是需要被质疑的默认前提，那么直接进入功能设计，只会把旧范式做得更顺滑。\n\n因此，我组合了 **Critical Design** 与 **Participatory Design**：前者帮助我质疑“prompting 必须通向结果”的默认逻辑；后者把 agency、attention 与 continuity 这些抽象概念，放回人在焦虑、犹豫和探索中的真实经验。\n\n| 研究角色 | 方法 | 它帮助我看见什么 |\n|---|---|---|\n| **Challenge the default** | Critical Design | 哪些被视为“高效”的交互，正在过早替用户收敛问题？ |\n| **Ground the question** | Interviews, observation, participatory activities | 人如何从情绪和模糊进入对话，又在哪些时刻失去或重获主动性？ |\n| **Probe the boundary** | Role play, sacrificial prototypes | 用户如何理解 AI 的追问、注意力提示、跨时间回访与行动建议？ |\n\nSacrificial prototypes 在这里不是最终产品的低保真版本，而是可以被质疑、拒绝和改写的研究探针。它们的价值不在于证明某个功能“有效”，而在于暴露不同设计取向的边界与代价。\n\n> **I used research activities not to validate one product solution, but to surface cognitive patterns in human–AI dialogue.**\n\n---\n\n---\n\n## 03 · What I Found — 深度思考需要被保护的三个条件\n\n研究逐渐显露出三个彼此关联的断点：进入对话之前，用户未必已有清晰目标；对话进行之中，注意力并非线性稳定；一次回答之后，真正的理解往往还没有发生。\n\n### Insight 1 · 人往往在知道如何提问之前，就已经需要帮助\n\n**Research signal**\n人可能因为愤怒、焦虑、好奇或一种说不清的不适进入对话。“帮我润色简历”可能是一个可执行请求，也可能只是“我是否还想留在这里”的表层表达。\n\n**Interpretation**\n模糊并非缺少信息，而是问题正在形成。若 AI 立即执行最先出现的指令，它可能准确解决了错误的问题。\n\n**Design consequence**\n> AI interaction needs a gentle entry before a clear request exists.\n\n系统应允许情绪、片段与未成形的意图成为入口，并用轻量追问帮助用户辨认“我真正想探索什么”，而不是强迫用户先学会写一个完美 prompt。\n\n---\n\n### Insight 2 · 有价值的注意力并不总是沿直线前进\n\n**Research signal**\n用户会在某一点上深挖，也会被意外联想带离主线；有时，暂停对话、离开屏幕，反而让想法开始成熟。\n\n**Interpretation**\n深度思考不等于持续盯住同一件事。它在三种状态间移动：\n\n- **Alignment**：人与 AI 暂时聚焦于同一问题；\n- **Dispersion**：注意力向多个可能方向展开；\n- **Disconnection**：暂时离开对话，让经验与时间参与思考。\n\n分散与断开不一定是失败；关键在于人能否看见注意力如何移动，并决定何时深入、何时发散、何时停下。\n\n**Design consequence**\n> Productive attention includes alignment, dispersion and disconnection—not only continuous engagement.\n\n---\n\n### Insight 3 · 洞察不是被回答出来的，而是在对话与行动之间长出来的\n\n**Research signal**\n以烹饪为例：用户先询问菜谱，实际尝试后发现不合口味，再带着身体经验回到对话，最终学会独立调整。决定性的知识并不只来自 AI 的第一份答案，而来自尝试、反馈与重新解释。\n\n**Interpretation**\n一次回答可以提供方向，却无法替代现实中的验证。跨会话的连续性也不应只是保存全部历史，而应帮助用户辨认：哪些线索仍然重要？哪些理解已经改变？\n\n**Design consequence**\n> Reflection should continue across sessions and be grounded by action—not end with an AI response.\n\n三个洞察共同指向同一判断：**AI 最有价值的参与，不是替人完成思考，而是为思考保留入口、空间与时间。**\n\n---\n\n---\n\n## 04 · Design Contribution — 一套保护人类能动性的交互语言\n\n研究最终形成两层设计贡献：三项原则定义“应该保护什么”，一段概念旅程说明“这种保护如何进入交互”。\n\n### Layer 1 · Three Design Principles\n\n#### 1. Agency Priority · 方向权优先于操作权\n\nAgency 不等于给用户更多按钮，也不等于用户可以控制系统的每个细节。真正的能动性，是用户始终保有对**问题方向、判断标准与下一步选择**的优先权。\n\n**Design test:** 这个交互是在帮助用户形成自己的判断，还是仅仅让替代思考变得更方便？\n\n#### 2. Attention Synergy · 让注意力可见、可协商、可转移\n\nAI 不应只输出内容，还应让它正在关注的主题、依据与偏移足够可见；用户则可以标记真正触动自己的部分，主动决定深入、分支或暂停。\n\n**Design test:** 用户能否看见系统把注意力放在哪里，并改变这条注意力路径？\n\n#### 3. Slow Continuity · 让时间参与思考\n\n重要问题很少在一次会话中完成。系统需要支持线索被保留、回访、重组与修正，但连续性不是“记住一切”，而是持续辨认**什么仍值得被带到下一次对话**。\n\n**Design test:** 系统是在累积历史，还是在帮助用户看见理解如何随时间演变？\n\n### Layer 2 · The Query-to-Quest Journey\n\n#### Initiation · 从模糊开始\n用户不需要先证明自己拥有一个清晰目标。系统可以接住情绪和片段，用邀请而非审问的方式，帮助用户识别值得探索的问题。\n\n#### Exploratory Development · 与问题共同生长\nAI 不急于替用户收敛，而是呈现假设、关系与可能分支；用户通过标记、比较和追问，逐步形成自己的问题框架。\n\n#### Dialogue–Action Loop · 让现实成为思考的一部分\n对话产生的暂定理解被带入小规模行动；行动的结果、感受与意外再返回对话。终点不是一个“正确答案”，而是用户获得了可以继续判断和行动的能力。\n\n这套框架的设计对象不是某个聊天界面，而是**人如何在 AI 参与下仍然成为自己思考过程的作者**。\n\n---\n\n---\n\n## 05 · Framework in Use — Jerry 的一次 Query-to-Quest\n\nJerry 刚经历了一场糟糕的会议。他打开 AI，输入：“我想辞职，帮我润色简历。”传统路径会立刻开始改写；Query-to-Quest 则把这条指令视为一个可能的入口，而不是已经确定的终点。\n\n### 1. Initiate · 在执行之前，打开问题\n\nAI 承认 Jerry 想改简历的需求，同时提出一个低压力的邀请：“你希望我直接开始修改，还是先用两分钟梳理一下，是什么让你今天决定离开？”\n\n- **Principle:** Agency Priority\n- **Pattern:** Intention Check\n- **Why it matters:** 追问不是阻止行动；Jerry 仍可跳过，但多获得一次辨认真实动机的机会。\n\n### 2. Surface · 让长期线索可见，也让来源可追溯\n\n在 Jerry 许可后，AI 呈现过往对话中反复出现的“沟通压力”主题，并标明它来自哪些片段，而不是把系统推断包装成事实。\n\n- **Principle:** Slow Continuity\n- **Pattern:** Traceable Theme\n- **Why it matters:** 连续性来自可检查的线索，而不是黑箱式的“我了解你”。\n\n### 3. Negotiate Attention · 由用户决定什么值得深入\n\nJerry 标记一句真正触动他的内容，从那里开启一条分支。他可以随时回到原路径，而不必在一整段回答中被动寻找重点。\n\n- **Principle:** Attention Synergy\n- **Pattern:** Mark & Branch\n- **Why it matters:** AI 可以提出可能方向，但注意力的最终归属仍由用户决定。\n\n### 4. Act · 用小行动替代更多生成\n\nAI 没有继续堆叠建议，而是帮助 Jerry 定义一个可逆的小实验：在下一次冲突后，记录触发点、自己的反应，以及一个可能不同的回应。\n\n- **Principle:** Agency Priority + Slow Continuity\n- **Pattern:** Reflective Micro-action\n- **Why it matters:** 行动不是为了快速证明 AI 正确，而是为 Jerry 提供新的现实证据。\n\n### 5. Evolve · 让反馈更新问题，而不只是更新答案\n\nJerry 实际尝试后带着体验回来。系统把新的观察与原有线索并置，帮助他重新判断：需要改变的是沟通方式、团队关系，还是职业方向？润色简历仍然可以是下一步，但不再是未经审视的唯一下一步。\n\n- **Principle:** Dialogue–Action Loop\n- **Pattern:** Evolving Insight\n- **Why it matters:** 一个好的 AI 对话不一定替 Jerry 解决问题；它应该让 Jerry 更有能力决定自己的故事如何继续。\n\n> **The goal is not to keep users in conversation, but to help them leave with a stronger capacity to think, act and return with better evidence.**\n\n---\n\n---\n\n## 06 · Contribution & Limits\n\n这个项目的贡献不是预测某个具体功能，而是提出一个可迁移的设计视角：当模型能力不断增强，AI 交互的评价标准不能只有答案质量与任务完成速度，还应包括它是否保护了人的**问题意识、注意力、判断与行动学习**。\n\n具体而言，它：\n\n1. **把设计对象从“回答”扩展为“思考轨迹”**：关注用户如何进入问题、移动注意力，并在时间中更新理解；\n2. **把 agency 从界面控制重新定义为方向作者权**：控制项的数量不等于能动性，保留判断与选择的优先权才是；\n3. **把暂停和现实行动纳入交互**：不以更长的屏幕停留为目标，而让 disconnection 也可能成为有效体验；\n4. **把抽象立场转译为可讨论的交互模式**：Intention Check、Traceable Theme、Mark & Branch、Reflective Micro-action 与 Evolving Insight。\n\n同时，这是一项 **speculative interaction framework**。它以研究洞察、概念框架和场景原型展示设计方向，并不声称已经作为产品上线，也不把概念吸引力等同于长期行为或商业影响。它的价值在于建立可供后续验证的问题、原则与设计语言。\n\n---\n\n## Afterword · 2026 — 从对话中的能动性，到委托中的能动性\n\n这个命题萌芽于 2024 年 12 月，研究开始于 2025 年 1 月。彼时，reasoning models 正进入公共视野，AI 也开始从生成答案转向操作界面与执行任务；“Prompt Engineering”仍是理解人机互动的主流入口。\n\n一年多后再看，这个项目像一座建在**潮汐转向处**的瞭望台：眼前的技术对象很快从会回答的 chatbot 变成会行动的 agent，但真正需要守望的问题始终没有改变——**当更多认知与行动被委托给 AI，人如何仍然保有自己的能动性？**\n\n### 哪些假设得到了产品演进的呼应？\n\n后来的产品迭代并不能“证明”整套框架，但几个方向已经获得了具体的产品形态：跨会话记忆回应了 **Slow Continuity**；从特定消息分支对话，为 **Dispersion** 提供了不丢失原路径的结构；可查看的记忆来源与引用，让系统注意力更接近 **Attention Synergy**；而 agent 在高影响操作前请求确认，则把 **Agency Priority** 从对话控制延伸到了行动授权。主动反问获取更多context和进一步澄清也越来越多的出现在agent产品设计中。\n参见 [ChatGPT Memory](https://openai.com/index/memory-and-new-controls-for-chatgpt/)、[ChatGPT Release Notes](https://help.openai.com/en/articles/6825453-chatgpt-release-notes) 与 [ChatGPT Agent User Confirmations](https://deploymentsafety.openai.com/chatgpt-agent/user-confirmations)。\n\n这些变化验证的不是“我提前设计了今天的功能”，而是一个更底层的判断：**单次生成不是完整的 AI 体验；上下文、时间、可见性与介入权同样是交互材料。** 行业从 prompt engineering 走向 context engineering，也说明设计对象已经从一句输入扩展为指令、工具、数据、历史与行动共同构成的动态状态（参见 [Anthropic: Effective Context Engineering for AI Agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)）。\n\n### 当 agent 开始行动，agency 意味着什么？\n\n在 chatbot 时代，风险是人把思考外包给一个靠概率预测生产的流畅的答案；在 agent 时代，风险变得更具画面感：人坐在副驾驶，只是一遍遍点击“允许”，车却已经驶向一个从未由自己选择的目的地。\n\n所以，人的能动性不再主要体现为亲手完成每一个动作，也不应退化为批准每一个弹窗。它体现在：\n\n> **对意图保有署名权，对方向保有转向权，对边界保有否决权，并对后果保有承担与解释的责任。**\n\n这意味着 human agency 正从 **doing** 转向 **framing, steering and owning**。\n\n#### 1. Framing · 定义值得解决的问题\nAgent 擅长执行已经被定义的任务；人必须判断：这是正确的问题，还是表面症状？什么值得变成任务，什么不应被过早任务化？\n\n#### 2. Taste · 识别“可行”之外的好\nAgent 可以生成大量成立的方案；人需要感知语境、分寸、气质与生命力，辨认哪个不仅正确，而且真正适合“我们想成为谁”。\n\n#### 3. Value · 决定什么更重要\n效率、关怀、公平、安全、尊严、成长与商业结果无法总被同时最大化。Agent 可以优化路径，但不应替人决定价值的排序与不可逾越的底线。\n\n#### 4. Context & Boundary Curation · 决定系统看见什么、可以做什么\n长期协作不是把所有历史都塞给 agent，而是选择哪些证据仍然相关、哪些记忆需要更新、哪些资料不可访问，以及哪些动作必须确认、可撤回或升级给人。\n\n#### 5. Judgment & Validation · 在行动中持续校准\n判断不是结果出来后的最后一次点击，而是持续感知方向是否偏移、问题是否被简化、执行是否过早收敛；再把 agent 的输出带回关系、身体与社会语境中检验。\n\n#### 6. Accountability · 承担委托的后果\n即使动作由 agent 执行，为什么要做、是否应该做、出错后如何解释与修正，仍然需要由人或组织承担。委托改变了动作的执行者，却没有自动消除责任。\n\n### 原来的三项原则，获得了更大的尺度\n\n| 2025 · Prompting | 2026 · Agentic Collaboration |\n|---|---|\n| **Agency Priority**：保留对话中的方向与选择 | 保留授权边界、可逆性、否决权与责任归属 |\n| **Attention Synergy**：让对话焦点可见、可协商 | 让 agent 的假设、计划、进展与偏移足够可见，使人能够及时 steering |\n| **Slow Continuity**：让线索跨会话沉淀与重组 | 在长期协作中持续整理记忆、上下文、行动反馈与判断变化 |\n\n因此，原项目并没有因为 prompt engineering 的退潮而过时；**变化的是能动性所处的界面**。当时，它发生在“人如何提出问题、理解回答”的对话里；现在，它延伸到“人如何设定方向、委托行动并承担后果”的协作系统中。\n\n> **2025:** When AI gives answers, how might prompting protect deep thinking?\n> **2026:** When agents take action, how might collaboration protect human judgment, direction and responsibility?\n\n这个项目最终留下的不是一个确定答案，而是一种设计立场：当 AI 系统越来越能干，设计不应只问“它还能替人做什么”，也应持续追问——**在它能做这么多之后，哪些属于人的品味、价值、判断与成长，反而更需要被保留下来，并被更认真地设计？**\n\n---\n\n---",
+      "body": "# Provocation\n\n## People do not always enter a conversation with a clear question\n\nMainstream conversational AI is effective when the user can state a task: request an output, review it, and refine it. The pattern becomes less reliable when the user begins with emotion, intuition, or an unresolved situation.\n\nExecuting the first available instruction can mistake a surface request for the actual direction. This project treats ambiguity as the beginning of thought, not as defective input.\n\nThe research focuses on text-based conversational AI in everyday moments of uncertainty, hesitation, and stuckness. Enterprise automation and embodied AI are outside its scope.\n\n# Research Approach\n\n## Studying cognitive patterns in dialogue\n\nThe project combines **Critical Design** and **Participatory Design**. Critical Design challenges the assumption that prompting must converge quickly on an output. Interviews, observation, participatory activities, role play, and sacrificial prototypes place that question in lived experience.\n\nThese activities expose the boundaries and trade-offs of different design positions. They do not validate a finished product.\n\n# Insights\n\n## Three conditions that need protection\n\n### Ambiguity can be an entry point\n\nPeople may need support before they know how to ask. The system should accept emotion, fragments, and incomplete intent, then use light prompts to help the user identify what is worth exploring.\n\n### Attention can move\n\nProductive thought moves between focus, dispersion, and temporary disconnection. The system should make attention visible and let the user decide when to deepen, branch, or pause.\n\n### Understanding needs time and action\n\nAn answer can offer direction but cannot replace real-world validation. Continuity across sessions should show which signals still matter and how understanding changes through action and feedback.\n\n# Design Contribution\n\n## Three principles and one journey\n\n### Agency Priority\n\nThe user retains priority over the direction of the question, the criteria for judgment, and the next step. More controls do not automatically create more agency.\n\n### Attention Synergy\n\nThe system reveals the themes, evidence, and shifts it is attending to. The user can mark, redirect, or pause that path.\n\n### Slow Continuity\n\nThe system supports signals being retained, revisited, reorganized, and revised without treating total memory as the goal.\n\nThe conceptual journey has three phases:\n\n1. **Initiation**: begin with emotion, fragments, or uncertain intent.\n2. **Exploratory Development**: open hypotheses, relationships, and possible branches.\n3. **Dialogue–Action Loop**: carry a provisional understanding into action, then return real feedback to the dialogue.\n\n# Framework in Use\n\n## Jerry’s Query-to-Quest\n\nAfter a difficult meeting, Jerry tells the AI, “I want to quit. Help me rewrite my résumé.” The system keeps direct execution available while offering to first examine what made him decide to leave that day.\n\nWith Jerry’s permission, it surfaces a recurring “communication pressure” theme from prior conversations and shows the source fragments. Jerry branches from the passage that matters to him, then defines a reversible experiment: after the next conflict, record the trigger, his response, and one alternative response.\n\nWhen Jerry returns, the new observation sits beside the earlier evidence. He can reconsider whether the issue is his communication pattern, the team relationship, or his career direction. Rewriting the résumé remains available, but it is no longer the only unchecked next step.\n\n# Contribution and Limits\n\n## Extending the design object from answers to thought trajectories\n\nThe project contributes three transferable design judgments:\n\n- measure agency through authorship of direction, not the number of controls;\n- treat pauses and real-world action as part of the interaction;\n- translate an abstract research position into discussable interaction patterns.\n\nThis is a speculative interaction framework. Its evidence consists of research insights, a conceptual framework, and scenario prototypes. It was not launched as a product and has no long-term behavioral or business-impact data.",
+      "bodyEn": "# Provocation\n\n## People do not always enter a conversation with a clear question\n\nMainstream conversational AI is effective when the user can state a task: request an output, review it, and refine it. The pattern becomes less reliable when the user begins with emotion, intuition, or an unresolved situation.\n\nExecuting the first available instruction can mistake a surface request for the actual direction. This project treats ambiguity as the beginning of thought, not as defective input.\n\nThe research focuses on text-based conversational AI in everyday moments of uncertainty, hesitation, and stuckness. Enterprise automation and embodied AI are outside its scope.\n\n# Research Approach\n\n## Studying cognitive patterns in dialogue\n\nThe project combines **Critical Design** and **Participatory Design**. Critical Design challenges the assumption that prompting must converge quickly on an output. Interviews, observation, participatory activities, role play, and sacrificial prototypes place that question in lived experience.\n\nThese activities expose the boundaries and trade-offs of different design positions. They do not validate a finished product.\n\n# Insights\n\n## Three conditions that need protection\n\n### Ambiguity can be an entry point\n\nPeople may need support before they know how to ask. The system should accept emotion, fragments, and incomplete intent, then use light prompts to help the user identify what is worth exploring.\n\n### Attention can move\n\nProductive thought moves between focus, dispersion, and temporary disconnection. The system should make attention visible and let the user decide when to deepen, branch, or pause.\n\n### Understanding needs time and action\n\nAn answer can offer direction but cannot replace real-world validation. Continuity across sessions should show which signals still matter and how understanding changes through action and feedback.\n\n# Design Contribution\n\n## Three principles and one journey\n\n### Agency Priority\n\nThe user retains priority over the direction of the question, the criteria for judgment, and the next step. More controls do not automatically create more agency.\n\n### Attention Synergy\n\nThe system reveals the themes, evidence, and shifts it is attending to. The user can mark, redirect, or pause that path.\n\n### Slow Continuity\n\nThe system supports signals being retained, revisited, reorganized, and revised without treating total memory as the goal.\n\nThe conceptual journey has three phases:\n\n1. **Initiation**: begin with emotion, fragments, or uncertain intent.\n2. **Exploratory Development**: open hypotheses, relationships, and possible branches.\n3. **Dialogue–Action Loop**: carry a provisional understanding into action, then return real feedback to the dialogue.\n\n# Framework in Use\n\n## Jerry’s Query-to-Quest\n\nAfter a difficult meeting, Jerry tells the AI, “I want to quit. Help me rewrite my résumé.” The system keeps direct execution available while offering to first examine what made him decide to leave that day.\n\nWith Jerry’s permission, it surfaces a recurring “communication pressure” theme from prior conversations and shows the source fragments. Jerry branches from the passage that matters to him, then defines a reversible experiment: after the next conflict, record the trigger, his response, and one alternative response.\n\nWhen Jerry returns, the new observation sits beside the earlier evidence. He can reconsider whether the issue is his communication pattern, the team relationship, or his career direction. Rewriting the résumé remains available, but it is no longer the only unchecked next step.\n\n# Contribution and Limits\n\n## Extending the design object from answers to thought trajectories\n\nThe project contributes three transferable design judgments:\n\n- measure agency through authorship of direction, not the number of controls;\n- treat pauses and real-world action as part of the interaction;\n- translate an abstract research position into discussable interaction patterns.\n\nThis is a speculative interaction framework. Its evidence consists of research insights, a conceptual framework, and scenario prototypes. It was not launched as a product and has no long-term behavioral or business-impact data.",
+      "bodyZh": "# Provocation\n\n## 用户并不总是带着清晰问题进入对话\n\n主流聊天式 AI 擅长执行明确指令：用户提出要求，系统给出结果，再通过追问不断修正。这条路径适合目标清晰的任务。\n\n当用户只有情绪、直觉或尚未成形的问题时，系统过早执行第一条指令，可能把表层请求误认为真实方向。本项目把这种模糊状态视为思考的起点。\n\n研究范围聚焦文字型对话 AI、日常探索性使用，以及不确定、犹豫或卡住的时刻；不讨论企业自动化工作流或具身智能。\n\n# Research Approach\n\n## 用研究活动寻找对话中的认知模式\n\n项目结合 **Critical Design｜批判性设计** 与 **Participatory Design｜参与式设计**。前者用于质疑“提示必须快速通向结果”的默认逻辑；后者通过访谈、观察、参与式活动、角色扮演和牺牲性原型，把抽象问题放回真实经验。\n\n这些研究活动用于暴露不同设计取向的边界与代价，不用于证明某个产品方案已经有效。\n\n# Insights\n\n## 三个需要被保护的条件\n\n### 模糊可以成为入口\n\n用户可能在知道如何提问之前就需要帮助。系统应允许情绪、片段和未成形的意图进入对话，并用轻量追问帮助用户辨认值得探索的问题。\n\n### 注意力允许移动\n\n有价值的思考会在聚焦、发散和暂时离开之间移动。系统需要让注意力的方向可见，让用户决定何时深入、分支或暂停。\n\n### 理解需要时间和行动\n\n一次回答可以提供方向，但不能替代现实验证。跨会话连续性应帮助用户看见哪些线索仍然重要，以及理解如何因行动和反馈而变化。\n\n# Design Contribution\n\n## 三项原则和一段概念旅程\n\n### Agency Priority｜能动性优先\n\n用户始终保有问题方向、判断标准和下一步选择的优先权。更多按钮不等于更多能动性。\n\n### Attention Synergy｜注意力协同\n\n系统呈现它正在关注的主题、依据和偏移；用户可以标记、改变或暂停这条注意力路径。\n\n### Slow Continuity｜慢连续性\n\n系统支持线索被保留、回访、重组与修正，但不以“记住一切”为目标。\n\n概念旅程由三段组成：\n\n1. **Initiation｜发起**：从情绪、片段或模糊意图开始。\n2. **Exploratory Development｜探索发展**：展开假设、关系和可能分支。\n3. **Dialogue–Action Loop｜对话—行动循环**：把暂定理解带入现实行动，再让反馈回到对话。\n\n# Framework in Use\n\n## Jerry 的一次 Query-to-Quest\n\nJerry 在一次糟糕的会议后对 AI 说：“我想辞职，帮我润色简历。”系统保留直接执行的选项，同时邀请他先梳理今天决定离开的原因。\n\n在 Jerry 许可后，系统呈现过往对话中反复出现的“沟通压力”线索，并标明来源。Jerry 从真正触动自己的片段开启分支，再定义一个可逆的小实验：记录下一次冲突的触发点、自己的反应，以及另一种可能的回应。\n\n实际尝试后，新的观察与原有线索并置。Jerry 再判断需要改变的是沟通方式、团队关系还是职业方向。润色简历仍可继续，但不再是未经检查的唯一下一步。\n\n# Contribution and Limits\n\n## 设计对象从回答扩展到思考轨迹\n\n项目提出三项可迁移的设计判断：\n\n- 用方向作者权而非控件数量衡量能动性；\n- 把暂停和现实行动视为交互的一部分；\n- 用可讨论的交互模式承接抽象研究立场。\n\n这是一项推测性交互框架。现有证据来自研究洞察、概念框架和场景原型；项目未作为产品上线，也没有长期行为或商业影响数据。",
+      "headings": [
+        {
+          "depth": 1,
+          "label": "Provocation",
+          "id": "provocation"
+        },
+        {
+          "depth": 2,
+          "label": "People do not always enter a conversation with a clear question",
+          "id": "people-do-not-always-enter-a-conversation-with-a-clear-question"
+        },
+        {
+          "depth": 1,
+          "label": "Research Approach",
+          "id": "research-approach"
+        },
+        {
+          "depth": 2,
+          "label": "Studying cognitive patterns in dialogue",
+          "id": "studying-cognitive-patterns-in-dialogue"
+        },
+        {
+          "depth": 1,
+          "label": "Insights",
+          "id": "insights"
+        },
+        {
+          "depth": 2,
+          "label": "Three conditions that need protection",
+          "id": "three-conditions-that-need-protection"
+        },
+        {
+          "depth": 1,
+          "label": "Design Contribution",
+          "id": "design-contribution"
+        },
+        {
+          "depth": 2,
+          "label": "Three principles and one journey",
+          "id": "three-principles-and-one-journey"
+        },
+        {
+          "depth": 1,
+          "label": "Framework in Use",
+          "id": "framework-in-use"
+        },
+        {
+          "depth": 2,
+          "label": "Jerry’s Query-to-Quest",
+          "id": "jerry-s-query-to-quest"
+        },
+        {
+          "depth": 1,
+          "label": "Contribution and Limits",
+          "id": "contribution-and-limits"
+        },
+        {
+          "depth": 2,
+          "label": "Extending the design object from answers to thought trajectories",
+          "id": "extending-the-design-object-from-answers-to-thought-trajectories"
+        }
+      ],
+      "headingsEn": [
+        {
+          "depth": 1,
+          "label": "Provocation",
+          "id": "provocation"
+        },
+        {
+          "depth": 2,
+          "label": "People do not always enter a conversation with a clear question",
+          "id": "people-do-not-always-enter-a-conversation-with-a-clear-question"
+        },
+        {
+          "depth": 1,
+          "label": "Research Approach",
+          "id": "research-approach"
+        },
+        {
+          "depth": 2,
+          "label": "Studying cognitive patterns in dialogue",
+          "id": "studying-cognitive-patterns-in-dialogue"
+        },
+        {
+          "depth": 1,
+          "label": "Insights",
+          "id": "insights"
+        },
+        {
+          "depth": 2,
+          "label": "Three conditions that need protection",
+          "id": "three-conditions-that-need-protection"
+        },
+        {
+          "depth": 1,
+          "label": "Design Contribution",
+          "id": "design-contribution"
+        },
+        {
+          "depth": 2,
+          "label": "Three principles and one journey",
+          "id": "three-principles-and-one-journey"
+        },
+        {
+          "depth": 1,
+          "label": "Framework in Use",
+          "id": "framework-in-use"
+        },
+        {
+          "depth": 2,
+          "label": "Jerry’s Query-to-Quest",
+          "id": "jerry-s-query-to-quest"
+        },
+        {
+          "depth": 1,
+          "label": "Contribution and Limits",
+          "id": "contribution-and-limits"
+        },
+        {
+          "depth": 2,
+          "label": "Extending the design object from answers to thought trajectories",
+          "id": "extending-the-design-object-from-answers-to-thought-trajectories"
+        }
+      ],
+      "headingsZh": [
+        {
+          "depth": 1,
+          "label": "Provocation",
+          "id": "provocation"
+        },
+        {
+          "depth": 2,
+          "label": "用户并不总是带着清晰问题进入对话",
+          "id": "用户并不总是带着清晰问题进入对话"
+        },
+        {
+          "depth": 1,
+          "label": "Research Approach",
+          "id": "research-approach"
+        },
+        {
+          "depth": 2,
+          "label": "用研究活动寻找对话中的认知模式",
+          "id": "用研究活动寻找对话中的认知模式"
+        },
+        {
+          "depth": 1,
+          "label": "Insights",
+          "id": "insights"
+        },
+        {
+          "depth": 2,
+          "label": "三个需要被保护的条件",
+          "id": "三个需要被保护的条件"
+        },
+        {
+          "depth": 1,
+          "label": "Design Contribution",
+          "id": "design-contribution"
+        },
+        {
+          "depth": 2,
+          "label": "三项原则和一段概念旅程",
+          "id": "三项原则和一段概念旅程"
+        },
+        {
+          "depth": 1,
+          "label": "Framework in Use",
+          "id": "framework-in-use"
+        },
+        {
+          "depth": 2,
+          "label": "Jerry 的一次 Query-to-Quest",
+          "id": "jerry-的一次-query-to-quest"
+        },
+        {
+          "depth": 1,
+          "label": "Contribution and Limits",
+          "id": "contribution-and-limits"
+        },
+        {
+          "depth": 2,
+          "label": "设计对象从回答扩展到思考轨迹",
+          "id": "设计对象从回答扩展到思考轨迹"
+        }
+      ]
+    },
+    {
+      "folder": "01 Landing Page",
+      "slug": "landing-page",
+      "order": 4,
+      "featured": false,
+      "protected": true,
+      "previewOnly": false,
+      "title": "Landing Page",
+      "eyebrowEn": "Selected work",
+      "eyebrowZh": "项目作品",
+      "year": "",
+      "accent": "paper",
+      "summaryEn": "Project details are being prepared.",
+      "summaryZh": "项目内容正在整理中。",
+      "heroEn": "A new case is taking shape.",
+      "heroZh": "一个新的项目正在成形。",
+      "hasSource": true,
+      "sourceFile": "01 Landing Page/Landing Page.md",
+      "sourceFileEn": "01 Landing Page/Landing Page.md",
+      "sourceFileZh": "01 Landing Page/Landing Page.md",
+      "sourceChecksum": "d553e3611031",
+      "status": "published",
+      "body": "Lexi Liang\n\n\nI design how humans naturally converse with AI and physical hardware.\n\nCurrently @ **Li Auto** | Prev @ **Microsoft** & **SenseTime**\n\n📍 Based in Beijing | Relocating to Shenzhen\n\n---\n**Featured work**\n- alive briefing\n- Livis\n- Degree Project\n（archive）\n\n---\n**Contact**\n\nWorking on something interesting?  Say hello.\n在做有意思的事？欢迎联络。\n\n\n- email: lexiliang.design@outlook.com\n- github: https://github.com/lexiiiliang\n- linkedin: https://www.linkedin.com/in/lezhi-liang/\n- cv link: \n\n---\n© 2026",
+      "bodyEn": "Lexi Liang\n\n\nI design how humans naturally converse with AI and physical hardware.\n\nCurrently @ **Li Auto** | Prev @ **Microsoft** & **SenseTime**\n\n📍 Based in Beijing | Relocating to Shenzhen\n\n---\n**Featured work**\n- alive briefing\n- Livis\n- Degree Project\n（archive）\n\n---\n**Contact**\n\nWorking on something interesting?  Say hello.\n在做有意思的事？欢迎联络。\n\n\n- email: lexiliang.design@outlook.com\n- github: https://github.com/lexiiiliang\n- linkedin: https://www.linkedin.com/in/lezhi-liang/\n- cv link: \n\n---\n© 2026",
+      "bodyZh": "Lexi Liang\n\n\nI design how humans naturally converse with AI and physical hardware.\n\nCurrently @ **Li Auto** | Prev @ **Microsoft** & **SenseTime**\n\n📍 Based in Beijing | Relocating to Shenzhen\n\n---\n**Featured work**\n- alive briefing\n- Livis\n- Degree Project\n（archive）\n\n---\n**Contact**\n\nWorking on something interesting?  Say hello.\n在做有意思的事？欢迎联络。\n\n\n- email: lexiliang.design@outlook.com\n- github: https://github.com/lexiiiliang\n- linkedin: https://www.linkedin.com/in/lezhi-liang/\n- cv link: \n\n---\n© 2026",
+      "headings": [],
+      "headingsEn": [],
+      "headingsZh": []
+    },
+    {
+      "folder": "03 Playground",
+      "slug": "playground",
+      "order": 5,
+      "featured": false,
+      "protected": true,
+      "previewOnly": false,
+      "title": "Playground",
+      "eyebrowEn": "Selected work",
+      "eyebrowZh": "项目作品",
+      "year": "",
+      "accent": "paper",
+      "summaryEn": "Project details are being prepared.",
+      "summaryZh": "项目内容正在整理中。",
+      "heroEn": "A new case is taking shape.",
+      "heroZh": "一个新的项目正在成形。",
+      "hasSource": false,
+      "sourceFile": null,
+      "sourceFileEn": null,
+      "sourceFileZh": null,
+      "sourceChecksum": null,
+      "status": "in-progress",
+      "body": "",
+      "bodyEn": "",
+      "bodyZh": "",
+      "headings": [],
+      "headingsEn": [],
+      "headingsZh": []
+    },
+    {
+      "folder": "Reference",
+      "slug": "reference",
+      "order": 6,
+      "featured": false,
+      "protected": true,
+      "previewOnly": false,
+      "title": "Reference",
+      "eyebrowEn": "Selected work",
+      "eyebrowZh": "项目作品",
+      "year": "",
+      "accent": "paper",
+      "summaryEn": "Project details are being prepared.",
+      "summaryZh": "项目内容正在整理中。",
+      "heroEn": "A new case is taking shape.",
+      "heroZh": "一个新的项目正在成形。",
+      "hasSource": true,
+      "sourceFile": "Reference/requirements of the site.md",
+      "sourceFileEn": "Reference/requirements of the site.md",
+      "sourceFileZh": "Reference/requirements of the site.md",
+      "sourceChecksum": "5fb753d4896a",
+      "status": "published",
+      "body": "# global\n- 深浅模式 切换（dark & light mode）\n\t- 能否识别访问者的显示\n- 中/en 语言切换\n\t- 能否识别访问者的系统语言\n\n# landingpage\n- 有avatar- sprite的landing page\n\t- click wink\n\t- optional：转太快，头晕冒星星\n\t- cursor 样式\n- project gallery \n\t- TL;DR 卡片翻转\n\t- 进入详情，可以有页面转场\n# project\n- 项目的侧边栏导航\n\t- https://fancy-notes.vercel.app/230302_0215\n- 项目密码保护 password protected: aholamora\n\n下一个case \n\n# Ref-playground\n\nhttps://github.com/jinruozai/ HTML-Light-Demo    这个 github  地址（就是视频最后黄框里的）给 codex 他就能直接把这个项目下载到你电脑运行\n\nhttps://viscose-carousel.vercel.app/",
+      "bodyEn": "# global\n- 深浅模式 切换（dark & light mode）\n\t- 能否识别访问者的显示\n- 中/en 语言切换\n\t- 能否识别访问者的系统语言\n\n# landingpage\n- 有avatar- sprite的landing page\n\t- click wink\n\t- optional：转太快，头晕冒星星\n\t- cursor 样式\n- project gallery \n\t- TL;DR 卡片翻转\n\t- 进入详情，可以有页面转场\n# project\n- 项目的侧边栏导航\n\t- https://fancy-notes.vercel.app/230302_0215\n- 项目密码保护 password protected: aholamora\n\n下一个case \n\n# Ref-playground\n\nhttps://github.com/jinruozai/ HTML-Light-Demo    这个 github  地址（就是视频最后黄框里的）给 codex 他就能直接把这个项目下载到你电脑运行\n\nhttps://viscose-carousel.vercel.app/",
+      "bodyZh": "# global\n- 深浅模式 切换（dark & light mode）\n\t- 能否识别访问者的显示\n- 中/en 语言切换\n\t- 能否识别访问者的系统语言\n\n# landingpage\n- 有avatar- sprite的landing page\n\t- click wink\n\t- optional：转太快，头晕冒星星\n\t- cursor 样式\n- project gallery \n\t- TL;DR 卡片翻转\n\t- 进入详情，可以有页面转场\n# project\n- 项目的侧边栏导航\n\t- https://fancy-notes.vercel.app/230302_0215\n- 项目密码保护 password protected: aholamora\n\n下一个case \n\n# Ref-playground\n\nhttps://github.com/jinruozai/ HTML-Light-Demo    这个 github  地址（就是视频最后黄框里的）给 codex 他就能直接把这个项目下载到你电脑运行\n\nhttps://viscose-carousel.vercel.app/",
+      "headings": [
+        {
+          "depth": 1,
+          "label": "global",
+          "id": "global"
+        },
+        {
+          "depth": 1,
+          "label": "landingpage",
+          "id": "landingpage"
+        },
+        {
+          "depth": 1,
+          "label": "project",
+          "id": "project"
+        },
+        {
+          "depth": 1,
+          "label": "Ref-playground",
+          "id": "ref-playground"
+        }
+      ],
+      "headingsEn": [
+        {
+          "depth": 1,
+          "label": "global",
+          "id": "global"
+        },
+        {
+          "depth": 1,
+          "label": "landingpage",
+          "id": "landingpage"
+        },
+        {
+          "depth": 1,
+          "label": "project",
+          "id": "project"
+        },
+        {
+          "depth": 1,
+          "label": "Ref-playground",
+          "id": "ref-playground"
+        }
+      ],
+      "headingsZh": [
+        {
+          "depth": 1,
+          "label": "global",
+          "id": "global"
+        },
+        {
+          "depth": 1,
+          "label": "landingpage",
+          "id": "landingpage"
+        },
+        {
+          "depth": 1,
+          "label": "project",
+          "id": "project"
+        },
+        {
+          "depth": 1,
+          "label": "Ref-playground",
+          "id": "ref-playground"
+        }
+      ]
+    },
+    {
+      "folder": "Template",
+      "slug": "template",
+      "order": 7,
+      "featured": false,
+      "protected": true,
+      "previewOnly": false,
+      "title": "Template",
+      "eyebrowEn": "Selected work",
+      "eyebrowZh": "项目作品",
+      "year": "",
+      "accent": "paper",
+      "summaryEn": "Project details are being prepared.",
+      "summaryZh": "项目内容正在整理中。",
+      "heroEn": "A new case is taking shape.",
+      "heroZh": "一个新的项目正在成形。",
+      "hasSource": true,
+      "sourceFile": "Template/Components & HTML Comment.md",
+      "sourceFileEn": "Template/Components & HTML Comment.md",
+      "sourceFileZh": "Template/Components & HTML Comment.md",
+      "sourceChecksum": "f5a8e91b8f00",
+      "status": "published",
+      "body": "## Components\n\n|Markdown 标记|用途|\n|---|---|\n|:::layout{type=\"two-column\"}|两栏内容|\n|:::layout{type=\"text-media\"}|文字 + 图片/视频|\n|:::layout{type=\"sticky-story\"}|Sticky narrative|\n|:::callout{type=\"key-insight\"}|核心洞察|\n|:::callout{type=\"reflection\"}|Reflection|\n|:::media{type=\"full-bleed\"}|大图/视频|\n|:::media{type=\"gallery\"}|图片组|\n|:::comparison|Before / After|\n|:::metrics|数据/结果|\n|:::quote|用户引语|\n\n\n## HTML Comments\n\n```\n<!-- 这里是注释 -->\n\n## Design Challenge\n\nUsers need faster interaction.\n\n<!-- TODO:\nAdd user research quote here.\n-->\n\n\n<!-- design-note:\n\nDesktop:\n- max width 1200px\n- sticky image\n\nMobile:\n- stack vertically\n\n-->\n```\n\n## Principle\n- **Frontmatter**：页面 metadata\n- **Markdown**：案例内容\n- **`:::`**：组件和布局结构\n- **`<!-- -->`**：设计备注、Codex 指令、TODO",
+      "bodyEn": "## Components\n\n|Markdown 标记|用途|\n|---|---|\n|:::layout{type=\"two-column\"}|两栏内容|\n|:::layout{type=\"text-media\"}|文字 + 图片/视频|\n|:::layout{type=\"sticky-story\"}|Sticky narrative|\n|:::callout{type=\"key-insight\"}|核心洞察|\n|:::callout{type=\"reflection\"}|Reflection|\n|:::media{type=\"full-bleed\"}|大图/视频|\n|:::media{type=\"gallery\"}|图片组|\n|:::comparison|Before / After|\n|:::metrics|数据/结果|\n|:::quote|用户引语|\n\n\n## HTML Comments\n\n```\n<!-- 这里是注释 -->\n\n## Design Challenge\n\nUsers need faster interaction.\n\n<!-- TODO:\nAdd user research quote here.\n-->\n\n\n<!-- design-note:\n\nDesktop:\n- max width 1200px\n- sticky image\n\nMobile:\n- stack vertically\n\n-->\n```\n\n## Principle\n- **Frontmatter**：页面 metadata\n- **Markdown**：案例内容\n- **`:::`**：组件和布局结构\n- **`<!-- -->`**：设计备注、Codex 指令、TODO",
+      "bodyZh": "## Components\n\n|Markdown 标记|用途|\n|---|---|\n|:::layout{type=\"two-column\"}|两栏内容|\n|:::layout{type=\"text-media\"}|文字 + 图片/视频|\n|:::layout{type=\"sticky-story\"}|Sticky narrative|\n|:::callout{type=\"key-insight\"}|核心洞察|\n|:::callout{type=\"reflection\"}|Reflection|\n|:::media{type=\"full-bleed\"}|大图/视频|\n|:::media{type=\"gallery\"}|图片组|\n|:::comparison|Before / After|\n|:::metrics|数据/结果|\n|:::quote|用户引语|\n\n\n## HTML Comments\n\n```\n<!-- 这里是注释 -->\n\n## Design Challenge\n\nUsers need faster interaction.\n\n<!-- TODO:\nAdd user research quote here.\n-->\n\n\n<!-- design-note:\n\nDesktop:\n- max width 1200px\n- sticky image\n\nMobile:\n- stack vertically\n\n-->\n```\n\n## Principle\n- **Frontmatter**：页面 metadata\n- **Markdown**：案例内容\n- **`:::`**：组件和布局结构\n- **`<!-- -->`**：设计备注、Codex 指令、TODO",
       "headings": [
         {
           "depth": 2,
-          "label": "What if AI helped us think—instead of thinking for us?",
-          "id": "what-if-ai-helped-us-think-instead-of-thinking-for-us"
+          "label": "Components",
+          "id": "components"
         },
         {
           "depth": 2,
-          "label": "Project Snapshot",
-          "id": "project-snapshot"
+          "label": "HTML Comments",
+          "id": "html-comments"
         },
         {
           "depth": 2,
-          "label": "01 · Provocation — 当答案变得廉价，思考过程成为新的设计对象",
-          "id": "01-provocation-当答案变得廉价-思考过程成为新的设计对象"
+          "label": "Design Challenge",
+          "id": "design-challenge"
         },
         {
           "depth": 2,
-          "label": "02 · Research Approach — 不是验证一个产品，而是寻找对话中的认知模式",
-          "id": "02-research-approach-不是验证一个产品-而是寻找对话中的认知模式"
+          "label": "Principle",
+          "id": "principle"
+        }
+      ],
+      "headingsEn": [
+        {
+          "depth": 2,
+          "label": "Components",
+          "id": "components"
         },
         {
           "depth": 2,
-          "label": "03 · What I Found — 深度思考需要被保护的三个条件",
-          "id": "03-what-i-found-深度思考需要被保护的三个条件"
+          "label": "HTML Comments",
+          "id": "html-comments"
         },
         {
           "depth": 2,
-          "label": "04 · Design Contribution — 一套保护人类能动性的交互语言",
-          "id": "04-design-contribution-一套保护人类能动性的交互语言"
+          "label": "Design Challenge",
+          "id": "design-challenge"
         },
         {
           "depth": 2,
-          "label": "05 · Framework in Use — Jerry 的一次 Query-to-Quest",
-          "id": "05-framework-in-use-jerry-的一次-query-to-quest"
+          "label": "Principle",
+          "id": "principle"
+        }
+      ],
+      "headingsZh": [
+        {
+          "depth": 2,
+          "label": "Components",
+          "id": "components"
         },
         {
           "depth": 2,
-          "label": "06 · Contribution & Limits",
-          "id": "06-contribution-limits"
+          "label": "HTML Comments",
+          "id": "html-comments"
         },
         {
           "depth": 2,
-          "label": "Afterword · 2026 — 从对话中的能动性，到委托中的能动性",
-          "id": "afterword-2026-从对话中的能动性-到委托中的能动性"
+          "label": "Design Challenge",
+          "id": "design-challenge"
+        },
+        {
+          "depth": 2,
+          "label": "Principle",
+          "id": "principle"
         }
       ]
     }

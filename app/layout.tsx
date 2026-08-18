@@ -64,9 +64,11 @@ const preferenceScript = `
     const savedLanguage = localStorage.getItem('lexi-language');
     document.documentElement.dataset.theme = savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.dataset.lang = savedLanguage || 'en';
+    document.documentElement.lang = savedLanguage === 'zh' ? 'zh-CN' : 'en';
   } catch (_) {
     document.documentElement.dataset.theme = 'light';
     document.documentElement.dataset.lang = 'en';
+    document.documentElement.lang = 'en';
   }
 })();`;
 

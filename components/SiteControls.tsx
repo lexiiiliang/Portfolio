@@ -10,13 +10,17 @@ export function SiteControls() {
   const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
-    const root = document.documentElement;
-    setLanguage((root.dataset.lang as Language) || "en");
-    setTheme((root.dataset.theme as Theme) || "light");
+    const frame = window.requestAnimationFrame(() => {
+      const root = document.documentElement;
+      setLanguage((root.dataset.lang as Language) || "en");
+      setTheme((root.dataset.theme as Theme) || "light");
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   const changeLanguage = (next: Language) => {
     document.documentElement.dataset.lang = next;
+    document.documentElement.lang = next === "zh" ? "zh-CN" : "en";
     window.localStorage.setItem("lexi-language", next);
     setLanguage(next);
   };

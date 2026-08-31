@@ -171,7 +171,7 @@ export function PortraitToy() {
     wink.addEventListener("ended", finishWink);
     wink.addEventListener("error", finishWink);
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    window.addEventListener("click", triggerWink);
+    portrait.addEventListener("click", triggerWink);
     reduceMotion.addEventListener("change", handleMotionPreference);
 
     if (sprite.complete) initializeSprite();
@@ -182,7 +182,7 @@ export function PortraitToy() {
       wink.removeEventListener("ended", finishWink);
       wink.removeEventListener("error", finishWink);
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("click", triggerWink);
+      portrait.removeEventListener("click", triggerWink);
       reduceMotion.removeEventListener("change", handleMotionPreference);
     };
   }, []);

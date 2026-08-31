@@ -996,29 +996,66 @@ html[data-lang="zh"] .copy-en {
   text-transform: uppercase;
 }
 
-.project-toc ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-top: 1px solid var(--line);
+.project-toc-body {
+  position: relative;
 }
 
-.project-toc li {
-  border-bottom: 1px solid var(--line);
+.project-toc-track {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--line);
+}
+
+.project-toc-track::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: var(--toc-progress, 0%);
+  background: var(--project-accent);
+  transition: height 200ms ease;
+}
+
+.project-toc-body > ol {
+  margin: 0;
+  padding: 0 0 0 14px;
+  list-style: none;
 }
 
 .project-toc a {
   display: block;
-  padding: 12px 0;
+  padding: 8px 0;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.35;
   transition: color 150ms ease;
 }
 
-.project-toc li.is-active a,
+.project-toc li.is-active > a,
 .project-toc a:hover {
   color: var(--ink);
+}
+
+.project-toc li > ol {
+  max-height: 0;
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: max-height 200ms ease;
+}
+
+.project-toc li > ol.is-expanded {
+  max-height: 480px;
+}
+
+.project-toc li > ol a {
+  padding: 6px 0 6px 12px;
+  font-size: 12px;
 }
 
 .case-content {
@@ -1458,10 +1495,12 @@ html[data-lang="zh"] .project-hero-meta {
   .case-layout { grid-template-columns: 1fr; gap: 50px; }
   .project-toc-slot { position: static; }
   .project-toc { max-height: none; }
-  .project-toc ol { display: flex; gap: 8px; overflow-x: auto; border: 0; }
-  .project-toc li { flex: 0 0 auto; border: 1px solid var(--line); border-radius: 999px; }
+  .project-toc-track { display: none; }
+  .project-toc-body > ol { display: flex; gap: 8px; overflow-x: auto; padding-left: 0; }
+  .project-toc-body > ol > li { flex: 0 0 auto; border: 1px solid var(--line); border-radius: 999px; }
   .project-toc a { display: block; padding: 8px 12px; }
   .project-toc a span { display: none; }
+  .project-toc li > ol { display: none; }
   .case-artifact { margin: 40px 0; }
   .unlock-page { grid-template-columns: 1fr; gap: 50px; }
   .unlock-orbit { width: min(330px, 76vw); justify-self: center; }

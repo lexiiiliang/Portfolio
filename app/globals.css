@@ -1118,6 +1118,122 @@ html[data-lang="zh"] .copy-en {
 
 .case-markdown blockquote p:last-child { margin-bottom: 0; }
 
+.callout {
+  margin: 28px 0;
+  padding: 20px 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.callout-tag {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--accent-card, var(--line));
+  color: var(--accent-card-ink, var(--ink));
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.callout-title {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1.05em;
+}
+
+.callout-body > :last-child { margin-bottom: 0; }
+
+.carousel {
+  margin: 34px 0;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 420ms cubic-bezier(.32, .72, 0, 1);
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.carousel-slide .case-artifact-image { margin: 0; }
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.carousel-arrow {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.carousel-arrow:hover { border-color: var(--ink); }
+
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--line);
+  cursor: pointer;
+}
+
+.carousel-dot.is-active {
+  background: var(--ink);
+}
+
+.scroll-section {
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.scroll-section[data-effect="fade-in"] { opacity: 0; }
+.scroll-section[data-effect="fade-in"][data-visible="true"] { opacity: 1; }
+
+.scroll-section[data-effect="slide-up"] { opacity: 0; transform: translateY(28px); }
+.scroll-section[data-effect="slide-up"][data-visible="true"] { opacity: 1; transform: translateY(0); }
+
+.scroll-section[data-effect="pin"] {
+  position: sticky;
+  top: 110px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-section {
+    transition: none;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 .case-markdown p:has(> .case-artifact-image) {
   margin: 40px 0;
 }

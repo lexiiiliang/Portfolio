@@ -1,33 +1,33 @@
-import Link from "next/link";
 import type { PortfolioProject } from "@/lib/portfolio";
-import { Localized } from "./Localized";
+import { getProjectTldr } from "@/lib/project-tldr";
+import { ProjectCardTldr } from "./ProjectCardTldr";
 import { ProjectVisual } from "./ProjectVisual";
 
 export function ProjectCard({ project, index }: { project: PortfolioProject; index: number }) {
+  const tldr = getProjectTldr(project.slug);
+  const indexLabel = String(index + 1).padStart(2, "0");
+
   return (
-    <Link
-      href={`/projects/${project.slug}`}
+    <article
       className={`project-card accent-${project.accent} card-${index + 1}`}
-      aria-label={`Open ${project.title}`}
     >
-      <div className="project-card-topline">
-        <span>{String(index + 1).padStart(2, "0")}</span>
-        <span><Localized en={project.eyebrowEn} zh={project.eyebrowZh} /></span>
-        <span>{project.year}</span>
-      </div>
-      <ProjectVisual project={project} />
-      <div className="project-card-copy">
-        <div>
-          <h3>{project.title}</h3>
-          <p><Localized en={project.summaryEn} zh={project.summaryZh} /></p>
-        </div>
-        <div className="project-card-meta">
-          <span className="status-chip">
-            {project.status === "published" ? <Localized en="Case study" zh="完整案例" /> : <Localized en="In progress" zh="整理中" />}
-          </span>
-          <span className="open-mark" aria-hidden="true">↗</span>
+      <div className="project-card-content-sheet" aria-hidden="true">
+        <div className="project-card-visual-link">
+          <ProjectVisual project={project} />
         </div>
       </div>
-    </Link>
+      {tldr ? (
+        <ProjectCardTldr
+          projectSlug={project.slug}
+          projectTitle={project.title}
+          projectYear={project.year}
+          eyebrowEn={project.eyebrowEn}
+          eyebrowZh={project.eyebrowZh}
+          indexLabel={indexLabel}
+          copy={tldr}
+          isPublished={project.status === "published"}
+        />
+      ) : null}
+    </article>
   );
 }

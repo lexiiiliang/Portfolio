@@ -97,12 +97,8 @@ export default function Home() {
         </section>
 
         <section className="work-section" id="work" aria-labelledby="work-title">
-          <div className="section-intro">
-            <div>
-              <p className="micro-label">01 / SELECTED WORK</p>
-              <h2 id="work-title"><Localized en="Ideas, systems and interfaces for emerging intelligence." zh="关于新智能的观点、系统与界面。" /></h2>
-            </div>
-            <p><Localized en="Three cases across AI interfaces, spatial computing and human agency." zh="三个项目，跨越 AI 界面、空间计算与人的能动性。" /></p>
+          <div className="section-intro section-intro-work">
+            <p id="work-title" className="micro-label">01 / SELECTED WORK</p>
           </div>
           <div className="project-grid">
             {projects.filter((project) => project.featured).map((project, index) => (

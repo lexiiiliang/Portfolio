@@ -1,5 +1,7 @@
 # Portfolio Site project instructions
 
+The complete repository handoff and operating runbook is `docs/HANDOFF.md`. Read it before changing worktree structure, branch lifecycle, archive state, Obsidian synchronization, or release behavior.
+
 ## Worktree workflow
 
 - Maintain two long-lived worktrees:

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useRef, useSyncExternalStore, type MouseEvent as ReactMouseEvent } from "react";
+import { useEffect, useId, useRef, useSyncExternalStore } from "react";
 import type { ProjectTldrCopy } from "@/lib/project-tldr";
 import { Localized } from "./Localized";
 
@@ -33,7 +33,6 @@ type ProjectCardTldrProps = {
   projectYear: string;
   eyebrowEn: string;
   eyebrowZh: string;
-  indexLabel: string;
   copy: ProjectTldrCopy;
   isPublished: boolean;
 };
@@ -44,7 +43,6 @@ export function ProjectCardTldr({
   projectYear,
   eyebrowEn,
   eyebrowZh,
-  indexLabel,
   copy,
   isPublished,
 }: ProjectCardTldrProps) {
@@ -56,9 +54,6 @@ export function ProjectCardTldr({
   const isOpen = activeProjectSlug === projectSlug;
   const panelId = useId();
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
-  const englishTags = eyebrowEn.split(" · ").slice(0, 2);
-  const chineseTags = eyebrowZh.split(" · ").slice(0, 2);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -73,48 +68,66 @@ export function ProjectCardTldr({
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [isOpen]);
 
-  const setPanelState = (willOpen: boolean, focusClose = false) => {
-    const card = triggerRef.current?.closest<HTMLElement>(".project-card");
-    const cardStyle = card ? window.getComputedStyle(card) : null;
-    const pullDistance = Number.parseFloat(cardStyle?.getPropertyValue("--folder-pull-distance") ?? "") || 340;
-    const restingOffset = Number.parseFloat(cardStyle?.getPropertyValue("--folder-sheet-rest") ?? "") || 82;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (willOpen && !focusClose) triggerRef.current?.blur();
-    setOpenProject(willOpen ? projectSlug : null);
-
-    if (willOpen && focusClose) {
-      window.requestAnimationFrame(() => closeRef.current?.focus());
-    }
-
-    if (!card || reduceMotion) return;
-
-    window.requestAnimationFrame(() => {
-      const from = willOpen
-        ? `translateY(${pullDistance + restingOffset}px)`
-        : `translateY(${-pullDistance}px)`;
-      const to = willOpen ? "translateY(0)" : `translateY(${restingOffset}px)`;
-
-      card
-        .querySelectorAll<HTMLElement>(".project-card-content-sheet, .project-tldr-content")
-        .forEach((layer) => {
-          layer.animate([{ transform: from }, { transform: to }], {
-            duration: 280,
-            easing: "cubic-bezier(0.32, 0.72, 0, 1)",
-          });
-        });
-    });
-
-    if (!willOpen) window.requestAnimationFrame(() => triggerRef.current?.focus());
+  const togglePanel = () => {
+    setOpenProject(isOpen ? null : projectSlug);
   };
-
-  const openPanel = (event: ReactMouseEvent<HTMLButtonElement>) => {
-    setPanelState(true, event.detail === 0);
-  };
-  const closePanel = () => setPanelState(false);
 
   return (
-    <>
+    <section className={`project-card-drawer ${isOpen ? "is-open" : ""}`} data-open={isOpen}>
+      <span className="project-card-drawer-surface" aria-hidden="true" />
+      <span className="project-card-drawer-shoulder" aria-hidden="true" />
+
+      <button
+        ref={triggerRef}
+        type="button"
+        className="project-card-drawer-handle"
+        aria-expanded={isOpen}
+        aria-controls={panelId}
+        onClick={togglePanel}
+      >
+        <span>{isOpen ? <Localized en="Close" zh="收起" /> : "TL;DR"}</span>
+        <span className="project-card-drawer-chevron" aria-hidden="true">↓</span>
+      </button>
+
+      <div className="project-card-default" aria-hidden={isOpen}>
+        <div>
+          <Link
+            href={`/projects/${projectSlug}`}
+            className="project-card-title-link"
+            tabIndex={isOpen ? -1 : 0}
+          >
+            <h3>{projectTitle}</h3>
+          </Link>
+          <p className="project-card-tags">
+            <Localized en={eyebrowEn} zh={eyebrowZh} />
+          </p>
+        </div>
+
+        <div className="project-card-default-footer">
+          <span className="project-card-status">
+            {isPublished ? (
+              <Localized en="Published" zh="已发布" />
+            ) : (
+              <Localized en="In progress" zh="进行中" />
+            )}
+          </span>
+          <Link
+            href={`/projects/${projectSlug}`}
+            className="project-card-case-link"
+            tabIndex={isOpen ? -1 : 0}
+          >
+            <span>
+              {isPublished ? (
+                <Localized en="Full case" zh="完整案例" />
+              ) : (
+                <Localized en="Preview" zh="项目预览" />
+              )}
+            </span>
+            <span className="open-mark" aria-hidden="true">↗</span>
+          </Link>
+        </div>
+      </div>
+
       <div
         id={panelId}
         className="project-tldr-content"
@@ -122,10 +135,8 @@ export function ProjectCardTldr({
         aria-label={`${projectTitle} quick read`}
       >
         <div className="project-tldr-header">
-          <span>TL;DR</span>
-          <button ref={closeRef} type="button" onClick={closePanel} tabIndex={isOpen ? 0 : -1}>
-            <Localized en="Close" zh="收起" /> ↓
-          </button>
+          <span>{projectTitle}</span>
+          <span>{projectYear} / 30 SEC</span>
         </div>
 
         <div className="project-tldr-intro">
@@ -159,46 +170,6 @@ export function ProjectCardTldr({
           <span aria-hidden="true">↗</span>
         </Link>
       </div>
-
-      <button
-        ref={triggerRef}
-        type="button"
-        className="project-folder-pull-target"
-        aria-label={`Open ${projectTitle} TL;DR`}
-        aria-expanded={isOpen}
-        aria-controls={panelId}
-        tabIndex={isOpen ? -1 : 0}
-        onClick={openPanel}
-      />
-
-      <section className={`project-folder-cover ${isOpen ? "is-open" : ""}`} data-open={isOpen}>
-        <span className="project-folder-cover-surface" aria-hidden="true" />
-        <span className="project-folder-cover-shoulder" aria-hidden="true" />
-
-        <div className="project-folder-cover-content">
-          <div className="project-folder-cover-header">
-            <div className="project-folder-tags" aria-label="Project tags">
-              {englishTags.map((tag, tagIndex) => (
-                <span key={tag}>
-                  <Localized en={tag} zh={chineseTags[tagIndex] ?? tag} />
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <Link href={`/projects/${projectSlug}`} className="project-card-title-link">
-            <h3>{projectTitle}</h3>
-          </Link>
-
-          <div className="project-folder-cover-footer">
-            <div>
-              <span>{indexLabel}</span>
-              <p><Localized en={eyebrowEn} zh={eyebrowZh} /></p>
-            </div>
-            <span className="project-folder-year">{projectYear}</span>
-          </div>
-        </div>
-      </section>
-    </>
+    </section>
   );
 }

@@ -100,10 +100,12 @@ export default function Home() {
           <div className="section-intro section-intro-work">
             <p id="work-title" className="micro-label">01 / SELECTED WORK</p>
           </div>
-          <div className="project-grid">
-            {projects.filter((project) => project.featured).map((project, index) => (
-              <ProjectCard key={project.slug} project={project} index={index} />
-            ))}
+          <div className="project-grid-scroll" role="region" aria-label="Selected projects" tabIndex={0}>
+            <div className="project-grid">
+              {projects.filter((project) => project.featured).map((project, index) => (
+                <ProjectCard key={project.slug} project={project} index={index} />
+              ))}
+            </div>
           </div>
         </section>
 

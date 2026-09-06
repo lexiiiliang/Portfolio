@@ -30,6 +30,7 @@ function getServerOpenProject() {
 type ProjectCardTldrProps = {
   projectSlug: string;
   projectTitle: string;
+  projectTitleZh?: string;
   projectYear: string;
   eyebrowEn: string;
   eyebrowZh: string;
@@ -41,6 +42,7 @@ type ProjectCardTldrProps = {
 export function ProjectCardTldr({
   projectSlug,
   projectTitle,
+  projectTitleZh,
   projectYear,
   eyebrowEn,
   eyebrowZh,
@@ -59,6 +61,9 @@ export function ProjectCardTldr({
   const closeRef = useRef<HTMLButtonElement>(null);
   const englishTags = eyebrowEn.split(" · ").slice(0, 2);
   const chineseTags = eyebrowZh.split(" · ").slice(0, 2);
+  const displayEnglishTags = projectSlug === "alive-briefing" ? ["Delivered work", "AI–UX"] : englishTags;
+  const displayChineseTags = projectSlug === "alive-briefing" ? ["业务交付", "AI–UX"] : chineseTags;
+  const footerTag = englishTags.at(-1) ?? englishTags[0] ?? "Project";
 
   useEffect(() => {
     if (!isOpen) return;
@@ -122,7 +127,7 @@ export function ProjectCardTldr({
         aria-label={`${projectTitle} quick read`}
       >
         <div className="project-tldr-header">
-          <span>TL;DR</span>
+          <span>/ TL; DR</span>
           <button ref={closeRef} type="button" onClick={closePanel} tabIndex={isOpen ? 0 : -1}>
             <Localized en="Close" zh="收起" /> ↓
           </button>
@@ -140,10 +145,6 @@ export function ProjectCardTldr({
           <div>
             <dt><Localized en="Approach" zh="方法" /></dt>
             <dd><Localized en={copy.approachEn} zh={copy.approachZh} /></dd>
-          </div>
-          <div>
-            <dt><Localized en="Status" zh="进展" /></dt>
-            <dd><Localized en={copy.statusEn} zh={copy.statusZh} /></dd>
           </div>
         </dl>
 
@@ -172,28 +173,30 @@ export function ProjectCardTldr({
       />
 
       <section className={`project-folder-cover ${isOpen ? "is-open" : ""}`} data-open={isOpen}>
-        <span className="project-folder-cover-surface" aria-hidden="true" />
-        <span className="project-folder-cover-shoulder" aria-hidden="true" />
+        <span className="project-folder-cover-shape" aria-hidden="true" />
 
         <div className="project-folder-cover-content">
           <div className="project-folder-cover-header">
             <div className="project-folder-tags" aria-label="Project tags">
-              {englishTags.map((tag, tagIndex) => (
+              {displayEnglishTags.map((tag, tagIndex) => (
                 <span key={tag}>
-                  <Localized en={tag} zh={chineseTags[tagIndex] ?? tag} />
+                  <Localized en={tag} zh={displayChineseTags[tagIndex] ?? tag} />
                 </span>
               ))}
             </div>
           </div>
 
           <Link href={`/projects/${projectSlug}`} className="project-card-title-link">
-            <h3>{projectTitle}</h3>
+            <h3>
+              <span>{projectTitle}</span>
+              {projectTitleZh ? <span lang="zh-CN">{projectTitleZh}</span> : null}
+            </h3>
           </Link>
 
           <div className="project-folder-cover-footer">
             <div>
-              <span>{indexLabel}</span>
-              <p><Localized en={eyebrowEn} zh={eyebrowZh} /></p>
+              <span className="project-folder-index">{indexLabel}</span>
+              <p># {footerTag}</p>
             </div>
             <span className="project-folder-year">{projectYear}</span>
           </div>

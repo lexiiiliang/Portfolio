@@ -58,7 +58,7 @@ export function ProjectCardTldr({
   const isOpen = activeProjectSlug === projectSlug;
   const panelId = useId();
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const englishTags = eyebrowEn.split(" · ").slice(0, 2);
   const chineseTags = eyebrowZh.split(" · ").slice(0, 2);
   const displayEnglishTags = projectSlug === "alive-briefing" ? ["Delivered work", "AI–UX"] : englishTags;
@@ -73,23 +73,32 @@ export function ProjectCardTldr({
       setOpenProject(null);
       triggerRef.current?.focus();
     };
+    const closeOutsideCard = (event: PointerEvent) => {
+      const card = triggerRef.current?.closest<HTMLElement>(".project-card");
+      if (card?.contains(event.target as Node)) return;
+      setOpenProject(null);
+    };
 
     window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
+    document.addEventListener("pointerdown", closeOutsideCard);
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape);
+      document.removeEventListener("pointerdown", closeOutsideCard);
+    };
   }, [isOpen]);
 
-  const setPanelState = (willOpen: boolean, focusClose = false) => {
+  const setPanelState = (willOpen: boolean, focusPanel = false) => {
     const card = triggerRef.current?.closest<HTMLElement>(".project-card");
     const cardStyle = card ? window.getComputedStyle(card) : null;
     const pullDistance = Number.parseFloat(cardStyle?.getPropertyValue("--folder-pull-distance") ?? "") || 340;
     const restingOffset = Number.parseFloat(cardStyle?.getPropertyValue("--folder-sheet-rest") ?? "") || 82;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (willOpen && !focusClose) triggerRef.current?.blur();
+    if (willOpen && !focusPanel) triggerRef.current?.blur();
     setOpenProject(willOpen ? projectSlug : null);
 
-    if (willOpen && focusClose) {
-      window.requestAnimationFrame(() => closeRef.current?.focus());
+    if (willOpen && focusPanel) {
+      window.requestAnimationFrame(() => panelRef.current?.focus());
     }
 
     if (!card || reduceMotion) return;
@@ -117,20 +126,26 @@ export function ProjectCardTldr({
     setPanelState(true, event.detail === 0);
   };
   const closePanel = () => setPanelState(false);
+  const closeFromBlankArea = (event: ReactMouseEvent<HTMLElement>) => {
+    if (!isOpen || !(event.target instanceof Element)) return;
+    if (event.target.closest("a, button")) return;
+    closePanel();
+  };
 
   return (
     <>
       <div
+        ref={panelRef}
         id={panelId}
         className="project-tldr-content"
+        role="region"
         aria-hidden={!isOpen}
         aria-label={`${projectTitle} quick read`}
+        tabIndex={-1}
+        onClick={closeFromBlankArea}
       >
         <div className="project-tldr-header">
           <span>/ TL; DR</span>
-          <button ref={closeRef} type="button" onClick={closePanel} tabIndex={isOpen ? 0 : -1}>
-            <Localized en="Close" zh="收起" /> ↓
-          </button>
         </div>
 
         <div className="project-tldr-intro">
@@ -172,7 +187,11 @@ export function ProjectCardTldr({
         onClick={openPanel}
       />
 
-      <section className={`project-folder-cover ${isOpen ? "is-open" : ""}`} data-open={isOpen}>
+      <section
+        className={`project-folder-cover ${isOpen ? "is-open" : ""}`}
+        data-open={isOpen}
+        onClick={closeFromBlankArea}
+      >
         <span className="project-folder-cover-shape" aria-hidden="true" />
 
         <div className="project-folder-cover-content">

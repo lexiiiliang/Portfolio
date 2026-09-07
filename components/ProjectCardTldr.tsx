@@ -61,8 +61,20 @@ export function ProjectCardTldr({
   const panelRef = useRef<HTMLDivElement>(null);
   const englishTags = eyebrowEn.split(" · ").slice(0, 2);
   const chineseTags = eyebrowZh.split(" · ").slice(0, 2);
-  const displayEnglishTags = projectSlug === "alive-briefing" ? ["Delivered work", "AI–UX"] : englishTags;
-  const displayChineseTags = projectSlug === "alive-briefing" ? ["业务交付", "AI–UX"] : chineseTags;
+  const displayEnglishTags = projectSlug === "alive-briefing"
+    ? ["Delivered work", "AI–UX"]
+    : projectSlug === "livis"
+      ? ["跨端Agent"]
+      : projectSlug === "from-query-to-quest"
+        ? englishTags.slice(0, 1)
+        : englishTags;
+  const displayChineseTags = projectSlug === "alive-briefing"
+    ? ["前瞻探索", "AI–UX"]
+    : projectSlug === "livis"
+      ? ["跨端Agent"]
+      : projectSlug === "from-query-to-quest"
+        ? chineseTags.slice(0, 1)
+        : chineseTags;
   const footerTag = englishTags.at(-1) ?? englishTags[0] ?? "Project";
 
   useEffect(() => {

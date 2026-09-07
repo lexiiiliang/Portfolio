@@ -111,6 +111,80 @@ body {
   transition: background-color 220ms ease, color 220ms ease;
 }
 
+.custom-cursor {
+  position: fixed;
+  z-index: 80;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+}
+
+.custom-cursor[data-visible="true"] {
+  opacity: 1;
+}
+
+.custom-cursor-dot,
+.custom-cursor-portrait {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #447bf3;
+  transition: opacity 120ms ease, transform 180ms var(--ease-out);
+}
+
+.custom-cursor-portrait {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 50px;
+  color: #000;
+  background: rgba(211, 211, 211, .2);
+  backdrop-filter: blur(10px);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: normal;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.82);
+  transition: opacity 120ms ease, transform 180ms var(--ease-out);
+}
+
+.custom-cursor-wave {
+  font-size: 36px;
+  line-height: normal;
+}
+
+.custom-cursor[data-variant="portrait"] .custom-cursor-dot {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.55);
+}
+
+.custom-cursor[data-variant="portrait"] .custom-cursor-portrait {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html[data-custom-cursor="true"],
+  html[data-custom-cursor="true"] * {
+    cursor: none !important;
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -413,32 +487,6 @@ html[data-lang="zh"] .copy-en {
   transition: transform 150ms cubic-bezier(.165,.84,.44,1);
 }
 
-.portrait-greeting-hint {
-  position: absolute;
-  z-index: 3;
-  right: -25px;
-  bottom: 5px;
-  min-height: 48px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 13px 7px 9px;
-  color: #171817;
-  background: rgba(211, 211, 211, .22);
-  backdrop-filter: blur(10px);
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.portrait-greeting-hint > span:first-child {
-  font-size: 30px;
-  line-height: 1;
-}
-
 .portrait-tracker:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 7px;
@@ -518,6 +566,12 @@ html[data-lang="zh"] .copy-en {
   width: 160px;
   height: .95em;
   display: block;
+  text-align: right;
+}
+
+.greeting-carousel::before {
+  content: "Hi!";
+  visibility: hidden;
 }
 
 .greeting-carousel-visual {
@@ -536,14 +590,6 @@ html[data-lang="zh"] .copy-en {
 .greeting-carousel-word {
   min-width: 0;
   text-align: right;
-}
-
-.greeting-carousel-caret {
-  width: 2px;
-  height: .78em;
-  margin-left: 4px;
-  background: currentColor;
-  animation: greeting-caret 820ms steps(1, end) infinite;
 }
 
 @keyframes greeting-caret {
@@ -1494,11 +1540,11 @@ html[data-theme="dark"] .about-timeline-logo[data-logo="li-auto"] {
 }
 
 .contact-morph-list {
-  --contact-circle: 100px;
-  --contact-expanded: 236px;
-  --contact-gap: 36px;
-  --contact-icon-center: 55px;
-  --contact-label-left: 96px;
+  --contact-circle: 68px;
+  --contact-expanded: 164px;
+  --contact-gap: 24px;
+  --contact-icon-center: 39px;
+  --contact-label-left: 66px;
   width: max-content;
   max-width: 100%;
   display: flex;
@@ -1544,11 +1590,21 @@ html[data-theme="dark"] .about-timeline-logo[data-logo="li-auto"] {
   border: 1px solid currentColor;
   border-radius: 999px;
   transform-origin: center;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.contact-morph-item[data-active="true"] .contact-morph-control {
+  color: var(--accent-ink);
+}
+
+.contact-morph-item[data-active="true"] .contact-morph-shape {
+  border-color: var(--accent);
+  background: var(--accent);
 }
 
 .contact-morph-icon {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -1566,13 +1622,13 @@ html[data-theme="dark"] .about-timeline-logo[data-logo="li-auto"] {
 }
 
 .contact-morph-item[data-contact="github"] .contact-morph-icon {
-  width: 54px;
-  height: 54px;
+  width: 37px;
+  height: 37px;
 }
 
 .contact-morph-item[data-contact="linkedin"] .contact-morph-icon {
-  width: 48px;
-  height: 48px;
+  width: 33px;
+  height: 33px;
 }
 
 .contact-morph-icon-svg {
@@ -1589,7 +1645,7 @@ html[data-theme="dark"] .about-timeline-logo[data-logo="li-auto"] {
   overflow: hidden;
   opacity: 0;
   clip-path: inset(0 100% 0 0);
-  font-size: 32px;
+  font-size: 22px;
   font-weight: 400;
   line-height: 1;
   letter-spacing: -.025em;
@@ -1613,7 +1669,7 @@ html[data-theme="dark"] .about-timeline-logo[data-logo="li-auto"] {
 }
 
 html[data-lang="en"] .contact-morph-label {
-  font-size: 28px;
+  font-size: 20px;
 }
 
 .site-footer {
@@ -2372,16 +2428,16 @@ html[data-lang="zh"] .project-hero-meta {
     width: min(100%, 760px);
   }
   .contact-morph-list {
-    --contact-circle: 88px;
-    --contact-expanded: 208px;
-    --contact-gap: 24px;
-    --contact-icon-center: 50px;
-    --contact-label-left: 84px;
+    --contact-circle: 60px;
+    --contact-expanded: 148px;
+    --contact-gap: 16px;
+    --contact-icon-center: 35px;
+    --contact-label-left: 59px;
   }
-  .contact-morph-icon { width: 36px; height: 36px; }
-  .contact-morph-item[data-contact="github"] .contact-morph-icon { width: 48px; height: 48px; }
-  .contact-morph-item[data-contact="linkedin"] .contact-morph-icon { width: 43px; height: 43px; }
-  .contact-morph-label { font-size: 28px; }
+  .contact-morph-icon { width: 25px; height: 25px; }
+  .contact-morph-item[data-contact="github"] .contact-morph-icon { width: 33px; height: 33px; }
+  .contact-morph-item[data-contact="linkedin"] .contact-morph-icon { width: 30px; height: 30px; }
+  .contact-morph-label { font-size: 20px; }
   .site-footer { padding: 28px 0; }
   .project-hero { min-height: 760px; }
   .project-hero > .card-visual { width: 74vw; right: -22vw; top: 240px; }
@@ -2411,8 +2467,6 @@ html[data-lang="zh"] .project-hero-meta {
     padding: 48px 16px 64px;
   }
   .portrait-tracker-wrap { width: 190px; height: 190px; }
-  .portrait-greeting-hint { right: -18px; bottom: -2px; min-height: 44px; }
-  .portrait-greeting-hint > span:first-child { font-size: 27px; }
   .hero-intro { margin-top: 76px; }
   .hero-title {
     grid-template-columns: 92px auto auto;
@@ -2441,18 +2495,18 @@ html[data-lang="zh"] .project-hero-meta {
     letter-spacing: -.04em;
   }
   .contact-morph-list {
-    --contact-circle: 64px;
-    --contact-expanded: min(180px, calc(100vw - 247px));
-    --contact-gap: 9px;
-    --contact-icon-center: 38px;
-    --contact-label-left: 60px;
+    --contact-circle: 48px;
+    --contact-expanded: 132px;
+    --contact-gap: 8px;
+    --contact-icon-center: 28px;
+    --contact-label-left: 48px;
   }
-  .contact-morph-icon { width: 28px; height: 28px; }
-  .contact-morph-item[data-contact="github"] .contact-morph-icon { width: 36px; height: 36px; }
-  .contact-morph-item[data-contact="linkedin"] .contact-morph-icon { width: 32px; height: 32px; }
+  .contact-morph-icon { width: 22px; height: 22px; }
+  .contact-morph-item[data-contact="github"] .contact-morph-icon { width: 29px; height: 29px; }
+  .contact-morph-item[data-contact="linkedin"] .contact-morph-icon { width: 26px; height: 26px; }
   .contact-morph-label {
     max-width: calc(var(--contact-expanded) - var(--contact-label-left) - 8px);
-    font-size: 18px;
+    font-size: 16px;
   }
   .briefing-card { width: 84%; min-height: 220px; }
   .briefing-card strong { font-size: 42px; }
@@ -2525,18 +2579,18 @@ html[data-lang="zh"] .project-hero-meta {
 
 @media (max-width: 370px) {
   .contact-morph-list {
-    --contact-circle: 54px;
-    --contact-expanded: min(150px, calc(100vw - 211px));
-    --contact-gap: 7px;
-    --contact-icon-center: 32px;
-    --contact-label-left: 51px;
+    --contact-circle: 44px;
+    --contact-expanded: 120px;
+    --contact-gap: 6px;
+    --contact-icon-center: 26px;
+    --contact-label-left: 44px;
   }
-  .contact-morph-icon { width: 24px; height: 24px; }
-  .contact-morph-item[data-contact="github"] .contact-morph-icon { width: 31px; height: 31px; }
-  .contact-morph-item[data-contact="linkedin"] .contact-morph-icon { width: 28px; height: 28px; }
+  .contact-morph-icon { width: 20px; height: 20px; }
+  .contact-morph-item[data-contact="github"] .contact-morph-icon { width: 26px; height: 26px; }
+  .contact-morph-item[data-contact="linkedin"] .contact-morph-icon { width: 24px; height: 24px; }
   .contact-morph-label {
     max-width: calc(var(--contact-expanded) - var(--contact-label-left) - 6px);
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 

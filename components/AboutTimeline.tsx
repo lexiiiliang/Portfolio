@@ -25,15 +25,6 @@ const timelineItems: TimelineItem[] = [
   },
   {
     kind: "education",
-    marker: "🇸🇪",
-    organizationEn: "Umeå Institute of Design",
-    organizationZh: "于默奥设计学院",
-    roleEn: "MFA in Interaction Design",
-    roleZh: "交互设计硕士 (MFA)",
-    dates: "2022–2025",
-  },
-  {
-    kind: "education",
     marker: "🇳🇱",
     organizationEn: "Delft University of Technology",
     organizationZh: "代尔夫特理工大学",
@@ -62,6 +53,15 @@ const timelineItems: TimelineItem[] = [
     dates: "09/2024–01/2025",
     logo: "/media/about-timeline/microsoft.png",
     logoKey: "microsoft",
+  },
+  {
+    kind: "education",
+    marker: "🇸🇪",
+    organizationEn: "Umeå Institute of Design",
+    organizationZh: "于默奥设计学院",
+    roleEn: "MFA in Interaction Design",
+    roleZh: "交互设计硕士 (MFA)",
+    dates: "2022–2025",
   },
   {
     kind: "work",

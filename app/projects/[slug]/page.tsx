@@ -7,7 +7,7 @@ import { ProjectTransitionLink } from "@/components/ProjectTransitionLink";
 import { ProjectToc } from "@/components/ProjectToc";
 import { ProjectVisual } from "@/components/ProjectVisual";
 import { SiteHeader } from "@/components/SiteHeader";
-import { ACCESS_COOKIE, hasPortfolioAccess } from "@/lib/access";
+import { ACCESS_COOKIE, hasPortfolioAccess, PASSWORD_PROTECTION_ENABLED } from "@/lib/access";
 import { getProject, portfolio } from "@/lib/portfolio";
 
 export const dynamic = "force-dynamic";
@@ -30,7 +30,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const project = getProject(slug);
   if (!project) notFound();
 
-  if (project.protected) {
+  if (PASSWORD_PROTECTION_ENABLED && project.protected) {
     const cookieStore = await cookies();
     const allowed = await hasPortfolioAccess(cookieStore.get(ACCESS_COOKIE)?.value);
     if (!allowed) redirect(`/unlock?next=${encodeURIComponent(`/projects/${project.slug}`)}`);

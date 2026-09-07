@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Localized } from "./Localized";
 
 const SPRITE_COLUMNS = 11;
 const SPRITE_ROWS = 10;
@@ -221,10 +220,6 @@ export function PortraitToy() {
           </video>
         </span>
       </button>
-      <span className="portrait-greeting-hint" aria-hidden="true">
-        <span>👋</span>
-        <Localized en="Say hi!" zh="打个招呼!" />
-      </span>
     </div>
   );
 }

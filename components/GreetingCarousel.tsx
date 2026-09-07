@@ -55,7 +55,6 @@ export function GreetingCarousel() {
     <span className="greeting-carousel">
       <span className="greeting-carousel-visual" aria-hidden="true">
         <span className="greeting-carousel-word">{visibleGreeting}</span>
-        <span className="greeting-carousel-caret" />
       </span>
       <span className="sr-only">Hi, Hola, Hej, 嗨</span>
     </span>

@@ -52,6 +52,11 @@ type FlipSnapshot = {
   shape: DOMRect;
 };
 
+type FlipAnimations = {
+  item: Animation;
+  shape: Animation;
+};
+
 function TypewriterText({ text }: { text: string }) {
   const characters = Array.from(text);
   const previousText = useRef<string | null>(null);
@@ -147,8 +152,10 @@ function ContactIcon({ kind }: { kind: ContactKey }) {
 
 export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
   const [activeContact, setActiveContact] = useState<ContactKey | null>(null);
+  const activeContactRef = useRef<ContactKey | null>(null);
   const itemRefs = useRef(new Map<ContactKey, HTMLLIElement>());
   const pendingFlip = useRef(new Map<ContactKey, FlipSnapshot>());
+  const runningFlip = useRef(new Map<ContactKey, FlipAnimations>());
 
   const contactsByKey = new Map(
     contacts.map((contact) => [contact.label.toLowerCase() as ContactKey, contact]),
@@ -161,7 +168,7 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
     : DEFAULT_PROMPT;
 
   const captureAndSetActive = (nextContact: ContactKey | null) => {
-    if (nextContact === activeContact) return;
+    if (nextContact === activeContactRef.current) return;
 
     const snapshot = new Map<ContactKey, FlipSnapshot>();
     itemRefs.current.forEach((item, key) => {
@@ -173,6 +180,7 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
       });
     });
     pendingFlip.current = snapshot;
+    activeContactRef.current = nextContact;
     setActiveContact(nextContact);
   };
 
@@ -186,8 +194,10 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
       const shape = item.querySelector<HTMLElement>(".contact-morph-shape");
       if (!before || !shape) return;
 
-      item.getAnimations().forEach((animation) => animation.cancel());
-      shape.getAnimations().forEach((animation) => animation.cancel());
+      const previousFlip = runningFlip.current.get(key);
+      previousFlip?.item.cancel();
+      previousFlip?.shape.cancel();
+      runningFlip.current.delete(key);
 
       if (reduceMotion) return;
 
@@ -198,24 +208,36 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
       const translateX = beforeCenter - afterCenter;
       const scaleX = before.shape.width / Math.max(afterShape.width, 1);
       const timing = {
-        duration: 240,
-        easing: "cubic-bezier(0.77, 0, 0.175, 1)",
+        duration: 260,
+        easing: "cubic-bezier(0.23, 1, 0.32, 1)",
       } as const;
 
-      item.animate(
+      const itemAnimation = item.animate(
         [
           { transform: `translateX(${translateX}px)` },
           { transform: "translateX(0)" },
         ],
         timing,
       );
-      shape.animate(
+      const shapeAnimation = shape.animate(
         [
           { transform: `scaleX(${scaleX})` },
           { transform: "scaleX(1)" },
         ],
         timing,
       );
+
+      const animations = { item: itemAnimation, shape: shapeAnimation };
+      runningFlip.current.set(key, animations);
+      shapeAnimation.finished
+        .then(() => {
+          if (runningFlip.current.get(key) === animations) {
+            runningFlip.current.delete(key);
+          }
+        })
+        .catch(() => {
+          // Cancellation is expected when a hover or focus target changes mid-morph.
+        });
     });
 
     pendingFlip.current = new Map();

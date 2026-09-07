@@ -322,7 +322,6 @@ export function FromQueryToQuestCase() {
 
         <section className="fq-section fq-contribution-section">
           <SectionAnchor id="contribution-limits" />
-          <p className="fq-section-number">06 / <Localized en="CONTRIBUTION & LIMITS" zh="贡献与边界" /></p>
           <h2><Localized en="Transferable knowledge, not a finished product claim." zh="这是一组可迁移的知识，而不是一个已完成的产品承诺。" /></h2>
           <p className="fq-section-lede">
             <Localized

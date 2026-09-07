@@ -71,7 +71,6 @@ export function SiteControls() {
         >
           中
         </button>
-        <span aria-hidden="true">｜</span>
         <button
           type="button"
           className={language === "en" ? "is-active" : ""}

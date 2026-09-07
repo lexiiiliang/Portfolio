@@ -6,6 +6,7 @@ import { ProjectVisual } from "./ProjectVisual";
 export function ProjectCard({ project, index }: { project: PortfolioProject; index: number }) {
   const tldr = getProjectTldr(project.slug);
   const indexLabel = String(index + 1).padStart(2, "0");
+  const projectTitleZh = project.slug === "alive-briefing" ? "活字简报" : undefined;
 
   return (
     <article
@@ -20,6 +21,7 @@ export function ProjectCard({ project, index }: { project: PortfolioProject; ind
         <ProjectCardTldr
           projectSlug={project.slug}
           projectTitle={project.title}
+          projectTitleZh={projectTitleZh}
           projectYear={project.year}
           eyebrowEn={project.eyebrowEn}
           eyebrowZh={project.eyebrowZh}

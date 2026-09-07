@@ -242,7 +242,7 @@
       "sourceFile": "02 Project Gallery/Project02 Livis 理想AI眼镜/Livis cron job.md",
       "sourceFileEn": "02 Project Gallery/Project02 Livis 理想AI眼镜/Livis cron job.md",
       "sourceFileZh": "02 Project Gallery/Project02 Livis 理想AI眼镜/Livis cron job.md",
-      "sourceChecksum": "064880294cb1",
+      "sourceChecksum": "7035bc102233",
       "status": "in-progress",
       "body": "",
       "bodyEn": "",
@@ -491,11 +491,11 @@
       "sourceFile": "01 Landing Page/Landing Page.md",
       "sourceFileEn": "01 Landing Page/Landing Page.md",
       "sourceFileZh": "01 Landing Page/Landing Page.md",
-      "sourceChecksum": "d553e3611031",
+      "sourceChecksum": "5ec3db834c71",
       "status": "published",
-      "body": "Lexi Liang\n\n\nI design how humans naturally converse with AI and physical hardware.\n\nCurrently @ **Li Auto** | Prev @ **Microsoft** & **SenseTime**\n\n📍 Based in Beijing | Relocating to Shenzhen\n\n---\n**Featured work**\n- alive briefing\n- Livis\n- Degree Project\n（archive）\n\n---\n**Contact**\n\nWorking on something interesting?  Say hello.\n在做有意思的事？欢迎联络。\n\n\n- email: lexiliang.design@outlook.com\n- github: https://github.com/lexiiiliang\n- linkedin: https://www.linkedin.com/in/lezhi-liang/\n- cv link: \n\n---\n© 2026",
-      "bodyEn": "Lexi Liang\n\n\nI design how humans naturally converse with AI and physical hardware.\n\nCurrently @ **Li Auto** | Prev @ **Microsoft** & **SenseTime**\n\n📍 Based in Beijing | Relocating to Shenzhen\n\n---\n**Featured work**\n- alive briefing\n- Livis\n- Degree Project\n（archive）\n\n---\n**Contact**\n\nWorking on something interesting?  Say hello.\n在做有意思的事？欢迎联络。\n\n\n- email: lexiliang.design@outlook.com\n- github: https://github.com/lexiiiliang\n- linkedin: https://www.linkedin.com/in/lezhi-liang/\n- cv link: \n\n---\n© 2026",
-      "bodyZh": "Lexi Liang\n\n\nI design how humans naturally converse with AI and physical hardware.\n\nCurrently @ **Li Auto** | Prev @ **Microsoft** & **SenseTime**\n\n📍 Based in Beijing | Relocating to Shenzhen\n\n---\n**Featured work**\n- alive briefing\n- Livis\n- Degree Project\n（archive）\n\n---\n**Contact**\n\nWorking on something interesting?  Say hello.\n在做有意思的事？欢迎联络。\n\n\n- email: lexiliang.design@outlook.com\n- github: https://github.com/lexiiiliang\n- linkedin: https://www.linkedin.com/in/lezhi-liang/\n- cv link: \n\n---\n© 2026",
+      "body": "Lexi Liang\n\n\nI design how humans naturally converse with AI and physical hardware.\n\nCurrently @ **Li Auto** | Prev @ **Microsoft** & **SenseTime**\n📍 Based in Beijing | Relocating to Shenzhen\n\n动效（Stagger reveal）依次出现\n\n---\n**Featured work**\n- alive briefing\n- Livis\n- Degree Project\n（archive）\n\n---\n**Contact**\n\nWorking on something interesting?  Say hello.\n在做有意思的事？欢迎联络。\n\nI’d love to hear from you! Whether you have questions, collaboration ideas, or just want to connect, feel free to reach out. I’m always open to engaging conversations and exploring new opportunities.\n\n- email: lexiliang.design@outlook.com\n- github: https://github.com/lexiiiliang\n- linkedin: https://www.linkedin.com/in/lezhi-liang/\n- cv link: \n\n---\n© 2026\nBuilt via Codex by GPT-5.6 & Kimi K3, Kudos!",
+      "bodyEn": "Lexi Liang\n\n\nI design how humans naturally converse with AI and physical hardware.\n\nCurrently @ **Li Auto** | Prev @ **Microsoft** & **SenseTime**\n📍 Based in Beijing | Relocating to Shenzhen\n\n动效（Stagger reveal）依次出现\n\n---\n**Featured work**\n- alive briefing\n- Livis\n- Degree Project\n（archive）\n\n---\n**Contact**\n\nWorking on something interesting?  Say hello.\n在做有意思的事？欢迎联络。\n\nI’d love to hear from you! Whether you have questions, collaboration ideas, or just want to connect, feel free to reach out. I’m always open to engaging conversations and exploring new opportunities.\n\n- email: lexiliang.design@outlook.com\n- github: https://github.com/lexiiiliang\n- linkedin: https://www.linkedin.com/in/lezhi-liang/\n- cv link: \n\n---\n© 2026\nBuilt via Codex by GPT-5.6 & Kimi K3, Kudos!",
+      "bodyZh": "Lexi Liang\n\n\nI design how humans naturally converse with AI and physical hardware.\n\nCurrently @ **Li Auto** | Prev @ **Microsoft** & **SenseTime**\n📍 Based in Beijing | Relocating to Shenzhen\n\n动效（Stagger reveal）依次出现\n\n---\n**Featured work**\n- alive briefing\n- Livis\n- Degree Project\n（archive）\n\n---\n**Contact**\n\nWorking on something interesting?  Say hello.\n在做有意思的事？欢迎联络。\n\nI’d love to hear from you! Whether you have questions, collaboration ideas, or just want to connect, feel free to reach out. I’m always open to engaging conversations and exploring new opportunities.\n\n- email: lexiliang.design@outlook.com\n- github: https://github.com/lexiiiliang\n- linkedin: https://www.linkedin.com/in/lezhi-liang/\n- cv link: \n\n---\n© 2026\nBuilt via Codex by GPT-5.6 & Kimi K3, Kudos!",
       "headings": [],
       "headingsEn": [],
       "headingsZh": []
@@ -546,78 +546,78 @@
       "heroEn": "A new case is taking shape.",
       "heroZh": "一个新的项目正在成形。",
       "hasSource": true,
-      "sourceFile": "Reference/requirements of the site.md",
-      "sourceFileEn": "Reference/requirements of the site.md",
-      "sourceFileZh": "Reference/requirements of the site.md",
-      "sourceChecksum": "5fb753d4896a",
+      "sourceFile": "Reference/design-system.md",
+      "sourceFileEn": "Reference/design-system.md",
+      "sourceFileZh": "Reference/design-system.md",
+      "sourceChecksum": "48dff5d278e7",
       "status": "published",
-      "body": "# global\n- 深浅模式 切换（dark & light mode）\n\t- 能否识别访问者的显示\n- 中/en 语言切换\n\t- 能否识别访问者的系统语言\n\n# landingpage\n- 有avatar- sprite的landing page\n\t- click wink\n\t- optional：转太快，头晕冒星星\n\t- cursor 样式\n- project gallery \n\t- TL;DR 卡片翻转\n\t- 进入详情，可以有页面转场\n# project\n- 项目的侧边栏导航\n\t- https://fancy-notes.vercel.app/230302_0215\n- 项目密码保护 password protected: aholamora\n\n下一个case \n\n# Ref-playground\n\nhttps://github.com/jinruozai/ HTML-Light-Demo    这个 github  地址（就是视频最后黄框里的）给 codex 他就能直接把这个项目下载到你电脑运行\n\nhttps://viscose-carousel.vercel.app/",
-      "bodyEn": "# global\n- 深浅模式 切换（dark & light mode）\n\t- 能否识别访问者的显示\n- 中/en 语言切换\n\t- 能否识别访问者的系统语言\n\n# landingpage\n- 有avatar- sprite的landing page\n\t- click wink\n\t- optional：转太快，头晕冒星星\n\t- cursor 样式\n- project gallery \n\t- TL;DR 卡片翻转\n\t- 进入详情，可以有页面转场\n# project\n- 项目的侧边栏导航\n\t- https://fancy-notes.vercel.app/230302_0215\n- 项目密码保护 password protected: aholamora\n\n下一个case \n\n# Ref-playground\n\nhttps://github.com/jinruozai/ HTML-Light-Demo    这个 github  地址（就是视频最后黄框里的）给 codex 他就能直接把这个项目下载到你电脑运行\n\nhttps://viscose-carousel.vercel.app/",
-      "bodyZh": "# global\n- 深浅模式 切换（dark & light mode）\n\t- 能否识别访问者的显示\n- 中/en 语言切换\n\t- 能否识别访问者的系统语言\n\n# landingpage\n- 有avatar- sprite的landing page\n\t- click wink\n\t- optional：转太快，头晕冒星星\n\t- cursor 样式\n- project gallery \n\t- TL;DR 卡片翻转\n\t- 进入详情，可以有页面转场\n# project\n- 项目的侧边栏导航\n\t- https://fancy-notes.vercel.app/230302_0215\n- 项目密码保护 password protected: aholamora\n\n下一个case \n\n# Ref-playground\n\nhttps://github.com/jinruozai/ HTML-Light-Demo    这个 github  地址（就是视频最后黄框里的）给 codex 他就能直接把这个项目下载到你电脑运行\n\nhttps://viscose-carousel.vercel.app/",
+      "body": "# Design System 现状梳理\n\n记录当前 [app/globals.css](../app/globals.css) 里颜色和排版 token 的结构，用于后续深浅色配色和排版收编。\n\n标记说明：\n- 🟢 **可自由替换** — 只是数值，改了不影响结构，随便调\n- 🟡 **建议收编** — 目前是散写的硬编码值，还没进 token 体系，迁移时需要决定归到哪一档\n- 🔴 **结构性，别动** — 变量名 / 引用关系，改了要同步改引用它的地方\n\n---\n\n## 1. 颜色\n\n### 1.1 三层结构\n\n```\nPrimitive（原子色值，无语义）\n   ↓ 被引用\nSemantic（语义 token，随 data-theme 切换）\n   ↓ 被引用\nComponent（组件专用 token，如 .accent-*）\n```\n\n### 1.2 语义层 — 现有变量 🟢\n\n定义在 [globals.css:3-36](../app/globals.css#L3)，浅色 `:root`，深色 `html[data-theme=\"dark\"]`：\n\n| 变量                      | 浅色                               | 深色                            | 用途           |\n| ----------------------- | -------------------------------- | ----------------------------- | ------------ |\n| `--paper`               | `#f6f6f2`                        | `#121312`                     | 页面背景         |\n| `--surface`             | `#ffffff`                        | `#1a1b1a`                     | 卡片/浮层背景      |\n| `--ink`                 | `#171817`                        | `#f3f4ef`                     | 主文字色         |\n| `--muted`               | `#62645f`                        | `#a7aaa3`                     | 次要文字色        |\n| `--line`                | `#d9dbd4`                        | `#353734`                     | 边框/分割线       |\n| `--soft-line`           | `rgba(23,24,23,.1)`              | `rgba(243,244,239,.12)`       | 更淡的分割线       |\n| `--shadow`              | `0 28px 80px rgba(22,24,22,.08)` | `0 32px 90px rgba(0,0,0,.35)` | 卡片阴影         |\n| `--acid` / `--acid-ink` | `#dfff4f` / `#161814`            | *未覆盖，沿用浅色*                    | CTA / 选中态强调色 |\n| `--sky`                 | `#bde5ff`                        | *未覆盖*                         | 项目卡片强调色之一    |\n| `--clay`                | `#e86d52`                        | *未覆盖*                         | 项目卡片强调色之一    |\n\n这九组数值全部 🟢 可以直接改。`--acid` / `--sky` / `--clay` 目前深色模式下**没有单独定义**——如果不管它，深色模式会直接沿用浅色数值；如果想让暗色下也变化，需要在 `html[data-theme=\"dark\"]` 里补一行同名覆盖（结构上允许，不影响别处）。\n\n### 1.3 🟡 建议收编的硬编码色值\n\n这些颜色目前不经过任何变量，直接写在具体 class 里，**不会跟随深浅色切换**：\n\n| 位置 | 当前值 | 说明 |\n|---|---|---|\n| [globals.css:441](../app/globals.css#L441) `.accent-sky` | `#132431` | sky 卡片上的文字色，建议归成 `--sky-ink` |\n| [globals.css:442](../app/globals.css#L442) `.accent-clay` | `#1b1512` | clay 卡片上的文字色，建议归成 `--clay-ink` |\n| [globals.css:443](../app/globals.css#L443) `.accent-paper` | `#e7e5dc` / `#171817` | 一套独立的中性强调色，建议归成 `--paper-accent` / `--paper-accent-ink` |\n| [globals.css:565-566](../app/globals.css#L565) `.briefing-card` | `#171817` / `#f6f7f4` | 固定深底浅字，不随主题变 |\n| [globals.css:1265-1266](../app/globals.css#L1265) `.case-markdown pre` | `#171817` / `#f6f6f2` | 代码块底色，同上 |\n| [globals.css:1524](../app/globals.css#L1524) `.form-message` | `#b54432` | 错误提示色，建议归成 `--danger` |\n\n这几处的色值本身 🟢 你随便挑，但**是否要让它们随深浅色变化**是个结构决策：现在是\"固定色块\"效果（暗色模式下像个亮色孤岛），要改成跟随主题就要挪成语义变量并在两套 `:root` / `[data-theme=\"dark\"]` 里各写一份。\n\n### 1.4 🔴 组件层（已经是对的结构，别改引用关系）\n\n[globals.css:440-447](../app/globals.css#L440)：\n\n```css\n.accent-acid  { --accent-card: var(--acid);  --accent-card-ink: var(--acid-ink); }\n.accent-sky   { --accent-card: var(--sky);   --accent-card-ink: #132431; }  /* 硬编码，见上表 */\n.accent-clay  { --accent-card: var(--clay);  --accent-card-ink: #1b1512; }  /* 硬编码，见上表 */\n.accent-paper { --accent-card: #e7e5dc;      --accent-card-ink: #171817; } /* 硬编码，见上表 */\n\n.project-card {\n  color: var(--accent-card-ink);\n  background: var(--accent-card);\n}\n```\n\n这个\"卡片读 `--accent-card` / `--accent-card-ink`，具体强调色由 `.accent-*` class 决定\"的模式是对的，保留即可。\n\n---\n\n## 2. 排版\n\n### 2.1 字体族 🔴\n\n[layout.tsx:6-12](../app/layout.tsx#L6) 用 `next/font` 加载，globals.css 里引用：\n\n- `var(--font-geist-sans)` — 正文默认（[globals.css:85](../app/globals.css#L85)）\n- `var(--font-geist-mono)` — 标签 / meta / 代码，全站高频复用\n- `Georgia, \"Songti SC\", serif` — [globals.css:903](../app/globals.css#L903)，**只用了一次**，没有变量名。如果这是故意的排版点缀就保留；如果想统一管理，建议包一个 `--font-serif` 变量。\n\n字体族本身是 🔴（改动影响面广，涉及重新加载字体文件），但**具体选用哪个字体**（比如换掉 Geist）当然是 🟢 你随时可以换。\n\n### 2.2 字号 token — 现有 🟢\n\n[globals.css:17-24](../app/globals.css#L17)：\n\n| Token | 值 |\n|---|---|\n| `--type-display-xl` | `clamp(3.375rem, 7.2vw, 6rem)` |\n| `--type-display-lg` | `clamp(2.75rem, 5.6vw, 4.75rem)` |\n| `--type-heading-lg` | `clamp(2.125rem, 4.2vw, 3.625rem)` |\n| `--type-heading-md` | `clamp(1.75rem, 3vw, 2.625rem)` |\n| `--type-body-lg` | `clamp(1.0625rem, 1.45vw, 1.25rem)` |\n| `--type-body` | `1.0625rem` |\n| `--type-label` | `0.6875rem` |\n| `--type-meta` | `0.75rem` |\n\n这 8 个值全部 🟢，随便调，改了全站同步生效。\n\n### 2.3 🟡 建议收编的散写字号\n\n全站还有 `11px 12px 13px 14px 15px 16px 18px 20px 22px 28px 42px` 及 `1rem/2rem/1.05em/.82em/.6em` 直接写在各个选择器里（分布在 [globals.css:241](../app/globals.css#L241)、[:524](../app/globals.css#L524)、[:1020](../app/globals.css#L1020)、[:1045](../app/globals.css#L1045) 等几十处）。这些基本卡在 `--type-meta`(12px) 和 `--type-body`(17px) 之间的空当。数值本身 🟢 随便改，但目前每处独立设置，改一个不会影响其他——如果想统一收编成 `--type-sm` / `--type-xs` 之类的新档位，需要逐处替换引用，算 🟡。\n\n### 2.4 🟡 字重（font-weight）— 完全没 token\n\n裸数字 `420 / 600 / 650 / 700` 散落全文件，`650` 最高频。数值 🟢 随便调，但没有变量名，想统一改某一档字重必须全文搜索替换。\n\n### 2.5 letter-spacing — 一半有 token 一半没\n\n- `--tracking-display: -0.035em`（🟢，[globals.css:25](../app/globals.css#L25)）覆盖所有大标题\n- `0.08em / 0.04em / 0.02em / -0.02em / 0.005em` 是散写的硬编码（🟡），主要用在 mono 小字上，重复度高，适合收成 1-2 个新 token（比如 `--tracking-label`）\n\n### 2.6 🟡 line-height — 完全没 token 化\n\n全站几乎每个选择器单独写一个行高值（`.92` 到 `1.75` 之间近 20 个不同数值），没有任何复用。数值本身 🟢，但因为没有归档，很难判断哪些行高其实该是同一档、哪些是故意的例外。\n\n---\n\n## 3. 如果要动手，建议的顺序\n\n1. 先决定 `--acid` / `--sky` / `--clay` 深色模式下要不要变（结构已支持，缺的是数值）\n2. 把 2.3 表里的硬编码色值升级成语义变量（结构改动，一次性做完）\n3. 字号中间档（11-22px）收编进 2-3 个新 `--type-*` token\n4. 字重收编成 2-3 个 `--weight-*` token（如 `--weight-regular: 420` / `--weight-medium: 650` / `--weight-bold: 700`）\n5. line-height 最后处理，因为数量最多、复用逻辑最不明显，需要先看有没有规律",
+      "bodyEn": "# Design System 现状梳理\n\n记录当前 [app/globals.css](../app/globals.css) 里颜色和排版 token 的结构，用于后续深浅色配色和排版收编。\n\n标记说明：\n- 🟢 **可自由替换** — 只是数值，改了不影响结构，随便调\n- 🟡 **建议收编** — 目前是散写的硬编码值，还没进 token 体系，迁移时需要决定归到哪一档\n- 🔴 **结构性，别动** — 变量名 / 引用关系，改了要同步改引用它的地方\n\n---\n\n## 1. 颜色\n\n### 1.1 三层结构\n\n```\nPrimitive（原子色值，无语义）\n   ↓ 被引用\nSemantic（语义 token，随 data-theme 切换）\n   ↓ 被引用\nComponent（组件专用 token，如 .accent-*）\n```\n\n### 1.2 语义层 — 现有变量 🟢\n\n定义在 [globals.css:3-36](../app/globals.css#L3)，浅色 `:root`，深色 `html[data-theme=\"dark\"]`：\n\n| 变量                      | 浅色                               | 深色                            | 用途           |\n| ----------------------- | -------------------------------- | ----------------------------- | ------------ |\n| `--paper`               | `#f6f6f2`                        | `#121312`                     | 页面背景         |\n| `--surface`             | `#ffffff`                        | `#1a1b1a`                     | 卡片/浮层背景      |\n| `--ink`                 | `#171817`                        | `#f3f4ef`                     | 主文字色         |\n| `--muted`               | `#62645f`                        | `#a7aaa3`                     | 次要文字色        |\n| `--line`                | `#d9dbd4`                        | `#353734`                     | 边框/分割线       |\n| `--soft-line`           | `rgba(23,24,23,.1)`              | `rgba(243,244,239,.12)`       | 更淡的分割线       |\n| `--shadow`              | `0 28px 80px rgba(22,24,22,.08)` | `0 32px 90px rgba(0,0,0,.35)` | 卡片阴影         |\n| `--acid` / `--acid-ink` | `#dfff4f` / `#161814`            | *未覆盖，沿用浅色*                    | CTA / 选中态强调色 |\n| `--sky`                 | `#bde5ff`                        | *未覆盖*                         | 项目卡片强调色之一    |\n| `--clay`                | `#e86d52`                        | *未覆盖*                         | 项目卡片强调色之一    |\n\n这九组数值全部 🟢 可以直接改。`--acid` / `--sky` / `--clay` 目前深色模式下**没有单独定义**——如果不管它，深色模式会直接沿用浅色数值；如果想让暗色下也变化，需要在 `html[data-theme=\"dark\"]` 里补一行同名覆盖（结构上允许，不影响别处）。\n\n### 1.3 🟡 建议收编的硬编码色值\n\n这些颜色目前不经过任何变量，直接写在具体 class 里，**不会跟随深浅色切换**：\n\n| 位置 | 当前值 | 说明 |\n|---|---|---|\n| [globals.css:441](../app/globals.css#L441) `.accent-sky` | `#132431` | sky 卡片上的文字色，建议归成 `--sky-ink` |\n| [globals.css:442](../app/globals.css#L442) `.accent-clay` | `#1b1512` | clay 卡片上的文字色，建议归成 `--clay-ink` |\n| [globals.css:443](../app/globals.css#L443) `.accent-paper` | `#e7e5dc` / `#171817` | 一套独立的中性强调色，建议归成 `--paper-accent` / `--paper-accent-ink` |\n| [globals.css:565-566](../app/globals.css#L565) `.briefing-card` | `#171817` / `#f6f7f4` | 固定深底浅字，不随主题变 |\n| [globals.css:1265-1266](../app/globals.css#L1265) `.case-markdown pre` | `#171817` / `#f6f6f2` | 代码块底色，同上 |\n| [globals.css:1524](../app/globals.css#L1524) `.form-message` | `#b54432` | 错误提示色，建议归成 `--danger` |\n\n这几处的色值本身 🟢 你随便挑，但**是否要让它们随深浅色变化**是个结构决策：现在是\"固定色块\"效果（暗色模式下像个亮色孤岛），要改成跟随主题就要挪成语义变量并在两套 `:root` / `[data-theme=\"dark\"]` 里各写一份。\n\n### 1.4 🔴 组件层（已经是对的结构，别改引用关系）\n\n[globals.css:440-447](../app/globals.css#L440)：\n\n```css\n.accent-acid  { --accent-card: var(--acid);  --accent-card-ink: var(--acid-ink); }\n.accent-sky   { --accent-card: var(--sky);   --accent-card-ink: #132431; }  /* 硬编码，见上表 */\n.accent-clay  { --accent-card: var(--clay);  --accent-card-ink: #1b1512; }  /* 硬编码，见上表 */\n.accent-paper { --accent-card: #e7e5dc;      --accent-card-ink: #171817; } /* 硬编码，见上表 */\n\n.project-card {\n  color: var(--accent-card-ink);\n  background: var(--accent-card);\n}\n```\n\n这个\"卡片读 `--accent-card` / `--accent-card-ink`，具体强调色由 `.accent-*` class 决定\"的模式是对的，保留即可。\n\n---\n\n## 2. 排版\n\n### 2.1 字体族 🔴\n\n[layout.tsx:6-12](../app/layout.tsx#L6) 用 `next/font` 加载，globals.css 里引用：\n\n- `var(--font-geist-sans)` — 正文默认（[globals.css:85](../app/globals.css#L85)）\n- `var(--font-geist-mono)` — 标签 / meta / 代码，全站高频复用\n- `Georgia, \"Songti SC\", serif` — [globals.css:903](../app/globals.css#L903)，**只用了一次**，没有变量名。如果这是故意的排版点缀就保留；如果想统一管理，建议包一个 `--font-serif` 变量。\n\n字体族本身是 🔴（改动影响面广，涉及重新加载字体文件），但**具体选用哪个字体**（比如换掉 Geist）当然是 🟢 你随时可以换。\n\n### 2.2 字号 token — 现有 🟢\n\n[globals.css:17-24](../app/globals.css#L17)：\n\n| Token | 值 |\n|---|---|\n| `--type-display-xl` | `clamp(3.375rem, 7.2vw, 6rem)` |\n| `--type-display-lg` | `clamp(2.75rem, 5.6vw, 4.75rem)` |\n| `--type-heading-lg` | `clamp(2.125rem, 4.2vw, 3.625rem)` |\n| `--type-heading-md` | `clamp(1.75rem, 3vw, 2.625rem)` |\n| `--type-body-lg` | `clamp(1.0625rem, 1.45vw, 1.25rem)` |\n| `--type-body` | `1.0625rem` |\n| `--type-label` | `0.6875rem` |\n| `--type-meta` | `0.75rem` |\n\n这 8 个值全部 🟢，随便调，改了全站同步生效。\n\n### 2.3 🟡 建议收编的散写字号\n\n全站还有 `11px 12px 13px 14px 15px 16px 18px 20px 22px 28px 42px` 及 `1rem/2rem/1.05em/.82em/.6em` 直接写在各个选择器里（分布在 [globals.css:241](../app/globals.css#L241)、[:524](../app/globals.css#L524)、[:1020](../app/globals.css#L1020)、[:1045](../app/globals.css#L1045) 等几十处）。这些基本卡在 `--type-meta`(12px) 和 `--type-body`(17px) 之间的空当。数值本身 🟢 随便改，但目前每处独立设置，改一个不会影响其他——如果想统一收编成 `--type-sm` / `--type-xs` 之类的新档位，需要逐处替换引用，算 🟡。\n\n### 2.4 🟡 字重（font-weight）— 完全没 token\n\n裸数字 `420 / 600 / 650 / 700` 散落全文件，`650` 最高频。数值 🟢 随便调，但没有变量名，想统一改某一档字重必须全文搜索替换。\n\n### 2.5 letter-spacing — 一半有 token 一半没\n\n- `--tracking-display: -0.035em`（🟢，[globals.css:25](../app/globals.css#L25)）覆盖所有大标题\n- `0.08em / 0.04em / 0.02em / -0.02em / 0.005em` 是散写的硬编码（🟡），主要用在 mono 小字上，重复度高，适合收成 1-2 个新 token（比如 `--tracking-label`）\n\n### 2.6 🟡 line-height — 完全没 token 化\n\n全站几乎每个选择器单独写一个行高值（`.92` 到 `1.75` 之间近 20 个不同数值），没有任何复用。数值本身 🟢，但因为没有归档，很难判断哪些行高其实该是同一档、哪些是故意的例外。\n\n---\n\n## 3. 如果要动手，建议的顺序\n\n1. 先决定 `--acid` / `--sky` / `--clay` 深色模式下要不要变（结构已支持，缺的是数值）\n2. 把 2.3 表里的硬编码色值升级成语义变量（结构改动，一次性做完）\n3. 字号中间档（11-22px）收编进 2-3 个新 `--type-*` token\n4. 字重收编成 2-3 个 `--weight-*` token（如 `--weight-regular: 420` / `--weight-medium: 650` / `--weight-bold: 700`）\n5. line-height 最后处理，因为数量最多、复用逻辑最不明显，需要先看有没有规律",
+      "bodyZh": "# Design System 现状梳理\n\n记录当前 [app/globals.css](../app/globals.css) 里颜色和排版 token 的结构，用于后续深浅色配色和排版收编。\n\n标记说明：\n- 🟢 **可自由替换** — 只是数值，改了不影响结构，随便调\n- 🟡 **建议收编** — 目前是散写的硬编码值，还没进 token 体系，迁移时需要决定归到哪一档\n- 🔴 **结构性，别动** — 变量名 / 引用关系，改了要同步改引用它的地方\n\n---\n\n## 1. 颜色\n\n### 1.1 三层结构\n\n```\nPrimitive（原子色值，无语义）\n   ↓ 被引用\nSemantic（语义 token，随 data-theme 切换）\n   ↓ 被引用\nComponent（组件专用 token，如 .accent-*）\n```\n\n### 1.2 语义层 — 现有变量 🟢\n\n定义在 [globals.css:3-36](../app/globals.css#L3)，浅色 `:root`，深色 `html[data-theme=\"dark\"]`：\n\n| 变量                      | 浅色                               | 深色                            | 用途           |\n| ----------------------- | -------------------------------- | ----------------------------- | ------------ |\n| `--paper`               | `#f6f6f2`                        | `#121312`                     | 页面背景         |\n| `--surface`             | `#ffffff`                        | `#1a1b1a`                     | 卡片/浮层背景      |\n| `--ink`                 | `#171817`                        | `#f3f4ef`                     | 主文字色         |\n| `--muted`               | `#62645f`                        | `#a7aaa3`                     | 次要文字色        |\n| `--line`                | `#d9dbd4`                        | `#353734`                     | 边框/分割线       |\n| `--soft-line`           | `rgba(23,24,23,.1)`              | `rgba(243,244,239,.12)`       | 更淡的分割线       |\n| `--shadow`              | `0 28px 80px rgba(22,24,22,.08)` | `0 32px 90px rgba(0,0,0,.35)` | 卡片阴影         |\n| `--acid` / `--acid-ink` | `#dfff4f` / `#161814`            | *未覆盖，沿用浅色*                    | CTA / 选中态强调色 |\n| `--sky`                 | `#bde5ff`                        | *未覆盖*                         | 项目卡片强调色之一    |\n| `--clay`                | `#e86d52`                        | *未覆盖*                         | 项目卡片强调色之一    |\n\n这九组数值全部 🟢 可以直接改。`--acid` / `--sky` / `--clay` 目前深色模式下**没有单独定义**——如果不管它，深色模式会直接沿用浅色数值；如果想让暗色下也变化，需要在 `html[data-theme=\"dark\"]` 里补一行同名覆盖（结构上允许，不影响别处）。\n\n### 1.3 🟡 建议收编的硬编码色值\n\n这些颜色目前不经过任何变量，直接写在具体 class 里，**不会跟随深浅色切换**：\n\n| 位置 | 当前值 | 说明 |\n|---|---|---|\n| [globals.css:441](../app/globals.css#L441) `.accent-sky` | `#132431` | sky 卡片上的文字色，建议归成 `--sky-ink` |\n| [globals.css:442](../app/globals.css#L442) `.accent-clay` | `#1b1512` | clay 卡片上的文字色，建议归成 `--clay-ink` |\n| [globals.css:443](../app/globals.css#L443) `.accent-paper` | `#e7e5dc` / `#171817` | 一套独立的中性强调色，建议归成 `--paper-accent` / `--paper-accent-ink` |\n| [globals.css:565-566](../app/globals.css#L565) `.briefing-card` | `#171817` / `#f6f7f4` | 固定深底浅字，不随主题变 |\n| [globals.css:1265-1266](../app/globals.css#L1265) `.case-markdown pre` | `#171817` / `#f6f6f2` | 代码块底色，同上 |\n| [globals.css:1524](../app/globals.css#L1524) `.form-message` | `#b54432` | 错误提示色，建议归成 `--danger` |\n\n这几处的色值本身 🟢 你随便挑，但**是否要让它们随深浅色变化**是个结构决策：现在是\"固定色块\"效果（暗色模式下像个亮色孤岛），要改成跟随主题就要挪成语义变量并在两套 `:root` / `[data-theme=\"dark\"]` 里各写一份。\n\n### 1.4 🔴 组件层（已经是对的结构，别改引用关系）\n\n[globals.css:440-447](../app/globals.css#L440)：\n\n```css\n.accent-acid  { --accent-card: var(--acid);  --accent-card-ink: var(--acid-ink); }\n.accent-sky   { --accent-card: var(--sky);   --accent-card-ink: #132431; }  /* 硬编码，见上表 */\n.accent-clay  { --accent-card: var(--clay);  --accent-card-ink: #1b1512; }  /* 硬编码，见上表 */\n.accent-paper { --accent-card: #e7e5dc;      --accent-card-ink: #171817; } /* 硬编码，见上表 */\n\n.project-card {\n  color: var(--accent-card-ink);\n  background: var(--accent-card);\n}\n```\n\n这个\"卡片读 `--accent-card` / `--accent-card-ink`，具体强调色由 `.accent-*` class 决定\"的模式是对的，保留即可。\n\n---\n\n## 2. 排版\n\n### 2.1 字体族 🔴\n\n[layout.tsx:6-12](../app/layout.tsx#L6) 用 `next/font` 加载，globals.css 里引用：\n\n- `var(--font-geist-sans)` — 正文默认（[globals.css:85](../app/globals.css#L85)）\n- `var(--font-geist-mono)` — 标签 / meta / 代码，全站高频复用\n- `Georgia, \"Songti SC\", serif` — [globals.css:903](../app/globals.css#L903)，**只用了一次**，没有变量名。如果这是故意的排版点缀就保留；如果想统一管理，建议包一个 `--font-serif` 变量。\n\n字体族本身是 🔴（改动影响面广，涉及重新加载字体文件），但**具体选用哪个字体**（比如换掉 Geist）当然是 🟢 你随时可以换。\n\n### 2.2 字号 token — 现有 🟢\n\n[globals.css:17-24](../app/globals.css#L17)：\n\n| Token | 值 |\n|---|---|\n| `--type-display-xl` | `clamp(3.375rem, 7.2vw, 6rem)` |\n| `--type-display-lg` | `clamp(2.75rem, 5.6vw, 4.75rem)` |\n| `--type-heading-lg` | `clamp(2.125rem, 4.2vw, 3.625rem)` |\n| `--type-heading-md` | `clamp(1.75rem, 3vw, 2.625rem)` |\n| `--type-body-lg` | `clamp(1.0625rem, 1.45vw, 1.25rem)` |\n| `--type-body` | `1.0625rem` |\n| `--type-label` | `0.6875rem` |\n| `--type-meta` | `0.75rem` |\n\n这 8 个值全部 🟢，随便调，改了全站同步生效。\n\n### 2.3 🟡 建议收编的散写字号\n\n全站还有 `11px 12px 13px 14px 15px 16px 18px 20px 22px 28px 42px` 及 `1rem/2rem/1.05em/.82em/.6em` 直接写在各个选择器里（分布在 [globals.css:241](../app/globals.css#L241)、[:524](../app/globals.css#L524)、[:1020](../app/globals.css#L1020)、[:1045](../app/globals.css#L1045) 等几十处）。这些基本卡在 `--type-meta`(12px) 和 `--type-body`(17px) 之间的空当。数值本身 🟢 随便改，但目前每处独立设置，改一个不会影响其他——如果想统一收编成 `--type-sm` / `--type-xs` 之类的新档位，需要逐处替换引用，算 🟡。\n\n### 2.4 🟡 字重（font-weight）— 完全没 token\n\n裸数字 `420 / 600 / 650 / 700` 散落全文件，`650` 最高频。数值 🟢 随便调，但没有变量名，想统一改某一档字重必须全文搜索替换。\n\n### 2.5 letter-spacing — 一半有 token 一半没\n\n- `--tracking-display: -0.035em`（🟢，[globals.css:25](../app/globals.css#L25)）覆盖所有大标题\n- `0.08em / 0.04em / 0.02em / -0.02em / 0.005em` 是散写的硬编码（🟡），主要用在 mono 小字上，重复度高，适合收成 1-2 个新 token（比如 `--tracking-label`）\n\n### 2.6 🟡 line-height — 完全没 token 化\n\n全站几乎每个选择器单独写一个行高值（`.92` 到 `1.75` 之间近 20 个不同数值），没有任何复用。数值本身 🟢，但因为没有归档，很难判断哪些行高其实该是同一档、哪些是故意的例外。\n\n---\n\n## 3. 如果要动手，建议的顺序\n\n1. 先决定 `--acid` / `--sky` / `--clay` 深色模式下要不要变（结构已支持，缺的是数值）\n2. 把 2.3 表里的硬编码色值升级成语义变量（结构改动，一次性做完）\n3. 字号中间档（11-22px）收编进 2-3 个新 `--type-*` token\n4. 字重收编成 2-3 个 `--weight-*` token（如 `--weight-regular: 420` / `--weight-medium: 650` / `--weight-bold: 700`）\n5. line-height 最后处理，因为数量最多、复用逻辑最不明显，需要先看有没有规律",
       "headings": [
         {
           "depth": 1,
-          "label": "global",
-          "id": "global"
+          "label": "Design System 现状梳理",
+          "id": "design-system-现状梳理"
         },
         {
-          "depth": 1,
-          "label": "landingpage",
-          "id": "landingpage"
+          "depth": 2,
+          "label": "1. 颜色",
+          "id": "1-颜色"
         },
         {
-          "depth": 1,
-          "label": "project",
-          "id": "project"
+          "depth": 2,
+          "label": "2. 排版",
+          "id": "2-排版"
         },
         {
-          "depth": 1,
-          "label": "Ref-playground",
-          "id": "ref-playground"
+          "depth": 2,
+          "label": "3. 如果要动手，建议的顺序",
+          "id": "3-如果要动手-建议的顺序"
         }
       ],
       "headingsEn": [
         {
           "depth": 1,
-          "label": "global",
-          "id": "global"
+          "label": "Design System 现状梳理",
+          "id": "design-system-现状梳理"
         },
         {
-          "depth": 1,
-          "label": "landingpage",
-          "id": "landingpage"
+          "depth": 2,
+          "label": "1. 颜色",
+          "id": "1-颜色"
         },
         {
-          "depth": 1,
-          "label": "project",
-          "id": "project"
+          "depth": 2,
+          "label": "2. 排版",
+          "id": "2-排版"
         },
         {
-          "depth": 1,
-          "label": "Ref-playground",
-          "id": "ref-playground"
+          "depth": 2,
+          "label": "3. 如果要动手，建议的顺序",
+          "id": "3-如果要动手-建议的顺序"
         }
       ],
       "headingsZh": [
         {
           "depth": 1,
-          "label": "global",
-          "id": "global"
+          "label": "Design System 现状梳理",
+          "id": "design-system-现状梳理"
         },
         {
-          "depth": 1,
-          "label": "landingpage",
-          "id": "landingpage"
+          "depth": 2,
+          "label": "1. 颜色",
+          "id": "1-颜色"
         },
         {
-          "depth": 1,
-          "label": "project",
-          "id": "project"
+          "depth": 2,
+          "label": "2. 排版",
+          "id": "2-排版"
         },
         {
-          "depth": 1,
-          "label": "Ref-playground",
-          "id": "ref-playground"
+          "depth": 2,
+          "label": "3. 如果要动手，建议的顺序",
+          "id": "3-如果要动手-建议的顺序"
         }
       ]
     },

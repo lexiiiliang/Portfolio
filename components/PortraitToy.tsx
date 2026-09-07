@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { Localized } from "./Localized";
 
 const SPRITE_COLUMNS = 11;
 const SPRITE_ROWS = 10;
@@ -188,36 +189,42 @@ export function PortraitToy() {
   }, []);
 
   return (
-    <button
-      ref={portraitRef}
-      type="button"
-      className="portrait-tracker"
-      aria-label="Interactive portrait. Move the pointer around the page to change the gaze, then click to wink."
-    >
-      <span className="portrait-tracker-media" aria-hidden="true">
-        {/* The single sprite sheet is intentionally rendered as a movable image layer. */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          ref={spriteRef}
-          className="cursor-sprite"
-          src="/media/cursor-tracker/cursor-sprite.webp"
-          alt=""
-          width="2816"
-          height="2560"
-          fetchPriority="high"
-          draggable={false}
-          style={{ transform: "translate3d(0%, -30%, 0)" }}
-        />
-        <video
-          ref={winkRef}
-          className="portrait-wink-video"
-          muted
-          playsInline
-          preload="auto"
-        >
-          <source src="/media/cursor-tracker/click-wink.mp4" type="video/mp4" />
-        </video>
+    <div className="portrait-tracker-wrap">
+      <button
+        ref={portraitRef}
+        type="button"
+        className="portrait-tracker"
+        aria-label="Interactive portrait. Move the pointer around the page to change the gaze, then click to wink."
+      >
+        <span className="portrait-tracker-media" aria-hidden="true">
+          {/* The single sprite sheet is intentionally rendered as a movable image layer. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            ref={spriteRef}
+            className="cursor-sprite"
+            src="/media/cursor-tracker/cursor-sprite.webp"
+            alt=""
+            width="2816"
+            height="2560"
+            fetchPriority="high"
+            draggable={false}
+            style={{ transform: "translate3d(0%, -30%, 0)" }}
+          />
+          <video
+            ref={winkRef}
+            className="portrait-wink-video"
+            muted
+            playsInline
+            preload="auto"
+          >
+            <source src="/media/cursor-tracker/click-wink.mp4" type="video/mp4" />
+          </video>
+        </span>
+      </button>
+      <span className="portrait-greeting-hint" aria-hidden="true">
+        <span>👋</span>
+        <Localized en="Say hi!" zh="打个招呼!" />
       </span>
-    </button>
+    </div>
   );
 }

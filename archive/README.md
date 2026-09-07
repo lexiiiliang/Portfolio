@@ -30,6 +30,16 @@ Archive entries are created only after an explicit archival request. They are no
 - Preserved behavior: the original wordmark navigation, statement-led hero, horizontal project cards with an explicit TL;DR close control, and the former two-column About and Contact sections
 - Archive reason: the complete preview state immediately before the landing page, navigation, project-card, Contact, and About redesign became the new baseline
 
+## From Query to Quest — Project Framework v1
+
+- Branch: `archive/from-query-to-quest-framework`
+- Tag: `archive/from-query-to-quest-framework-v1`
+- Source commit: `8bf2e16`
+- Format: runnable protected Portfolio project page
+- Preserved behavior: bilingual six-section case-study framework with the original project ToC, Vimeo presentation, explicit pending-design Hero, local UID25 source materials, and next-project footer link
+- Source basis: the UID25 Project Gallery description and its fourteen project images
+- Archive reason: the first independently runnable framework that translates the public project introduction and materials into the Portfolio case-study structure
+
 ## Previous Preview Baseline — Before Cursor and Contact Polish
 
 - Branch: `archive/preview-before-cursor-contact-polish`

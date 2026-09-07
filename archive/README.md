@@ -20,3 +20,12 @@ Archive entries are created only after an explicit archival request. They are no
 - Source commit: `307ffe1`
 - Format: runnable Portfolio snapshot
 - Preserved behavior: a fixed-height project card with a paper drawer that rises over the project visual to reveal its TL;DR
+
+## Previous Preview Baseline — Before Landing Refresh
+
+- Branch: `archive/preview-before-landing-refresh`
+- Tag: `archive/preview-before-landing-refresh-v1`
+- Source commit: `9779d9e`
+- Format: runnable Portfolio preview baseline
+- Preserved behavior: the original wordmark navigation, statement-led hero, horizontal project cards with an explicit TL;DR close control, and the former two-column About and Contact sections
+- Archive reason: the complete preview state immediately before the landing page, navigation, project-card, Contact, and About redesign became the new baseline

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { headers } from "next/headers";
 import { AgentationDevtools } from "@/components/AgentationDevtools";
+import { CustomCursor } from "@/components/CustomCursor";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -88,6 +89,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <a className="skip-link" href="#top">Skip to content</a>
         {children}
+        <CustomCursor />
         <AgentationDevtools />
       </body>
     </html>

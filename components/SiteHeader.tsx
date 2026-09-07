@@ -1,7 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type MouseEvent as ReactMouseEvent,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 import { Localized } from "./Localized";
 import { SiteControls } from "./SiteControls";
 
@@ -37,6 +44,42 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
     if (event.pointerType === "mouse") setIsMenuOpen(false);
   };
 
+  const navigateToSection = (sectionId: string) => {
+    const hash = `#${sectionId}`;
+
+    if (window.location.pathname !== "/") {
+      window.location.assign(`/${hash}`);
+      return;
+    }
+
+    window.location.hash = sectionId;
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start",
+    });
+  };
+
+  const handleSectionPointerDown = (
+    event: ReactPointerEvent<HTMLAnchorElement>,
+    sectionId: string,
+  ) => {
+    if (event.pointerType !== "mouse" || !event.isPrimary || event.button !== 0) return;
+    event.preventDefault();
+    navigateToSection(sectionId);
+    setIsMenuOpen(true);
+  };
+
+  const handleSectionNavigation = (
+    event: ReactMouseEvent<HTMLAnchorElement>,
+    sectionId: string,
+  ) => {
+    event.preventDefault();
+    navigateToSection(sectionId);
+    const hasHoveringPointer = event.detail > 0
+      && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    setIsMenuOpen(hasHoveringPointer);
+  };
+
   return (
     <header className={`site-header ${compact ? "is-compact" : ""}`}>
       <div className="header-inner">
@@ -64,10 +107,7 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
             }}
           >
             <span className="site-toc-icon" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-              <span />
+              <Image src="/media/nav-fold.svg" alt="" width={18} height={38} priority />
             </span>
           </button>
           <nav
@@ -76,16 +116,36 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
             aria-label="Table of contents"
             aria-hidden={!isMenuOpen}
           >
-            <Link href="/#top" tabIndex={isMenuOpen ? 0 : -1} onClick={() => setIsMenuOpen(false)}>
+            <Link
+              href="/#top"
+              tabIndex={isMenuOpen ? 0 : -1}
+              onPointerDownCapture={(event) => handleSectionPointerDown(event, "top")}
+              onClick={(event) => handleSectionNavigation(event, "top")}
+            >
               <Localized en="Home" zh="首页" />
             </Link>
-            <Link href="/#about" tabIndex={isMenuOpen ? 0 : -1} onClick={() => setIsMenuOpen(false)}>
+            <Link
+              href="/#about"
+              tabIndex={isMenuOpen ? 0 : -1}
+              onPointerDownCapture={(event) => handleSectionPointerDown(event, "about")}
+              onClick={(event) => handleSectionNavigation(event, "about")}
+            >
               <Localized en="About" zh="关于" />
             </Link>
-            <Link href="/#work" tabIndex={isMenuOpen ? 0 : -1} onClick={() => setIsMenuOpen(false)}>
+            <Link
+              href="/#work"
+              tabIndex={isMenuOpen ? 0 : -1}
+              onPointerDownCapture={(event) => handleSectionPointerDown(event, "work")}
+              onClick={(event) => handleSectionNavigation(event, "work")}
+            >
               <Localized en="Work" zh="项目" />
             </Link>
-            <Link href="/#contact" tabIndex={isMenuOpen ? 0 : -1} onClick={() => setIsMenuOpen(false)}>
+            <Link
+              href="/#contact"
+              tabIndex={isMenuOpen ? 0 : -1}
+              onPointerDownCapture={(event) => handleSectionPointerDown(event, "contact")}
+              onClick={(event) => handleSectionNavigation(event, "contact")}
+            >
               <Localized en="Contact" zh="联系" />
             </Link>
           </nav>

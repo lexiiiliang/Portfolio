@@ -1,5 +1,9 @@
 export const ACCESS_COOKIE = "lexi_portfolio_access";
 
+// Experiment switch: keep the complete password flow available while this
+// preview baseline exposes protected case studies directly.
+export const PASSWORD_PROTECTION_ENABLED = false;
+
 export async function accessToken(password: string) {
   const bytes = new TextEncoder().encode(`lexi-portfolio:v1:${password}`);
   const digest = await crypto.subtle.digest("SHA-256", bytes);

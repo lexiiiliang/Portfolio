@@ -3,7 +3,6 @@ import { Localized } from "@/components/Localized";
 import { ProjectToc } from "@/components/ProjectToc";
 import type { ProjectHeading } from "@/lib/portfolio";
 
-const SOURCE_URL = "https://www.umu.se/en/umea-institute-of-design/uid25/uid25-project-gallery/show-page/from-query-to-quest_2085906/";
 const MEDIA_ROOT = "/media/from-query-to-quest-uid25";
 
 const headingsEn: ProjectHeading[] = [
@@ -12,7 +11,6 @@ const headingsEn: ProjectHeading[] = [
   { depth: 1, label: "03 · Design principles", id: "design-principles" },
   { depth: 1, label: "04 · Conceptual framework", id: "conceptual-framework" },
   { depth: 1, label: "05 · Scenario prototype", id: "scenario-prototype" },
-  { depth: 1, label: "06 · Contribution & limits", id: "contribution-limits" },
 ];
 
 const headingsZh: ProjectHeading[] = [
@@ -21,7 +19,6 @@ const headingsZh: ProjectHeading[] = [
   { depth: 1, label: "03 · 设计原则", id: "design-principles" },
   { depth: 1, label: "04 · 概念框架", id: "conceptual-framework" },
   { depth: 1, label: "05 · 情境原型", id: "scenario-prototype" },
-  { depth: 1, label: "06 · 贡献与边界", id: "contribution-limits" },
 ];
 
 const scenarioFrames = [
@@ -320,41 +317,6 @@ export function FromQueryToQuestCase() {
           </div>
         </section>
 
-        <section className="fq-section fq-contribution-section">
-          <SectionAnchor id="contribution-limits" />
-          <h2><Localized en="Transferable knowledge, not a finished product claim." zh="这是一组可迁移的知识，而不是一个已完成的产品承诺。" /></h2>
-          <p className="fq-section-lede">
-            <Localized
-              en="The outcome is a set of design principles and a conceptual framework. It proposes another way to think about human–AI interaction as the technology evolves, while remaining explicit that the work did not culminate in a functional product or long-term impact study."
-              zh="项目产出是一组设计原则与一个概念框架。它为持续变化的人机交互提出另一种思考方式，同时明确：这项工作没有形成可运行产品，也没有长期影响数据。"
-            />
-          </p>
-
-          <div className="fq-contribution-grid">
-            <div>
-              <span><Localized en="What it contributes" zh="项目贡献" /></span>
-              <ul>
-                <li><Localized en="A critique of linear, output-first prompting" zh="对线性、结果优先提示模式的批判" /></li>
-                <li><Localized en="Three interaction principles" zh="三项交互设计原则" /></li>
-                <li><Localized en="A three-phase cyclical framework" zh="一个三阶段循环框架" /></li>
-                <li><Localized en="Scenario prototypes for discussion" zh="用于讨论的情境原型" /></li>
-              </ul>
-            </div>
-            <div>
-              <span><Localized en="What it does not claim" zh="不作出的主张" /></span>
-              <ul>
-                <li><Localized en="A launched or validated product" zh="已经上线或经过验证的产品" /></li>
-                <li><Localized en="Measured long-term behavior change" zh="经过衡量的长期行为改变" /></li>
-                <li><Localized en="A replacement for direct task execution" zh="取代直接执行任务的交互模式" /></li>
-              </ul>
-            </div>
-          </div>
-
-          <a className="fq-source-link" href={SOURCE_URL} target="_blank" rel="noreferrer">
-            <span><Localized en="Primary source" zh="主要资料来源" /></span>
-            <strong><Localized en="UID25 Project Gallery" zh="UID25 项目展页" /> ↗</strong>
-          </a>
-        </section>
       </article>
     </div>
   );

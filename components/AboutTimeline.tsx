@@ -80,12 +80,22 @@ export function AboutTimeline() {
   return (
     <div className="about-timeline-wrap">
       <ol className="about-timeline" aria-label="Education and work timeline">
-        {timelineItems.map((item) => (
+        {timelineItems.map((item, index) => (
           <li
             key={`${item.organizationEn}-${item.dates}`}
             className="about-timeline-item"
             data-kind={item.kind}
           >
+            {index === 0 ? (
+              <h3 className="about-timeline-kind-label">
+                <Localized en="Education" zh="教育背景" />
+              </h3>
+            ) : null}
+            {index === 2 ? (
+              <h3 className="about-timeline-kind-label">
+                <Localized en="Experience" zh="实践经历" />
+              </h3>
+            ) : null}
             <article className="about-timeline-card">
               <span className="about-timeline-identity" aria-hidden="true">
                 {item.logo ? (
@@ -94,8 +104,8 @@ export function AboutTimeline() {
                     data-logo={item.logoKey}
                     src={item.logo}
                     alt=""
-                    width={44}
-                    height={44}
+                    width={50}
+                    height={50}
                     unoptimized
                   />
                 ) : (

@@ -15,7 +15,7 @@ type ContactMeta = {
 
 const DEFAULT_PROMPT = {
   en: "Working on something interesting? Say hello.",
-  zh: "很高兴在这里遇见你",
+  zh: "很高兴你能看到这里～",
 };
 
 const CONTACT_META: Record<ContactKey, ContactMeta> = {

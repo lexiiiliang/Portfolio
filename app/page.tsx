@@ -20,7 +20,9 @@ export default function Home() {
             <div className="hero-intro">
               <h1 id="hero-title" className="hero-title">
                 <GreetingCarousel />
-                <span className="hero-title-fixed">This is</span>
+                <span className="hero-title-fixed">
+                  <Localized en="This is" zh="这里是" />
+                </span>
                 <span className="hero-signature">Lexi</span>
               </h1>
               <p className="hero-bio">

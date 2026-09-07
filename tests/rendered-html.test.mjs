@@ -23,7 +23,7 @@ test("server-renders Lexi's portfolio landing page", async () => {
   assert.match(html, /This is/);
   assert.match(html, /I’m an AI product designer with 2 years of experience/);
   assert.match(html, /我是一位拥有 2 年经验的 AI 产品设计师/);
-  assert.match(html, /很高兴在这里遇见你/);
+  assert.match(html, /很高兴你能看到这里～/);
   assert.match(html, /contact-morph/);
   assert.match(html, /CV link coming soon/);
   assert.match(html, /\/media\/cursor-tracker\/cursor-sprite\.webp/);

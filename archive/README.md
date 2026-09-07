@@ -29,3 +29,12 @@ Archive entries are created only after an explicit archival request. They are no
 - Format: runnable Portfolio preview baseline
 - Preserved behavior: the original wordmark navigation, statement-led hero, horizontal project cards with an explicit TL;DR close control, and the former two-column About and Contact sections
 - Archive reason: the complete preview state immediately before the landing page, navigation, project-card, Contact, and About redesign became the new baseline
+
+## Previous Preview Baseline — Before Cursor and Contact Polish
+
+- Branch: `archive/preview-before-cursor-contact-polish`
+- Tag: `archive/preview-before-cursor-contact-polish-v1`
+- Source commit: `dcca7dc`
+- Format: runnable Portfolio preview baseline
+- Preserved behavior: the first approved landing-refresh baseline, including its vertical table of contents, original cursor treatment, hero spacing, and pre-polish Contact interaction
+- Archive reason: the complete preview state immediately before the cursor, navigation, hero, Contact, and About refinements were integrated

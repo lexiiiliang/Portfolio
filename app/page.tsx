@@ -2,6 +2,7 @@ import { Localized } from "@/components/Localized";
 import { AboutTimeline } from "@/components/AboutTimeline";
 import { ContactMorph } from "@/components/ContactMorph";
 import { GreetingCarousel } from "@/components/GreetingCarousel";
+import { HomeScrollytelling } from "@/components/HomeScrollytelling";
 import { PortraitToy } from "@/components/PortraitToy";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -13,7 +14,7 @@ export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main id="top" className="home-page">
+      <HomeScrollytelling>
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-stage">
             <PortraitToy />
@@ -35,7 +36,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="work-section" id="work" aria-label="Selected work">
+        <section className="work-section" id="work" aria-label="Selected work" data-scroll-reveal>
           <div className="project-grid-scroll" role="region" aria-label="Selected projects" tabIndex={0}>
             <div className="project-grid">
               {projects.filter((project) => project.featured).map((project, index) => (
@@ -53,7 +54,7 @@ export default function Home() {
         <section className="contact-section" id="contact" aria-labelledby="contact-title">
           <ContactMorph contacts={site.contacts} />
         </section>
-      </main>
+      </HomeScrollytelling>
       <footer className="site-footer">
         <span>© 2026 Lexi Liang</span>
       </footer>

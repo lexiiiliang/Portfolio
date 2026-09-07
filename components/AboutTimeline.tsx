@@ -85,6 +85,7 @@ export function AboutTimeline() {
             key={`${item.organizationEn}-${item.dates}`}
             className="about-timeline-item"
             data-kind={item.kind}
+            data-scroll-reveal
           >
             {index === 0 ? (
               <h3 className="about-timeline-kind-label">

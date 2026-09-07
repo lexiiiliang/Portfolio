@@ -14,25 +14,25 @@ type ContactMeta = {
 };
 
 const DEFAULT_PROMPT = {
-  en: "Working on something interesting? Say hello.",
+  en: "Glad you made it this far.",
   zh: "很高兴你能看到这里～",
 };
 
 const CONTACT_META: Record<ContactKey, ContactMeta> = {
   email: {
-    promptEn: "You’re always welcome to email me.",
+    promptEn: "Feel free to reach out!",
     promptZh: "欢迎通过邮件与我联系",
     labelEn: "Email me",
     labelZh: "发邮件",
   },
   github: {
-    promptEn: "Take a look around my code.",
+    promptEn: "Take a look around my repo.",
     promptZh: "逛一逛我的代码仓库",
     labelEn: "GitHub",
     labelZh: "GitHub",
   },
   linkedin: {
-    promptEn: "Let’s connect on LinkedIn.",
+    promptEn: "Let's connect!",
     promptZh: "要不再加个领英好友吧",
     labelEn: "LinkedIn",
     labelZh: "LinkedIn",
@@ -255,7 +255,7 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
 
   return (
     <div className="contact-morph">
-      <h2 id="contact-title" className="contact-morph-prompt">
+      <h2 id="contact-title" className="contact-morph-prompt" data-scroll-reveal="contact-prompt">
         <span className="contact-typewriter-line" aria-hidden="true">
           <span className="copy-en"><TypewriterText text={activePrompt.en} /></span>
           <span className="copy-zh"><TypewriterText text={activePrompt.zh} /></span>
@@ -268,6 +268,7 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
       <ul
         className="contact-morph-list"
         aria-label="Contact links"
+        data-scroll-reveal="contact-icons"
         onPointerLeave={handlePointerLeave}
         onBlur={handleGroupBlur}
       >

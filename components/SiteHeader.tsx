@@ -52,21 +52,14 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
       return;
     }
 
-    window.location.hash = sectionId;
-    document.getElementById(sectionId)?.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-      block: "start",
-    });
-  };
+    const target = document.getElementById(sectionId);
+    if (!target) return;
 
-  const handleSectionPointerDown = (
-    event: ReactPointerEvent<HTMLAnchorElement>,
-    sectionId: string,
-  ) => {
-    if (event.pointerType !== "mouse" || !event.isPrimary || event.button !== 0) return;
-    event.preventDefault();
-    navigateToSection(sectionId);
-    setIsMenuOpen(true);
+    const root = document.documentElement;
+    root.classList.add("is-section-jumping");
+    if (window.location.hash !== hash) window.history.pushState(null, "", hash);
+    target.scrollIntoView({ behavior: "auto", block: "start" });
+    window.requestAnimationFrame(() => root.classList.remove("is-section-jumping"));
   };
 
   const handleSectionNavigation = (
@@ -75,9 +68,7 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
   ) => {
     event.preventDefault();
     navigateToSection(sectionId);
-    const hasHoveringPointer = event.detail > 0
-      && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    setIsMenuOpen(hasHoveringPointer);
+    setIsMenuOpen(false);
   };
 
   return (
@@ -119,31 +110,27 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
             <Link
               href="/#top"
               tabIndex={isMenuOpen ? 0 : -1}
-              onPointerDownCapture={(event) => handleSectionPointerDown(event, "top")}
               onClick={(event) => handleSectionNavigation(event, "top")}
             >
               <Localized en="Home" zh="首页" />
             </Link>
             <Link
-              href="/#about"
-              tabIndex={isMenuOpen ? 0 : -1}
-              onPointerDownCapture={(event) => handleSectionPointerDown(event, "about")}
-              onClick={(event) => handleSectionNavigation(event, "about")}
-            >
-              <Localized en="About" zh="关于" />
-            </Link>
-            <Link
               href="/#work"
               tabIndex={isMenuOpen ? 0 : -1}
-              onPointerDownCapture={(event) => handleSectionPointerDown(event, "work")}
               onClick={(event) => handleSectionNavigation(event, "work")}
             >
               <Localized en="Work" zh="项目" />
             </Link>
             <Link
+              href="/#about"
+              tabIndex={isMenuOpen ? 0 : -1}
+              onClick={(event) => handleSectionNavigation(event, "about")}
+            >
+              <Localized en="About" zh="关于" />
+            </Link>
+            <Link
               href="/#contact"
               tabIndex={isMenuOpen ? 0 : -1}
-              onPointerDownCapture={(event) => handleSectionPointerDown(event, "contact")}
               onClick={(event) => handleSectionNavigation(event, "contact")}
             >
               <Localized en="Contact" zh="联系" />

@@ -47,6 +47,7 @@ export function CustomCursor() {
         delete root.dataset.customCursor;
         cursor.dataset.visible = "false";
         cursor.dataset.variant = "default";
+        cursor.classList.remove("is-pressed");
       }
     };
 
@@ -73,7 +74,12 @@ export function CustomCursor() {
         || event.pointerType === "touch"
         || !event.isPrimary
         || event.button !== 0
-        || !(event.target instanceof Element)
+      ) return;
+
+      cursor.classList.add("is-pressed");
+
+      if (
+        !(event.target instanceof Element)
         || !event.target.closest(".portrait-tracker")
       ) return;
 
@@ -87,18 +93,25 @@ export function CustomCursor() {
       });
     };
 
+    const handlePointerRelease = () => cursor.classList.remove("is-pressed");
     const finishWave = () => cursor.classList.remove("is-waving");
 
     const handleVisibilityChange = () => {
-      if (document.hidden) cursor.dataset.visible = "false";
+      if (document.hidden) {
+        cursor.dataset.visible = "false";
+        cursor.classList.remove("is-pressed");
+      }
     };
 
     syncPointerMode();
     finePointer.addEventListener("change", syncPointerMode);
     window.addEventListener("pointermove", handlePointerMove, { passive: true });
     window.addEventListener("pointerdown", handlePointerDown, { passive: true });
+    window.addEventListener("pointerup", handlePointerRelease, { passive: true });
+    window.addEventListener("pointercancel", handlePointerRelease, { passive: true });
     window.addEventListener("pointerout", handlePointerOut);
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("blur", handlePointerRelease);
     document.addEventListener("visibilitychange", handleVisibilityChange);
     portraitCursor.addEventListener("animationend", finishWave);
 
@@ -109,8 +122,11 @@ export function CustomCursor() {
       finePointer.removeEventListener("change", syncPointerMode);
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("pointerdown", handlePointerDown);
+      window.removeEventListener("pointerup", handlePointerRelease);
+      window.removeEventListener("pointercancel", handlePointerRelease);
       window.removeEventListener("pointerout", handlePointerOut);
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("blur", handlePointerRelease);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       portraitCursor.removeEventListener("animationend", finishWave);
     };

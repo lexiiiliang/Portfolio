@@ -1703,10 +1703,11 @@ html[data-theme="dark"] .about-timeline-logo[data-logo="li-auto"] {
 
 .contact-morph-list {
   --contact-circle: 68px;
-  --contact-expanded: 164px;
+  --contact-expanded: 178px;
   --contact-gap: 24px;
-  --contact-icon-center: 39px;
-  --contact-label-left: 66px;
+  --contact-icon-center: 38px;
+  --contact-label-left: 62px;
+  --contact-label-inset: 12px;
   width: max-content;
   max-width: 100%;
   display: flex;
@@ -1804,8 +1805,11 @@ html[data-theme="dark"] .about-timeline-logo[data-logo="li-auto"] {
 .contact-morph-label {
   position: absolute;
   left: var(--contact-label-left);
+  right: var(--contact-label-inset);
   top: 50%;
-  max-width: calc(var(--contact-expanded) - var(--contact-label-left) - 12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   opacity: 0;
   clip-path: inset(0 100% 0 0);
@@ -1813,6 +1817,7 @@ html[data-theme="dark"] .about-timeline-logo[data-logo="li-auto"] {
   font-weight: 400;
   line-height: 1;
   letter-spacing: -.025em;
+  text-align: center;
   white-space: nowrap;
   transform: translateY(-50%) translateX(-8px);
   transition:
@@ -1835,6 +1840,12 @@ html[data-theme="dark"] .about-timeline-logo[data-logo="li-auto"] {
 
 html[data-lang="en"] .contact-morph-label {
   font-size: 20px;
+}
+
+/* The two-character Chinese CV label needs a little more right-side breathing
+   room to balance the icon on the left of the expanded control. */
+html[data-lang="zh"] .contact-morph-item[data-contact="cv"] {
+  --contact-label-inset: 28px;
 }
 
 .site-footer {
@@ -2635,10 +2646,11 @@ html[data-lang="zh"] .project-hero-meta {
   }
   .contact-morph-list {
     --contact-circle: 60px;
-    --contact-expanded: 148px;
+    --contact-expanded: 158px;
     --contact-gap: 16px;
-    --contact-icon-center: 35px;
-    --contact-label-left: 59px;
+    --contact-icon-center: 34px;
+    --contact-label-left: 56px;
+    --contact-label-inset: 10px;
   }
   .contact-morph-icon { width: 25px; height: 25px; }
   .contact-morph-item[data-contact="github"] .contact-morph-icon { width: 33px; height: 33px; }
@@ -2708,16 +2720,16 @@ html[data-lang="zh"] .project-hero-meta {
   }
   .contact-morph-list {
     --contact-circle: 48px;
-    --contact-expanded: 132px;
+    --contact-expanded: 142px;
     --contact-gap: 8px;
     --contact-icon-center: 28px;
-    --contact-label-left: 48px;
+    --contact-label-left: 44px;
+    --contact-label-inset: 8px;
   }
   .contact-morph-icon { width: 22px; height: 22px; }
   .contact-morph-item[data-contact="github"] .contact-morph-icon { width: 29px; height: 29px; }
   .contact-morph-item[data-contact="linkedin"] .contact-morph-icon { width: 26px; height: 26px; }
   .contact-morph-label {
-    max-width: calc(var(--contact-expanded) - var(--contact-label-left) - 8px);
     font-size: 16px;
   }
   .briefing-card { width: 84%; min-height: 220px; }
@@ -2803,16 +2815,16 @@ html[data-lang="zh"] .project-hero-meta {
 @media (max-width: 370px) {
   .contact-morph-list {
     --contact-circle: 44px;
-    --contact-expanded: 120px;
+    --contact-expanded: 130px;
     --contact-gap: 6px;
     --contact-icon-center: 26px;
-    --contact-label-left: 44px;
+    --contact-label-left: 40px;
+    --contact-label-inset: 6px;
   }
   .contact-morph-icon { width: 20px; height: 20px; }
   .contact-morph-item[data-contact="github"] .contact-morph-icon { width: 26px; height: 26px; }
   .contact-morph-item[data-contact="linkedin"] .contact-morph-icon { width: 24px; height: 24px; }
   .contact-morph-label {
-    max-width: calc(var(--contact-expanded) - var(--contact-label-left) - 6px);
     font-size: 15px;
   }
 }

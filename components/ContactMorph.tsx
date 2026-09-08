@@ -22,7 +22,7 @@ const CONTACT_META: Record<ContactKey, ContactMeta> = {
   email: {
     promptEn: "Feel free to reach out!",
     promptZh: "欢迎通过邮件与我联系",
-    labelEn: "email",
+    labelEn: "Email",
     labelZh: "发邮件",
   },
   github: {
@@ -40,7 +40,7 @@ const CONTACT_META: Record<ContactKey, ContactMeta> = {
   cv: {
     promptEn: "Here’s my résumé.",
     promptZh: "这里还有我的简历",
-    labelEn: "download",
+    labelEn: "Download",
     labelZh: "下载",
   },
 };

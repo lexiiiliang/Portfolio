@@ -276,20 +276,18 @@ html[data-lang="zh"] .copy-en {
   --toc-open-width: 310px;
   --toc-open-gap: 36px;
   position: relative;
-  align-self: stretch;
+  align-self: center;
   width: 38px;
-  height: 100%;
+  height: 44px;
   transition: width 240ms var(--ease-out);
 }
 
-/* Generous, invisible approach area. The row should unfold as the cursor nears
-   the glyph rather than only once it lands on those 38px, and a few stray pixels
-   on the way to a label must not fold it back. It only ever grows with the row,
-   so a shrinking edge can never drop the cursor mid-travel. */
+/* Keep the horizontal approach area generous while constraining the vertical
+   trigger to the 44px control band. */
 .site-toc::before {
   content: "";
   position: absolute;
-  inset: 0 -56px -26px -28px;
+  inset: 0 -56px 0 -28px;
 }
 
 .site-toc-toggle {
@@ -392,14 +390,6 @@ html[data-lang="zh"] .copy-en {
 .site-toc-links a:nth-child(2) .site-toc-label { transition-delay: 50ms; }
 .site-toc-links a:nth-child(3) .site-toc-label { transition-delay: 100ms; }
 .site-toc-links a:nth-child(4) .site-toc-label { transition-delay: 150ms; }
-
-/* Colour alone at 14px barely registered, so the siblings step back while one
-   word is hovered — the pick reads as much from the others receding as from the
-   hovered one darkening. Scoped to :not(:hover) because :has() outweighs a plain
-   a:hover and would otherwise dim the hovered word too. */
-.site-toc-links:has(a:hover) a:not(:hover) {
-  color: color-mix(in srgb, var(--muted) 58%, var(--paper));
-}
 
 .site-toc-links a:hover {
   color: var(--ink);

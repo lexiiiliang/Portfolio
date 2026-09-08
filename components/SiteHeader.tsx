@@ -1,29 +1,31 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import {
-  useEffect,
-  useRef,
-  useState,
-  type MouseEvent as ReactMouseEvent,
-  type PointerEvent as ReactPointerEvent,
-} from "react";
+import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
 import { Localized } from "./Localized";
 import { SiteControls } from "./SiteControls";
 
+const SECTIONS = [
+  { id: "top", en: "Home", zh: "首页" },
+  { id: "work", en: "Work", zh: "项目" },
+  { id: "about", en: "About", zh: "关于" },
+  { id: "contact", en: "Contact", zh: "联系" },
+];
+
 export function SiteHeader({ compact = false }: { compact?: boolean }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Unfolding is CSS's job: :hover for pointers, :focus-within for keyboards.
+  // This state is only the tap path, for touch devices that have neither.
+  const [isTapOpen, setIsTapOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!isMenuOpen) return;
+    if (!isTapOpen) return;
 
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsMenuOpen(false);
+      if (event.key === "Escape") setIsTapOpen(false);
     };
     const closeOutside = (event: MouseEvent | TouchEvent) => {
-      if (!menuRef.current?.contains(event.target as Node)) setIsMenuOpen(false);
+      if (!menuRef.current?.contains(event.target as Node)) setIsTapOpen(false);
     };
 
     window.addEventListener("keydown", closeOnEscape);
@@ -34,15 +36,7 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
       document.removeEventListener("mousedown", closeOutside);
       document.removeEventListener("touchstart", closeOutside);
     };
-  }, [isMenuOpen]);
-
-  const openFromPointer = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === "mouse") setIsMenuOpen(true);
-  };
-
-  const closeFromPointer = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === "mouse") setIsMenuOpen(false);
-  };
+  }, [isTapOpen]);
 
   const navigateToSection = (sectionId: string) => {
     const hash = `#${sectionId}`;
@@ -68,73 +62,40 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
   ) => {
     event.preventDefault();
     navigateToSection(sectionId);
-    setIsMenuOpen(false);
+    setIsTapOpen(false);
+    // Drop focus so :focus-within does not hold the row open over the section
+    // the user just jumped to.
+    event.currentTarget.blur();
   };
 
   return (
     <header className={`site-header ${compact ? "is-compact" : ""}`}>
       <div className="header-inner">
-        <div
-          ref={menuRef}
-          className={`site-toc ${isMenuOpen ? "is-open" : ""}`}
-          onPointerEnter={openFromPointer}
-          onPointerLeave={closeFromPointer}
-        >
+        <div ref={menuRef} className={`site-toc ${isTapOpen ? "is-open" : ""}`}>
           <button
             type="button"
             className="site-toc-toggle"
-            aria-label={isMenuOpen ? "Close table of contents" : "Open table of contents"}
-            aria-expanded={isMenuOpen}
+            aria-label={isTapOpen ? "Close table of contents" : "Open table of contents"}
+            aria-expanded={isTapOpen}
             aria-controls="site-toc-links"
-            onClick={(event) => {
-              const mouseCanHover = window.matchMedia("(hover: hover)").matches;
-
-              if (event.detail > 0 && mouseCanHover) {
-                setIsMenuOpen(true);
-                return;
-              }
-
-              setIsMenuOpen((current) => !current);
-            }}
-          >
-            <span className="site-toc-icon" aria-hidden="true">
-              <Image src="/media/nav-fold.svg" alt="" width={18} height={38} priority />
-            </span>
-          </button>
-          <nav
-            id="site-toc-links"
-            className="site-toc-links"
-            aria-label="Table of contents"
-            aria-hidden={!isMenuOpen}
-          >
-            <Link
-              href="/#top"
-              tabIndex={isMenuOpen ? 0 : -1}
-              onClick={(event) => handleSectionNavigation(event, "top")}
-            >
-              <Localized en="Home" zh="首页" />
-            </Link>
-            <Link
-              href="/#work"
-              tabIndex={isMenuOpen ? 0 : -1}
-              onClick={(event) => handleSectionNavigation(event, "work")}
-            >
-              <Localized en="Work" zh="项目" />
-            </Link>
-            <Link
-              href="/#about"
-              tabIndex={isMenuOpen ? 0 : -1}
-              onClick={(event) => handleSectionNavigation(event, "about")}
-            >
-              <Localized en="About" zh="关于" />
-            </Link>
-            <Link
-              href="/#contact"
-              tabIndex={isMenuOpen ? 0 : -1}
-              onClick={(event) => handleSectionNavigation(event, "contact")}
-            >
-              <Localized en="Contact" zh="联系" />
-            </Link>
+            onClick={() => setIsTapOpen((current) => !current)}
+          />
+          {/* The links stay in the tab order and in the accessibility tree at all
+              times — folding them is a purely visual affordance, and tabbing to
+              one unfolds the row via :focus-within. Each link draws its own
+              stroke of the folded mark, so a stroke unfolds into its own word. */}
+          <nav id="site-toc-links" className="site-toc-links" aria-label="Table of contents">
+            {SECTIONS.map((section) => (
+              <Link
+                key={section.id}
+                href={`/#${section.id}`}
+                onClick={(event) => handleSectionNavigation(event, section.id)}
+              >
+                <span className="site-toc-label">
+                  <Localized en={section.en} zh={section.zh} />
+                </span>
+              </Link>
+            ))}
           </nav>
         </div>
         <SiteControls />

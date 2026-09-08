@@ -268,7 +268,13 @@ html[data-lang="zh"] .copy-en {
   padding: 0 clamp(24px, 5.95vw, 90px);
 }
 
+/* The row unfolds from CSS state — :hover for pointers, :focus-within for
+   keyboards — rather than from JS. The browser owns the hover truth, so it cannot
+   drift out of sync with a React ref the way a pointerenter-fed one could.
+   .is-open is only the tap path, for touch devices that have neither. */
 .site-toc {
+  --toc-open-width: 310px;
+  --toc-open-gap: 36px;
   position: relative;
   align-self: stretch;
   width: 38px;
@@ -276,8 +282,14 @@ html[data-lang="zh"] .copy-en {
   transition: width 240ms var(--ease-out);
 }
 
-.site-toc.is-open {
-  width: 310px;
+/* Generous, invisible approach area. The row should unfold as the cursor nears
+   the glyph rather than only once it lands on those 38px, and a few stray pixels
+   on the way to a label must not fold it back. It only ever grows with the row,
+   so a shrinking edge can never drop the cursor mid-travel. */
+.site-toc::before {
+  content: "";
+  position: absolute;
+  inset: 0 -56px -26px -28px;
 }
 
 .site-toc-toggle {
@@ -295,37 +307,13 @@ html[data-lang="zh"] .copy-en {
   background: transparent;
   border: 0;
   cursor: pointer;
-  transition: opacity 140ms ease, transform 180ms var(--ease-out), visibility 140ms linear;
+  transition: opacity 140ms ease, transform 180ms var(--ease-out);
 }
 
 .site-toc-toggle:focus-visible,
 .site-toc-links a:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 4px;
-}
-
-.site-toc-icon {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 18px;
-  overflow: visible;
-}
-
-.site-toc-icon img {
-  width: 18px;
-  height: 38px;
-  max-width: none;
-  transform: rotate(-90deg);
-}
-
-.site-toc.is-open .site-toc-toggle {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(-4px) scale(.96);
-  pointer-events: none;
 }
 
 .site-toc-links {
@@ -336,43 +324,153 @@ html[data-lang="zh"] .copy-en {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 36px;
+  gap: 12px;
   pointer-events: none;
+  transition: gap 450ms var(--ease-out);
 }
 
 .site-toc-links a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* The hit area is the full header band, not the 14px line box — a label the
+     cursor is travelling toward should not need vertical aim. */
+  align-self: stretch;
   color: var(--muted);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.15;
   text-transform: uppercase;
   white-space: nowrap;
+  transition: color 150ms ease;
+}
+
+/* Each label claims half the gap on either side, so neighbouring hit areas meet
+   instead of leaving dead strips between the words. Folded, the row is
+   pointer-events: none, so these overlap harmlessly. */
+.site-toc-links a::after {
+  content: "";
+  position: absolute;
+  inset: 0 calc(var(--toc-open-gap) / -2);
+}
+
+/* Folded, each link draws one stroke of the mark: four links, four 2×18px
+   strokes on 12px centres — the same 38px glyph as before, except every stroke
+   now belongs to the word it unfolds into. Lives on the link rather than the
+   label so the label's overflow clip cannot swallow it. */
+.site-toc-links a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 2px;
+  height: 18px;
+  margin-top: -9px;
+  background: currentColor;
+  opacity: .8;
+  transition: opacity 250ms ease, transform 300ms var(--ease-out);
+}
+
+/* The word itself: a zero-width sliver at the stroke's position, widening out of
+   it. max-width carries the reveal so the labels push each other along instead
+   of sliding over one another. */
+.site-toc-label {
+  display: block;
+  max-width: 0;
+  overflow: hidden;
   opacity: 0;
-  clip-path: inset(0 100% 0 0);
+  filter: blur(5px);
   transform: translateX(-4px);
   transition:
-    color 150ms ease,
-    opacity 160ms ease,
-    clip-path 220ms var(--ease-out),
-    transform 220ms var(--ease-out);
+    max-width 550ms var(--ease-out),
+    opacity 400ms ease,
+    filter 550ms var(--ease-out),
+    transform 550ms var(--ease-out);
 }
 
-.site-toc-links a:nth-child(2) { transition-delay: 0ms, 0ms, 40ms, 40ms; }
-.site-toc-links a:nth-child(3) { transition-delay: 0ms, 0ms, 80ms, 80ms; }
-.site-toc-links a:nth-child(4) { transition-delay: 0ms, 0ms, 120ms, 120ms; }
+/* Gentle staggered unfold, left → right. */
+.site-toc-links a:nth-child(2) .site-toc-label { transition-delay: 50ms; }
+.site-toc-links a:nth-child(3) .site-toc-label { transition-delay: 100ms; }
+.site-toc-links a:nth-child(4) .site-toc-label { transition-delay: 150ms; }
 
-.site-toc.is-open .site-toc-links {
-  pointer-events: auto;
-}
-
-.site-toc.is-open .site-toc-links a {
-  opacity: 1;
-  clip-path: inset(0 0 0 0);
-  transform: translateX(0);
+/* Colour alone at 14px barely registered, so the siblings step back while one
+   word is hovered — the pick reads as much from the others receding as from the
+   hovered one darkening. Scoped to :not(:hover) because :has() outweighs a plain
+   a:hover and would otherwise dim the hovered word too. */
+.site-toc-links:has(a:hover) a:not(:hover) {
+  color: color-mix(in srgb, var(--muted) 58%, var(--paper));
 }
 
 .site-toc-links a:hover {
   color: var(--ink);
+}
+
+/* --- unfolded ------------------------------------------------------------- */
+
+.site-toc:is(.is-open, :focus-within) {
+  width: var(--toc-open-width);
+}
+
+.site-toc:is(.is-open, :focus-within) .site-toc-links {
+  gap: var(--toc-open-gap);
+  pointer-events: auto;
+}
+
+/* Each stroke collapses into the word rising out of it. */
+.site-toc:is(.is-open, :focus-within) .site-toc-links a::before {
+  opacity: 0;
+  transform: scaleY(.15);
+}
+
+.site-toc:is(.is-open, :focus-within) .site-toc-label {
+  max-width: 8rem;
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+/* The strokes are the row's own folded state now, so the button is a bare tap
+   target sitting over them — the tap path for touch, and a focus stop that can
+   fold the row back up with Enter. */
+.site-toc:is(.is-open, :focus-within) .site-toc-toggle {
+  pointer-events: none;
+}
+
+.site-toc:is(.is-open, :focus-within) .site-toc-toggle:focus-visible {
+  pointer-events: auto;
+}
+
+/* Hover unfolds only where a real pointer exists. On touch, a tap leaves a
+   sticky :hover behind that would strand the row open. */
+@media (hover: hover) and (pointer: fine) {
+  .site-toc:hover {
+    width: var(--toc-open-width);
+  }
+
+  .site-toc:hover .site-toc-links {
+    gap: var(--toc-open-gap);
+    pointer-events: auto;
+  }
+
+  .site-toc:hover .site-toc-links a::before {
+    opacity: 0;
+    transform: scaleY(.15);
+  }
+
+  .site-toc:hover .site-toc-label {
+    max-width: 8rem;
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  }
+
+  .site-toc:hover .site-toc-toggle {
+    pointer-events: none;
+  }
+
+  .site-toc:hover .site-toc-toggle:focus-visible {
+    pointer-events: auto;
+  }
 }
 
 .site-controls {
@@ -447,6 +545,9 @@ html[data-lang="zh"] .copy-en {
 .home-page {
   width: 100%;
   margin: 0;
+  /* #top sits below the fixed header, so Home has to clear it to reach the very
+     top rather than settling 68px in. */
+  scroll-margin-top: 68px;
 }
 
 .site-footer {
@@ -2552,8 +2653,7 @@ html[data-lang="zh"] .project-hero-meta {
 @media (max-width: 600px) {
   :root { --page: calc(100vw - 28px); --radius: 16px; }
   .header-inner { padding-inline: 16px; }
-  .site-toc.is-open { width: 206px; }
-  .site-toc-links { gap: 16px; }
+  .site-toc { --toc-open-width: 206px; --toc-open-gap: 16px; }
   .site-toc-links a { font-size: 12px; }
   .site-controls { gap: 10px; }
   .hero {

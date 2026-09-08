@@ -127,21 +127,6 @@ export function FromQueryToQuestCase() {
             />
           </p>
 
-          <div className="fq-fact-grid" aria-label="Project scope">
-            <div>
-              <span><Localized en="Interaction" zh="交互对象" /></span>
-              <strong><Localized en="Text-based LLM chatbots" zh="文字型 LLM 聊天机器人" /></strong>
-            </div>
-            <div>
-              <span><Localized en="Context" zh="使用情境" /></span>
-              <strong><Localized en="Everyday exploratory use" zh="日常探索性使用" /></strong>
-            </div>
-            <div>
-              <span><Localized en="Starting state" zh="起始状态" /></span>
-              <strong><Localized en="Ambiguous intent & uncertainty" zh="模糊意图与不确定性" /></strong>
-            </div>
-          </div>
-
           <Artifact
             number="01"
             altEn="The project question asks how prompting can become an inceptive and reflective journey that reinforces deep thinking."
@@ -182,21 +167,6 @@ export function FromQueryToQuestCase() {
             </div>
           </div>
 
-          <div className="fq-evidence-band">
-            <strong>20+</strong>
-            <p>
-              <Localized
-                en="in-depth interviews, alongside critical case studies, generative research kits, sacrificial prototypes, and role-playing exercises."
-                zh="次深度访谈，并结合批判性案例研究、生成式研究工具包、牺牲性原型与角色扮演练习。"
-              />
-            </p>
-          </div>
-          <p className="fq-boundary-note">
-            <Localized
-              en="These activities shaped an evolving understanding of the problem space; they were not validation of a finished product."
-              zh="这些活动用于持续理解问题空间，而不是验证一个已经完成的产品。"
-            />
-          </p>
         </section>
 
         <section className="fq-section">

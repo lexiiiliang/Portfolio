@@ -2010,13 +2010,13 @@ html[data-lang="en"] .contact-morph-label {
 }
 
 .fq-section > h2 {
-  max-width: 22ch;
+  max-width: none;
   margin: 0;
-  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-size: clamp(1.85rem, 2.35vw, 2.15rem);
   font-weight: 520;
-  line-height: 1.12;
+  line-height: 1.18;
   letter-spacing: -.03em;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 .fq-section-lede {
@@ -2086,6 +2086,7 @@ html[data-lang="en"] .contact-morph-label {
   font-family: var(--font-geist-mono), monospace;
   font-size: var(--type-label);
   line-height: 1.45;
+  text-align: center;
 }
 
 .fq-method-grid,
@@ -2178,8 +2179,8 @@ html[data-lang="en"] .contact-morph-label {
 
 .fq-artifact-pair {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 28px;
 }
 
 .fq-framework-steps {
@@ -2231,9 +2232,9 @@ html[data-lang="en"] .contact-morph-label {
 }
 
 .fq-story-frame figcaption {
-  display: grid;
-  grid-template-columns: 26px 1fr;
-  gap: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
   align-items: start;
 }
 
@@ -3130,7 +3131,7 @@ html[data-lang="zh"] .project-hero-meta {
   .case-layout.fq-case-layout { padding-top: 64px; padding-bottom: 96px; }
   .fq-section { padding: 68px 0; }
   .fq-section-anchor { top: 58px; }
-  .fq-section > h2 { max-width: 22ch; font-size: clamp(1.9rem, 8vw, 2.1rem); }
+  .fq-section > h2 { max-width: none; font-size: clamp(1.75rem, 7.4vw, 2rem); }
   .fq-section-lede { margin-top: 24px; }
   .fq-fact-grid,
   .fq-method-grid,

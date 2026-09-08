@@ -7,7 +7,7 @@ const MEDIA_ROOT = "/media/from-query-to-quest-uid25";
 
 const headingsEn: ProjectHeading[] = [
   { depth: 1, label: "01 · Project framing", id: "project-framing" },
-  { depth: 1, label: "02 · Research approach", id: "research-approach" },
+  { depth: 1, label: "02 · Insights", id: "insights" },
   { depth: 1, label: "03 · Design principles", id: "design-principles" },
   { depth: 1, label: "04 · Conceptual framework", id: "conceptual-framework" },
   { depth: 1, label: "05 · Scenario prototype", id: "scenario-prototype" },
@@ -15,7 +15,7 @@ const headingsEn: ProjectHeading[] = [
 
 const headingsZh: ProjectHeading[] = [
   { depth: 1, label: "01 · 项目命题", id: "project-framing" },
-  { depth: 1, label: "02 · 研究方法", id: "research-approach" },
+  { depth: 1, label: "02 · 洞察", id: "insights" },
   { depth: 1, label: "03 · 设计原则", id: "design-principles" },
   { depth: 1, label: "04 · 概念框架", id: "conceptual-framework" },
   { depth: 1, label: "05 · 情境原型", id: "scenario-prototype" },
@@ -143,30 +143,10 @@ export function FromQueryToQuestCase() {
           />
         </section>
 
-        <section className="fq-section">
-          <SectionAnchor id="research-approach" />
-          <p className="fq-section-number">02 / <Localized en="RESEARCH APPROACH" zh="研究方法" /></p>
-          <h2><Localized en="Critical inquiry, grounded in participation." zh="用批判性追问打开可能，再让真实参与把它落地。" /></h2>
-          <p className="fq-section-lede">
-            <Localized
-              en="Critical Design was used to question the dominant transactional model. Participatory Design brought subjective experience, emotion, and lived context into that inquiry, keeping the emerging concepts empathetic and discussable."
-              zh="批判性设计用于质疑主流的交易式对话模型；参与式设计把主观体验、情绪与真实情境带回研究，使逐步形成的概念保持同理心，也能够被共同讨论。"
-            />
-          </p>
-
-          <div className="fq-method-grid">
-            <div>
-              <span>01</span>
-              <h3>Critical Design</h3>
-              <p><Localized en="Questioned what conversational AI optimizes for—and what that optimization leaves out." zh="追问对话式 AI 正在优化什么，以及这种优化遗漏了什么。" /></p>
-            </div>
-            <div>
-              <span>02</span>
-              <h3>Participatory Design</h3>
-              <p><Localized en="Used people’s situated experiences to test whether alternative interaction ideas felt supportive." zh="用参与者的具体经验判断替代性交互是否真正具有支持性。" /></p>
-            </div>
-          </div>
-
+        <section className="fq-section fq-insights-placeholder">
+          <SectionAnchor id="insights" />
+          <p className="fq-section-number">02 / <Localized en="INSIGHTS" zh="洞察" /></p>
+          <h2><Localized en="Insights — coming soon." zh="洞察（待补充）。" /></h2>
         </section>
 
         <section className="fq-section">

@@ -49,11 +49,9 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
     const target = document.getElementById(sectionId);
     if (!target) return;
 
-    const root = document.documentElement;
-    root.classList.add("is-section-jumping");
     if (window.location.hash !== hash) window.history.pushState(null, "", hash);
-    target.scrollIntoView({ behavior: "auto", block: "start" });
-    window.requestAnimationFrame(() => root.classList.remove("is-section-jumping"));
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
   };
 
   const handleSectionNavigation = (

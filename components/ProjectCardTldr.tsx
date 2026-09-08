@@ -33,7 +33,6 @@ type ProjectCardTldrProps = {
   projectTitleZh?: string;
   projectYear: string;
   eyebrowEn: string;
-  eyebrowZh: string;
   indexLabel: string;
   copy: ProjectTldrCopy;
   isPublished: boolean;
@@ -45,7 +44,6 @@ export function ProjectCardTldr({
   projectTitleZh,
   projectYear,
   eyebrowEn,
-  eyebrowZh,
   indexLabel,
   copy,
   isPublished,
@@ -60,21 +58,6 @@ export function ProjectCardTldr({
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const englishTags = eyebrowEn.split(" · ").slice(0, 2);
-  const chineseTags = eyebrowZh.split(" · ").slice(0, 2);
-  const displayEnglishTags = projectSlug === "alive-briefing"
-    ? ["Delivered work", "AI–UX"]
-    : projectSlug === "livis"
-      ? ["跨端Agent"]
-      : projectSlug === "from-query-to-quest"
-        ? englishTags.slice(0, 1)
-        : englishTags;
-  const displayChineseTags = projectSlug === "alive-briefing"
-    ? ["前瞻探索", "AI–UX"]
-    : projectSlug === "livis"
-      ? ["跨端Agent"]
-      : projectSlug === "from-query-to-quest"
-        ? chineseTags.slice(0, 1)
-        : chineseTags;
   const footerTag = englishTags.at(-1) ?? englishTags[0] ?? "Project";
 
   useEffect(() => {
@@ -207,16 +190,6 @@ export function ProjectCardTldr({
         <span className="project-folder-cover-shape" aria-hidden="true" />
 
         <div className="project-folder-cover-content">
-          <div className="project-folder-cover-header">
-            <div className="project-folder-tags" aria-label="Project tags">
-              {displayEnglishTags.map((tag, tagIndex) => (
-                <span key={tag}>
-                  <Localized en={tag} zh={displayChineseTags[tagIndex] ?? tag} />
-                </span>
-              ))}
-            </div>
-          </div>
-
           <Link href={`/projects/${projectSlug}`} className="project-card-title-link">
             <h3>
               <span>{projectTitle}</span>

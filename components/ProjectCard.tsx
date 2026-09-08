@@ -24,7 +24,6 @@ export function ProjectCard({ project, index }: { project: PortfolioProject; ind
           projectTitleZh={projectTitleZh}
           projectYear={project.year}
           eyebrowEn={project.eyebrowEn}
-          eyebrowZh={project.eyebrowZh}
           indexLabel={indexLabel}
           copy={tldr}
           isPublished={project.status === "published"}

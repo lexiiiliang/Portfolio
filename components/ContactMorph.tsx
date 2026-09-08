@@ -255,7 +255,7 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
 
   return (
     <div className="contact-morph">
-      <h2 id="contact-title" className="contact-morph-prompt" data-scroll-reveal="contact-prompt">
+      <h2 id="contact" className="contact-morph-prompt" data-scroll-reveal="contact-prompt">
         <span className="contact-typewriter-line" aria-hidden="true">
           <span className="copy-en"><TypewriterText text={activePrompt.en} /></span>
           <span className="copy-zh"><TypewriterText text={activePrompt.zh} /></span>

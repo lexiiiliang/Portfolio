@@ -57,8 +57,40 @@ export function ProjectCardTldr({
   const panelId = useId();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
   const englishTags = eyebrowEn.split(" · ").slice(0, 2);
-  const footerTag = englishTags.at(-1) ?? englishTags[0] ?? "Project";
+  const footerTag = ({
+    "alive-briefing": "座舱 HMI 探索",
+    livis: "跨端 Agent",
+    "from-query-to-quest": "硕士毕业设计",
+  } as Record<string, string>)[projectSlug] ?? englishTags.at(-1) ?? "Project";
+
+  useEffect(() => {
+    const body = bodyRef.current;
+    const card = triggerRef.current?.closest<HTMLElement>(".project-card");
+    if (!body || !card) return;
+    const resize = () => {
+      const sheetHeight = Math.max(400, body.offsetHeight + 60);
+      const style = getComputedStyle(card);
+      const front = parseFloat(style.getPropertyValue("--folder-front-height"));
+      const closed = parseFloat(style.getPropertyValue("--folder-closed-height"));
+      const openHeight = sheetHeight + front;
+      card.style.setProperty("--folder-sheet-height", `${sheetHeight}px`);
+      card.style.setProperty("--folder-open-height", `${openHeight}px`);
+      card.style.setProperty("--folder-pull-distance", `${openHeight - closed}px`);
+      const scroller = card.closest<HTMLElement>(".project-grid-scroll");
+      if (scroller) {
+        const pulls = Array.from(scroller.querySelectorAll<HTMLElement>(".project-card"),
+          (item) => parseFloat(getComputedStyle(item).getPropertyValue("--folder-pull-distance")) || 0);
+        // Horizontal scrolling clips vertically too; reserve room for the tallest drawer.
+        scroller.style.setProperty("--project-grid-open-overflow", `${Math.max(156, ...pulls) + 24}px`);
+      }
+    };
+    const observer = new ResizeObserver(resize);
+    observer.observe(body);
+    resize();
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -139,6 +171,7 @@ export function ProjectCardTldr({
         tabIndex={-1}
         onClick={closeFromBlankArea}
       >
+        <div ref={bodyRef} className="project-tldr-body">
         <div className="project-tldr-header">
           <span>/ TL; DR</span>
         </div>
@@ -169,6 +202,7 @@ export function ProjectCardTldr({
           />
           <span aria-hidden="true">↗</span>
         </Link>
+        </div>
       </div>
 
       <button
@@ -192,7 +226,7 @@ export function ProjectCardTldr({
         <div className="project-folder-cover-content">
           <Link href={`/projects/${projectSlug}`} className="project-card-title-link">
             <h3>
-              <span>{projectTitle}</span>
+              <span>{projectSlug === "livis" ? "Livis 眼镜任务大师" : projectTitle}</span>
               {projectTitleZh ? <span lang="zh-CN">{projectTitleZh}</span> : null}
             </h3>
           </Link>

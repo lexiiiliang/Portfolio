@@ -1,0 +1,153 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2]:
+    - /url: "#top"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - button "Open table of contents" [ref=e6]
+        - navigation "Table of contents":
+          - link "Home":
+            - /url: /#top
+          - link "Work":
+            - /url: /#work
+          - link "About":
+            - /url: /#about
+          - link "Contact":
+            - /url: /#contact
+      - generic "Display preferences" [ref=e7]:
+        - generic "Language" [ref=e8]:
+          - button "中" [ref=e9]
+          - generic [aria-hidden] [ref=e10]: ｜
+          - button "EN" [pressed] [ref=e11]
+        - button "Switch to dark mode" [ref=e12]
+  - main [ref=e15]:
+    - region [ref=e16]:
+      - generic [ref=e17]:
+        - button "Interactive portrait. Move the pointer around the page to change the gaze, then click to wink." [ref=e19]
+        - generic [ref=e20]:
+          - heading "Hi, Hola, Hej, 嗨 This is Lexi" [level=1] [ref=e21]:
+            - generic [ref=e22]:
+              - generic [ref=e24]: Hi!
+              - generic [ref=e25]: Hi, Hola, Hej, 嗨
+            - generic [ref=e26]: This is
+            - generic [ref=e27]: Lexi
+          - paragraph [ref=e28]: I’m an AI product designer with 2 years of experience across smart cockpits, consumer apps, and wearables. I design how AI is expressed, perceived, and understood.
+    - region [ref=e29]:
+      - heading "A few highlights from my work." [level=2] [ref=e30]:
+        - generic [ref=e31]: A
+      - region "Selected projects" [ref=e36]:
+        - generic [ref=e37]:
+          - article [ref=e38]:
+            - button "Open Alive Briefing TL;DR" [ref=e41]
+            - generic [ref=e43]:
+              - link [ref=e44]:
+                - /url: /projects/alive-briefing
+                - heading "Alive Briefing 活字简报" [level=3] [ref=e45]:
+                  - generic [ref=e46]: Alive Briefing
+                  - generic [ref=e47]: 活字简报
+              - generic [ref=e48]:
+                - generic [ref=e49]:
+                  - generic [ref=e50]: "01"
+                  - paragraph [ref=e51]: "# AI–UX"
+                - generic [ref=e52]: "2025"
+          - article [ref=e53]:
+            - button "Open Livis TL;DR" [ref=e56]
+            - generic [ref=e58]:
+              - link [ref=e59]:
+                - /url: /projects/livis
+                - heading "Livis" [level=3] [ref=e60]
+              - generic [ref=e62]:
+                - generic [ref=e63]:
+                  - generic [ref=e64]: "02"
+                  - paragraph [ref=e65]: "# Spatial Interaction"
+                - generic [ref=e66]: "2026"
+          - article [ref=e67]:
+            - button "Open From Query to Quest TL;DR" [ref=e70]
+            - generic [ref=e72]:
+              - link [ref=e73]:
+                - /url: /projects/from-query-to-quest
+                - heading "From Query to Quest" [level=3] [ref=e74]
+              - generic [ref=e76]:
+                - generic [ref=e77]:
+                  - generic [ref=e78]: "03"
+                  - paragraph [ref=e79]: "# Critical Design"
+                - generic [ref=e80]: "2025"
+    - region [ref=e81]:
+      - heading "My journey, in brief." [level=2] [ref=e82]:
+        - generic [ref=e83]: M
+      - list "Education and work timeline" [ref=e89]:
+        - listitem [ref=e90]:
+          - heading "Education" [level=3] [ref=e91]
+          - article [ref=e92]:
+            - generic [ref=e94]: 🇨🇳
+            - generic [ref=e95]:
+              - heading "Huazhong University of Science and Technology" [level=3] [ref=e96]
+              - paragraph [ref=e98]:
+                - generic [ref=e99]: Bachelor of Architecture (BArch)
+              - time [ref=e100]: 2016–2021
+        - listitem [ref=e101]:
+          - article [ref=e102]:
+            - generic [ref=e104]: 🇳🇱
+            - generic [ref=e105]:
+              - heading "Delft University of Technology" [level=3] [ref=e106]
+              - paragraph [ref=e108]:
+                - generic [ref=e109]: MSc Design for Interaction · Exchange
+              - time [ref=e110]: 2023–2024
+        - listitem [ref=e111]:
+          - heading "Experience" [level=3] [ref=e112]
+          - article [ref=e113]:
+            - generic [ref=e115]:
+              - heading "SenseTime" [level=3] [ref=e116]
+              - paragraph [ref=e118]:
+                - generic [ref=e119]: Interaction Designer · Intern
+              - time [ref=e120]: 03/2024–09/2024
+        - listitem [ref=e121]:
+          - article [ref=e122]:
+            - generic [ref=e124]:
+              - heading "Microsoft" [level=3] [ref=e125]
+              - paragraph [ref=e127]:
+                - generic [ref=e128]: Product Designer · Intern
+              - time [ref=e129]: 09/2024–01/2025
+        - listitem [ref=e130]:
+          - article [ref=e131]:
+            - generic [ref=e133]: 🇸🇪
+            - generic [ref=e134]:
+              - heading "Umeå Institute of Design" [level=3] [ref=e135]
+              - paragraph [ref=e137]:
+                - generic [ref=e138]: MFA in Interaction Design
+              - time [ref=e139]: 2022–2025
+        - listitem [ref=e140]:
+          - article [ref=e141]:
+            - generic [ref=e143]:
+              - heading "Li Auto" [level=3] [ref=e144]
+              - paragraph [ref=e146]:
+                - generic [ref=e147]: Interaction Designer · Full-time
+              - time [ref=e148]: 08/2025–Now
+    - region [ref=e149]:
+      - generic [ref=e150]:
+        - heading "Glad you made it this far." [level=2] [ref=e151]:
+          - generic [ref=e153]: Gl
+        - list "Contact links" [ref=e158]:
+          - listitem [ref=e159]:
+            - link "Email" [ref=e160]:
+              - /url: mailto:lexiliang.design@outlook.com
+              - strong:
+                - generic [ref=e166]: Email
+          - listitem [ref=e167]:
+            - link "GitHub" [ref=e168]:
+              - /url: https://github.com/lexiiiliang
+              - strong:
+                - generic [ref=e173]: GitHub
+          - listitem [ref=e174]:
+            - link "LinkedIn" [ref=e175]:
+              - /url: https://www.linkedin.com/in/lezhi-liang/
+              - strong:
+                - generic [ref=e180]: LinkedIn
+          - listitem [ref=e181]:
+            - link "CV link coming soon" [disabled] [ref=e182]:
+              - strong:
+                - generic [ref=e188]: Download
+  - contentinfo [ref=e189]:
+    - generic [ref=e190]: © 2026 Lexi Liang
+  - generic [aria-hidden]:
+    - generic: 👋

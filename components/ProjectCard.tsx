@@ -1,7 +1,11 @@
 import type { PortfolioProject } from "@/lib/portfolio";
 import { getProjectTldr } from "@/lib/project-tldr";
 import { ProjectCardTldr } from "./ProjectCardTldr";
-import { ProjectVisual } from "./ProjectVisual";
+const covers: Record<string, string> = {
+  "alive-briefing": "/media/covers/alive-briefing.webp",
+  livis: "/media/covers/livis.webp",
+  "from-query-to-quest": "/media/covers/from-query-to-quest.webp",
+};
 
 export function ProjectCard({ project, index }: { project: PortfolioProject; index: number }) {
   const tldr = getProjectTldr(project.slug);
@@ -14,7 +18,9 @@ export function ProjectCard({ project, index }: { project: PortfolioProject; ind
     >
       <div className="project-card-content-sheet" aria-hidden="true">
         <div className="project-card-visual-link">
-          <ProjectVisual project={project} />
+          {/* Decorative preview; the adjacent trigger supplies the accessible name. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="project-cover-image" src={covers[project.slug]} alt="" />
         </div>
       </div>
       {tldr ? (

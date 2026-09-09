@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./query-case.css";
 
 :root {
   --paper: #f6f6f2;
@@ -855,7 +856,7 @@ html[data-lang="zh"] .copy-en {
   position: relative;
   isolation: isolate;
   height: var(--folder-closed-height);
-  overflow: hidden;
+  overflow: visible;
   background: transparent;
   border-radius: 36px;
   scroll-snap-align: start;
@@ -896,13 +897,13 @@ html[data-lang="zh"] .copy-en {
   top: 0;
   left: 12px;
   right: 12px;
-  /* Keep the preview inside the folder, independent of expanded copy height. */
-  height: calc(var(--folder-closed-height) - var(--folder-sheet-rest) - 24px);
+  height: auto;
+  aspect-ratio: 368 / 221;
   overflow: hidden;
   color: var(--ink);
   background: #d9d9d9;
   border: 0;
-  border-radius: 24px;
+  border-radius: 24px 24px 0 0;
   box-shadow: none;
   transform: translateY(var(--folder-sheet-rest));
   transition: transform 280ms var(--ease-drawer);
@@ -919,7 +920,7 @@ html[data-lang="zh"] .copy-en {
   display: block;
   color: white;
   opacity: 1;
-  transform: scale(1.015);
+  transform: none;
   transform-origin: 50% 24%;
   transition:
     opacity 180ms var(--ease-out),
@@ -943,8 +944,8 @@ html[data-lang="zh"] .copy-en {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center;
   filter: grayscale(1);
   transition: filter 280ms var(--ease-drawer);
 }
@@ -1054,6 +1055,10 @@ html[data-lang="zh"] .copy-en {
   text-wrap: balance;
 }
 
+html[data-lang="en"] .project-card-title-link {
+  margin-top: 32px;
+}
+
 .project-card-title-link h3 > span {
   display: block;
   transition: color 150ms ease;
@@ -1089,7 +1094,7 @@ html[data-lang="zh"] .copy-en {
 }
 
 .project-folder-cover-footer p {
-  max-width: 23ch;
+  white-space: nowrap;
   margin: 0;
 }
 
@@ -1115,7 +1120,7 @@ html[data-lang="zh"] .copy-en {
   transform: translateY(calc(var(--folder-sheet-rest) + 12px));
   pointer-events: none;
   background: #d9dbd4;
-  border-radius: 24px;
+  border-radius: 24px 24px 0 0;
   box-shadow:
     0 1px 2px rgba(24, 26, 32, .07),
     0 10px 24px rgba(24, 26, 32, .075),
@@ -1234,14 +1239,14 @@ html[data-theme="dark"] .project-tldr-header {
     transform: none;
   }
 
-  .project-card:has(.project-folder-pull-target:hover) .project-card-content-sheet,
+  .project-card:hover .project-card-content-sheet,
   .project-card:has(.project-folder-pull-target:focus-visible) .project-card-content-sheet {
-    transform: translateY(calc(var(--folder-sheet-rest) - 12px));
+    transform: translateY(calc(var(--folder-sheet-rest) - 64px));
   }
 
-  .project-card:has(.project-folder-pull-target:hover) .project-card-visual-link,
-  .project-card:has(.project-folder-pull-target:focus-visible) .project-card-visual-link {
-    transform: scale(1.03);
+  .project-card:hover .project-folder-pull-target {
+    top: calc(var(--folder-sheet-rest) - 64px);
+    height: calc(var(--folder-closed-height) - var(--folder-front-height) - var(--folder-sheet-rest) + 114px);
   }
 
   .project-card:has(.project-folder-cover.is-open):hover {

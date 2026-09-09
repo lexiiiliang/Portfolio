@@ -10,7 +10,9 @@ const covers: Record<string, string> = {
 export function ProjectCard({ project, index }: { project: PortfolioProject; index: number }) {
   const tldr = getProjectTldr(project.slug);
   const indexLabel = String(index + 1).padStart(2, "0");
-  const projectTitleZh = project.slug === "alive-briefing" ? "活字简报" : undefined;
+  const projectTitleZh = project.slug === "alive-briefing" ? "活字简报"
+    : project.slug === "livis" ? "任务大师"
+    : project.slug === "from-query-to-quest" ? "从「询」到「寻」" : undefined;
 
   return (
     <article

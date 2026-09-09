@@ -254,6 +254,10 @@
     {
       "folder": "02 Project Gallery/Project03 Degree Project 毕业设计",
       "slug": "from-query-to-quest",
+      "caseSource": {
+        "entry": "From Query to Quest — 精简版.md",
+        "endBefore": "## 编辑工作区"
+      },
       "entryEn": "Web Case.en.md",
       "entryZh": "Web Case.zh.md",
       "order": 3,

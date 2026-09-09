@@ -1,0 +1,145 @@
+{
+  "sourceFile": "02 Project Gallery/Project03 Degree Project 毕业设计/From Query to Quest — 精简版.md",
+  "endBefore": "## 编辑工作区",
+  "sourceChecksum": "9802a7d73fcbfa99e27ddf02066072887d6bf67f4c025bbc8099bba8e67f89ce",
+  "publicChecksum": "de7d4b596eaf2367c5d4f43ee5e829cb8537cf8d4ffd680e55b84415aca650fc",
+  "markdown": "# From Query to Quest\n\n**2025 · 硕士毕业设计 · 个人项目 · 4 个月**  \n\n**当 AI 越来越擅长给出答案，交互设计如何保护人的深度思考？**\n\n人在困惑或陷入思考困境时，未必已经知道该问什么。这个项目探索如何将提示交互（prompting）从“提出请求—获得结果”，拓展为一段从模糊出发、展开探索，并通过现实行动持续反思的旅程。\n\n![From Query to Quest 项目封面：人物、对话气泡与流动的蓝色纹理](/media/from-query-to-quest-final/01.jpg)\n\n\n\n\n## 问题：最先提出的请求，未必是真正需要探索的问题\n\n\n以结果为导向的提示交互范式，通常沿着“提出请求 → 反复修正 → 获得结果”推进。它擅长不断改善输出，却默认了最初提出的目标值得继续。当用户尚未理解自己的困境时，对答案的反复修正，可能掩盖了对问题本身的审视：结果越来越可用，得到结果的过程越来越简单，就越有可能压缩重新理解问题的空间。\n\n![现状示意：带着目标进入对话，经迭代获得结果](/media/from-query-to-quest-final/02.jpg)\n*现有路径：带着目标进入对话，围绕结果反复修正，并以结果完成作为终点。*\n\n本研究将 ``模糊性``与``不确定性``视为 **问题正在形成的状态** ，聚焦人在意图尚不明确时，如何借助 AI 开展日常探索。研究范围被限定在 Chatbot 形态的对话式交互，不涉及 Agent 或 Physical AI。\n\n### 设计挑战\n\n> **我们如何将提示交互（prompting）设计成一段具有启发性并支持反思的旅程，从而保护并增强人的深度思考能力？**\n\n![核心设计挑战：将 prompting 塑造为 inceptive and reflective journey，保护并增强深度思考能力](/media/from-query-to-quest-final/03.png)\n*HMW：以启发思考、支持反思的提示交互，保护并增强人的深度思考能力。*\n\n## 洞察：思考需要入口，也需要空间与时间\n\n我结合**批判性设计（Critical Design）**与**参与式设计（Participatory Design）**：前者质疑以即时结果为中心的交互逻辑，后者通过访谈、观察与参与式活动，理解人在犹豫和探索中的真实体验。\n\n角色扮演与牺牲性原型（sacrificial prototypes）用于引出用户对不同交互方式的反应。这些原型可以被质疑、拒绝和改写，帮助我发现 AI 追问、注意力提示与跨会话回访的边界，而非验证一个最终产品。在注意力探索中，参与者回顾与 AI 的对话体验、分享感受，并通过角色扮演模拟 AI、即兴回应和边想边说，以及一些如何可视化注意力的初期概念草图。\n\n![研究活动总览：Generative Research Kit、System Prompt、Profile Controller、牺牲性原型和观察记录](/media/from-query-to-quest-final/04.png)\n*研究活动与工具探针*\n\n![注意力探索材料：Focus Mapping、角色扮演、Crazy 8 草图与 Focus Canvas 方向](/media/from-query-to-quest-final/05.png)\n*研究活动与工具探针*\n\n\n研究逐渐显露出三个相互关联的问题：\n\n- **进入对话时，问题可能尚未成形。** 情绪、直觉或片段想法也可以成为入口。轻量追问应帮助用户辨认想探索的方向，而非要求他们先写出完整指令。\n- **对话中，有价值的注意力并不总是沿直线前进。** 过早收敛、或直接将收敛推向结论，容易忽略发散与暂停对思考的价值。设计需要让用户看见并调整这条路径，而非只追求持续参与。\n- **对话后，理解仍在发展。** 跨会话的支持应帮助用户把行动反馈带回思考，并辨认哪些理解已经改变。以具体的生活场景为例：AI 提供的菜谱，仍需要经过实际尝试与调整，才能转化为用户自己的经验。\n\n## 设计原则：保护用户对思考过程的能动性\n\n三项原则构成两个层次：**能动性优先是伦理基础；注意力协同与慢速连续性在此基础上，分别定义短期互动与跨时间思考的交互品质。**\n\n![三项设计原则：能动性优先作为伦理基础，支撑注意力协同和慢速连续性](/media/from-query-to-quest-final/06.jpg)\n*设计原则框架：能动性优先提供伦理基础；注意力协同与慢速连续性定义两种时间尺度上的交互品质。*\n\n### 能动性优先 · Agency Priority\n\n通过人与 AI 之间平衡、可协商的互动关系，保护并增强用户的自主性与控制权。AI 可以适时提出新的关注点，用户则能接受、拒绝或调整其介入，保有对**问题方向、判断标准与下一步选择**的主动权。\n\n### 注意力协同 · Attention Synergy\n\n尊重并支持人在短期互动中自然变化的注意力，让人与 AI 关注的内容可见、可调整。用户可以标记触动自己的内容，引导 AI 深入；双方的关注点也可以暂时分离，再协商是否转向。\n\n这一原则容纳三种注意力模式：\n**对齐（Alignment）**- 由用户主导，深入某一点或拓展相关领域；\n**发散（Dispersion）**- 人与 AI 各自探索，或由任一方提出转移关注点；\n**断开（Disconnection）**- 由用户决定暂停并保留记录，或结束过程并清除记录。\n\n![对齐、发散、断开三种注意力模式及其感知、控制与状态](/media/from-query-to-quest-final/07.jpg)\n*注意力模式：以双方对关注点的感知、控制方式与探索状态，区分「对齐」、「发散」和「断开」。*\n\n### 慢速连续性 · Slow Continuity\n\n支持思考跨越单次会话，并随时间自然成熟。线索可以被保留、回访、重组与修正；现实中的尝试也能带来新的反馈。连续性不只是保存历史，更在于帮助用户辨认：**什么仍值得继续探索，自己的理解又发生了什么变化？**\n\n这一原则容纳三种连续性模式：\n**孵化（Incubation）** - 通过周期性的回访与逐步反馈，让想法持续发展；\n**蒸馏（Distillation）** - 从反复出现或贯穿不同情境的问题中提炼出共同主题；\n**授粉（Pollination）** - 通过偶然接触预期之外的内容，为创意受阻或成长停滞带来新的启发。\n\n![孵化、蒸馏、授粉的情绪与情境条件、催化因素和节奏](/media/from-query-to-quest-final/08.jpg)\n*连续性模式：「孵化」由逐步反馈推动，「蒸馏」汇聚共同主题，「授粉」借助意料之外的接触；三者具有不同的触发条件与节奏。*\n\n\n## 概念框架：从一次请求，走向对话与行动的循环\n\n三项原则贯穿三个环节：**发起（Initiation）→ 探索展开（Exploratory Development）→ 对话—行动循环（Dialogue–Action Loop）**。现实中的情绪与处境构成入口，探索在对话中迂回展开，又通过行动与反思延续到屏幕之外。\n\n![概念框架：从现实中的情绪进入对话，在探索后将行动与反思带回循环](/media/from-query-to-quest-final/09.jpg)\n*概念提案：现实处境构成入口，探索在数字界面中迂回展开，对话与行动在现实情境中持续往返。*\n\n以下是用于说明设计概念的虚构场景演示。\n\nJerry 是一名刚晋升管理岗位的软件工程师，复杂的职场关系让他感到委屈，也开始怀疑自己是否适合新角色。\n\n![Jerry 从资深软件工程师晋升到管理岗位](/media/from-query-to-quest-final/10.png)\n*场景起点：Jerry 刚进入管理岗位，正在适应新的角色。*\n\n![复杂职场关系使 Jerry 感到委屈并怀疑自己是否适合新角色](/media/from-query-to-quest-final/11.png)\n*情绪与处境：职场关系带来委屈和愤怒，也动摇了 Jerry 对新角色的信心。*\n\n![Jerry 不愿让家人担忧，也顾虑向同事倾诉，转而与 AI 对话](/media/from-query-to-quest-final/12.png)\n*进入对话的原因：不愿让家人担忧，又顾虑向同事倾诉，Jerry 转向 AI 寻求交流。*\n\n### 发起：允许从模糊开始\n\n一次会议争执后，Jerry 向 AI 输入：“我想辞职，帮我润色简历。”\n\n![一次会议争执后，Jerry 在情绪未平复时决定辞职并打开 AI](/media/from-query-to-quest-final/13.png)\n*触发时刻：会议争执之后，尚未平复的情绪促使 Jerry 作出辞职决定。*\n\nAI 先给出简历修改建议，同时在“辞职”这个表达旁呈现新的关注点。原有任务得到响应，另一个值得探索的问题也有了入口。\n\n![AI 回应简历修改请求，同时在辞职表达旁显示新的关注点](/media/from-query-to-quest-final/14.png)\n*发起：回应简历请求的同时，让另一个可能值得探索的关注点显现。*\n\n随后，AI 将过去数周中关于会议指责、发言被打断、意见被忽视的对话汇聚为“工作沟通”主题，邀请 Jerry 继续讨论，也提供退出选项。这体现了慢速连续性中的**蒸馏（Distillation）**：从反复出现的问题中提取共同主题，帮助用户重新理解当下的困境。\n\n![跨数周的对话被汇聚成工作沟通主题，并提供开始讨论或退出的选项](/media/from-query-to-quest-final/15.png)\n*蒸馏：将反复出现的困扰汇聚为“工作沟通”主题，邀请用户决定是否继续探索。*\n\n### 探索展开：由用户决定深入哪里\n\nJerry 标记了“情绪与当场反应”，向 AI 表明自己希望进一步探索的内容。这体现了注意力协同中的对齐：由用户指出关注点，引导接下来的讨论。\n\n![Jerry 标记情绪与当场反应，引导 AI 进一步探索](/media/from-query-to-quest-final/16.png)\n*对齐：Jerry 通过标记表达关注点，由他引导下一步深入讨论。*\n\n回顾先前的标记后，Jerry 逐渐意识到自身心理状态的重要性，开始探索正念或冥想练习。慢速连续性中的**孵化（Incubation）**，让已有线索在回访与逐步反馈中继续发展，支持他调整探索方向。\n\n![Jerry 回顾标记后关注自身心理状态，探索方向转向正念或冥想练习](/media/from-query-to-quest-final/17.png)\n*回顾与孵化：先前标记重新进入视野，帮助 Jerry 关注自身心理状态并调整探索方向。*\n\n### 对话—行动循环：让现实反馈继续改变理解\n\nJerry 将探索带入现实中的实践。框架通过后续询问重新唤起相关对话，让行动经验与反思返回探索。是否离职仍由 Jerry 判断，场景呈现的是他如何逐步形成判断的过程。\n\n这套框架将设计对象从单次回答扩展到**思考如何发起、展开，并在行动中延续**。项目的产出是可迁移的设计原则与概念框架，尚未证明其对深度思考或长期能动性的实际效果。\n\n## 后记 · 写于 2026 ：从对话中的能动性，到委托中的能动性\n\n这个项目始于 2025 年，核心问题是如何通过提示交互保护并增强人的深度思考。2026 年再回看，我希望将这一问题延伸到agent协作：**当执行动作也被委托给 AI，人如何继续把握方向、作出判断并承担后果？** 以下是基于原项目立场的延伸思考。\n\n### 能动性，需要在委托过程中持续发挥作用\n\nJerry 的场景中，“润色简历”既是一个可以完成的请求，也可能是一段尚未展开的思考的入口。AI 对工作沟通问题的提示，为重新理解处境创造了机会；接受这个方向、继续原任务或退出探索，都应由 Jerry 决定。\n\n将这样的关系延伸到agent协作，设计需要关注一个更长的过程：从理解意图、制定计划，到执行与反馈，每一步都可能影响人的选择。一个未经审视的目标，如果被连续执行得越来越顺畅，也可能越来越难以重新打开讨论。\n\n因此，能动性不能只体现为开始时的一次授权，或结束时的一次验收。**人在委托过程中仍需能够理解系统如何推进、质疑它采用的假设，并在必要时改变目标。** 原项目强调的平衡与协商，在这里成为持续协作的要求。\n\n### 哪些属于人的能力，需要被继续支持？\n\n**问题定义（Framing）决定什么值得成为任务。** 面对一个看似明确的请求，人仍需要判断：它是在处理表面症状，还是回应真正的困境？哪些假设值得先讨论，哪些不确定性需要保留？如果交互只允许人拆解和确认任务，重新定义问题的机会就容易被挤掉。\n\n**品味（Taste）与价值判断（Value）决定什么值得选择。** 品味涉及对语境、分寸、气质与意义的感知，帮助人辨认一个方案是否真正合适；价值判断则涉及取舍，例如效率、关怀、成长与商业结果发生冲突时，什么更重要、哪些代价不可接受。协作应为这些判断提供表达和比较的空间。\n\n**判断与验证（Judgment & Validation）贯穿行动过程。** 人需要持续留意方向是否偏移、问题是否被过度简化，再将输出带回现实中的关系、经验与具体处境中检验。系统生成的解释可以帮助判断，行动带来的反馈则可能改变原有理解。\n\n**责任承担（Accountability）让委托与后果保持联系。** 动作由agent执行，仍需要明确谁决定目标、谁能够中止、谁负责解释与修正结果。对上下文的选择、对权限的设定，以及对行动后果的回顾，都应成为协作中可理解、可调整的部分。\n\n### 三项原则，如何延伸到agent协作？\n\n**能动性优先：让授权成为可协商的关系。** 用户需要理解自己委托了什么、哪些决定仍待自己作出，以及何时可以撤回或否决。频繁确认并不自动带来控制感；设计更应让人看清关键选择及其后果，在适当的时刻介入。\n\n**注意力协同：让人知道何时值得关注。** 在对话中，它让双方的关注点可见、可调整；在agent协作中，这一问题可以延伸为：系统基于什么假设行动，当前关注什么，又在哪些地方偏离了人的意图？信息需要支持人的理解和介入，也应容许人暂时离开，而无需持续监视每一步执行。\n\n**慢速连续性：让长期协作支持理解的更新。** 保存记忆只是起点。过往的目标可能改变，旧的假设可能失效，新的行动反馈也可能要求重新解释历史。长期协作需要帮助人回顾这些变化，让过去的经验成为继续思考的材料，同时保留修正和放下旧线索的空间。\n\n这些延伸仍需在agent协作的具体情境中探索与检验。对我而言，原项目留下的设计立场是：**在 AI 参与得越来越深的过程中，人仍应有机会形成问题、审视选择，并从行动中发展自己的判断。**\n\n当 AI 能够承担更多工作，交互设计也需要追问：协作结束后，人是否更理解自己的处境，更能够决定下一步？人的品味、价值判断与成长，应当成为设计持续关心的结果。\n\n\n---",
+  "media": [
+    {
+      "src": "/media/from-query-to-quest-final/01.jpg",
+      "alt": "From Query to Quest 项目封面：人物、对话气泡与流动的蓝色纹理",
+      "original": "cover.jpg",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "c13304a476d95e31d0b5231c00f8ddf4fb258d5a1a7836d8cb8269abcba5ac27"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/02.jpg",
+      "alt": "现状示意：带着目标进入对话，经迭代获得结果",
+      "original": "current situation.jpg",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "d403509543704bc6f2fae5dab3397f5e7613c5efb1ca621ed1b18d9888745d49"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/03.png",
+      "alt": "核心设计挑战：将 prompting 塑造为 inceptive and reflective journey，保护并增强深度思考能力",
+      "original": "HMW question.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "2382526d036037a465fd55625706ca2134c20b08db78eccf460c2276c66b36ee"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/04.png",
+      "alt": "研究活动总览：Generative Research Kit、System Prompt、Profile Controller、牺牲性原型和观察记录",
+      "original": "research activities.png",
+      "width": 690,
+      "height": 865,
+      "sha256": "2078cbe0b7f1c96cb2a9babb3db9dafecb83c42e58b670dea36f31ec643ed88d"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/05.png",
+      "alt": "注意力探索材料：Focus Mapping、角色扮演、Crazy 8 草图与 Focus Canvas 方向",
+      "original": "research evidence.png",
+      "width": 1049,
+      "height": 916,
+      "sha256": "afddc667e3b0874115f00bcf03dcab1b66c6adcb623a58c10972002331befe63"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/06.jpg",
+      "alt": "三项设计原则：能动性优先作为伦理基础，支撑注意力协同和慢速连续性",
+      "original": "design principle.jpg",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "70bf0c13c9752c9a45b7261cb5019eb59c09c764037a1fdacfd6858ceda96e24"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/07.jpg",
+      "alt": "对齐、发散、断开三种注意力模式及其感知、控制与状态",
+      "original": "attention pattern.jpg",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "47edf09e8ef04af340ad2480d3f373adedaf049928347af53dd2b3e7cc919af3"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/08.jpg",
+      "alt": "孵化、蒸馏、授粉的情绪与情境条件、催化因素和节奏",
+      "original": "continuity pattern.jpg",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "def4e3481e97a907581c2c111e803126c00b966bd810e6844c06552ea62c20e9"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/09.jpg",
+      "alt": "概念框架：从现实中的情绪进入对话，在探索后将行动与反思带回循环",
+      "original": "my proposition.jpg",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "68e726d4df9faaa449d1f04129e0225bae22bf472024cc08a885cde9793a88d0"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/10.png",
+      "alt": "Jerry 从资深软件工程师晋升到管理岗位",
+      "original": "jerry's journey_1.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "5a0647ee13d530ae7f9609014d8ab882426dd2df99754fa9cb4016d3a3e383b3"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/11.png",
+      "alt": "复杂职场关系使 Jerry 感到委屈并怀疑自己是否适合新角色",
+      "original": "jerry's journey_2.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "9101b8a1897968ab6d7ab112cc2681fae9ce8836de3004a24738df795980f05c"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/12.png",
+      "alt": "Jerry 不愿让家人担忧，也顾虑向同事倾诉，转而与 AI 对话",
+      "original": "jerry's journey_3.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "024b47f1758a8218f27ec4aa7352e2d7abd76eb2dd10ef68402d2e714cbdd3f7"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/13.png",
+      "alt": "一次会议争执后，Jerry 在情绪未平复时决定辞职并打开 AI",
+      "original": "jerry's journey_4.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "65f9ea0dfe59e7425fbb919908372f2dac27fa850331ac858486e522bbaa7a68"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/14.png",
+      "alt": "AI 回应简历修改请求，同时在辞职表达旁显示新的关注点",
+      "original": "jerry's journey_5.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "cc67b30505a0357cfbce8d143274c11d7667541ec14041ba1d79f8457719820c"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/15.png",
+      "alt": "跨数周的对话被汇聚成工作沟通主题，并提供开始讨论或退出的选项",
+      "original": "jerry's journey_6.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "8bfa34f4d3ddf7e630e01ea86786f41fda8439134d795479ee07b30c0809765e"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/16.png",
+      "alt": "Jerry 标记情绪与当场反应，引导 AI 进一步探索",
+      "original": "jerry's journey_7.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "8206a3f785319d3ca2d236a3b8bea84c328e8769126f5b5ec88499f8684f3469"
+    },
+    {
+      "src": "/media/from-query-to-quest-final/17.png",
+      "alt": "Jerry 回顾标记后关注自身心理状态，探索方向转向正念或冥想练习",
+      "original": "jerry's journey_8.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "ab66ddb5f45114380f795fefb758b197b29957252877f154d13c5bce18fe8e5c"
+    }
+  ]
+}

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { notFound, redirect } from "next/navigation";
+import { FromQueryToQuestCase } from "@/components/FromQueryToQuestCase";
+import { FromQueryToQuestHero } from "@/components/FromQueryToQuestHero";
+import { QueryCaseVideo } from "@/components/QueryCaseVideo";
 import { Localized } from "@/components/Localized";
 import { MarkdownCase } from "@/components/MarkdownCase";
 import { ProjectTransitionLink } from "@/components/ProjectTransitionLink";
@@ -20,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const project = getProject(slug);
   return project ? {
-    title: `${project.title} — Lexi Liang`,
+    title: project.title,
     description: project.summaryEn,
   } : {};
 }
@@ -40,34 +43,41 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const index = caseProjects.findIndex((item) => item.slug === project.slug);
   const nextProject = caseProjects[(index + 1) % caseProjects.length] ?? project;
   const isDistilledCase = project.slug === "alive-briefing" || project.slug === "from-query-to-quest";
+  const isQueryFramework = project.slug === "from-query-to-quest";
 
   return (
     <>
       <SiteHeader compact />
-      <main id="top" className={`project-page accent-${project.accent}`}>
-        <section className={`project-hero ${isDistilledCase ? "is-distilled" : ""}`}>
-          {!isDistilledCase ? (
-            <div className="project-hero-meta">
-              <span>{project.eyebrowEn}</span>
-              <span>{project.year}</span>
-              <span>{project.status === "published" ? "CASE STUDY" : "PREVIEW"}</span>
-            </div>
-          ) : null}
-          <h1>{project.title}</h1>
-          <p className="project-hero-thesis"><Localized en={project.heroEn} zh={project.heroZh} /></p>
-          <div className="project-hero-summary">
-            <p><Localized en={project.summaryEn} zh={project.summaryZh} /></p>
+      <main id="top" className={`project-page accent-${project.accent} ${isQueryFramework ? "query-page" : ""}`}>
+        {isQueryFramework ? (
+          <FromQueryToQuestHero />
+        ) : (
+          <section className={`project-hero ${isDistilledCase ? "is-distilled" : ""}`}>
             {!isDistilledCase ? (
-              <div className="snapshot-stamp">
-                <span><Localized en="Content snapshot" zh="内容快照" /></span>
-                <code>{project.sourceChecksum || "awaiting-source"}</code>
+              <div className="project-hero-meta">
+                <span>{project.eyebrowEn}</span>
+                <span>{project.year}</span>
+                <span>{project.status === "published" ? "CASE STUDY" : "PREVIEW"}</span>
               </div>
             ) : null}
-          </div>
-          <ProjectVisual project={project} />
-        </section>
+            <h1>{project.title}</h1>
+            <p className="project-hero-thesis"><Localized en={project.heroEn} zh={project.heroZh} /></p>
+            <div className="project-hero-summary">
+              <p><Localized en={project.summaryEn} zh={project.summaryZh} /></p>
+              {!isDistilledCase ? (
+                <div className="snapshot-stamp">
+                  <span><Localized en="Content snapshot" zh="内容快照" /></span>
+                  <code>{project.sourceChecksum || "awaiting-source"}</code>
+                </div>
+              ) : null}
+            </div>
+            <ProjectVisual project={project} />
+          </section>
+        )}
 
-        {project.video ? (
+        {isQueryFramework ? <QueryCaseVideo /> : null}
+
+        {project.video && !isQueryFramework ? (
           <figure className="project-video">
             <iframe
               className="project-video-embed"
@@ -88,7 +98,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </figure>
         ) : null}
 
-        {project.previewOnly ? (
+        {isQueryFramework ? (
+          <FromQueryToQuestCase />
+        ) : project.previewOnly ? (
           <section className="preview-note">
             <p className="micro-label"><Localized en="WORK IN PROGRESS" zh="案例整理中" /></p>
             <h2><Localized en="The question is ready. The evidence is still being shaped." zh="命题已经成立，证据正在被整理成可公开的叙事。" /></h2>

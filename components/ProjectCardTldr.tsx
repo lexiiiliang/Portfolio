@@ -60,10 +60,11 @@ export function ProjectCardTldr({
   const bodyRef = useRef<HTMLDivElement>(null);
   const englishTags = eyebrowEn.split(" · ").slice(0, 2);
   const footerTag = ({
-    "alive-briefing": "座舱 HMI 探索",
-    livis: "跨端 Agent",
-    "from-query-to-quest": "硕士毕业设计",
-  } as Record<string, string>)[projectSlug] ?? englishTags.at(-1) ?? "Project";
+    "alive-briefing": { en: "HMI Exploration", zh: "座舱 HMI 探索" },
+    livis: { en: "Multi-Device Agent", zh: "跨端 Agent" },
+    "from-query-to-quest": { en: "Master’s Degree Project", zh: "硕士毕业设计" },
+  } as Record<string, { en: string; zh: string }>)[projectSlug]
+    ?? { en: englishTags.at(-1) ?? "Project", zh: englishTags.at(-1) ?? "Project" };
 
   useEffect(() => {
     const body = bodyRef.current;
@@ -226,15 +227,15 @@ export function ProjectCardTldr({
         <div className="project-folder-cover-content">
           <Link href={`/projects/${projectSlug}`} className="project-card-title-link">
             <h3>
-              <span>{projectSlug === "livis" ? "Livis 眼镜任务大师" : projectTitle}</span>
-              {projectTitleZh ? <span lang="zh-CN">{projectTitleZh}</span> : null}
+              <span>{projectSlug === "livis" ? "Livis Agent" : projectTitle}</span>
+              {projectTitleZh ? <span className="copy-zh" lang="zh-CN">{projectTitleZh}</span> : null}
             </h3>
           </Link>
 
           <div className="project-folder-cover-footer">
             <div>
               <span className="project-folder-index">{indexLabel}</span>
-              <p># {footerTag}</p>
+              <p># <Localized en={footerTag.en} zh={footerTag.zh} /></p>
             </div>
             <span className="project-folder-year">{projectYear}</span>
           </div>

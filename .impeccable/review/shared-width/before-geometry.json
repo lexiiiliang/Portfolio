@@ -1,0 +1,88 @@
+[
+  {
+    "challenge": {
+      "left": 176,
+      "right": 837,
+      "width": 661
+    },
+    "challengeImage": {
+      "left": 208,
+      "right": 805,
+      "width": 597
+    },
+    "challengeText": {
+      "left": 208,
+      "right": 805,
+      "width": 597
+    },
+    "challengeTitle": {
+      "left": 208,
+      "right": 805,
+      "width": 597
+    },
+    "principleImage": {
+      "left": 176,
+      "right": 837,
+      "width": 661
+    },
+    "principleText": {
+      "left": 176,
+      "right": 837,
+      "width": 661
+    },
+    "problemImage": {
+      "left": 176,
+      "right": 837,
+      "width": 661
+    },
+    "problemText": {
+      "left": 176,
+      "right": 837,
+      "width": 661
+    },
+    "viewport": 884
+  },
+  {
+    "challenge": {
+      "left": 272.5,
+      "right": 1360.5,
+      "width": 1088
+    },
+    "challengeImage": {
+      "left": 456.5,
+      "right": 1176.5,
+      "width": 720
+    },
+    "challengeText": {
+      "left": 304.5,
+      "right": 1104.5,
+      "width": 800
+    },
+    "challengeTitle": {
+      "left": 304.5,
+      "right": 1328.5,
+      "width": 1024
+    },
+    "principleImage": {
+      "left": 272.5,
+      "right": 1360.5,
+      "width": 1088
+    },
+    "principleText": {
+      "left": 272.5,
+      "right": 992.5,
+      "width": 720
+    },
+    "problemImage": {
+      "left": 272.5,
+      "right": 1360.5,
+      "width": 1088
+    },
+    "problemText": {
+      "left": 272.5,
+      "right": 992.5,
+      "width": 720
+    },
+    "viewport": 1456
+  }
+]

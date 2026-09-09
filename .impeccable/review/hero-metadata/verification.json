@@ -1,0 +1,28 @@
+{
+  "keywords": [
+    {
+      "interactive": false,
+      "text": "#AI",
+      "wrap": "nowrap"
+    },
+    {
+      "interactive": false,
+      "text": "#交互范式",
+      "wrap": "nowrap"
+    },
+    {
+      "interactive": false,
+      "text": "#能动性",
+      "wrap": "nowrap"
+    }
+  ],
+  "labels": [
+    "时间",
+    "周期",
+    "项目类型",
+    "关键词"
+  ],
+  "oldPersonalFactVisible": false,
+  "overflow": false,
+  "viewport": 390
+}

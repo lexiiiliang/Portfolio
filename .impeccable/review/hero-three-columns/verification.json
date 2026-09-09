@@ -1,0 +1,26 @@
+[
+  {
+    "columns": "57.8125px 115.641px 144.539px",
+    "durationPresent": false,
+    "interactiveCaseImages": 0,
+    "labels": [
+      "时间",
+      "项目类型",
+      "关键词"
+    ],
+    "overflow": false,
+    "width": 390
+  },
+  {
+    "columns": "352px 352px 352px",
+    "compositionColumns": "532px 532px",
+    "durationPresent": false,
+    "labels": [
+      "时间",
+      "项目类型",
+      "关键词"
+    ],
+    "overflow": false,
+    "width": 1237
+  }
+]

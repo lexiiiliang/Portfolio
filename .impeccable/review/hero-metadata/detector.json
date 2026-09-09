@@ -1,0 +1,112 @@
+[
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/lexiliang/Documents/Lexi Liang/Dev/Portfolio Site - From Query to Quest/app/query-case.css",
+    "line": 45,
+    "snippet": "font-size: 22px is off the DESIGN.md type ramp",
+    "ignoreValue": "22px"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/lexiliang/Documents/Lexi Liang/Dev/Portfolio Site - From Query to Quest/app/query-case.css",
+    "line": 92,
+    "snippet": "font-size: 20px is off the DESIGN.md type ramp",
+    "ignoreValue": "20px"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/lexiliang/Documents/Lexi Liang/Dev/Portfolio Site - From Query to Quest/app/query-case.css",
+    "line": 130,
+    "snippet": "font-size: 48px is off the DESIGN.md type ramp",
+    "ignoreValue": "48px"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/lexiliang/Documents/Lexi Liang/Dev/Portfolio Site - From Query to Quest/app/query-case.css",
+    "line": 137,
+    "snippet": "font-size: clamp(2.5rem, 9.2vw, 3.5rem) has fluid endpoint 2.5rem off the DESIGN.md type ramp",
+    "ignoreValue": "2.5rem"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/lexiliang/Documents/Lexi Liang/Dev/Portfolio Site - From Query to Quest/app/query-case.css",
+    "line": 139,
+    "snippet": "font-size: 21px is off the DESIGN.md type ramp",
+    "ignoreValue": "21px"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/lexiliang/Documents/Lexi Liang/Dev/Portfolio Site - From Query to Quest/app/query-case.css",
+    "line": 143,
+    "snippet": "font-size: 12px is off the DESIGN.md type ramp",
+    "ignoreValue": "12px"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/lexiliang/Documents/Lexi Liang/Dev/Portfolio Site - From Query to Quest/app/query-case.css",
+    "line": 158,
+    "snippet": "font-size: 22px is off the DESIGN.md type ramp",
+    "ignoreValue": "22px"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/lexiliang/Documents/Lexi Liang/Dev/Portfolio Site - From Query to Quest/app/query-case.css",
+    "line": 159,
+    "snippet": "font-size: 19px is off the DESIGN.md type ramp",
+    "ignoreValue": "19px"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/lexiliang/Documents/Lexi Liang/Dev/Portfolio Site - From Query to Quest/app/query-case.css",
+    "line": 162,
+    "snippet": "font-size: 12px is off the DESIGN.md type ramp",
+    "ignoreValue": "12px"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/lexiliang/Documents/Lexi Liang/Dev/Portfolio Site - From Query to Quest/app/query-case.css",
+    "line": 164,
+    "snippet": "font-size: 21px is off the DESIGN.md type ramp",
+    "ignoreValue": "21px"
+  }
+]

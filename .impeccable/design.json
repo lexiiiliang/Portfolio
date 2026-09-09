@@ -1,0 +1,473 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-09T14:59:41.811438+00:00",
+  "title": "Design System: From Query to Quest case detail",
+  "extensions": {
+    "scope": {
+      "route": "/projects/from-query-to-quest",
+      "source": "app/query-case.css",
+      "excludes": [
+        "landing page",
+        "shared site chrome",
+        "other project routes"
+      ]
+    },
+    "colorMeta": {
+      "query-blue": {
+        "role": "primary",
+        "displayName": "blue",
+        "tonalRamp": [
+          "oklch(15.00% 0.19169 262.73)",
+          "oklch(26.43% 0.19169 262.73)",
+          "oklch(37.86% 0.19169 262.73)",
+          "oklch(49.29% 0.19169 262.73)",
+          "oklch(60.71% 0.19169 262.73)",
+          "oklch(72.14% 0.19169 262.73)",
+          "oklch(83.57% 0.19169 262.73)",
+          "oklch(95.00% 0.19169 262.73)"
+        ]
+      },
+      "query-blue-dark": {
+        "role": "primary",
+        "displayName": "blue dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.09113 267.12)",
+          "oklch(26.43% 0.09113 267.12)",
+          "oklch(37.86% 0.09113 267.12)",
+          "oklch(49.29% 0.09113 267.12)",
+          "oklch(60.71% 0.09113 267.12)",
+          "oklch(72.14% 0.09113 267.12)",
+          "oklch(83.57% 0.09113 267.12)",
+          "oklch(95.00% 0.09113 267.12)"
+        ]
+      },
+      "query-ground": {
+        "role": "neutral",
+        "displayName": "ground",
+        "tonalRamp": [
+          "oklch(15.00% 0.00264 106.45)",
+          "oklch(26.43% 0.00264 106.45)",
+          "oklch(37.86% 0.00264 106.45)",
+          "oklch(49.29% 0.00264 106.45)",
+          "oklch(60.71% 0.00264 106.45)",
+          "oklch(72.14% 0.00264 106.45)",
+          "oklch(83.57% 0.00264 106.45)",
+          "oklch(95.00% 0.00264 106.45)"
+        ]
+      },
+      "query-ink": {
+        "role": "neutral",
+        "displayName": "ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.00847 137.82)",
+          "oklch(26.43% 0.00847 137.82)",
+          "oklch(37.86% 0.00847 137.82)",
+          "oklch(49.29% 0.00847 137.82)",
+          "oklch(60.71% 0.00847 137.82)",
+          "oklch(72.14% 0.00847 137.82)",
+          "oklch(83.57% 0.00847 137.82)",
+          "oklch(95.00% 0.00847 137.82)"
+        ]
+      },
+      "query-body": {
+        "role": "neutral",
+        "displayName": "body",
+        "tonalRamp": [
+          "oklch(15.00% 0.00710 153.59)",
+          "oklch(26.43% 0.00710 153.59)",
+          "oklch(37.86% 0.00710 153.59)",
+          "oklch(49.29% 0.00710 153.59)",
+          "oklch(60.71% 0.00710 153.59)",
+          "oklch(72.14% 0.00710 153.59)",
+          "oklch(83.57% 0.00710 153.59)",
+          "oklch(95.00% 0.00710 153.59)"
+        ]
+      },
+      "query-muted": {
+        "role": "neutral",
+        "displayName": "muted",
+        "tonalRamp": [
+          "oklch(15.00% 0.01369 145.38)",
+          "oklch(26.43% 0.01369 145.38)",
+          "oklch(37.86% 0.01369 145.38)",
+          "oklch(49.29% 0.01369 145.38)",
+          "oklch(60.71% 0.01369 145.38)",
+          "oklch(72.14% 0.01369 145.38)",
+          "oklch(83.57% 0.01369 145.38)",
+          "oklch(95.00% 0.01369 145.38)"
+        ]
+      },
+      "query-tint": {
+        "role": "neutral",
+        "displayName": "tint",
+        "tonalRamp": [
+          "oklch(15.00% 0.00866 264.52)",
+          "oklch(26.43% 0.00866 264.52)",
+          "oklch(37.86% 0.00866 264.52)",
+          "oklch(49.29% 0.00866 264.52)",
+          "oklch(60.71% 0.00866 264.52)",
+          "oklch(72.14% 0.00866 264.52)",
+          "oklch(83.57% 0.00866 264.52)",
+          "oklch(95.00% 0.00866 264.52)"
+        ]
+      },
+      "query-rule": {
+        "role": "neutral",
+        "displayName": "rule",
+        "tonalRamp": [
+          "oklch(15.00% 0.00673 160.06)",
+          "oklch(26.43% 0.00673 160.06)",
+          "oklch(37.86% 0.00673 160.06)",
+          "oklch(49.29% 0.00673 160.06)",
+          "oklch(60.71% 0.00673 160.06)",
+          "oklch(72.14% 0.00673 160.06)",
+          "oklch(83.57% 0.00673 160.06)",
+          "oklch(95.00% 0.00673 160.06)"
+        ]
+      },
+      "query-ground-dark": {
+        "role": "neutral",
+        "displayName": "ground dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00499 173.88)",
+          "oklch(26.43% 0.00499 173.88)",
+          "oklch(37.86% 0.00499 173.88)",
+          "oklch(49.29% 0.00499 173.88)",
+          "oklch(60.71% 0.00499 173.88)",
+          "oklch(72.14% 0.00499 173.88)",
+          "oklch(83.57% 0.00499 173.88)",
+          "oklch(95.00% 0.00499 173.88)"
+        ]
+      },
+      "query-ink-dark": {
+        "role": "neutral",
+        "displayName": "ink dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.00570 128.53)",
+          "oklch(26.43% 0.00570 128.53)",
+          "oklch(37.86% 0.00570 128.53)",
+          "oklch(49.29% 0.00570 128.53)",
+          "oklch(60.71% 0.00570 128.53)",
+          "oklch(72.14% 0.00570 128.53)",
+          "oklch(83.57% 0.00570 128.53)",
+          "oklch(95.00% 0.00570 128.53)"
+        ]
+      },
+      "query-body-dark": {
+        "role": "neutral",
+        "displayName": "body dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.01124 149.83)",
+          "oklch(26.43% 0.01124 149.83)",
+          "oklch(37.86% 0.01124 149.83)",
+          "oklch(49.29% 0.01124 149.83)",
+          "oklch(60.71% 0.01124 149.83)",
+          "oklch(72.14% 0.01124 149.83)",
+          "oklch(83.57% 0.01124 149.83)",
+          "oklch(95.00% 0.01124 149.83)"
+        ]
+      },
+      "query-muted-dark": {
+        "role": "neutral",
+        "displayName": "muted dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.01681 154.35)",
+          "oklch(26.43% 0.01681 154.35)",
+          "oklch(37.86% 0.01681 154.35)",
+          "oklch(49.29% 0.01681 154.35)",
+          "oklch(60.71% 0.01681 154.35)",
+          "oklch(72.14% 0.01681 154.35)",
+          "oklch(83.57% 0.01681 154.35)",
+          "oklch(95.00% 0.01681 154.35)"
+        ]
+      },
+      "query-tint-dark": {
+        "role": "neutral",
+        "displayName": "tint dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.02407 253.69)",
+          "oklch(26.43% 0.02407 253.69)",
+          "oklch(37.86% 0.02407 253.69)",
+          "oklch(49.29% 0.02407 253.69)",
+          "oklch(60.71% 0.02407 253.69)",
+          "oklch(72.14% 0.02407 253.69)",
+          "oklch(83.57% 0.02407 253.69)",
+          "oklch(95.00% 0.02407 253.69)"
+        ]
+      },
+      "query-rule-dark": {
+        "role": "neutral",
+        "displayName": "rule dark",
+        "tonalRamp": [
+          "oklch(15.00% 0.01566 156.36)",
+          "oklch(26.43% 0.01566 156.36)",
+          "oklch(37.86% 0.01566 156.36)",
+          "oklch(49.29% 0.01566 156.36)",
+          "oklch(60.71% 0.01566 156.36)",
+          "oklch(72.14% 0.01566 156.36)",
+          "oklch(83.57% 0.01566 156.36)",
+          "oklch(95.00% 0.01566 156.36)"
+        ]
+      },
+      "query-selection-ink": {
+        "role": "neutral",
+        "displayName": "selection ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.06600 252.05)",
+          "oklch(26.43% 0.06600 252.05)",
+          "oklch(37.86% 0.06600 252.05)",
+          "oklch(49.29% 0.06600 252.05)",
+          "oklch(60.71% 0.06600 252.05)",
+          "oklch(72.14% 0.06600 252.05)",
+          "oklch(83.57% 0.06600 252.05)",
+          "oklch(95.00% 0.06600 252.05)"
+        ]
+      },
+      "query-selection-ground": {
+        "role": "neutral",
+        "displayName": "selection ground",
+        "tonalRamp": [
+          "oklch(15.00% 0.06031 263.27)",
+          "oklch(26.43% 0.06031 263.27)",
+          "oklch(37.86% 0.06031 263.27)",
+          "oklch(49.29% 0.06031 263.27)",
+          "oklch(60.71% 0.06031 263.27)",
+          "oklch(72.14% 0.06031 263.27)",
+          "oklch(83.57% 0.06031 263.27)",
+          "oklch(95.00% 0.06031 263.27)"
+        ]
+      }
+    },
+    "tonalRampNote": "Panel-only synthesized OKLCH previews; not additional implemented colors or permission to recolor original media. DESIGN.md primitives remain normative.",
+    "typographyMeta": {
+      "display": {
+        "displayName": "Two-line project title",
+        "purpose": "Explicit break before “ to ”; medium-weight sans-serif, maximum 56px desktop, 48px through 1100px, mobile clamp with 40px at the reviewed 390px viewport."
+      },
+      "headline": {
+        "displayName": "Chapter main sentence",
+        "purpose": "Main part of the original h2 after its Chinese colon."
+      },
+      "label": {
+        "displayName": "Source-derived chapter label",
+        "purpose": "Original h2 prefix before its colon; explicitly user requested, not invented copy."
+      },
+      "title": {
+        "displayName": "Subheading",
+        "purpose": "Sans-serif source subheadings aligned with the article."
+      },
+      "body": {
+        "displayName": "Reading text",
+        "purpose": "Ordinary source paragraphs and all afterword principles: 18px desktop, 17px mobile, source strong openings inline."
+      },
+      "caption": {
+        "displayName": "Source image caption",
+        "purpose": "Centered muted source captions; 13px desktop, 12px mobile."
+      },
+      "navigation": {
+        "displayName": "Chapter link",
+        "purpose": "Five source-derived labels in a desktop rail or mobile disclosure."
+      },
+      "supporting-body": {
+        "displayName": "Supporting reading text",
+        "purpose": "17px shared by Hero introduction, mode-copy passages and interaction-step copy. Afterword now uses ordinary body, with no compact-column role."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "chapter-entry",
+        "value": "translateY(14px) to 0; opacity 0.55 to 1; 560ms cubic-bezier(0.19, 1, 0.22, 1)",
+        "purpose": "Once per chapter heading on first intersection; visible before JavaScript."
+      },
+      {
+        "name": "navigation-state",
+        "value": "color 180ms ease, transform 120ms ease",
+        "purpose": "Chapter hover/current and pressed feedback."
+      },
+      {
+        "name": "image-affordance",
+        "value": "opacity 180ms ease, transform 180ms cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Original-image expansion affordance."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation: none; transition: none; scroll-behavior: auto",
+        "purpose": "CSS transitions are disabled; JavaScript chapter animations are skipped or cancelled."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow-layout-and-stacked-pairs",
+        "value": "1100px"
+      },
+      {
+        "name": "mobile-disclosure-and-reading",
+        "value": "760px"
+      }
+    ],
+    "accessibility": {
+      "focus": "2px solid var(--query-blue), 6px offset",
+      "navigation": "Desktop sticky vertical rail. Mobile toggle uses aria-expanded and aria-controls; selecting a link collapses the menu. Keyboard activation updates URL hash, scrolls instantly and focuses the chapter h2.",
+      "increasedContrast": "Body and muted text promoted to theme ink. Navigation is already opaque on mobile."
+    },
+    "media": {
+      "provenance": "Latest source checksum 9802a7d73fcbfa99e27ddf02066072887d6bf67f4c025bbc8099bba8e67f89ce. Generated JSON holds source/public checksums and original image filenames, dimensions and SHA-256; all 17 images remain byte-for-byte copies.",
+      "researchFrames": "Desktop uniform 4:5 white canvases contain full source images; mobile returns to intrinsic proportions. This is CSS presentation only, with no raster changes.",
+      "interaction": "All 17 case images are static: no image anchors, expansion controls, click handlers or lightbox."
+    },
+    "sources": [
+      "app/query-case.css",
+      "components/FromQueryToQuestHero.tsx",
+      "components/FromQueryToQuestCase.tsx",
+      "components/QueryCaseFigure.tsx",
+      "components/QueryCaseInteractions.tsx",
+      "lib/query-case.ts",
+      "scripts/sync-query-case.mjs",
+      "components/QueryCaseVideo.tsx"
+    ],
+    "layout": {
+      "outer": "One layout-owned article capped at 720px plus a 144px rail/48px gap gives maximum 912px outer width. Through 1100px, 112px rail/32px gap gives maximum 864px outer width. Desktop/narrow minimum side gutters are 48px/32px; through 760px use the existing disclosure and 20px side gutters.",
+      "alignment": "All five chapters share both article edges: headings, prose, standalone images, and group wrappers fill the column. No descendant 720px/760px/800px caps or section-2 special cap. Internal group columns are preserved; caption text stays centered within its full figure width.",
+      "media": "Original proportions; 16px in-page corners, 12px mobile. Image captions centered; video caption is a title/link row.",
+      "groups": "Research pair: two equal 4:5 white frames with 24px gap and 12px inner padding, 348px × 435px each at the full 720px measure; complete originals use object-fit contain. Through 760px, stack with auto frame ratio, zero padding and original image proportions. Storyboard stacks through 760px; mode and interaction pairs stack through 1100px. Afterword principles are ordinary paragraphs with inline source bold and no columns.",
+      "hero": "The desktop Hero places the cover on the left and the two-line title/question and introduction on the right, using equal columns with a 56px gap. The artwork spans both text rows and centers vertically. A full-width metadata row sits below both columns. Row gaps are 28px, with 12px additional space before metadata. Through 1100px the column gap is 40px. Through 760px, the single-column order is title/question → cover → introduction → metadata with a 32px gap and no extra metadata margin. Hero top/bottom padding is 72px/80px on desktop and 40px/48px on mobile.",
+      "heroFacts": "Hero metadata spans the full composition below the cover and text in three columns: 时间—2025, 项目类型—硕士毕业设计, and 关键词—#AI #交互范式 #能动性. The duration field is omitted at the user’s request. A 1px theme-rule line separates this row from the main composition, with 28px padding above its content. Labels are muted 13px/500 with 8px below; values are 16px. Only non-clickable keyword spans use 13px text, 1px theme-rule borders, pill corners and 3px/10px padding. Desktop columns are equal with 32px gaps; mobile keeps three columns in 0.6fr:1.2fr:1.5fr proportions, 16px gaps and 24px top padding. Whole keyword chips wrap without reducing type. The user-approved field list is a webpage presentation override; Obsidian remains unchanged.",
+      "challenge": "The callout fills the article. Its h3, quote, and figure share the same padded inner box: 32px horizontal inset desktop, 20px mobile. No independent image cap or auto-centering."
+    },
+    "video": {
+      "provider": "Vimeo",
+      "id": "1218556665",
+      "aspectRatio": "16 / 9",
+      "placement": "After the hero and introduction, before the chapter layout.",
+      "controls": "Vimeo playback controls, inline playback, fullscreen, lazy loading and an external fallback link.",
+      "logo": "The embed requests vimeo_logo=0 with other hide-chrome parameters. The build thread observed the logo still visible; logo removal is not a hard requirement or guaranteed behavior."
+    },
+    "historicalEvidence": [
+      ".impeccable/review/finish-review.md",
+      ".impeccable/review/desktop.png",
+      ".impeccable/review/mobile.png",
+      ".impeccable/review/desktop-interaction.png",
+      ".impeccable/review/desktop-afterword.png",
+      ".impeccable/review/desktop-image-viewer-fixed.png",
+      ".impeccable/review/mobile-image-viewer-fixed.png",
+      ".impeccable/review/revision/content-verification.json",
+      ".impeccable/review/revision/video-verification.json",
+      ".impeccable/review/hero-revision/finish-review.md",
+      ".impeccable/review/hero-revision/content-verification.json",
+      ".impeccable/review/hero-revision/detector.json"
+    ],
+    "reviewNote": "Fresh review returns ship only for the CSS shared-width correction, not user acceptance or release approval. Eight current captures at 1456px, 884px and 390px plus saved geometry establish matching edges across all five chapters: article widths 720px/661px/350px; callout children 656px/597px/310px. The 884px measurement includes a 15px scrollbar. Saved content verification records 77/77 blocks, 17 images, zero interactive image ancestors and editorial exclusion. Existing static-image and approved transition rules remain unchanged. No new full build or independent documenter validation; prior reviews and playback checks remain historical.",
+    "evidence": [
+      ".impeccable/review/shared-width/finish-review.md",
+      ".impeccable/review/shared-width/after-geometry.json",
+      ".impeccable/review/shared-width/content-verification.json",
+      ".impeccable/review/shared-width/detector.json"
+    ],
+    "detectorNote": "The current shared-width detector.json is empty. This is supplied supporting evidence, not a detector run by the documenter.",
+    "discussionOnly": [
+      "Inline keyword highlights in article prose",
+      "Video guidance copy",
+      "Extra ToC grouping"
+    ],
+    "approvedTransition": {
+      "text": "基于这些洞察，我将设计回应组织为三项原则，并进一步发展为概念框架。",
+      "location": "End of insight, before design principles",
+      "sourcePolicy": "User-approved webpage addition; Obsidian remains unchanged"
+    },
+    "heroMetadata": {
+      "labels": [
+        "时间",
+        "项目类型",
+        "关键词"
+      ],
+      "values": [
+        "2025",
+        "硕士毕业设计",
+        [
+          "#AI",
+          "#交互范式",
+          "#能动性"
+        ]
+      ],
+      "labelSize": 13,
+      "valueSize": 16,
+      "keywordSize": 13,
+      "interactive": false,
+      "sourcePolicy": "User-approved webpage field list; source Markdown unchanged"
+    }
+  },
+  "components": [
+    {
+      "name": "Chapter navigation",
+      "kind": "nav",
+      "refersTo": "chapter-link",
+      "description": "Vertical desktop rail with an ink-colored active label and left marker; mobile is a disclosure.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"项目章节\"><a href=\"#query-section-1\" aria-current=\"location\">问题</a><a href=\"#query-section-2\">洞察</a><a href=\"#query-section-3\">设计原则</a><a href=\"#query-section-4\">概念框架</a><a href=\"#query-section-5\">后记 · 写于 2026 </a></nav>",
+      "css": ".ds-nav{display:flex;flex-direction:column;width:144px;border-left:1px solid var(--query-rule,#dadfdc);font-family:var(--font-geist-sans),\"PingFang SC\",\"Hiragino Sans GB\",sans-serif;}.ds-nav a{position:relative;display:flex;align-items:center;min-height:44px;padding:10px 0 10px 16px;color:var(--query-muted,#697069);font-size:13px;line-height:1.5;text-decoration:none;transition:color 180ms ease,transform 120ms ease;}.ds-nav a[aria-current]{color:var(--query-ink,#242723);font-weight:500;}.ds-nav a[aria-current]::before{content:\"\";position:absolute;left:-1px;inset-block:12px;width:2px;background:currentColor;}.ds-nav a:active{transform:translateX(2px);}@media(hover:hover) and (pointer:fine){.ds-nav a:hover{color:var(--query-ink,#242723);}}.ds-nav a:focus-visible{outline:2px solid var(--query-blue,#154bc0);outline-offset:6px;}@media(prefers-reduced-motion:reduce){.ds-nav a{transition:none;}}"
+    },
+    {
+      "name": "Mobile chapter disclosure",
+      "kind": "button",
+      "description": "52px minimum disclosure row; the actual component updates aria-expanded and shows the chapter links.",
+      "html": "<button class=\"ds-toc-toggle\" type=\"button\" aria-expanded=\"false\" aria-controls=\"ds-chapter-links\"><span>项目章节</span><span>问题</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></button><div id=\"ds-chapter-links\" hidden></div>",
+      "css": ".ds-toc-toggle{display:flex;align-items:center;gap:12px;width:100%;min-height:52px;padding:0;border:0;border-block:1px solid var(--query-rule,#dadfdc);color:var(--query-ink,#242723);background:var(--query-ground,#fafaf8);font-size:13px;text-align:left;cursor:pointer;font-family:var(--font-geist-sans),\"PingFang SC\",\"Hiragino Sans GB\",sans-serif;}.ds-toc-toggle span:nth-child(2){margin-left:auto;color:var(--query-muted,#697069);}.ds-toc-toggle[aria-expanded=\"true\"] svg{transform:rotate(180deg);}.ds-toc-toggle:focus-visible{outline:2px solid var(--query-blue,#154bc0);outline-offset:6px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Original artifacts on a quiet reading surface",
+    "overview": "This records only /projects/from-query-to-quest. Its visual authority is app/query-case.css and the current Query case components. Incumbent landing, shared site chrome, and other project pages keep their existing visual rules.\n\nA unified sans-serif hierarchy, common left alignment, and generous paragraph rhythm frame the original blue/lilac artwork. Desktop chapters sit beside a quiet left directory; mobile exposes that directory through a compact disclosure. The page varies density with source-based image and text groupings.",
+    "keyCharacteristics": [
+      "Geist/PingFang headings and prose with a shared content left edge.",
+      "Source headings split into a smaller label and a larger main sentence.",
+      "Original media with rounded presentation and centered gray captions; all case images are static and non-clickable.",
+      "Desktop chapter rail and mobile collapsible chapter navigation."
+    ],
+    "rules": [
+      {
+        "name": "The Legible Selection Rule",
+        "body": "Keep the explicit selection foreground/background pair in both themes. Increased-contrast preferences promote body and muted text to theme ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Source Heading Rule",
+        "body": "Split each original h2 at its Chinese colon: the prefix becomes the small label and the remaining sentence becomes the main title. Keep both inside one semantic h2; keep the colon available to assistive technology while hiding it visually. This is the user's explicit request for source-derived labels, not permission to invent extra editorial labels.",
+        "section": "typography"
+      },
+      {
+        "name": "The Shared Body Rule",
+        "body": "Every afterword principle is an ordinary source paragraph at the 720px reading measure, using the same 18px desktop/17px mobile body scale as surrounding paragraphs. Its source strong opening remains inline. The three-column, compact-body, and enlarged opening/closing treatments are removed.",
+        "section": "typography"
+      },
+      {
+        "name": "The Shared Width Rule",
+        "body": "One article width controls all five chapters. Chapter headings, prose, standalone images, and group wrappers fill that column and share both left and right edges. Descendants have no independent 720px, 760px, or 800px caps. Figure captions center their text within their own full-width figure; grouped text/image units keep their existing internal columns.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Reading Rule",
+        "body": "Fine borders and the challenge tint create structure without case shadows or blurred navigation. Mobile navigation has an opaque theme ground.",
+        "section": "elevation & depth"
+      },
+      {
+        "name": "The Visible Before Motion Rule",
+        "body": "Chapter headings remain visible before JavaScript. Their one-time entry moves 14px to rest and changes opacity from 0.55 to 1 over 560ms with cubic-bezier(0.19, 1, 0.22, 1). Reduced motion skips or cancels this entry and disables case transitions. Focus uses a 2px blue outline with 6px offset.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "**Do** align all five chapters' headings, prose, standalone images, and group wrappers to the same article edges.",
+      "**Do** keep source-derived heading labels faithful to the current Markdown and Hero metadata faithful to the user-approved field list.",
+      "**Do** preserve original image bytes, proportions, alt text, and captions.",
+      "**Do** keep images non-clickable while preserving chapter keyboard navigation and reduced-motion support.",
+      "**Do** retain the external Vimeo playback link."
+    ],
+    "donts": [
+      "**Don't** apply this case-specific system to landing or other project routes automatically.",
+      "**Don't** restore the removed serif hierarchy, centered prose, afterword columns, or enlarged afterword opening/closing treatment.",
+      "**Don't** publish the editorial workspace, invent case copy, or modify the source Markdown.",
+      "**Don't** embed provenance into the rasters; keep it in the generated JSON snapshot.",
+      "**Don't** promise that embed parameters remove Vimeo's logo when the player still shows it."
+    ]
+  }
+}

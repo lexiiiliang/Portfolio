@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 import { FromQueryToQuestCase } from "@/components/FromQueryToQuestCase";
 import { FromQueryToQuestHero } from "@/components/FromQueryToQuestHero";
+import { QueryCaseVideo } from "@/components/QueryCaseVideo";
 import { Localized } from "@/components/Localized";
 import { MarkdownCase } from "@/components/MarkdownCase";
 import { ProjectTransitionLink } from "@/components/ProjectTransitionLink";
@@ -47,9 +48,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <>
       <SiteHeader compact />
-      <main id="top" className={`project-page accent-${project.accent}`}>
+      <main id="top" className={`project-page accent-${project.accent} ${isQueryFramework ? "query-page" : ""}`}>
         {isQueryFramework ? (
-          <FromQueryToQuestHero project={project} />
+          <FromQueryToQuestHero />
         ) : (
           <section className={`project-hero ${isDistilledCase ? "is-distilled" : ""}`}>
             {!isDistilledCase ? (
@@ -74,7 +75,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </section>
         )}
 
-        {project.video ? (
+        {isQueryFramework ? <QueryCaseVideo /> : null}
+
+        {project.video && !isQueryFramework ? (
           <figure className="project-video">
             <iframe
               className="project-video-embed"

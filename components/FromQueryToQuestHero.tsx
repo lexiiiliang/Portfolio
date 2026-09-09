@@ -1,36 +1,33 @@
-import { Localized } from "@/components/Localized";
-import type { PortfolioProject } from "@/lib/portfolio";
+import { queryCase } from "@/lib/query-case";
+import { QueryCaseMarkdown } from "./QueryCaseMarkdown";
+import { QueryCaseFigure } from "./QueryCaseFigure";
 
-export function FromQueryToQuestHero({ project }: { project: PortfolioProject }) {
+export function FromQueryToQuestHero() {
+  const [metadata, question, introduction] = queryCase.opening;
+  const cover = queryCase.opening.find((block) => block.kind === "figure");
+  const metadataLines = metadata?.kind === "text" ? metadata.markdown.split("\n").filter((line) => line.trim()) : [];
+  const facts = metadataLines[0]?.replace(/^\*\*|\*\*\s*$/g, "").split(" · ") || [];
+  const [year, projectType] = facts;
+  const titleBreak = queryCase.title.indexOf(" to ");
   return (
-    <section className="project-hero fq-hero" aria-labelledby="fq-hero-title">
-      <div className="fq-hero-meta">
-        <span><Localized en="Master’s thesis" zh="硕士毕业设计" /></span>
-        <span><Localized en="Interaction design" zh="交互设计" /></span>
-        <span>{project.year}</span>
-      </div>
-
-      <div className="fq-hero-copy">
-        <p className="fq-hero-kicker"><Localized en="From output to inquiry" zh="从结果导向到持续求索" /></p>
-        <h1 id="fq-hero-title">{project.title}</h1>
-        <p className="project-hero-thesis"><Localized en={project.heroEn} zh={project.heroZh} /></p>
-      </div>
-
-      <div className="fq-hero-placeholder" role="img" aria-label="Placeholder for the future hero visual direction">
-        <span className="fq-hero-placeholder-label">
-          <Localized en="Hero visual · pending design" zh="Hero 视觉 · 待设计" />
-        </span>
-        <div className="fq-hero-path" aria-hidden="true">
-          <span>QUERY</span>
-          <i><b /><b /><b /></i>
-          <span>QUEST</span>
+    <section className="query-hero" aria-labelledby="query-title" lang="zh-CN">
+      <div className="query-hero-composition query-width">
+        <header className="query-hero-heading">
+          <h1 id="query-title" lang="en">{titleBreak > -1 ? <>{queryCase.title.slice(0, titleBreak)}<br />{queryCase.title.slice(titleBreak)}</> : queryCase.title}</h1>
+          <div className="query-hero-question">{question?.kind === "text" ? <QueryCaseMarkdown>{question.markdown}</QueryCaseMarkdown> : null}</div>
+        </header>
+        <div className="query-hero-artifact">
+          {cover?.kind === "figure" ? <QueryCaseFigure figure={cover} cover /> : null}
         </div>
-        <p><Localized en="A visual language for the journey is the next design decision." zh="下一步将为这段思考旅程建立视觉语言。" /></p>
-      </div>
-
-      <div className="fq-hero-foot">
-        <p><Localized en={project.summaryEn} zh={project.summaryZh} /></p>
-        <p className="fq-hero-status"><Localized en="Framework preview · v1" zh="项目框架预览 · v1" /></p>
+        <div className="query-hero-introduction">{introduction?.kind === "text" ? <QueryCaseMarkdown>{introduction.markdown}</QueryCaseMarkdown> : null}</div>
+        <div className="query-hero-metadata">
+          <dl className="query-hero-facts">
+            <div><dt>时间</dt><dd>{year}</dd></div>
+            <div><dt>项目类型</dt><dd>{projectType}</dd></div>
+            <div><dt>关键词</dt><dd className="query-hero-keywords">{["#AI", "#交互范式", "#能动性"].map((keyword) => <span key={keyword}>{keyword}</span>)}</dd></div>
+          </dl>
+          {metadataLines.slice(1).map((line) => <QueryCaseMarkdown key={line}>{line}</QueryCaseMarkdown>)}
+        </div>
       </div>
     </section>
   );

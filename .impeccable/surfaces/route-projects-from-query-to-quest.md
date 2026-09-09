@@ -1,0 +1,34 @@
+---
+version: 1
+slug: "route-projects-from-query-to-quest"
+primary_target: "route:/projects/from-query-to-quest"
+related_targets: ["components/FromQueryToQuestHero.tsx","components/FromQueryToQuestCase.tsx","components/QueryCaseFigure.tsx","components/QueryCaseInteractions.tsx","components/QueryCaseMarkdown.tsx","components/QueryCaseVideo.tsx","app/query-case.css","lib/query-case.ts"]
+---
+
+# From Query to Quest case detail
+
+Mode: Read.
+
+Help the visitor understand the source project's question, evidence, principles, scenario, and full 2026 afterword, with static original images and the user's degree-show video available in place.
+
+The current visual system is unified Geist/PingFang sans-serif. Source h2 text is split at its colon into a small label and main sentence; this label treatment is explicitly user requested. All five chapters share one article width for labels/headings, prose, standalone images, and group wrappers. The layout owns a maximum 720px article plus a 144px sticky chapter rail and 48px gap (912px total). Through 1100px, the rail/gap become 112px/32px (864px total maximum); mobile uses the existing collapsible menu and 20px outer gutters. Descendants have no competing width caps. Rounded images retain their proportions and centered gray captions. The insight chapter inherits the shared article width rather than a special section cap. The challenge title, quote, and image share its inner padded box, inset 32px desktop/20px mobile; the image is neither independently capped nor auto-centered. At full desktop measure, the two 348px × 435px white frames contain the complete source images with 12px padding; mobile restores native image proportions and no inner padding. Mode text/diagram pairs, storyboards, and interaction steps retain their established grouping. The afterword principles return to ordinary 18px/17px desktop/mobile paragraphs with source inline bold and no columns.
+
+The desktop Hero places the cover on the left and the two-line title/question and introduction on the right, using equal columns with a 56px gap. The artwork spans both text rows and centers vertically. A full-width metadata row sits below both columns. Row gaps are 28px, with 12px additional space before metadata. Through 1100px the column gap is 40px. Through 760px, the single-column order is title/question → cover → introduction → metadata with a 32px gap and no extra metadata margin. Hero top/bottom padding is 72px/80px on desktop and 40px/48px on mobile. The title caps at 56px; question is 22px and introduction 17px. Through 1100px the title is 48px. Hero metadata spans the full composition below the cover and text in three columns: 时间—2025, 项目类型—硕士毕业设计, and 关键词—#AI #交互范式 #能动性. The duration field is omitted at the user’s request. A 1px theme-rule line separates this row from the main composition, with 28px padding above its content. Labels are muted 13px/500 with 8px below; values are 16px. Only non-clickable keyword spans use 13px text, 1px theme-rule borders, pill corners and 3px/10px padding. Desktop columns are equal with 32px gaps; mobile keeps three columns in 0.6fr:1.2fr:1.5fr proportions, 16px gaps and 24px top padding. Whole keyword chips wrap without reducing type. The user-approved field list is a webpage presentation override; Obsidian remains unchanged. The source author's latest Markdown removed the opening research-method and design-output lines; they must not be restored by the frontend. The user-provided Vimeo 1218556665 follows the hero in a 16:9 frame with Vimeo playback controls and a fallback link. Logo suppression parameters are present; the build thread reports that the logo remains visible, which is not a hard requirement.
+
+Reference context: the build thread browsed animations.dev and observed 14px/20px labels, 20px/24px titles, 17px body, a 700px container, and 12px muted captions. Those observations informed adaptation to the incumbent site; they are not the shipped token values. Current CSS and DESIGN.md remain authoritative.
+
+Scope is only /projects/from-query-to-quest. Preserve landing, shared chrome, other cases, language/theme controls, and access protection. The body remains the supplied Chinese case with an English project title; no translation is fabricated.
+
+Content authority: portfolio.config.json caseSource selects From Query to Quest — 精简版.md and stops before ## 编辑工作区. The current synchronized source checksum is 9802a7d73fcbfa99e27ddf02066072887d6bf67f4c025bbc8099bba8e67f89ce. scripts/sync-query-case.mjs imports the latest public text and captions read-only, remaps image URLs, and copies all 17 source images byte for byte. The generated snapshot records checksums, filenames, dimensions, and image SHA-256. Provenance stays in JSON; no Obsidian or raster edits are authorized.
+
+This documentation pass records current CSS and supplied evidence; it performs no independent visual or runtime validation. The fresh .impeccable/review/shared-width/finish-review.md returns ship only for the shared-width correction. It does not indicate user acceptance or release approval. Earlier Hero and nine-point reviews remain historical for their respective revisions.
+
+Current evidence is under .impeccable/review/shared-width/. Eight inspected captures cover 1456px, 884px, and 390px viewports. after-geometry.json records identical left/right edges across all five chapters with article widths of 720px, 661px, and 350px; the 884px measurement includes a 15px scrollbar. Callout children share widths of 656px, 597px, and 310px. content-verification.json records 77/77 expected blocks, 17 images, zero interactive image ancestors, and no editorial workspace. detector.json is empty. These are saved build/review results, not checks rerun by the documenter. No new full build was run.
+
+The unchanged Hero, group breakpoints, source copy, approved transition, static images, and video behavior retain their preceding records. Earlier video playback checks remain historical; current width evidence does not establish new navigation, motion, dark-theme, video, or console validation.
+
+Discussion-only boundary: inline keyword highlights in article prose, video guidance copy, and extra ToC grouping were not implemented. Keep those proposals separate from the current system until the user requests changes.
+
+Latest user changes: all 17 images are non-clickable; original-image links, expansion icons, delegated image clicks, and the lightbox are removed. Chapter motion and navigation remain. The exact approved sentence “基于这些洞察，我将设计回应组织为三项原则，并进一步发展为概念框架。” is inserted once at the end of insight. It is a webpage-only addition and does not modify Obsidian. Earlier image-viewer verification is historical.
+
+Current metadata revision is browser-checked at 1512px and 390px; evidence is under .impeccable/review/hero-metadata/. Earlier width/Hero reviews predate the latest field list and are not new metadata review claims.

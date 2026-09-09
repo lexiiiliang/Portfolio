@@ -1,0 +1,18 @@
+{
+  "httpStatus": 200,
+  "sourceChecksum": "9802a7d73fcbfa99e27ddf02066072887d6bf67f4c025bbc8099bba8e67f89ce",
+  "sourceUnchanged": true,
+  "publicChecksumMatches": true,
+  "snapshotMatchesSource": true,
+  "sourceBlocks": 76,
+  "sourceBlocksPresent": 76,
+  "missingBlocks": [],
+  "editorialNotRendered": true,
+  "images": 17,
+  "all17OriginalImagesUnchanged": true,
+  "checks": {
+    "typescript": "pass",
+    "scopedEslint": "pass",
+    "gitDiffCheck": "pass"
+  }
+}

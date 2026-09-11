@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./query-case.css";
+@import "./motion.css";
 
 :root {
   --paper: #f6f6f2;
@@ -1609,7 +1610,7 @@ html[data-theme="dark"] .project-tldr-header {
   margin-top: 2px;
   color: var(--muted);
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0;
   font-variant-numeric: tabular-nums;
@@ -2089,48 +2090,6 @@ html[data-lang="zh"] .contact-morph-item[data-contact="cv"] {
   line-height: 1.75;
   text-wrap: pretty;
 }
-
-.home-page[data-scrollytelling="ready"] [data-scroll-reveal] {
-  opacity: 0;
-  transform: translate3d(0, 20px, 0);
-}
-
-.home-page[data-scrollytelling="ready"] [data-scroll-reveal]:not([data-visible="true"]) {
-  will-change: opacity, transform;
-}
-
-.home-page[data-scrollytelling="ready"] [data-scroll-reveal][data-visible="true"] {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-  transition:
-    opacity 600ms var(--ease-out),
-    transform 600ms var(--ease-out);
-  transition-delay: var(--scroll-reveal-delay, 0ms);
-}
-
-.home-page[data-scrollytelling="ready"] [data-scroll-reveal="contact-icons"] {
-  opacity: 1;
-  transform: none;
-  will-change: auto;
-}
-
-.home-page[data-scrollytelling="ready"] [data-scroll-reveal="contact-icons"] .contact-morph-item {
-  opacity: 0;
-  transform: translate3d(0, 50%, 0) scale(.92);
-}
-
-.home-page[data-scrollytelling="ready"] [data-scroll-reveal="contact-icons"][data-visible="true"] .contact-morph-item {
-  opacity: 1;
-  transform: translate3d(0, 0, 0) scale(1);
-  transition:
-    opacity 600ms var(--ease-out),
-    transform 600ms var(--ease-drawer);
-}
-
-.home-page[data-scrollytelling="ready"] [data-scroll-reveal="contact-icons"][data-visible="true"] .contact-morph-item:nth-child(1) { transition-delay: 80ms; }
-.home-page[data-scrollytelling="ready"] [data-scroll-reveal="contact-icons"][data-visible="true"] .contact-morph-item:nth-child(2) { transition-delay: 160ms; }
-.home-page[data-scrollytelling="ready"] [data-scroll-reveal="contact-icons"][data-visible="true"] .contact-morph-item:nth-child(3) { transition-delay: 240ms; }
-.home-page[data-scrollytelling="ready"] [data-scroll-reveal="contact-icons"][data-visible="true"] .contact-morph-item:nth-child(4) { transition-delay: 320ms; }
 
 .case-markdown > :first-child { margin-top: 0; }
 

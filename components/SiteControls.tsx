@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Language = "en" | "zh";
 type Theme = "light" | "dark";
@@ -34,6 +34,8 @@ function SunIcon() {
 }
 
 export function SiteControls() {
+  const themeTimer = useRef(0);
+  const themeTarget = useRef<Theme | null>(null);
   const [language, setLanguage] = useState<Language>("en");
   const [theme, setTheme] = useState<Theme>("light");
 
@@ -53,11 +55,29 @@ export function SiteControls() {
     setLanguage(next);
   };
 
+  useEffect(() => () => {
+    clearTimeout(themeTimer.current);
+    document.documentElement.classList.remove("theme-changing");
+  }, []);
+
   const changeTheme = () => {
-    const next = theme === "light" ? "dark" : "light";
-    document.documentElement.dataset.theme = next;
-    window.localStorage.setItem("lexi-theme", next);
-    setTheme(next);
+    const root = document.documentElement;
+    const current = themeTarget.current || root.dataset.theme;
+    const next = current === "light" ? "dark" : "light";
+    themeTarget.current = next;
+    const apply = () => {
+      root.dataset.theme = next;
+      try { window.localStorage.setItem("lexi-theme", next); } catch { /* The theme still works without storage. */ }
+      setTheme(next);
+    };
+    const scoped = Boolean(document.querySelector(".home-page, .query-page"));
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    clearTimeout(themeTimer.current);
+    root.classList.toggle("theme-changing", scoped && !reduced);
+    apply();
+    // Registered palette colors interpolate together and can reverse immediately.
+    themeTimer.current = window.setTimeout(() => root.classList.remove("theme-changing"), 480);
+
   };
 
   return (
@@ -88,7 +108,10 @@ export function SiteControls() {
         aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
         title={theme === "light" ? "Dark mode" : "Light mode"}
       >
-        {theme === "light" ? <MoonIcon /> : <SunIcon />}
+        <span className="theme-icon-stack" aria-hidden="true">
+          <span className="theme-icon-layer theme-icon-moon"><MoonIcon /></span>
+          <span className="theme-icon-layer theme-icon-sun"><SunIcon /></span>
+        </span>
       </button>
     </div>
   );

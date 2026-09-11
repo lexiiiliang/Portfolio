@@ -1,5 +1,7 @@
 "use client";
 
+import { ArrowIcon } from "./ArrowIcon";
+
 import { useEffect, useRef } from "react";
 
 const FINE_POINTER_QUERY = "(hover: hover) and (pointer: fine)";
@@ -24,7 +26,10 @@ export function CustomCursor() {
       const pointerTarget = document.elementFromPoint(pointerX, pointerY);
       const isOverPortrait = pointerTarget instanceof Element
         && Boolean(pointerTarget.closest(".portrait-tracker"));
-      cursor.dataset.variant = isOverPortrait ? "portrait" : "default";
+      const action = pointerTarget?.closest<HTMLElement>("[data-cursor]")?.dataset.cursor;
+      const interactive = pointerTarget?.closest("a, button, [role='button']");
+      const scoped = Boolean(document.querySelector(".home-page, .query-page"));
+      cursor.dataset.variant = isOverPortrait ? "portrait" : action || (scoped && interactive ? "link" : "default");
       if (!isOverPortrait) cursor.classList.remove("is-waving");
     };
 
@@ -111,6 +116,8 @@ export function CustomCursor() {
     window.addEventListener("pointercancel", handlePointerRelease, { passive: true });
     window.addEventListener("pointerout", handlePointerOut);
     window.addEventListener("scroll", handleScroll, { passive: true });
+    document.addEventListener("scroll", handleScroll, { passive: true, capture: true });
+    document.addEventListener("transitionend", handleScroll);
     window.addEventListener("blur", handlePointerRelease);
     document.addEventListener("visibilitychange", handleVisibilityChange);
     portraitCursor.addEventListener("animationend", finishWave);
@@ -126,6 +133,8 @@ export function CustomCursor() {
       window.removeEventListener("pointercancel", handlePointerRelease);
       window.removeEventListener("pointerout", handlePointerOut);
       window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("scroll", handleScroll, true);
+      document.removeEventListener("transitionend", handleScroll);
       window.removeEventListener("blur", handlePointerRelease);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       portraitCursor.removeEventListener("animationend", finishWave);
@@ -141,6 +150,10 @@ export function CustomCursor() {
       aria-hidden="true"
     >
       <span className="custom-cursor-dot" />
+      <span className="custom-cursor-action">
+        <span className="cursor-preview"><ArrowIcon direction="up" /><span className="copy-en">Quick look</span><span className="copy-zh">快速了解</span></span>
+        <span className="cursor-project"><ArrowIcon /><span className="copy-en">Explore project</span><span className="copy-zh">进去看看</span></span>
+      </span>
       <span ref={portraitCursorRef} className="custom-cursor-portrait">👋</span>
     </div>
   );

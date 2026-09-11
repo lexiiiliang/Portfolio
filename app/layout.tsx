@@ -88,6 +88,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link
           rel="preload"
           href="/media/cursor-tracker/cursor-sprite.webp"
+          imageSrcSet="/media/cursor-tracker/cursor-sprite.webp 1x, /media/cursor-tracker/cursor-sprite@2x.webp 2x"
           as="image"
           type="image/webp"
         />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { mountScrollStory } from "@/lib/scroll-story";
 
 type Heading = { id: string; heading: string };
 
@@ -26,6 +27,7 @@ export function QueryCaseNavigation({ headings }: { headings: Heading[] }) {
         <span>项目章节</span><span>{headings.find(({ id }) => id === active)?.heading.split("：")[0]}</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
       </button>
+      <div className="query-navigation-panel" data-expanded={expanded}>
       <div className="query-navigation-inner" id="query-chapter-links" data-expanded={expanded}>
         {headings.map(({ id, heading }) => (
           <a key={id} href={`#${id}`} aria-current={id === active ? "location" : undefined} title={heading} onClick={(event) => {
@@ -40,37 +42,16 @@ export function QueryCaseNavigation({ headings }: { headings: Heading[] }) {
           }}>{heading.split("：")[0]}</a>
         ))}
       </div>
+      </div>
     </nav>
   );
 }
 
 export function QueryCaseMotion() {
   useEffect(() => {
-    const root = document.querySelector(".query-page");
+    const root = document.querySelector<HTMLElement>(".query-page");
     if (!root) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const animations = new Set<Animation>();
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        observer.unobserve(entry.target);
-        if (reduced.matches) return;
-        // Visible by default; no hidden content if scripting or motion is disabled.
-        const animation = entry.target.animate([{ opacity: 0.55, transform: "translateY(14px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 560, easing: "cubic-bezier(0.19, 1, 0.22, 1)" });
-        animations.add(animation);
-        animation.onfinish = () => animations.delete(animation);
-      });
-    }, { threshold: 0.15 });
-    root.querySelectorAll("[data-query-reveal]").forEach((element) => observer.observe(element));
-    const cancelMotion = () => { if (reduced.matches) animations.forEach((animation) => animation.cancel()); };
-    reduced.addEventListener("change", cancelMotion);
-    return () => {
-      observer.disconnect();
-      animations.forEach((animation) => animation.cancel());
-      reduced.removeEventListener("change", cancelMotion);
-    };
+    return mountScrollStory(root, ".query-hero-heading, .query-hero-artifact, .query-hero-introduction, .query-hero-metadata, .query-video, .query-section-title, .query-section-body > *, .next-project");
   }, []);
-
   return null;
 }
-

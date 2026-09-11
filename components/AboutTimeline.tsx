@@ -21,7 +21,7 @@ const timelineItems: TimelineItem[] = [
     organizationZh: "华中科技大学",
     roleEn: "Bachelor of Architecture (BArch)",
     roleZh: "建筑学学士 (BArch)",
-    dates: "2016–2021",
+    dates: "2016 - 2021",
   },
   {
     kind: "education",
@@ -30,7 +30,7 @@ const timelineItems: TimelineItem[] = [
     organizationZh: "代尔夫特理工大学",
     roleEn: "MSc Design for Interaction · Exchange",
     roleZh: "交互设计 (MSc) · 交换",
-    dates: "2023–2024",
+    dates: "2023 - 2024",
   },
   {
     kind: "work",
@@ -39,7 +39,7 @@ const timelineItems: TimelineItem[] = [
     organizationZh: "商汤科技",
     roleEn: "Interaction Designer · Intern",
     roleZh: "交互设计师｜实习",
-    dates: "03/2024–09/2024",
+    dates: "03/2024 - 09/2024",
     logo: "/media/about-timeline/sensetime.png",
     logoKey: "sensetime",
   },
@@ -50,7 +50,7 @@ const timelineItems: TimelineItem[] = [
     organizationZh: "微软",
     roleEn: "Product Designer · Intern",
     roleZh: "产品设计师｜实习",
-    dates: "09/2024–01/2025",
+    dates: "09/2024 - 01/2025",
     logo: "/media/about-timeline/microsoft.png",
     logoKey: "microsoft",
   },
@@ -61,7 +61,7 @@ const timelineItems: TimelineItem[] = [
     organizationZh: "于默奥设计学院",
     roleEn: "MFA in Interaction Design",
     roleZh: "交互设计硕士 (MFA)",
-    dates: "2022–2025",
+    dates: "2022 - 2025",
   },
   {
     kind: "work",
@@ -70,7 +70,7 @@ const timelineItems: TimelineItem[] = [
     organizationZh: "理想汽车",
     roleEn: "Interaction Designer · Full-time",
     roleZh: "交互设计师｜全职",
-    dates: "08/2025–Now",
+    dates: "08/2025 - Now",
     logo: "/media/about-timeline/li-auto.png",
     logoKey: "li-auto",
   },
@@ -85,7 +85,6 @@ export function AboutTimeline() {
             key={`${item.organizationEn}-${item.dates}`}
             className="about-timeline-item"
             data-kind={item.kind}
-            data-scroll-reveal
           >
             {index === 0 ? (
               <h3 className="about-timeline-kind-label">

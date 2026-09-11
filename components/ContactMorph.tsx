@@ -50,61 +50,69 @@ const CONTACT_KEYS = Object.keys(CONTACT_META) as ContactKey[];
 type FlipSnapshot = {
   item: DOMRect;
   shape: DOMRect;
+  icon: DOMRect;
 };
 
 type FlipAnimations = {
   item: Animation;
   shape: Animation;
+  icon: Animation;
 };
 
 function TypewriterText({ text }: { text: string }) {
-  const characters = Array.from(text);
-  const previousText = useRef<string | null>(null);
-  const [visibleCharacters, setVisibleCharacters] = useState(0);
-  const [isTyping, setIsTyping] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+  const [displayed, setDisplayed] = useState(text);
+  const [leaving, setLeaving] = useState(false);
+  const displayedRef = useRef(text);
 
   useEffect(() => {
-    if (previousText.current === text) return;
-    previousText.current = text;
-    const nextCharacters = Array.from(text);
-    let timeoutId: number;
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      timeoutId = window.setTimeout(() => {
-        setVisibleCharacters(nextCharacters.length);
-        setIsTyping(false);
-      }, 0);
-      return () => window.clearTimeout(timeoutId);
-    }
-
-    let currentCharacter = 0;
-    const characterDelay = nextCharacters.length > 24 ? 22 : 42;
-
-    const typeNextCharacter = () => {
-      currentCharacter += 1;
-      setVisibleCharacters(currentCharacter);
-
-      if (currentCharacter < nextCharacters.length) {
-        timeoutId = window.setTimeout(typeNextCharacter, characterDelay);
-      } else {
-        setIsTyping(false);
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    let timer = 0;
+    const update = () => {
+      clearTimeout(timer);
+      if (reduced.matches) {
+        timer = window.setTimeout(() => {
+          displayedRef.current = text;
+          setDisplayed(text);
+          setLeaving(false);
+        }, 0);
+        return;
       }
+      if (displayedRef.current === text) {
+        timer = window.setTimeout(() => setLeaving(false), 0);
+        return;
+      }
+      timer = window.setTimeout(() => {
+        setLeaving(true);
+        timer = window.setTimeout(() => {
+          displayedRef.current = text;
+          setDisplayed(text);
+          setLeaving(false);
+        }, 150);
+      }, 65);
     };
-
-    timeoutId = window.setTimeout(() => {
-      setVisibleCharacters(0);
-      setIsTyping(true);
-      timeoutId = window.setTimeout(typeNextCharacter, 45);
-    }, 0);
-    return () => window.clearTimeout(timeoutId);
+    update();
+    reduced.addEventListener("change", update);
+    return () => { clearTimeout(timer); reduced.removeEventListener("change", update); };
   }, [text]);
 
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    node.dataset.typingReady = "true";
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { node.dataset.started = "true"; observer.disconnect(); }
+    }, { rootMargin: `0px 0px -${Math.round(innerHeight * .4)}px 0px`, threshold: .2 });
+    observer.observe(node.closest(".contact-morph-prompt") || node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <span className="contact-typewriter-text">
-      <span className="contact-typewriter-measure">{text}</span>
-      <span className="contact-typewriter-visible">
-        {characters.slice(0, visibleCharacters).join("")}
-        <span className="contact-typewriter-caret" data-visible={isTyping} />
+    <span ref={ref} className="contact-typewriter-text" data-leaving={leaving}>
+      <span key={displayed} className="contact-typewriter-visible">
+        {Array.from(displayed).map((character, index) => (
+          <span key={index} className="contact-typed-character" style={{ animationDelay: `${index * (displayed.length > 24 ? 23 : 38)}ms` }}>{character}</span>
+        ))}
       </span>
     </span>
   );
@@ -152,6 +160,8 @@ function ContactIcon({ kind }: { kind: ContactKey }) {
 
 export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
   const [activeContact, setActiveContact] = useState<ContactKey | null>(null);
+  const leaveTimer = useRef(0);
+  const keyboardMorph = useRef(false);
   const activeContactRef = useRef<ContactKey | null>(null);
   const itemRefs = useRef(new Map<ContactKey, HTMLLIElement>());
   const pendingFlip = useRef(new Map<ContactKey, FlipSnapshot>());
@@ -167,16 +177,20 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
       }
     : DEFAULT_PROMPT;
 
-  const captureAndSetActive = (nextContact: ContactKey | null) => {
+  const captureAndSetActive = (nextContact: ContactKey | null, keyboard = false) => {
+    clearTimeout(leaveTimer.current);
+    keyboardMorph.current = keyboard;
     if (nextContact === activeContactRef.current) return;
 
     const snapshot = new Map<ContactKey, FlipSnapshot>();
     itemRefs.current.forEach((item, key) => {
       const shape = item.querySelector<HTMLElement>(".contact-morph-shape");
-      if (!shape) return;
+      const icon = item.querySelector<HTMLElement>(".contact-morph-icon");
+      if (!shape || !icon) return;
       snapshot.set(key, {
         item: item.getBoundingClientRect(),
         shape: shape.getBoundingClientRect(),
+        icon: icon.getBoundingClientRect(),
       });
     });
     pendingFlip.current = snapshot;
@@ -187,28 +201,30 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
   useLayoutEffect(() => {
     if (pendingFlip.current.size === 0) return;
 
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduceMotion = keyboardMorph.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     itemRefs.current.forEach((item, key) => {
       const before = pendingFlip.current.get(key);
       const shape = item.querySelector<HTMLElement>(".contact-morph-shape");
-      if (!before || !shape) return;
+      const icon = item.querySelector<HTMLElement>(".contact-morph-icon");
+      if (!before || !shape || !icon) return;
 
       const previousFlip = runningFlip.current.get(key);
       previousFlip?.item.cancel();
       previousFlip?.shape.cancel();
+      previousFlip?.icon.cancel();
       runningFlip.current.delete(key);
 
       if (reduceMotion) return;
 
       const afterItem = item.getBoundingClientRect();
       const afterShape = shape.getBoundingClientRect();
+      const afterIcon = icon.getBoundingClientRect();
       const beforeCenter = before.item.left + before.item.width / 2;
       const afterCenter = afterItem.left + afterItem.width / 2;
       const translateX = beforeCenter - afterCenter;
-      const scaleX = before.shape.width / Math.max(afterShape.width, 1);
       const timing = {
-        duration: 260,
+        duration: 520,
         easing: "cubic-bezier(0.23, 1, 0.32, 1)",
       } as const;
 
@@ -221,13 +237,17 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
       );
       const shapeAnimation = shape.animate(
         [
-          { transform: `scaleX(${scaleX})` },
-          { transform: "scaleX(1)" },
+          { width: `${before.shape.width}px` },
+          { width: `${afterShape.width}px` },
         ],
         timing,
       );
 
-      const animations = { item: itemAnimation, shape: shapeAnimation };
+      const iconDelta = before.icon.left - afterIcon.left - translateX;
+      const iconAnimation = icon.animate([
+        { translate: `${iconDelta}px 0` }, { translate: "0px 0" },
+      ], timing);
+      const animations = { item: itemAnimation, shape: shapeAnimation, icon: iconAnimation };
       runningFlip.current.set(key, animations);
       shapeAnimation.finished
         .then(() => {
@@ -243,6 +263,15 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
     pendingFlip.current = new Map();
   }, [activeContact]);
 
+  useEffect(() => {
+    const animations = runningFlip.current;
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const cancel = () => animations.forEach(({ item, shape, icon }) => { item.cancel(); shape.cancel(); icon.cancel(); });
+    const onChange = () => { if (reduced.matches) cancel(); };
+    reduced.addEventListener("change", onChange);
+    return () => { clearTimeout(leaveTimer.current); cancel(); reduced.removeEventListener("change", onChange); };
+  }, []);
+
   const handleGroupBlur = (event: FocusEvent<HTMLUListElement>) => {
     if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
       captureAndSetActive(null);
@@ -250,13 +279,15 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
   };
 
   const handlePointerLeave = (event: PointerEvent<HTMLUListElement>) => {
-    if (event.pointerType === "mouse") captureAndSetActive(null);
+    if (event.pointerType === "mouse") {
+      leaveTimer.current = window.setTimeout(() => captureAndSetActive(null), 100);
+    }
   };
 
   return (
     <div className="contact-morph">
-      <h2 id="contact" className="contact-morph-prompt" data-scroll-reveal="contact-prompt">
-        <span className="contact-typewriter-line" aria-hidden="true">
+      <h2 id="contact" className="contact-morph-prompt">
+        <span className="contact-typewriter-line" data-scroll-reveal="contact-prompt" aria-hidden="true">
           <span className="copy-en"><TypewriterText text={activePrompt.en} /></span>
           <span className="copy-zh"><TypewriterText text={activePrompt.zh} /></span>
         </span>
@@ -268,8 +299,8 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
       <ul
         className="contact-morph-list"
         aria-label="Contact links"
-        data-scroll-reveal="contact-icons"
         onPointerLeave={handlePointerLeave}
+        onPointerEnter={() => clearTimeout(leaveTimer.current)}
         onBlur={handleGroupBlur}
       >
         {CONTACT_KEYS.map((key) => {
@@ -306,7 +337,7 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
                   href={contact.href}
                   target={contact.href.startsWith("http") ? "_blank" : undefined}
                   rel={contact.href.startsWith("http") ? "noreferrer" : undefined}
-                  onFocus={() => captureAndSetActive(key)}
+                  onFocus={(event) => captureAndSetActive(key, event.currentTarget.matches(":focus-visible"))}
                 >
                   {content}
                 </a>
@@ -317,7 +348,7 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
                   tabIndex={0}
                   aria-disabled="true"
                   aria-label="CV link coming soon"
-                  onFocus={() => captureAndSetActive(key)}
+                  onFocus={(event) => captureAndSetActive(key, event.currentTarget.matches(":focus-visible"))}
                 >
                   {content}
                 </div>

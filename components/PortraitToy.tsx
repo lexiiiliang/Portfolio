@@ -213,6 +213,7 @@ export function PortraitToy() {
             ref={spriteRef}
             className="cursor-sprite"
             src="/media/cursor-tracker/cursor-sprite.webp"
+            srcSet="/media/cursor-tracker/cursor-sprite.webp 1x, /media/cursor-tracker/cursor-sprite@2x.webp 2x"
             alt=""
             width="2816"
             height="2560"

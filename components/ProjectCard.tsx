@@ -17,16 +17,12 @@ export function ProjectCard({ project, index }: { project: PortfolioProject; ind
   return (
     <article
       className={`project-card accent-${project.accent} card-${index + 1}`}
+      data-scroll-reveal="card"
+      data-story-order={index}
     >
-      <div className="project-card-content-sheet" aria-hidden="true">
-        <div className="project-card-visual-link">
-          {/* Decorative preview; the adjacent trigger supplies the accessible name. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="project-cover-image" src={covers[project.slug]} alt="" />
-        </div>
-      </div>
       {tldr ? (
         <ProjectCardTldr
+          coverSrc={covers[project.slug]}
           projectSlug={project.slug}
           projectTitle={project.title}
           projectTitleZh={projectTitleZh}

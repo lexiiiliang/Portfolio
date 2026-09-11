@@ -49,6 +49,7 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
     const target = document.getElementById(sectionId);
     if (!target) return;
 
+    target.dispatchEvent(new Event("portfolio:section-navigation", { bubbles: true }));
     if (window.location.hash !== hash) window.history.pushState(null, "", hash);
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });

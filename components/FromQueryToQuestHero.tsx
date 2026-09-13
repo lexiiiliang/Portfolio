@@ -8,12 +8,11 @@ export function FromQueryToQuestHero() {
   const metadataLines = metadata?.kind === "text" ? metadata.markdown.split("\n").filter((line) => line.trim()) : [];
   const facts = metadataLines[0]?.replace(/^\*\*|\*\*\s*$/g, "").split(" · ") || [];
   const [year, projectType] = facts;
-  const titleBreak = queryCase.title.indexOf(" to ");
   return (
     <section className="query-hero" aria-labelledby="query-title" lang="zh-CN">
       <div className="query-hero-composition query-width">
         <header className="query-hero-heading">
-          <h1 id="query-title" lang="en">{titleBreak > -1 ? <>{queryCase.title.slice(0, titleBreak)}<br />{queryCase.title.slice(titleBreak)}</> : queryCase.title}</h1>
+          <h1 id="query-title" lang="en">{queryCase.title}</h1>
           <div className="query-hero-question">{question?.kind === "text" ? <QueryCaseMarkdown>{question.markdown}</QueryCaseMarkdown> : null}</div>
         </header>
         <div className="query-hero-artifact">

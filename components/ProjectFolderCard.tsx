@@ -64,6 +64,7 @@ export function ProjectFolderCard({
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
+  const isComingSoon = projectSlug === "alive-briefing";
   const isQueryProject = projectSlug === "from-query-to-quest";
   const usesOutcomeLabels = isQueryProject || projectSlug === "livis" || projectSlug === "alive-briefing";
   const hasChineseOutcomeLabels = usesOutcomeLabels;
@@ -200,18 +201,24 @@ export function ProjectFolderCard({
                   <dd><Localized en={copy.approachEn} zh={copy.approachZh} /></dd>
                 </div>
               </dl>
-              <Link
-                href={`/projects/${projectSlug}`}
-                className="fpc-case-link"
-                data-cursor="default"
-                tabIndex={isOpen ? 0 : -1}
-              >
-                <Localized
-                  en="Take a closer look"
-                  zh="仔细看看"
-                />
-                <span aria-hidden="true"><ArrowIcon /></span>
-              </Link>
+              {isComingSoon ? (
+                <div className="fpc-case-link fpc-case-link-disabled" data-cursor="default" aria-disabled="true">
+                  <Localized en="COMING SOON" zh="施工中" />
+                </div>
+              ) : (
+                <Link
+                  href={`/projects/${projectSlug}`}
+                  className="fpc-case-link"
+                  data-cursor="default"
+                  tabIndex={isOpen ? 0 : -1}
+                >
+                  <Localized
+                    en="Take a closer look"
+                    zh="仔细看看"
+                  />
+                  <span aria-hidden="true"><ArrowIcon /></span>
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -229,13 +236,59 @@ export function ProjectFolderCard({
         data-cursor="preview"
       />
 
-      <Link
-        href={`/projects/${projectSlug}`}
-        className="fpc-front"
-        data-open={isOpen}
-        data-cursor="project"
-        aria-label={`Read ${projectTitle}`}
-      >
+      {isComingSoon ? (
+        <div
+          className="fpc-front fpc-front-disabled"
+          data-open={isOpen}
+          data-cursor="project-status"
+          aria-label={`${projectTitle} coming soon`}
+          aria-disabled="true"
+        >
+          <span className="fpc-frost" aria-hidden="true" />
+          <svg className="fpc-rim" viewBox="0 0 392 250" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id={`${rimId}-light`} x1="0" y1="0" x2=".8" y2="1">
+                <stop stopColor="var(--fpc-rim-bright)" />
+                <stop offset=".32" stopColor="var(--fpc-rim-soft)" />
+                <stop offset=".7" stopColor="var(--fpc-rim-shade)" />
+                <stop offset="1" stopColor="var(--fpc-rim-bright)" stopOpacity=".65" />
+              </linearGradient>
+              <filter id={`${rimId}-inset`} x="-5%" y="-5%" width="110%" height="110%" colorInterpolationFilters="sRGB">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="soft" />
+                <feComposite in="SourceAlpha" in2="soft" operator="out" result="inner-edge" />
+                <feFlood floodColor="var(--fpc-rim-bright)" floodOpacity=".42" />
+                <feComposite in2="inner-edge" operator="in" />
+              </filter>
+            </defs>
+            <path d={FLAP_PATH} fill="white" filter={`url(#${rimId}-inset)`} />
+            <path d={FLAP_PATH} fill="none" stroke={`url(#${rimId}-light)`} strokeWidth="1" vectorEffect="non-scaling-stroke" />
+          </svg>
+
+          <div className="fpc-front-content">
+            <div className="fpc-title">
+              <h3>
+                <span>{projectTitle}</span>
+                {projectTitleZh ? <span className="copy-zh" lang="zh-CN">{projectTitleZh}</span> : null}
+              </h3>
+            </div>
+
+            <div className="fpc-footer">
+              <div>
+                <span className="fpc-index">{indexLabel}</span>
+                <p># <Localized en={footerTag.en} zh={footerTag.zh} /></p>
+              </div>
+              <span className="fpc-year">{projectYear}</span>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <Link
+          href={`/projects/${projectSlug}`}
+          className="fpc-front"
+          data-open={isOpen}
+          data-cursor="project"
+          aria-label={`Read ${projectTitle}`}
+        >
         <span className="fpc-frost" aria-hidden="true" />
         <svg className="fpc-rim" viewBox="0 0 392 250" preserveAspectRatio="none" aria-hidden="true">
           <defs>
@@ -272,7 +325,8 @@ export function ProjectFolderCard({
             <span className="fpc-year">{projectYear}</span>
           </div>
         </div>
-      </Link>
+        </Link>
+      )}
     </div>
   );
 }

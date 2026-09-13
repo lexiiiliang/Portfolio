@@ -9,6 +9,7 @@ export function QueryCaseNavigation({ headings }: { headings: Heading[] }) {
   const [active, setActive] = useState(headings[0]?.id);
   const [expanded, setExpanded] = useState(false);
   const [groupOverride, setGroupOverride] = useState<{ activeId: string; group: string; open: boolean } | null>(null);
+  const [collapsedGroups, setCollapsedGroups] = useState<Set<string>>(() => new Set());
   const listRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLSpanElement>(null);
   const positionRef = useRef<{ x: number; y: number } | null>(null);
@@ -63,7 +64,7 @@ export function QueryCaseNavigation({ headings }: { headings: Heading[] }) {
       resize.disconnect();
       reduced.removeEventListener("change", onReducedMotion);
     };
-  }, [active, expanded, groupOverride]);
+  }, [active, expanded, groupOverride, collapsedGroups]);
   useEffect(() => () => animationRef.current?.cancel(), []);
   useEffect(() => {
     let frame = 0;
@@ -78,9 +79,25 @@ export function QueryCaseNavigation({ headings }: { headings: Heading[] }) {
     update();
     return () => { window.removeEventListener("scroll", onScroll); cancelAnimationFrame(frame); };
   }, [headings]);
+  useEffect(() => {
+    const collapseForDirectNavigation = () => {
+      const target = headings.find(({ id }) => id === window.location.hash.slice(1));
+      if (target && !target.group) {
+        setGroupOverride(null);
+        setCollapsedGroups(new Set(headings.flatMap(({ group }) => group ? [group] : [])));
+      }
+    };
+    window.addEventListener("hashchange", collapseForDirectNavigation);
+    return () => window.removeEventListener("hashchange", collapseForDirectNavigation);
+  }, [headings]);
+  const collapseGroupedNavigation = () => {
+    setGroupOverride(null);
+    setCollapsedGroups(new Set(headings.flatMap(({ group }) => group ? [group] : [])));
+  };
   const renderLink = ({ id, heading, label, depth }: Heading) => (
     <a key={id} href={`#${id}`} data-depth={depth} aria-label={label ? heading : undefined} aria-current={id === active ? "location" : undefined} title={heading} onClick={(event) => {
       setExpanded(false);
+      if (!headings.find((item) => item.id === id)?.group) collapseGroupedNavigation();
       if (event.detail === 0) {
         event.preventDefault();
         history.pushState(null, "", `#${id}`);
@@ -105,12 +122,19 @@ export function QueryCaseNavigation({ headings }: { headings: Heading[] }) {
           const group = item.group;
           const children = headings.filter((heading) => heading.group === group);
           const open = groupOverride?.activeId === active && groupOverride.group === group
-            ? groupOverride.open : currentHeading?.group === group;
+            ? groupOverride.open : currentHeading?.group === group && !collapsedGroups.has(group);
           const groupId = `query-group-${item.id}`;
           return <div className="query-navigation-group" role="group" aria-labelledby={`${groupId}-label`} key={groupId}>
             <button id={`${groupId}-label`} type="button" className="query-navigation-group-label"
               aria-expanded={open} aria-controls={groupId} data-active-group={currentHeading?.group === group || undefined}
-              onClick={() => setGroupOverride({ activeId: active, group, open: !open })}>
+              onClick={() => {
+                setGroupOverride({ activeId: active, group, open: !open });
+                setCollapsedGroups((groups) => {
+                  const next = new Set(groups);
+                  if (open) next.add(group); else next.delete(group);
+                  return next;
+                });
+              }}>
               <span>{group}</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
             </button>

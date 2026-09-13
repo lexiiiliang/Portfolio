@@ -14,7 +14,7 @@
 .livis-page .query-navigation-group-items[hidden] { display: none; }
 @media (hover: hover) and (pointer: fine) { .livis-page .query-navigation-group-label:hover { color: var(--query-ink); } }
 @media (prefers-reduced-motion: reduce) { .livis-page .query-navigation-group-label svg { transition: none; } }
-.livis-page .query-navigation-inner { max-height: calc(100dvh - 160px); overflow-y: auto; scrollbar-width: thin; }
+.livis-page .query-navigation-inner { max-height: calc(100dvh - 160px); overflow-x: hidden; overflow-y: auto; scrollbar-width: thin; }
 .livis-hero h1 { max-width: 10ch; font-size: clamp(2.5rem, 8.8cqw, 3rem); line-height: 1.2; text-wrap: balance; }
 .livis-cover-placeholder { display: grid; place-items: center; width: 100%; aspect-ratio: 1; border: 1px dashed var(--query-rule); border-radius: var(--query-radius); background: color-mix(in srgb, var(--query-rule) 15%, var(--query-ground)); color: var(--query-muted); font-size: 13px; }
 .livis-hero .query-hero-introduction p + p { margin-top: 24px; }

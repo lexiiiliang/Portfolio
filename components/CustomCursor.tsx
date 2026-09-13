@@ -153,6 +153,7 @@ export function CustomCursor() {
       <span className="custom-cursor-action">
         <span className="cursor-preview"><ArrowIcon direction="up" /><span className="copy-en">Quick look</span><span className="copy-zh">快速了解</span></span>
         <span className="cursor-project"><ArrowIcon /><span className="copy-en">Explore project</span><span className="copy-zh">进去看看</span></span>
+        <span className="cursor-project-status"><span className="copy-en">COMING SOON</span><span className="copy-zh">施工中</span></span>
       </span>
       <span ref={portraitCursorRef} className="custom-cursor-portrait">👋</span>
     </div>

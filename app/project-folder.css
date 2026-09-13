@@ -50,6 +50,7 @@
 .fpc-details dt{font-size:10px;color:var(--fpc-muted);margin:15px 0 6px}
 .fpc-details dd{margin:0;font-size:12px;line-height:1.7}
 .fpc-case-link{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;padding-top:14px;border-top:1px solid var(--fpc-line);color:var(--accent);font-size:12px;font-weight:400;text-decoration:none;text-decoration-thickness:1px;text-underline-offset:3px}
+.fpc-case-link-disabled{color:var(--fpc-muted);cursor:default}
 .fpc-case-link svg{width:16px;height:16px;transition:transform 220ms cubic-bezier(.22,.8,.25,1)}
 .fpc-case-link:focus-visible{text-decoration-line:underline}
 @media(hover:hover) and (pointer:fine){

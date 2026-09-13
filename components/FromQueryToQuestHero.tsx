@@ -14,12 +14,11 @@ export function FromQueryToQuestHero() {
   const year = textBlocks.find((block) => /^时间\s*[:：]/.test(block.markdown))?.markdown.replace(/^时间\s*[:：]\s*/, "") || facts[0];
   const projectType = textBlocks.find((block) => /^项目类型\s*[:：]/.test(block.markdown))?.markdown.replace(/^项目类型\s*[:：]\s*/, "") || facts[1];
   const title = queryCase.title.replace(/\s*从「询」到「寻」\s*$/, "");
-  const titleBreak = title.indexOf(" to ");
   return (
     <section className="query-hero" aria-labelledby="query-title" lang="zh-CN">
       <div className="query-hero-composition query-width">
         <header className="query-hero-heading">
-          <h1 id="query-title" lang="en">{titleBreak > -1 ? <>{title.slice(0, titleBreak)}<br />{title.slice(titleBreak)}</> : title}</h1>
+          <h1 id="query-title" lang="en">{title}</h1>
           <div className="query-hero-question">{question?.kind === "text" ? <QueryCaseMarkdown>{question.markdown}</QueryCaseMarkdown> : null}</div>
         </header>
         <div className="query-hero-artifact">

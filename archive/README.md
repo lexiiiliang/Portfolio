@@ -4,6 +4,15 @@ This directory is the index for selected process drafts that were explicitly mar
 
 Archive entries are created only after an explicit archival request. They are not candidates for routine branch cleanup.
 
+## Main Baseline — Before Preview Release
+
+- Branch: `archive/main-before-preview-release`
+- Tag: `archive/main-before-preview-release-v1`
+- Source commit: `968cd3c`
+- Format: runnable Portfolio mainline snapshot
+- Preserved behavior: the complete `main` state immediately before replacing `main` with the approved `preview` line
+- Archive reason: preserve the previous main branch as a recoverable baseline before the preview release replaces it
+
 ## Cursor Tracker
 
 - Branch: `archive/cursor-tracker`

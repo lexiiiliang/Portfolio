@@ -1,0 +1,62 @@
+[
+  {
+    "coverSrc": "/media/covers/alive-briefing.webp",
+    "projectSlug": "alive-briefing",
+    "projectTitle": "Alive Briefing",
+    "projectTitleZh": "活字简报",
+    "projectYear": "2025",
+    "eyebrowEn": "Future Interaction · AI–UX",
+    "indexLabel": "01",
+    "copy": {
+      "thesisEn": "AI should organize attention, not just output another answer.",
+      "thesisZh": "AI 不应只输出答案，还应该帮助人组织注意力。",
+      "problemEn": "In low-attention contexts, even a correct AI answer can be too slow to interpret and act on.",
+      "problemZh": "在驾驶等低注意力场景里，即使 AI 回答正确，也可能太慢、太难转化为行动。",
+      "approachEn": "Package event, impact, recommendation, action and receipt into one state-aware briefing.",
+      "approachZh": "把事件、影响、建议、行动与回执组织成一个会随状态更新的简报。",
+      "statusEn": "Web prototypes cover in-car and card flows; user impact still needs validation.",
+      "statusZh": "网页原型已覆盖车机与卡片流程；用户影响仍待验证。"
+    },
+    "isPublished": true
+  },
+  {
+    "coverSrc": "/media/covers/livis.webp",
+    "projectSlug": "livis",
+    "projectTitle": "Livis",
+    "projectTitleZh": "任务大师",
+    "projectYear": "2026",
+    "eyebrowEn": "AI Glasses · Spatial Interaction",
+    "indexLabel": "02",
+    "copy": {
+      "thesisEn": "Intelligence for glasses should live at the edge of attention.",
+      "thesisZh": "眼镜上的智能，应当停留在注意力的边缘。",
+      "problemEn": "A phone-like interface overloads the narrow field of view and competes with the world around the wearer.",
+      "problemZh": "照搬手机界面会挤占有限视野，并与佩戴者正在观察的现实世界争夺注意力。",
+      "approachEn": "Explore a lightweight interaction language that moves information between focus and peripheral awareness.",
+      "approachZh": "探索一种轻量交互语言，让信息在聚焦与周边感知之间自然移动。",
+      "statusEn": "Interaction principles are in exploration; public case materials are still being assembled.",
+      "statusZh": "交互原则仍在探索中；公开案例材料正在整理。"
+    },
+    "isPublished": false
+  },
+  {
+    "coverSrc": "/media/covers/from-query-to-quest.webp",
+    "projectSlug": "from-query-to-quest",
+    "projectTitle": "From Query to Quest",
+    "projectTitleZh": "从「询」到「寻」",
+    "projectYear": "2025",
+    "eyebrowEn": "Master’s Thesis · Critical Design",
+    "indexLabel": "03",
+    "copy": {
+      "thesisEn": "Reframing prompting to spark thought and sustain reflection.",
+      "thesisZh": "将 Prompting 拓展为启发思考与持续反思的旅程。",
+      "problemEn": "When people feel uncertain or stuck, how can AI dialogue support deep thinking beyond the linear “request → refinement → result” model?",
+      "problemZh": "当人感到不确定或思考受阻时，AI 对话如何超越线性的“请求 → 优化 → 结果”模式，支持深度思考？",
+      "approachEn": "Through Critical and Participatory Design, I developed three design principles and a conceptual framework connecting ambiguous thoughts, exploratory dialogue, and real-world action.",
+      "approachZh": "我结合批判性与参与式设计，提出三项设计原则与一个概念框架，将模糊想法、对话探索与现实行动连接起来。",
+      "statusEn": "The framework is documented; current research exposes trade-offs rather than validating a finished product.",
+      "statusZh": "框架已经形成；现有研究用于揭示取舍，而非证明产品已经有效。"
+    },
+    "isPublished": false
+  }
+]

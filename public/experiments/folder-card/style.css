@@ -1,0 +1,161 @@
+:root{color-scheme:light;--bg:#f5f5f1;--ink:#262923;--muted:#74776d;--sheet:#fffffc;--back:#d8dbd2;--edge:#c5c9be;--accent:#447bf3;--ease:cubic-bezier(.22,.8,.25,1);font-family:Arial,"PingFang SC",sans-serif;background:var(--bg);color:var(--ink)}
+*{box-sizing:border-box}body{margin:0}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;color:inherit;cursor:pointer}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:5px}header,footer{display:flex;justify-content:space-between;align-items:center;padding:26px 40px;font-size:11px;letter-spacing:.07em;color:var(--muted)}.wordmark{font-weight:700;color:var(--ink)}header button{background:transparent;border:1px solid var(--edge);border-radius:30px;padding:9px 14px;font-size:12px;letter-spacing:0}main{min-height:calc(100svh - 145px);padding-top:15px}.intro{text-align:center}.eyebrow{font-size:10px;letter-spacing:.18em;color:var(--muted)}h1{font-size:26px;font-weight:500;letter-spacing:-.04em;margin:16px 0 10px}.intro>p:last-child{font-size:12px;color:var(--muted)}.stage{display:grid;place-items:center;min-height:560px;padding:120px 26px 34px}.hint{text-align:center;font-size:12px;color:var(--muted);margin:0 20px 35px}#component{width:min(392px,100%)}
+.folder{position:relative;width:100%;height:366px;isolation:isolate;perspective:1100px}.ground{position:absolute;inset:auto 30px -12px;height:35px;border-radius:50%;background:rgba(37,44,28,.13);filter:blur(19px);transform:scaleX(.9);transition:transform 400ms var(--ease),opacity 400ms var(--ease)}.back{position:absolute;inset:30px 5px 0;border-radius:24px;background:linear-gradient(130deg,#e2e5dc,var(--back) 55%,#c4c8bc);border:1px solid var(--edge);box-shadow:inset 0 2px 3px #ffffffb3,inset 0 -4px 7px #58644624,0 2px 3px #25301d12}
+.paper{position:absolute;inset:0 15px auto;height:306px;border-radius:16px;background:var(--sheet);border:1px solid #c9cdbf;box-shadow:0 2px 2px #222b1612,0 12px 24px #222b1610;transform-origin:50% 100%;transition:transform 420ms var(--ease),opacity 240ms var(--ease);pointer-events:none}.paper.one{transform:translate(7px,11px) rotate(3deg);background:#e8ebdf}.paper.two{transform:translate(-5px,5px) rotate(-2deg);background:#fafbf6}.visual{overflow:hidden;transform:translateY(17px)}.visual img{width:100%;height:100%;object-fit:cover;object-position:center top}.visual:after{content:"";position:absolute;inset:0;box-shadow:inset 0 1px 1px #ffffffaa;border-radius:inherit;background:linear-gradient(130deg,#ffffff20,transparent 50%)}
+.pull{position:absolute;z-index:5;inset:-12px 10px auto;height:145px;border:0;background:transparent;border-radius:18px;text-align:right;padding:18px}
+.front{position:absolute;z-index:4;inset:auto 0 0;height:250px;transform-origin:50% 100%;transform:rotateX(0);transition:transform 420ms var(--ease);filter:drop-shadow(0 6px 5px #2b331a0a)}.front svg{position:absolute;width:100%;height:100%;overflow:visible}.front .front-copy{position:absolute;inset:45px 26px 23px;display:flex;flex-direction:column}.front h2{font-size:28px;line-height:1.08;letter-spacing:-.045em;margin:0;font-weight:600}.front h2 span{display:block;font-size:25px;margin-top:8px;letter-spacing:-.04em}.meta{display:flex;justify-content:space-between;align-items:end;margin-top:auto;font-size:10px;color:var(--muted)}.meta b{font-size:17px;letter-spacing:-.03em;color:var(--ink);font-weight:500}
+.summary{z-index:3;height:auto;min-height:355px;inset:0 15px auto;padding:23px 24px 26px;opacity:0;transform:translateY(35px) scale(.97);pointer-events:none}.summary-top{display:flex;align-items:center;justify-content:space-between;font-size:10px;color:var(--muted);letter-spacing:.07em}.close{border:1px solid var(--edge);border-radius:50%;width:30px;height:30px;background:transparent;font-size:18px}.summary h3{font-size:21px;line-height:1.4;letter-spacing:-.03em;margin:17px 0 18px;font-weight:500}.summary dl{margin:0}.summary dt{font-size:10px;color:var(--muted);margin:15px 0 6px}.summary dd{margin:0;font-size:12px;line-height:1.7}.summary>a{display:flex;justify-content:space-between;font-size:12px;margin-top:20px;padding-top:14px;border-top:1px solid var(--edge);color:var(--accent)}
+.folder[data-open=true] .summary{opacity:1;transform:translateY(-112px);pointer-events:auto}.folder[data-open=true] .visual{transform:translateY(7px) scale(.98);opacity:0}.folder[data-open=true] .one{transform:translate(9px,-14px) rotate(4deg)}.folder[data-open=true] .two{transform:translate(-7px,-24px) rotate(-3deg)}.folder[data-open=true] .front{transform:rotateX(-19deg) translateY(8px)}.folder[data-open=true] .pull{visibility:hidden}.folder[data-open=true] .ground{transform:scaleX(1.04);opacity:.75}.folder[data-open=true] .front-copy{opacity:.68}
+@media(hover:hover) and (pointer:fine){.folder:not([data-open=true]):has(.pull:hover) .visual{transform:translateY(-15px) rotate(-2deg)}.folder:not([data-open=true]):has(.pull:hover) .one{transform:translate(11px,-4px) rotate(6deg)}.folder:not([data-open=true]):has(.pull:hover) .two{transform:translate(-9px,-8px) rotate(-5deg)}.folder:not([data-open=true]):has(.pull:hover) .front{transform:rotateX(-10deg)}.pull:hover span{transform:translateY(-8px)}.front:hover .front:hover{transform:rotateX(-7deg)}}
+.folder[data-instant=true] *{transition:none!important}.pull:active span{transform:scale(.96)}
+html[data-theme=dark]{color-scheme:dark;--bg:#181a17;--ink:#eeefe8;--muted:#a1a798;--sheet:#30342c;--back:#30382b;--edge:#505748}html[data-theme=dark] .back{background:linear-gradient(135deg,#47503e,#272e22);box-shadow:inset 0 2px 3px #ffffff25,inset 0 -3px 5px #0006}html[data-theme=dark] .front{--front-top:#484e40;--front-bottom:#2b3026;--front-stroke:#68705c}html[data-theme=dark] .paper.one{background:#57614b}html[data-theme=dark] .paper.two{background:#7d856f}.front{--front-top:#fffffff5;--front-bottom:#e8ebe2;--front-stroke:#fff}
+@media(max-width:520px){header,footer{padding:20px;font-size:9px}header>span{display:none}.intro{padding-top:16px}.stage{padding:130px 22px 30px;min-height:565px}.folder{height:355px}.front h2{font-size:25px}.front h2 span{font-size:22px}.front .front-copy{inset:44px 23px 22px}.summary{padding:18px;min-height:365px}.summary h3{font-size:19px}.summary dd{font-size:12px}.folder[data-open=true] .summary{transform:translateY(-123px)}footer{gap:20px;line-height:1.6}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+/* Reserve demo space without changing the product page; keep the entire sheet readable. */
+.stage{min-height:0;padding-top:128px;padding-bottom:38px}
+.stage:has(.folder[data-open=true]){padding-bottom:190px}
+.folder[data-open=true] .front{transform:translateY(145px) rotateX(-19deg)}
+.folder[data-open=true] .back{transform:translateY(130px)}
+.folder[data-open=true] .ground{transform:translateY(145px) scaleX(1.04)}
+.back{transition:transform 420ms var(--ease)}
+@media(max-width:520px){.stage{min-height:0;padding-top:140px}.folder[data-open=true] .front{transform:translateY(165px) rotateX(-19deg)}.stage:has(.folder[data-open=true]){padding-bottom:210px}}
+html[data-theme=dark]{--accent:#9ab7ff}
+
+/* The entire folder front is a summary toggle, not a case navigation link. */
+.front{display:block;width:100%;padding:0;border:0;background:transparent;text-align:left;color:var(--ink)}
+/* Hover previews the cover; click owns the persistent TL;DR state. */
+@media(hover:hover) and (pointer:fine){
+  .folder:not([data-open=true]):hover .visual{transform:translateY(-100px);opacity:1}
+  .folder:not([data-open=true]):hover .front{transform:rotateX(-14deg)}
+  .folder:not([data-open=true]):has(.pull:hover) .visual{transform:translateY(-100px)}
+  .folder:not([data-open=true]):has(.pull:hover) .front{transform:rotateX(-14deg)}
+}
+.visual{height:auto;aspect-ratio:368 / 221;background:var(--sheet)}
+.visual img{display:block;object-fit:contain}
+@media(hover:hover) and (pointer:fine){
+  .folder:not([data-open=true]):hover .visual,
+  .folder:not([data-open=true]):has(.pull:hover) .visual{transform:translateY(-110px)}
+}
+/* Keep the lifted cover inside the same stable hit area. */
+.pull{top:-115px;height:260px}
+
+.front svg{inset:0}
+
+/* Restore the previous preview labels. */
+.pull span{display:inline-block;padding:9px 13px;border:1px solid #ffffffa0;background:#fffffff0;color:#42483c;border-radius:30px;font-size:11px;box-shadow:0 3px 12px #28331b10;transition:transform 220ms var(--ease);position:absolute;right:18px;top:133px}
+.entry{position:absolute;right:25px;top:55px;opacity:0;transition:opacity 180ms ease;color:var(--muted)}
+@media(hover:hover) and (pointer:fine){.front:hover .entry{opacity:1}.folder:not([data-open=true]):hover .pull span,.folder:not([data-open=true]):has(.pull:hover) .pull span{transform:translateY(-65px)}}
+/* Mainline interaction study: one moving sheet with two physical faces. */
+.stage{padding-top:280px;padding-bottom:38px}
+.stage:has(.folder[data-open=true]){padding-bottom:38px}
+.folder{--sheet-height:370px}
+.sheet-move{position:absolute;z-index:2;inset:0 15px auto;height:var(--sheet-height);transform:translateY(17px);transition:transform 480ms cubic-bezier(.2,1.04,.32,1);perspective:1200px;pointer-events:none}
+.sheet-flip{position:relative;width:100%;height:100%;transform-style:preserve-3d;transform:rotateY(0);transition:transform 560ms cubic-bezier(.22,.8,.25,1)}
+.sheet-flip .paper{inset:0;height:100%;min-height:0;aspect-ratio:auto;opacity:1;transform:none;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:none;border-radius:16px}
+.sheet-flip .visual{z-index:2;background:var(--sheet)}
+.sheet-flip .visual img{height:auto;aspect-ratio:368 / 221;object-fit:contain}
+.sheet-flip .summary{z-index:1;transform:rotateY(180deg);height:auto;min-height:100%;pointer-events:none}
+.folder[data-open=true] .sheet-move{transform:translateY(calc(100px - var(--sheet-height)));z-index:5}
+.folder[data-open=true] .sheet-flip{transform:rotateY(180deg)}
+.folder[data-open=true] .sheet-flip .summary{transform:rotateY(180deg);opacity:1;pointer-events:auto}
+.folder[data-open=true] .sheet-flip .visual{transform:none;opacity:1}
+.folder .front,.folder[data-open=true] .front{transform:none;cursor:default}
+.folder .back,.folder[data-open=true] .back{transform:none}
+.folder .ground,.folder[data-open=true] .ground{transform:scaleX(.9)}
+.folder[data-open=true] .front-copy{opacity:1}
+.front .entry{display:none}
+.pull{z-index:3;top:-110px;height:226px;padding:0;left:15px;right:15px}
+.pull span{top:145px}
+.folder[data-open=true] .pull{visibility:hidden}
+@media(hover:hover) and (pointer:fine){
+ .folder:not([data-open=true]):hover .sheet-flip .visual,.folder:not([data-open=true]):has(.pull:hover) .sheet-flip .visual{transform:none}
+ .folder:not([data-open=true]):hover .front,.folder:not([data-open=true]):has(.pull:hover) .front{transform:none}
+ .folder:not([data-open=true]):hover .pull span{transform:none}
+ .folder:not([data-open=true]):has(.pull:hover) .sheet-move{transform:translateY(-110px)}
+ .folder:not([data-open=true]):has(.pull:hover) .pull span{transform:translateY(-65px)}
+}
+.folder:has(.pull:focus-visible) .sheet-move{transform:translateY(-110px);transition:none}
+.folder[data-open=true]:has(.pull:focus-visible) .sheet-move{transform:translateY(calc(100px - var(--sheet-height)))}
+@media(max-width:520px){.stage{padding-top:300px}.stage:has(.folder[data-open=true]){padding-bottom:38px}.folder[data-open=true] .front{transform:none}}
+@media(prefers-reduced-motion:reduce){.sheet-move,.sheet-flip{transition:none}}
+/* The flap opens around its bottom edge while the upper cover peeks out. */
+@media(hover:hover) and (pointer:fine){
+ .folder:not([data-open=true]):has(.pull:hover) .front{transform:rotateX(-18deg)}
+}
+.folder:has(.pull:focus-visible) .front{transform:rotateX(-18deg)}
+.folder[data-open=true] .front{transform:rotateX(-22deg)}
+.project-cursor{position:fixed;z-index:9999;pointer-events:none;white-space:nowrap;padding:11px 15px;border:1px solid var(--edge);border-radius:30px;background:var(--sheet);color:var(--ink);font-size:12px;line-height:1;box-shadow:0 4px 16px #20251a15;opacity:0;transform:scale(.96);transition:opacity 120ms ease,transform 120ms ease}
+.project-cursor[data-visible=true]{opacity:1;transform:scale(1)}
+@media(hover:hover) and (pointer:fine){.folder .pull,.folder .front{cursor:none}}
+@media(prefers-reduced-motion:reduce){.project-cursor{transition:none}}
+/* Clip the paper at the inside bottom seam; leave its upward travel unobstructed. */
+.sheet-clip{position:absolute;z-index:2;inset:-600px -40px 12px;overflow:hidden;pointer-events:none}
+.sheet-clip .sheet-move{top:600px;left:55px;right:55px}
+.folder[data-open=true] .sheet-clip{z-index:5}
+/* Resting paper and its hit area stay within the back panel's top edge. */
+.folder:not([data-open=true]) .sheet-move{transform:translateY(38px)}
+.folder .pull{top:30px;height:86px}
+@media(hover:hover) and (pointer:fine){
+ .folder:not([data-open=true]):has(.pull:hover) .sheet-move{transform:translateY(-110px)}
+ .folder:not([data-open=true]):has(.pull:hover) .pull{top:-110px;height:226px}
+}
+.folder:not([data-open=true]):has(.pull:focus-visible) .sheet-move{transform:translateY(-110px);transition:none}
+/* One continuous frosted flap, with live blur of the cover underneath. */
+.front{filter:none;--flap-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 392 250' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M24 1H197Q209 1 217 11L233 30Q239 37 251 37H368Q391 37 391 60V225Q391 249 367 249H25Q1 249 1 225V25Q1 1 24 1Z'/%3E%3C/svg%3E")}
+.frosted-flap{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.43),rgba(242,245,235,.24));backdrop-filter:blur(18px) saturate(1.25);-webkit-backdrop-filter:blur(18px) saturate(1.25);mask:var(--flap-mask) center/100% 100% no-repeat;-webkit-mask:var(--flap-mask) center/100% 100% no-repeat}
+.front .front-copy{z-index:1}
+.sheet-flip .paper{border:0;box-shadow:0 8px 24px #242b1812}
+.sheet-flip .visual:after{box-shadow:none;background:none}
+.folder .back{border:0;box-shadow:inset 0 1px 3px #ffffff50,0 8px 24px #242b1808}
+html[data-theme=dark] .frosted-flap{background:linear-gradient(135deg,rgba(50,55,45,.45),rgba(28,33,25,.28))}
+html[data-theme=dark] .folder .back{box-shadow:inset 0 1px 3px #ffffff12}
+/* No paper shadow to be sliced into a hard line by the bottom clipping seam. */
+.sheet-flip .paper{box-shadow:none}
+/* A single rim follows the same silhouette as the frost; inner light supplies depth. */
+.front{--rim-bright:rgba(255,255,255,.95);--rim-soft:rgba(255,255,255,.5);--rim-shade:rgba(98,110,87,.28)}
+.front .flap-reflection{pointer-events:none;z-index:1}
+.front .front-copy{z-index:2}
+html[data-theme=dark] .front{--rim-bright:rgba(235,245,225,.65);--rim-soft:rgba(217,230,205,.22);--rim-shade:rgba(12,17,10,.6)}
+/* Fill the entire cover face, including the part visible through the frosted flap. */
+.sheet-flip .visual img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:center}
+/* Different face proportions: the cover follows its asset, the summary grows to its copy. */
+.sheet-clip .sheet-move{height:var(--cover-height,217px);transition:transform 520ms cubic-bezier(.22,.8,.25,1),height 520ms cubic-bezier(.22,.8,.25,1)}
+.folder[data-open=true] .sheet-move{height:var(--sheet-height)}
+.sheet-flip .summary{height:auto;min-height:var(--sheet-height)}
+.sheet-flip .visual img{height:100%;object-fit:cover}
+@media(prefers-reduced-motion:reduce){.sheet-clip .sheet-move{transition:none}}
+/* Color is revealed only while the cover is being previewed. */
+.sheet-flip .visual img{filter:grayscale(1);transition:filter 360ms ease}
+@media(hover:hover) and (pointer:fine){
+ .folder:not([data-open=true]):has(.pull:hover) .visual img{filter:grayscale(0)}
+}
+@media(prefers-reduced-motion:reduce){.sheet-flip .visual img{transition:none}}
+/* Neutral dark materials: charcoal, graphite and silver instead of olive-tinted grays. */
+html[data-theme=dark]{--bg:#151516;--ink:#eeeef0;--muted:#a2a2a9;--sheet:#27272a;--back:#222225;--edge:#414146;--accent:#a9bfff}
+html[data-theme=dark] .folder .back{background:linear-gradient(145deg,#303033,#222225 70%,#202023);box-shadow:inset 0 1px 3px #ffffff0d,0 8px 24px #00000014}
+html[data-theme=dark] .frosted-flap{background:linear-gradient(135deg,rgba(56,56,61,.58),rgba(27,27,31,.48));backdrop-filter:blur(18px) saturate(.85);-webkit-backdrop-filter:blur(18px) saturate(.85)}
+html[data-theme=dark] .front{--rim-bright:rgba(245,245,255,.52);--rim-soft:rgba(215,215,230,.2);--rim-shade:rgba(8,8,12,.65)}
+html[data-theme=dark] .ground{background:rgba(0,0,0,.3)}
+html[data-theme=dark] .project-cursor{background:#303034;border-color:#4a4a50;box-shadow:0 5px 18px #00000024;color:#f0f0f3}
+/* Keep the cover tucked behind the flap during hover preview. */
+@media(hover:hover) and (pointer:fine){
+ .folder:not([data-open=true]):has(.pull:hover) .sheet-move{transform:translateY(-48px)}
+ .folder:not([data-open=true]):has(.pull:hover) .pull{top:-48px;height:164px}
+}
+.folder:not([data-open=true]):has(.pull:focus-visible) .sheet-move{transform:translateY(-48px)}
+/* Softer transmission through the flap, with the cover's lower edge dissolving into it. */
+.frosted-flap{backdrop-filter:blur(30px) saturate(1.12);-webkit-backdrop-filter:blur(30px) saturate(1.12)}
+html[data-theme=dark] .frosted-flap{backdrop-filter:blur(30px) saturate(.85);-webkit-backdrop-filter:blur(30px) saturate(.85)}
+.sheet-flip .visual{mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 24px),transparent 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - 24px),transparent 100%)}
+/* A pulled-out cover has a crisp edge; feathering belongs to the tucked-away state. */
+@media(hover:hover) and (pointer:fine){
+ .folder:not([data-open=true]):has(.pull:hover) .sheet-flip .visual{mask-image:none;-webkit-mask-image:none}
+}
+.folder:has(.pull:focus-visible) .sheet-flip .visual,
+.folder[data-open=true] .sheet-flip .visual{mask-image:none;-webkit-mask-image:none}
+/* Two explicit title lines, each kept intact at the card's available width. */
+.front{container-type:inline-size}
+.front h2 .title-en{display:block;white-space:nowrap;font-size:clamp(16px,6.6cqw,26px);line-height:1.12;letter-spacing:-.045em;margin:0}
+.front h2 .title-zh{display:block;white-space:nowrap;font-size:clamp(16px,6.35cqw,25px);line-height:1.2;letter-spacing:-.04em;margin-top:8px}
+/* Give the bilingual title more breathing room below the flap edge. */
+.front .front-copy h2{transform:translateY(16px)}

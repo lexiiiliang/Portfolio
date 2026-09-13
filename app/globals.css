@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./query-case.css";
 @import "./motion.css";
+@import "./project-folder.css";
 
 :root {
   --paper: #f6f6f2;

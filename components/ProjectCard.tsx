@@ -1,6 +1,6 @@
 import type { PortfolioProject } from "@/lib/portfolio";
 import { getProjectTldr } from "@/lib/project-tldr";
-import { ProjectCardTldr } from "./ProjectCardTldr";
+import { ProjectFolderCard } from "./ProjectFolderCard";
 const covers: Record<string, string> = {
   "alive-briefing": "/media/covers/alive-briefing.webp",
   livis: "/media/covers/livis.webp",
@@ -16,12 +16,12 @@ export function ProjectCard({ project, index }: { project: PortfolioProject; ind
 
   return (
     <article
-      className={`project-card accent-${project.accent} card-${index + 1}`}
+      className={`project-card frosted-project-card accent-${project.accent} card-${index + 1}`}
       data-scroll-reveal="card"
       data-story-order={index}
     >
       {tldr ? (
-        <ProjectCardTldr
+        <ProjectFolderCard
           coverSrc={covers[project.slug]}
           projectSlug={project.slug}
           projectTitle={project.title}

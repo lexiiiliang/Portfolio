@@ -8,6 +8,15 @@ import { ArrowIcon } from "./ArrowIcon";
 
 const FLAP_PATH = "M24 1H197Q209 1 217 11L233 30Q239 37 251 37H368Q391 37 391 60V225Q391 249 367 249H25Q1 249 1 225V25Q1 1 24 1Z";
 
+function FrostedLayer({ coverSrc }: { coverSrc: string }) {
+  return (
+    <span className="fpc-frost" aria-hidden="true">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="fpc-frost-image" src={coverSrc} alt="" />
+    </span>
+  );
+}
+
 let openProjectSlug: string | null = null;
 const openProjectListeners = new Set<() => void>();
 
@@ -244,7 +253,7 @@ export function ProjectFolderCard({
           aria-label={`${projectTitle} coming soon`}
           aria-disabled="true"
         >
-          <span className="fpc-frost" aria-hidden="true" />
+          <FrostedLayer coverSrc={coverSrc} />
           <svg className="fpc-rim" viewBox="0 0 392 250" preserveAspectRatio="none" aria-hidden="true">
             <defs>
               <linearGradient id={`${rimId}-light`} x1="0" y1="0" x2=".8" y2="1">
@@ -289,7 +298,7 @@ export function ProjectFolderCard({
           data-cursor="project"
           aria-label={`Read ${projectTitle}`}
         >
-        <span className="fpc-frost" aria-hidden="true" />
+        <FrostedLayer coverSrc={coverSrc} />
         <svg className="fpc-rim" viewBox="0 0 392 250" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <linearGradient id={`${rimId}-light`} x1="0" y1="0" x2=".8" y2="1">

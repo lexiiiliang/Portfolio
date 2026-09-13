@@ -9,6 +9,9 @@
   scroll-padding-inline:min(48px, calc((100vw - var(--page)) / 2));
 }
 .home-page .project-card.frosted-project-card {
+  --fpc-card-height:366px;
+  --fpc-front-height:250px;
+  --fpc-cover-rest-top:38px;
   --folder-closed-height:366px;
   --fpc-cover-height:204px;
   --fpc-sheet-height:400px;
@@ -22,7 +25,7 @@
   --fpc-shadow-contact:rgb(0 0 0 / .10);
   --fpc-shadow-ambient:rgb(0 0 0 / .12);
   --fpc-flap-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 392 250' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M24 1H197Q209 1 217 11L233 30Q239 37 251 37H368Q391 37 391 60V225Q391 249 367 249H25Q1 249 1 225V25Q1 1 24 1Z'/%3E%3C/svg%3E");
-  height:366px;margin-top:0;isolation:isolate;overflow:visible;
+  height:var(--fpc-card-height);margin-top:0;isolation:isolate;overflow:visible;
 }
 .home-page .project-card.frosted-project-card:has(.fpc[data-open=true]){z-index:5}
 .home-page .work-section:has(.fpc[data-open=true]) > .section-narrative{opacity:0;pointer-events:none}
@@ -60,8 +63,10 @@
 }
 @media(prefers-reduced-motion:reduce){.fpc-case-link:hover svg{transform:none}}
 .fpc-trigger{position:absolute;z-index:3;top:30px;left:15px;right:15px;height:86px;border:0;border-radius:16px;padding:0;background:transparent}
-.fpc-front{position:absolute;z-index:4;inset:auto 0 0;height:250px;color:var(--fpc-ink);text-decoration:none;transform-origin:50% 100%;transition:transform 420ms cubic-bezier(.22,.8,.25,1);container-type:inline-size}
-.fpc-frost{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.43),rgba(242,245,235,.24));backdrop-filter:blur(30px) saturate(1.12);-webkit-backdrop-filter:blur(30px) saturate(1.12);mask:var(--fpc-flap-mask) center/100% 100% no-repeat;-webkit-mask:var(--fpc-flap-mask) center/100% 100% no-repeat}
+.fpc-front{position:absolute;z-index:4;inset:auto 0 0;height:var(--fpc-front-height);color:var(--fpc-ink);text-decoration:none;transform-origin:50% 100%;transition:transform 420ms cubic-bezier(.22,.8,.25,1);container-type:inline-size}
+.fpc-frost{position:absolute;inset:0;overflow:hidden;isolation:isolate;background:transparent;backdrop-filter:blur(30px) saturate(1.12);-webkit-backdrop-filter:blur(30px) saturate(1.12);mask:var(--fpc-flap-mask) center/100% 100% no-repeat;-webkit-mask:var(--fpc-flap-mask) center/100% 100% no-repeat}
+.fpc-frost-image{position:absolute;z-index:0;left:15px;top:calc(var(--fpc-cover-rest-top) - (var(--fpc-card-height) - var(--fpc-front-height)));width:calc(100% - 30px);height:var(--fpc-cover-height);max-width:none;object-fit:cover;object-position:center;opacity:.84;filter:grayscale(1) blur(30px) saturate(1.12);transform:scale(1.08);transform-origin:center;pointer-events:none}
+.fpc-frost::after{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.43),rgba(242,245,235,.24));pointer-events:none}
 .fpc-rim{filter:drop-shadow(0 2px 2px var(--fpc-shadow-contact));transition:filter 420ms ease;position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .fpc-front-content{position:absolute;inset:61px 24px 24px;display:flex;flex-direction:column}
 .fpc-title h3{margin:0;line-height:1.12;font-weight:600;letter-spacing:-.045em;font-size:clamp(17px,7.1cqw,28px)}
@@ -101,6 +106,8 @@ html[data-lang=en] .fpc-title h3>.copy-zh{display:none}
 .frosted-project-card[data-motion-instant=true] .fpc *,.frosted-project-card[data-motion-instant=true] .fpc *::before{transition:none!important}
 html[data-theme=dark] .project-card.frosted-project-card{--fpc-shadow-contact:rgb(0 0 0 / .24);--fpc-shadow-ambient:rgb(0 0 0 / .32);--fpc-ink:#eeeef0;--fpc-muted:#a2a2a9;--fpc-paper:#27272a;--fpc-line:#414146;--fpc-rim-bright:rgba(245,245,255,.52);--fpc-rim-soft:rgba(215,215,230,.2);--fpc-rim-shade:rgba(8,8,12,.65)}
 html[data-theme=dark] .fpc-back{background:linear-gradient(145deg,#303033,#222225 70%,#202023)}
-html[data-theme=dark] .fpc-frost{background:linear-gradient(135deg,rgba(56,56,61,.58),rgba(27,27,31,.48));backdrop-filter:blur(30px) saturate(.85);-webkit-backdrop-filter:blur(30px) saturate(.85)}
+html[data-theme=dark] .fpc-frost{backdrop-filter:blur(30px) saturate(.85);-webkit-backdrop-filter:blur(30px) saturate(.85)}
+html[data-theme=dark] .fpc-frost-image{filter:grayscale(1) blur(30px) saturate(.85)}
+html[data-theme=dark] .fpc-frost::after{background:linear-gradient(135deg,rgba(56,56,61,.58),rgba(27,27,31,.48))}
 html[data-theme=dark] .fpc-case-link{color:#a9bfff}
 @media(prefers-reduced-motion:reduce){.fpc *,.fpc *::before{transition:none!important;animation:none!important}}

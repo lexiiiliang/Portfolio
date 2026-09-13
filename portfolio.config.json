@@ -16,7 +16,7 @@
       { "label": "Email", "href": "mailto:lexiliang.design@outlook.com" },
       { "label": "GitHub", "href": "https://github.com/lexiiiliang" },
       { "label": "LinkedIn", "href": "https://www.linkedin.com/in/lezhi-liang/" },
-      { "label": "CV", "href": "" }
+      { "label": "CV", "href": "/resume.pdf" }
     ]
   },
   "projects": [
@@ -25,7 +25,7 @@
       "slug": "alive-briefing",
       "entryEn": "Web Case.en.md",
       "entryZh": "Web Case.zh.md",
-      "order": 1,
+      "order": 2,
       "featured": true,
       "protected": true,
       "previewOnly": false,
@@ -42,7 +42,7 @@
     {
       "folder": "02 Project Gallery/Project02 Livis 理想AI眼镜",
       "slug": "livis",
-      "order": 2,
+      "order": 1,
       "featured": true,
       "protected": true,
       "previewOnly": true,

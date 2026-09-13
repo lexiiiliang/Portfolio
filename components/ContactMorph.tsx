@@ -46,6 +46,7 @@ const CONTACT_META: Record<ContactKey, ContactMeta> = {
 };
 
 const CONTACT_KEYS = Object.keys(CONTACT_META) as ContactKey[];
+const CV_DOWNLOAD_NAME = "梁乐之_2年经验_AI产品设计师_15827639053.pdf";
 
 type FlipSnapshot = {
   item: DOMRect;
@@ -337,6 +338,7 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
                   href={contact.href}
                   target={contact.href.startsWith("http") ? "_blank" : undefined}
                   rel={contact.href.startsWith("http") ? "noreferrer" : undefined}
+                  download={key === "cv" && contact.href.startsWith("/") ? CV_DOWNLOAD_NAME : undefined}
                   onFocus={(event) => captureAndSetActive(key, event.currentTarget.matches(":focus-visible"))}
                 >
                   {content}

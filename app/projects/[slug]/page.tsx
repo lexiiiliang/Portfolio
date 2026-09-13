@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 import { FromQueryToQuestCase } from "@/components/FromQueryToQuestCase";
 import { FromQueryToQuestHero } from "@/components/FromQueryToQuestHero";
+import { LivisCase, LivisHero } from "@/components/LivisCase";
 import { QueryCaseVideo } from "@/components/QueryCaseVideo";
 import { Localized } from "@/components/Localized";
 import { MarkdownCase } from "@/components/MarkdownCase";
@@ -11,6 +12,7 @@ import { ProjectToc } from "@/components/ProjectToc";
 import { ProjectVisual } from "@/components/ProjectVisual";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ACCESS_COOKIE, hasPortfolioAccess, PASSWORD_PROTECTION_ENABLED } from "@/lib/access";
+import { livisCase } from "@/lib/livis-case";
 import { getProject, portfolio } from "@/lib/portfolio";
 
 export const dynamic = "force-dynamic";
@@ -21,6 +23,10 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
+  if (slug === "livis") return {
+    title: livisCase.title,
+    description: livisCase.opening[0].markdown,
+  };
   const project = getProject(slug);
   return project ? {
     title: project.title,
@@ -44,12 +50,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const nextProject = caseProjects[(index + 1) % caseProjects.length] ?? project;
   const isDistilledCase = project.slug === "alive-briefing" || project.slug === "from-query-to-quest";
   const isQueryFramework = project.slug === "from-query-to-quest";
+  const isLivis = project.slug === "livis";
 
   return (
     <>
       <SiteHeader compact />
-      <main id="top" className={`project-page accent-${project.accent} ${isQueryFramework ? "query-page" : ""}`}>
-        {isQueryFramework ? (
+      <main id="top" className={`project-page accent-${project.accent} ${isQueryFramework || isLivis ? "query-page" : ""} ${isLivis ? "livis-page" : ""}`}>
+        {isLivis ? (
+          <LivisHero />
+        ) : isQueryFramework ? (
           <FromQueryToQuestHero />
         ) : (
           <section className={`project-hero ${isDistilledCase ? "is-distilled" : ""}`}>
@@ -77,7 +86,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
         {isQueryFramework ? <QueryCaseVideo /> : null}
 
-        {project.video && !isQueryFramework ? (
+        {project.video && !isQueryFramework && !isLivis ? (
           <figure className="project-video">
             <iframe
               className="project-video-embed"
@@ -98,7 +107,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </figure>
         ) : null}
 
-        {isQueryFramework ? (
+        {isLivis ? (
+          <LivisCase />
+        ) : isQueryFramework ? (
           <FromQueryToQuestCase />
         ) : project.previewOnly ? (
           <section className="preview-note">

@@ -88,12 +88,12 @@ export function AboutTimeline() {
           >
             {index === 0 ? (
               <h3 className="about-timeline-kind-label">
-                <Localized en="Education" zh="教育背景" />
+                <Localized en="EDUCATION" zh="教育背景" />
               </h3>
             ) : null}
             {index === 2 ? (
               <h3 className="about-timeline-kind-label">
-                <Localized en="Experience" zh="实践经历" />
+                <Localized en="EXPERIENCE" zh="实践经历" />
               </h3>
             ) : null}
             <article className="about-timeline-card">

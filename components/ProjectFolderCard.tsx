@@ -65,6 +65,8 @@ export function ProjectFolderCard({
   const panelRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const isQueryProject = projectSlug === "from-query-to-quest";
+  const usesOutcomeLabels = isQueryProject || projectSlug === "livis" || projectSlug === "alive-briefing";
+  const hasChineseOutcomeLabels = usesOutcomeLabels;
   const englishTags = eyebrowEn.split(" · ").slice(0, 2);
   const footerTag = ({
     "alive-briefing": { en: "HMI Exploration", zh: "座舱 HMI 探索" },
@@ -178,19 +180,23 @@ export function ProjectFolderCard({
           >
             <div ref={bodyRef} className="fpc-body">
               <div className="fpc-header">
-                <span><Localized en="/ TL;DR" zh={isQueryProject ? "/ 太长不看版" : "/ TL;DR"} /></span>
-                <button type="button" className="fpc-close" aria-label="Close TL;DR" onClick={(event) => setPanelState(false, event.detail === 0)} data-cursor="default">×</button>
+                <span><Localized en="/ TL;DR" zh={hasChineseOutcomeLabels ? "/ 太长不看版" : "/ TL;DR"} /></span>
+                <button type="button" className="fpc-close" aria-label="Close TL;DR" onClick={(event) => setPanelState(false, event.detail === 0)} data-cursor="default">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden="true" focusable="false">
+                    <path d="m7 7 10 10M17 7 7 17" />
+                  </svg>
+                </button>
               </div>
               <div className="fpc-intro">
                 <h4><Localized en={copy.thesisEn} zh={copy.thesisZh} /></h4>
               </div>
               <dl className="fpc-details">
                 <div>
-                  <dt><Localized en={isQueryProject ? "Challenge" : "Problem"} zh={isQueryProject ? "挑战" : "问题"} /></dt>
+                  <dt><Localized en={usesOutcomeLabels ? "Challenge" : "Problem"} zh={hasChineseOutcomeLabels ? "挑战" : "问题"} /></dt>
                   <dd><Localized en={copy.problemEn} zh={copy.problemZh} /></dd>
                 </div>
                 <div>
-                  <dt><Localized en={isQueryProject ? "What I developed" : "Approach"} zh={isQueryProject ? "我的成果" : "方法"} /></dt>
+                  <dt><Localized en={usesOutcomeLabels ? "What I developed" : "Approach"} zh={hasChineseOutcomeLabels ? "我的成果" : "方法"} /></dt>
                   <dd><Localized en={copy.approachEn} zh={copy.approachZh} /></dd>
                 </div>
               </dl>

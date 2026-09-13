@@ -33,17 +33,46 @@
       },
       {
         "label": "CV",
-        "href": ""
+        "href": "/resume.pdf"
       }
     ]
   },
   "projects": [
     {
+      "folder": "02 Project Gallery/Project02 Livis 理想AI眼镜",
+      "slug": "livis",
+      "order": 1,
+      "featured": true,
+      "protected": true,
+      "previewOnly": true,
+      "title": "Livis",
+      "eyebrowEn": "AI Glasses · Spatial Interaction",
+      "eyebrowZh": "AI 眼镜 · 空间交互",
+      "year": "2026",
+      "accent": "sky",
+      "summaryEn": "Exploring a lightweight interaction language for intelligent glasses. Case materials are being prepared.",
+      "summaryZh": "探索智能眼镜上的轻量交互语言；项目材料正在整理中。",
+      "heroEn": "Intelligence at the edge of attention.",
+      "heroZh": "让智能停留在注意力的边缘。",
+      "hasSource": true,
+      "sourceFile": "02 Project Gallery/Project02 Livis 理想AI眼镜/Livis Agent 任务大师.md",
+      "sourceFileEn": "02 Project Gallery/Project02 Livis 理想AI眼镜/Livis Agent 任务大师.md",
+      "sourceFileZh": "02 Project Gallery/Project02 Livis 理想AI眼镜/Livis Agent 任务大师.md",
+      "sourceChecksum": "6aea6594218d",
+      "status": "in-progress",
+      "body": "",
+      "bodyEn": "",
+      "bodyZh": "",
+      "headings": [],
+      "headingsEn": [],
+      "headingsZh": []
+    },
+    {
       "folder": "02 Project Gallery/Project01 Alive Briefing 活字简报",
       "slug": "alive-briefing",
       "entryEn": "Web Case.en.md",
       "entryZh": "Web Case.zh.md",
-      "order": 1,
+      "order": 2,
       "featured": true,
       "protected": true,
       "previewOnly": false,
@@ -223,35 +252,6 @@
       ]
     },
     {
-      "folder": "02 Project Gallery/Project02 Livis 理想AI眼镜",
-      "slug": "livis",
-      "order": 2,
-      "featured": true,
-      "protected": true,
-      "previewOnly": true,
-      "title": "Livis",
-      "eyebrowEn": "AI Glasses · Spatial Interaction",
-      "eyebrowZh": "AI 眼镜 · 空间交互",
-      "year": "2026",
-      "accent": "sky",
-      "summaryEn": "Exploring a lightweight interaction language for intelligent glasses. Case materials are being prepared.",
-      "summaryZh": "探索智能眼镜上的轻量交互语言；项目材料正在整理中。",
-      "heroEn": "Intelligence at the edge of attention.",
-      "heroZh": "让智能停留在注意力的边缘。",
-      "hasSource": true,
-      "sourceFile": "02 Project Gallery/Project02 Livis 理想AI眼镜/Livis Agent 任务大师.md",
-      "sourceFileEn": "02 Project Gallery/Project02 Livis 理想AI眼镜/Livis Agent 任务大师.md",
-      "sourceFileZh": "02 Project Gallery/Project02 Livis 理想AI眼镜/Livis Agent 任务大师.md",
-      "sourceChecksum": "df2c6b32da77",
-      "status": "in-progress",
-      "body": "",
-      "bodyEn": "",
-      "bodyZh": "",
-      "headings": [],
-      "headingsEn": [],
-      "headingsZh": []
-    },
-    {
       "folder": "02 Project Gallery/Project03 Degree Project 毕业设计",
       "slug": "from-query-to-quest",
       "caseSource": {
@@ -279,201 +279,18 @@
         "title": "From Query to Quest @UID25 Degree Show",
         "aspectRatio": "16 / 9"
       },
-      "hasSource": true,
+      "hasSource": false,
       "sourceFile": "02 Project Gallery/Project03 Degree Project 毕业设计/Web Case.zh.md",
       "sourceFileEn": "02 Project Gallery/Project03 Degree Project 毕业设计/Web Case.en.md",
       "sourceFileZh": "02 Project Gallery/Project03 Degree Project 毕业设计/Web Case.zh.md",
-      "sourceChecksum": "ffdd14173e67",
-      "status": "published",
-      "body": "# Provocation\n\n## People do not always enter a conversation with a clear question\n\nMainstream conversational AI is effective when the user can state a task: request an output, review it, and refine it. The pattern becomes less reliable when the user begins with emotion, intuition, or an unresolved situation.\n\nExecuting the first available instruction can mistake a surface request for the actual direction. This project treats ambiguity as the beginning of thought, not as defective input.\n\nThe research focuses on text-based conversational AI in everyday moments of uncertainty, hesitation, and stuckness. Enterprise automation and embodied AI are outside its scope.\n\n# Research Approach\n\n## Studying cognitive patterns in dialogue\n\nThe project combines **Critical Design** and **Participatory Design**. Critical Design challenges the assumption that prompting must converge quickly on an output. Interviews, observation, participatory activities, role play, and sacrificial prototypes place that question in lived experience.\n\nThese activities expose the boundaries and trade-offs of different design positions. They do not validate a finished product.\n\n# Insights\n\n## Three conditions that need protection\n\n### Ambiguity can be an entry point\n\nPeople may need support before they know how to ask. The system should accept emotion, fragments, and incomplete intent, then use light prompts to help the user identify what is worth exploring.\n\n### Attention can move\n\nProductive thought moves between focus, dispersion, and temporary disconnection. The system should make attention visible and let the user decide when to deepen, branch, or pause.\n\n### Understanding needs time and action\n\nAn answer can offer direction but cannot replace real-world validation. Continuity across sessions should show which signals still matter and how understanding changes through action and feedback.\n\n# Design Contribution\n\n## Three principles and one journey\n\n### Agency Priority\n\nThe user retains priority over the direction of the question, the criteria for judgment, and the next step. More controls do not automatically create more agency.\n\n### Attention Synergy\n\nThe system reveals the themes, evidence, and shifts it is attending to. The user can mark, redirect, or pause that path.\n\n### Slow Continuity\n\nThe system supports signals being retained, revisited, reorganized, and revised without treating total memory as the goal.\n\nThe conceptual journey has three phases:\n\n1. **Initiation**: begin with emotion, fragments, or uncertain intent.\n2. **Exploratory Development**: open hypotheses, relationships, and possible branches.\n3. **Dialogue–Action Loop**: carry a provisional understanding into action, then return real feedback to the dialogue.\n\n# Framework in Use\n\n## Jerry’s Query-to-Quest\n\nAfter a difficult meeting, Jerry tells the AI, “I want to quit. Help me rewrite my résumé.” The system keeps direct execution available while offering to first examine what made him decide to leave that day.\n\nWith Jerry’s permission, it surfaces a recurring “communication pressure” theme from prior conversations and shows the source fragments. Jerry branches from the passage that matters to him, then defines a reversible experiment: after the next conflict, record the trigger, his response, and one alternative response.\n\nWhen Jerry returns, the new observation sits beside the earlier evidence. He can reconsider whether the issue is his communication pattern, the team relationship, or his career direction. Rewriting the résumé remains available, but it is no longer the only unchecked next step.\n\n# Contribution and Limits\n\n## Extending the design object from answers to thought trajectories\n\nThe project contributes three transferable design judgments:\n\n- measure agency through authorship of direction, not the number of controls;\n- treat pauses and real-world action as part of the interaction;\n- translate an abstract research position into discussable interaction patterns.\n\nThis is a speculative interaction framework. Its evidence consists of research insights, a conceptual framework, and scenario prototypes. It was not launched as a product and has no long-term behavioral or business-impact data.",
-      "bodyEn": "# Provocation\n\n## People do not always enter a conversation with a clear question\n\nMainstream conversational AI is effective when the user can state a task: request an output, review it, and refine it. The pattern becomes less reliable when the user begins with emotion, intuition, or an unresolved situation.\n\nExecuting the first available instruction can mistake a surface request for the actual direction. This project treats ambiguity as the beginning of thought, not as defective input.\n\nThe research focuses on text-based conversational AI in everyday moments of uncertainty, hesitation, and stuckness. Enterprise automation and embodied AI are outside its scope.\n\n# Research Approach\n\n## Studying cognitive patterns in dialogue\n\nThe project combines **Critical Design** and **Participatory Design**. Critical Design challenges the assumption that prompting must converge quickly on an output. Interviews, observation, participatory activities, role play, and sacrificial prototypes place that question in lived experience.\n\nThese activities expose the boundaries and trade-offs of different design positions. They do not validate a finished product.\n\n# Insights\n\n## Three conditions that need protection\n\n### Ambiguity can be an entry point\n\nPeople may need support before they know how to ask. The system should accept emotion, fragments, and incomplete intent, then use light prompts to help the user identify what is worth exploring.\n\n### Attention can move\n\nProductive thought moves between focus, dispersion, and temporary disconnection. The system should make attention visible and let the user decide when to deepen, branch, or pause.\n\n### Understanding needs time and action\n\nAn answer can offer direction but cannot replace real-world validation. Continuity across sessions should show which signals still matter and how understanding changes through action and feedback.\n\n# Design Contribution\n\n## Three principles and one journey\n\n### Agency Priority\n\nThe user retains priority over the direction of the question, the criteria for judgment, and the next step. More controls do not automatically create more agency.\n\n### Attention Synergy\n\nThe system reveals the themes, evidence, and shifts it is attending to. The user can mark, redirect, or pause that path.\n\n### Slow Continuity\n\nThe system supports signals being retained, revisited, reorganized, and revised without treating total memory as the goal.\n\nThe conceptual journey has three phases:\n\n1. **Initiation**: begin with emotion, fragments, or uncertain intent.\n2. **Exploratory Development**: open hypotheses, relationships, and possible branches.\n3. **Dialogue–Action Loop**: carry a provisional understanding into action, then return real feedback to the dialogue.\n\n# Framework in Use\n\n## Jerry’s Query-to-Quest\n\nAfter a difficult meeting, Jerry tells the AI, “I want to quit. Help me rewrite my résumé.” The system keeps direct execution available while offering to first examine what made him decide to leave that day.\n\nWith Jerry’s permission, it surfaces a recurring “communication pressure” theme from prior conversations and shows the source fragments. Jerry branches from the passage that matters to him, then defines a reversible experiment: after the next conflict, record the trigger, his response, and one alternative response.\n\nWhen Jerry returns, the new observation sits beside the earlier evidence. He can reconsider whether the issue is his communication pattern, the team relationship, or his career direction. Rewriting the résumé remains available, but it is no longer the only unchecked next step.\n\n# Contribution and Limits\n\n## Extending the design object from answers to thought trajectories\n\nThe project contributes three transferable design judgments:\n\n- measure agency through authorship of direction, not the number of controls;\n- treat pauses and real-world action as part of the interaction;\n- translate an abstract research position into discussable interaction patterns.\n\nThis is a speculative interaction framework. Its evidence consists of research insights, a conceptual framework, and scenario prototypes. It was not launched as a product and has no long-term behavioral or business-impact data.",
-      "bodyZh": "# Provocation\n\n## 用户并不总是带着清晰问题进入对话\n\n主流聊天式 AI 擅长执行明确指令：用户提出要求，系统给出结果，再通过追问不断修正。这条路径适合目标清晰的任务。\n\n当用户只有情绪、直觉或尚未成形的问题时，系统过早执行第一条指令，可能把表层请求误认为真实方向。本项目把这种模糊状态视为思考的起点。\n\n研究范围聚焦文字型对话 AI、日常探索性使用，以及不确定、犹豫或卡住的时刻；不讨论企业自动化工作流或具身智能。\n\n# Research Approach\n\n## 用研究活动寻找对话中的认知模式\n\n项目结合 **Critical Design｜批判性设计** 与 **Participatory Design｜参与式设计**。前者用于质疑“提示必须快速通向结果”的默认逻辑；后者通过访谈、观察、参与式活动、角色扮演和牺牲性原型，把抽象问题放回真实经验。\n\n这些研究活动用于暴露不同设计取向的边界与代价，不用于证明某个产品方案已经有效。\n\n# Insights\n\n## 三个需要被保护的条件\n\n### 模糊可以成为入口\n\n用户可能在知道如何提问之前就需要帮助。系统应允许情绪、片段和未成形的意图进入对话，并用轻量追问帮助用户辨认值得探索的问题。\n\n### 注意力允许移动\n\n有价值的思考会在聚焦、发散和暂时离开之间移动。系统需要让注意力的方向可见，让用户决定何时深入、分支或暂停。\n\n### 理解需要时间和行动\n\n一次回答可以提供方向，但不能替代现实验证。跨会话连续性应帮助用户看见哪些线索仍然重要，以及理解如何因行动和反馈而变化。\n\n# Design Contribution\n\n## 三项原则和一段概念旅程\n\n### Agency Priority｜能动性优先\n\n用户始终保有问题方向、判断标准和下一步选择的优先权。更多按钮不等于更多能动性。\n\n### Attention Synergy｜注意力协同\n\n系统呈现它正在关注的主题、依据和偏移；用户可以标记、改变或暂停这条注意力路径。\n\n### Slow Continuity｜慢连续性\n\n系统支持线索被保留、回访、重组与修正，但不以“记住一切”为目标。\n\n概念旅程由三段组成：\n\n1. **Initiation｜发起**：从情绪、片段或模糊意图开始。\n2. **Exploratory Development｜探索发展**：展开假设、关系和可能分支。\n3. **Dialogue–Action Loop｜对话—行动循环**：把暂定理解带入现实行动，再让反馈回到对话。\n\n# Framework in Use\n\n## Jerry 的一次 Query-to-Quest\n\nJerry 在一次糟糕的会议后对 AI 说：“我想辞职，帮我润色简历。”系统保留直接执行的选项，同时邀请他先梳理今天决定离开的原因。\n\n在 Jerry 许可后，系统呈现过往对话中反复出现的“沟通压力”线索，并标明来源。Jerry 从真正触动自己的片段开启分支，再定义一个可逆的小实验：记录下一次冲突的触发点、自己的反应，以及另一种可能的回应。\n\n实际尝试后，新的观察与原有线索并置。Jerry 再判断需要改变的是沟通方式、团队关系还是职业方向。润色简历仍可继续，但不再是未经检查的唯一下一步。\n\n# Contribution and Limits\n\n## 设计对象从回答扩展到思考轨迹\n\n项目提出三项可迁移的设计判断：\n\n- 用方向作者权而非控件数量衡量能动性；\n- 把暂停和现实行动视为交互的一部分；\n- 用可讨论的交互模式承接抽象研究立场。\n\n这是一项推测性交互框架。现有证据来自研究洞察、概念框架和场景原型；项目未作为产品上线，也没有长期行为或商业影响数据。",
-      "headings": [
-        {
-          "depth": 1,
-          "label": "Provocation",
-          "id": "provocation"
-        },
-        {
-          "depth": 2,
-          "label": "People do not always enter a conversation with a clear question",
-          "id": "people-do-not-always-enter-a-conversation-with-a-clear-question"
-        },
-        {
-          "depth": 1,
-          "label": "Research Approach",
-          "id": "research-approach"
-        },
-        {
-          "depth": 2,
-          "label": "Studying cognitive patterns in dialogue",
-          "id": "studying-cognitive-patterns-in-dialogue"
-        },
-        {
-          "depth": 1,
-          "label": "Insights",
-          "id": "insights"
-        },
-        {
-          "depth": 2,
-          "label": "Three conditions that need protection",
-          "id": "three-conditions-that-need-protection"
-        },
-        {
-          "depth": 1,
-          "label": "Design Contribution",
-          "id": "design-contribution"
-        },
-        {
-          "depth": 2,
-          "label": "Three principles and one journey",
-          "id": "three-principles-and-one-journey"
-        },
-        {
-          "depth": 1,
-          "label": "Framework in Use",
-          "id": "framework-in-use"
-        },
-        {
-          "depth": 2,
-          "label": "Jerry’s Query-to-Quest",
-          "id": "jerry-s-query-to-quest"
-        },
-        {
-          "depth": 1,
-          "label": "Contribution and Limits",
-          "id": "contribution-and-limits"
-        },
-        {
-          "depth": 2,
-          "label": "Extending the design object from answers to thought trajectories",
-          "id": "extending-the-design-object-from-answers-to-thought-trajectories"
-        }
-      ],
-      "headingsEn": [
-        {
-          "depth": 1,
-          "label": "Provocation",
-          "id": "provocation"
-        },
-        {
-          "depth": 2,
-          "label": "People do not always enter a conversation with a clear question",
-          "id": "people-do-not-always-enter-a-conversation-with-a-clear-question"
-        },
-        {
-          "depth": 1,
-          "label": "Research Approach",
-          "id": "research-approach"
-        },
-        {
-          "depth": 2,
-          "label": "Studying cognitive patterns in dialogue",
-          "id": "studying-cognitive-patterns-in-dialogue"
-        },
-        {
-          "depth": 1,
-          "label": "Insights",
-          "id": "insights"
-        },
-        {
-          "depth": 2,
-          "label": "Three conditions that need protection",
-          "id": "three-conditions-that-need-protection"
-        },
-        {
-          "depth": 1,
-          "label": "Design Contribution",
-          "id": "design-contribution"
-        },
-        {
-          "depth": 2,
-          "label": "Three principles and one journey",
-          "id": "three-principles-and-one-journey"
-        },
-        {
-          "depth": 1,
-          "label": "Framework in Use",
-          "id": "framework-in-use"
-        },
-        {
-          "depth": 2,
-          "label": "Jerry’s Query-to-Quest",
-          "id": "jerry-s-query-to-quest"
-        },
-        {
-          "depth": 1,
-          "label": "Contribution and Limits",
-          "id": "contribution-and-limits"
-        },
-        {
-          "depth": 2,
-          "label": "Extending the design object from answers to thought trajectories",
-          "id": "extending-the-design-object-from-answers-to-thought-trajectories"
-        }
-      ],
-      "headingsZh": [
-        {
-          "depth": 1,
-          "label": "Provocation",
-          "id": "provocation"
-        },
-        {
-          "depth": 2,
-          "label": "用户并不总是带着清晰问题进入对话",
-          "id": "用户并不总是带着清晰问题进入对话"
-        },
-        {
-          "depth": 1,
-          "label": "Research Approach",
-          "id": "research-approach"
-        },
-        {
-          "depth": 2,
-          "label": "用研究活动寻找对话中的认知模式",
-          "id": "用研究活动寻找对话中的认知模式"
-        },
-        {
-          "depth": 1,
-          "label": "Insights",
-          "id": "insights"
-        },
-        {
-          "depth": 2,
-          "label": "三个需要被保护的条件",
-          "id": "三个需要被保护的条件"
-        },
-        {
-          "depth": 1,
-          "label": "Design Contribution",
-          "id": "design-contribution"
-        },
-        {
-          "depth": 2,
-          "label": "三项原则和一段概念旅程",
-          "id": "三项原则和一段概念旅程"
-        },
-        {
-          "depth": 1,
-          "label": "Framework in Use",
-          "id": "framework-in-use"
-        },
-        {
-          "depth": 2,
-          "label": "Jerry 的一次 Query-to-Quest",
-          "id": "jerry-的一次-query-to-quest"
-        },
-        {
-          "depth": 1,
-          "label": "Contribution and Limits",
-          "id": "contribution-and-limits"
-        },
-        {
-          "depth": 2,
-          "label": "设计对象从回答扩展到思考轨迹",
-          "id": "设计对象从回答扩展到思考轨迹"
-        }
-      ]
+      "sourceChecksum": null,
+      "status": "in-progress",
+      "body": "",
+      "bodyEn": "",
+      "bodyZh": "",
+      "headings": [],
+      "headingsEn": [],
+      "headingsZh": []
     },
     {
       "folder": "01 Landing Page",

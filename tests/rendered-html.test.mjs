@@ -25,7 +25,9 @@ test("server-renders Lexi's portfolio landing page", async () => {
   assert.match(html, /我是一位拥有 2 年经验的 AI 产品设计师/);
   assert.match(html, /很高兴你能看到这里～/);
   assert.match(html, /contact-morph/);
-  assert.match(html, /CV link coming soon/);
+  assert.match(html, /href="\/resume\.pdf"/);
+  assert.match(html, /download="梁乐之_2年经验_AI产品设计师_15827639053\.pdf"/);
+  assert.doesNotMatch(html, /CV link coming soon/);
   assert.match(html, /\/media\/cursor-tracker\/cursor-sprite\.webp/);
   assert.match(html, /\/media\/cursor-tracker\/click-wink\.mp4/);
   assert.match(html, /Alive Briefing/);

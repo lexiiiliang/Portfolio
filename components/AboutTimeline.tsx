@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Localized } from "./Localized";
 
 type TimelineItem = {
@@ -99,14 +98,18 @@ export function AboutTimeline() {
             <article className="about-timeline-card">
               <span className="about-timeline-identity" aria-hidden="true">
                 {item.logo ? (
-                  <Image
+                  // Keep the reference vinext density descriptor identical in both runtimes.
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
                     className="about-timeline-logo"
                     data-logo={item.logoKey}
                     src={item.logo}
+                    srcSet={`${item.logo} 50w`}
                     alt=""
                     width={50}
                     height={50}
-                    unoptimized
+                    loading="lazy"
+                    decoding="async"
                   />
                 ) : (
                   <span className="about-timeline-flag">{item.marker}</span>

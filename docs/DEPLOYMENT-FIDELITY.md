@@ -12,6 +12,10 @@ Keep the standard declaration last in both light and dark folder rules. `scripts
 
 The reference localhost font cache pointed Geist and Geist Mono at a previous filesystem location. Both font requests failed, so both slots actually rendered the `sans-serif` fallback. These stacks are now explicit in global CSS and no longer depend on broken font requests. The handwritten Covered By Your Grace face remains unchanged. Loading Geist later is a visual design change, not a deployment fix.
 
+## Image density
+
+The vinext `Image` shim generated a `50w` descriptor for the unoptimized 50px timeline logos, while Next.js omitted `srcset`. Although the PNG bytes were identical, the browser used different density metadata and resampling. Timeline logos now use the same explicit native image markup in both runtimes, preserving the localhost reference.
+
 ## Reproducible release content
 
 `npm run build:vercel` consumes the versioned `content/*.generated.json` and `public/` assets directly. It does not import fresh Obsidian content. Review content changes locally with the existing sync workflow before committing the release snapshot.

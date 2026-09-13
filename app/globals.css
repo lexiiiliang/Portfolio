@@ -5,6 +5,10 @@
 @import "./project-folder.css";
 
 :root {
+  /* Match the approved localhost rendering explicitly. The old vinext font
+     cache failed to load Geist and Geist Mono, falling back to sans-serif. */
+  --font-geist-sans: sans-serif;
+  --font-geist-mono: sans-serif;
   --paper: #f6f6f2;
   --surface: #ffffff;
   --ink: #171817;

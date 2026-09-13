@@ -1,19 +1,9 @@
 import type { Metadata } from "next";
-import { Covered_By_Your_Grace, Geist, Geist_Mono } from "next/font/google";
+import { Covered_By_Your_Grace } from "next/font/google";
 import { headers } from "next/headers";
 import { AgentationDevtools } from "@/components/AgentationDevtools";
 import { CustomCursor } from "@/components/CustomCursor";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const coveredByYourGrace = Covered_By_Your_Grace({
   variable: "--font-covered-by-your-grace",
@@ -93,7 +83,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           type="image/webp"
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${coveredByYourGrace.variable}`}>
+      <body className={coveredByYourGrace.variable}>
         <a className="skip-link" href="#top">Skip to content</a>
         {children}
         <CustomCursor />

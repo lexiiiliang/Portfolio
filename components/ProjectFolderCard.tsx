@@ -142,9 +142,10 @@ export function ProjectFolderCard({
     {
       const card = triggerRef.current?.closest<HTMLElement>(".project-card");
       if (!card) return;
-      const style = getComputedStyle(card);
-      const summaryTop = card.getBoundingClientRect().top + 100
-        - parseFloat(style.getPropertyValue("--fpc-sheet-height"));
+      // Measure synchronously too: a viewport/language change may still have a queued ResizeObserver frame.
+      const sheetHeight = Math.max(370, (bodyRef.current?.offsetHeight ?? 322) + 48);
+      card.style.setProperty("--fpc-sheet-height", `${sheetHeight}px`);
+      const summaryTop = card.getBoundingClientRect().top + 100 - sheetHeight;
       if (summaryTop < 96) {
         window.scrollBy({
           top: summaryTop - 96,

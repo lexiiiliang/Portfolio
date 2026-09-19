@@ -41,11 +41,6 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
   const navigateToSection = (sectionId: string) => {
     const hash = `#${sectionId}`;
 
-    if (window.location.pathname !== "/") {
-      window.location.assign(`/${hash}`);
-      return;
-    }
-
     const target = document.getElementById(sectionId);
     if (!target) return;
 
@@ -59,12 +54,20 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
     event: ReactMouseEvent<HTMLAnchorElement>,
     sectionId: string,
   ) => {
-    event.preventDefault();
-    navigateToSection(sectionId);
+    if (event.defaultPrevented || event.button !== 0
+      || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
     setIsTapOpen(false);
     // Drop focus so :focus-within does not hold the row open over the section
     // the user just jumped to.
     event.currentTarget.blur();
+
+    // Across pages, let Link use its prefetched route and handle the hash.
+    // A hard navigation here would discard the router cache and reload the app.
+    if (window.location.pathname !== "/") return;
+
+    event.preventDefault();
+    navigateToSection(sectionId);
   };
 
   return (

@@ -12,7 +12,7 @@ function FrostedLayer({ coverSrc }: { coverSrc: string }) {
   return (
     <span className="fpc-frost" aria-hidden="true">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="fpc-frost-image" src={coverSrc} alt="" />
+      <img className="fpc-frost-image" src={coverSrc} alt="" loading="lazy" decoding="async" />
     </span>
   );
 }
@@ -174,7 +174,7 @@ export function ProjectFolderCard({
         <div className="fpc-sheet"><div className="fpc-flip">
           <div className="fpc-visual" aria-hidden="true">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img ref={imageRef} className="fpc-image" src={coverSrc} alt="" />
+            <img ref={imageRef} className="fpc-image" src={coverSrc} alt="" loading="lazy" decoding="async" />
           </div>
           <div
             ref={panelRef}

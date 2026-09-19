@@ -607,6 +607,7 @@ html[data-lang="zh"] .copy-en {
 }
 
 .portrait-tracker-media,
+.portrait-poster,
 .portrait-wink-video,
 .cursor-sprite {
   position: absolute;
@@ -628,19 +629,29 @@ html[data-lang="zh"] .copy-en {
   width: 1100%;
   max-width: none;
   height: 1000%;
-  opacity: 1;
+  opacity: 0;
   user-select: none;
   will-change: transform;
 }
 
+.portrait-poster,
 .portrait-wink-video {
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.portrait-wink-video {
   opacity: 0;
 }
 
+.portrait-tracker.has-sprite .cursor-sprite {
+  opacity: 1;
+}
+
+.portrait-tracker.has-sprite .portrait-poster,
+.portrait-tracker.is-winking .portrait-poster,
 .portrait-tracker.is-winking .cursor-sprite {
   opacity: 0;
 }

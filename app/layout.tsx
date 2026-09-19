@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Covered_By_Your_Grace } from "next/font/google";
-import { headers } from "next/headers";
 import { AgentationDevtools } from "@/components/AgentationDevtools";
 import { CustomCursor } from "@/components/CustomCursor";
 import "./globals.css";
@@ -11,18 +10,10 @@ const coveredByYourGrace = Covered_By_Your_Grace({
   weight: "400",
 });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = (
-    requestHeaders.get("x-forwarded-host")
-    || requestHeaders.get("host")
-    || "lexi-liang-portfolio.lexiliang-design.chatgpt.site"
-  )
-    .split(",")[0]
-    .trim();
-  const protocol = requestHeaders.get("x-forwarded-proto")
-    || (host.startsWith("localhost") ? "http" : "https");
-  const siteUrl = `${protocol}://${host}`;
+// Public metadata is identical for every visitor, so the homepage can be
+// generated at build time and served from Vercel's edge cache.
+export function generateMetadata(): Metadata {
+  const siteUrl = "https://www.lianglezhi.site";
   const socialImage = new URL("/og.png", siteUrl).toString();
   const title = "Lexi Liang — Interaction Designer";
   const description = "I design how humans naturally converse with AI and physical hardware.";
@@ -72,16 +63,9 @@ const preferenceScript = `
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: preferenceScript }} />
-        <link
-          rel="preload"
-          href="/media/cursor-tracker/cursor-sprite.webp"
-          imageSrcSet="/media/cursor-tracker/cursor-sprite.webp 1x, /media/cursor-tracker/cursor-sprite@2x.webp 2x"
-          as="image"
-          type="image/webp"
-        />
       </head>
       <body className={coveredByYourGrace.variable}>
         <a className="skip-link" href="#top">Skip to content</a>

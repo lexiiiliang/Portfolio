@@ -1,0 +1,24 @@
+# Source deployments exclude local build output, secrets, and browser evidence.
+# Keep shared exclusions aligned with .gitignore.
+node_modules/
+.pnp
+.pnp.*
+.yarn/
+coverage/
+.next/
+.vinext/
+.wrangler/
+dist/
+out/
+output/
+outputs/
+work/
+.playwright-cli/
+.DS_Store
+*.pem
+*.tsbuildinfo
+next-env.d.ts
+*-debug.log*
+.env*
+!.env.example
+.vercel/

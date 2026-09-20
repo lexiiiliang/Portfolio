@@ -1,4 +1,5 @@
-/* eslint-disable @next/next/no-img-element -- Preserve original source media and their dimensions. */
+/* eslint-disable @next/next/no-img-element -- Prebuilt responsive assets work in both Next.js and vinext. */
+import mediaSnapshot from "@/content/livis-media.generated.json";
 import { livisCase, type LivisBlock } from "@/lib/livis-case";
 import { QueryCaseMarkdown } from "./QueryCaseMarkdown";
 import { QueryCaseNavigation } from "./QueryCaseInteractions";
@@ -7,17 +8,30 @@ function Caption({ children }: { children?: string }) {
   return children ? <figcaption><QueryCaseMarkdown>{children}</QueryCaseMarkdown></figcaption> : null;
 }
 
-function SourceMedia({ markdown }: { markdown: string }) {
+// Match the existing reading column and comparison layouts without changing
+// their geometry. The browser selects a derivative appropriate to its density.
+const mediaSizes = {
+  wide: "(max-width: 760px) calc(100vw - 40px), (max-width: 1100px) calc(100vw - 288px), (max-width: 1216px) calc(100vw - 336px), 880px",
+  portrait: "(max-width: 392px) calc(100vw - 72px), 320px",
+  comparison2: "(max-width: 760px) min(390px, calc(100vw - 72px)), (max-width: 1100px) calc((100vw - 360px) / 2), (max-width: 1216px) calc((100vw - 464px) / 2), 376px",
+  comparison3: "(max-width: 760px) min(390px, calc(100vw - 40px)), (max-width: 1100px) calc((100vw - 320px) / 3), (max-width: 1216px) calc((100vw - 376px) / 3), 280px",
+};
+
+function SourceMedia({ markdown, layout = "wide" }: { markdown: string; layout?: keyof typeof mediaSizes }) {
   const match = markdown.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
   const media = livisCase.media.find((item) => item.src === match?.[2]);
   if (!media || !match) throw new Error("Livis media missing from the approved snapshot.");
+  // A new source image must never accidentally display an old derivative.
+  const display = mediaSnapshot.media.find((item) => item.original === media.src && item.sourceSha256 === media.sha256);
+  const variants = display?.variants;
+  const fallback = variants?.find((variant) => variant.width >= 800) ?? variants?.at(-1);
   return media.kind === "video" ? (
-    <video className="livis-video" controls playsInline preload="metadata" aria-label={match[1]}>
-      <source src={media.src} type="video/mp4" />
+    <video className="livis-video" controls playsInline preload="none" poster={display?.poster?.src} width={display?.width} height={display?.height} aria-label={match[1]}>
+      <source src={display?.src ?? media.src} type="video/mp4" />
       <a href={media.src}>{match[1]}</a>
     </video>
   ) : (
-    <img src={media.src} alt={match[1]} width={media.width} height={media.height} loading="lazy" decoding="async" />
+    <img src={fallback?.src ?? media.src} srcSet={variants?.map((variant) => `${variant.src} ${variant.width}w`).join(", ")} sizes={variants ? mediaSizes[layout] : undefined} alt={match[1]} width={media.width} height={media.height} loading="lazy" decoding="async" />
   );
 }
 
@@ -98,14 +112,14 @@ function Block({ block, sectionId }: { block: LivisBlock; sectionId: string }) {
   if (markdown.startsWith("![")) {
     const media = livisCase.media.find((item) => markdown.includes(item.src));
     const portrait = media?.width && media?.height && media.height > media.width;
-    return <figure className={`livis-figure ${portrait ? "livis-portrait" : ""}`}><div className="livis-media-surface"><SourceMedia markdown={markdown} /></div><Caption>{caption}</Caption></figure>;
+    return <figure className={`livis-figure ${portrait ? "livis-portrait" : ""}`}><div className="livis-media-surface"><SourceMedia markdown={markdown} layout={portrait ? "portrait" : "wide"} /></div><Caption>{caption}</Caption></figure>;
   }
   if (markdown.startsWith("|") && markdown.includes("![")) {
     const rows = markdown.split("\n").map((row) => row.replace(/^\||\|$/g, "").split("|").map((cell) => cell.trim()));
     return <figure className="livis-comparison"><div className={`livis-comparison-grid livis-comparison-${rows[0].length}`}>
       {rows[0].map((heading, index) => <div className="livis-comparison-column" key={heading}>
         <div className="livis-comparison-heading"><QueryCaseMarkdown>{heading}</QueryCaseMarkdown></div>
-        <SourceMedia markdown={rows[2][index]} />
+        <SourceMedia markdown={rows[2][index]} layout={rows[0].length === 2 ? "comparison2" : "comparison3"} />
       </div>)}
     </div><Caption>{caption}</Caption></figure>;
   }

@@ -1,0 +1,286 @@
+{
+  "media": [
+    {
+      "original": "/media/livis-final/11.jpeg",
+      "sourceSha256": "8247b10f8c4c98fee50623c19c162630f6d0ca198b5de1baa4ddb325572f8ef2",
+      "originalBytes": 233731,
+      "kind": "image",
+      "variants": [
+        {
+          "src": "/media/livis-optimized/11-480-734e1db2f4b710da.webp",
+          "bytes": 11294,
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/livis-optimized/11-800-a76cb755e3bfca3e.webp",
+          "bytes": 22812,
+          "width": 800,
+          "height": 450
+        },
+        {
+          "src": "/media/livis-optimized/11-1200-185286786bb41b27.webp",
+          "bytes": 44336,
+          "width": 1200,
+          "height": 675
+        },
+        {
+          "src": "/media/livis-optimized/11-1760-41b3d53408d75416.webp",
+          "bytes": 90314,
+          "width": 1760,
+          "height": 991
+        }
+      ]
+    },
+    {
+      "original": "/media/livis-final/01.png",
+      "sourceSha256": "62b47bed3188ca67948ba78b42e8e473d6e52fa602b2a4f6b783d68d13999a72",
+      "originalBytes": 396632,
+      "kind": "image",
+      "variants": [
+        {
+          "src": "/media/livis-optimized/01-480-eef9da5b583362bf.webp",
+          "bytes": 7276,
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/livis-optimized/01-800-e82a68d8f2d7d7cd.webp",
+          "bytes": 13552,
+          "width": 800,
+          "height": 450
+        },
+        {
+          "src": "/media/livis-optimized/01-1200-b4210858a9c87850.webp",
+          "bytes": 23994,
+          "width": 1200,
+          "height": 675
+        },
+        {
+          "src": "/media/livis-optimized/01-1760-0d494305d442603f.webp",
+          "bytes": 39872,
+          "width": 1760,
+          "height": 990
+        }
+      ]
+    },
+    {
+      "original": "/media/livis-final/02.png",
+      "sourceSha256": "9692044010b0dc59efd62c0719882bf1e7ab416f0d758e051c1654ddf24f4d2d",
+      "originalBytes": 1655895,
+      "kind": "image",
+      "variants": [
+        {
+          "src": "/media/livis-optimized/02-480-bed2e56ad5cbcd22.webp",
+          "bytes": 8684,
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/livis-optimized/02-800-d4f683d9004957ca.webp",
+          "bytes": 16398,
+          "width": 800,
+          "height": 450
+        },
+        {
+          "src": "/media/livis-optimized/02-1200-3bd8f5230182c526.webp",
+          "bytes": 28478,
+          "width": 1200,
+          "height": 675
+        },
+        {
+          "src": "/media/livis-optimized/02-1760-44994ea43067ab68.webp",
+          "bytes": 46780,
+          "width": 1760,
+          "height": 990
+        }
+      ]
+    },
+    {
+      "original": "/media/livis-final/03.png",
+      "sourceSha256": "d41fe10ac71aa9740f389fb0099c4d215e164f7ac372e2af481ee89aca4bcb3d",
+      "originalBytes": 90156,
+      "kind": "image",
+      "variants": [
+        {
+          "src": "/media/livis-optimized/03-480-3c543d4038b27771.webp",
+          "bytes": 24080,
+          "width": 480,
+          "height": 1041
+        },
+        {
+          "src": "/media/livis-optimized/03-800-f46c469c05a4fbc4.webp",
+          "bytes": 44696,
+          "width": 800,
+          "height": 1734
+        },
+        {
+          "src": "/media/livis-optimized/03-1179-b227efa5ee029458.webp",
+          "bytes": 67278,
+          "width": 1179,
+          "height": 2556
+        }
+      ]
+    },
+    {
+      "original": "/media/livis-final/04.png",
+      "sourceSha256": "26ce72218bf07fe36b951571947b3c3976c97a19fefa9526a1a3d4f3a5d19731",
+      "originalBytes": 331026,
+      "kind": "image",
+      "variants": [
+        {
+          "src": "/media/livis-optimized/04-480-19930e8eccdb8473.webp",
+          "bytes": 57038,
+          "width": 480,
+          "height": 1496
+        },
+        {
+          "src": "/media/livis-optimized/04-800-033da001f31e32d1.webp",
+          "bytes": 107706,
+          "width": 800,
+          "height": 2494
+        },
+        {
+          "src": "/media/livis-optimized/04-1179-489ab8fcc6346337.webp",
+          "bytes": 174102,
+          "width": 1179,
+          "height": 3675
+        }
+      ]
+    },
+    {
+      "original": "/media/livis-final/05.png",
+      "sourceSha256": "b0fe608a7209beae69552978f31cb9610e105c5752ef80bd9126e8768dbba26f",
+      "originalBytes": 377017,
+      "kind": "image",
+      "variants": [
+        {
+          "src": "/media/livis-optimized/05-480-19d55b83a8b3da5c.webp",
+          "bytes": 62998,
+          "width": 480,
+          "height": 1769
+        },
+        {
+          "src": "/media/livis-optimized/05-800-ce2549b9676693ef.webp",
+          "bytes": 119548,
+          "width": 800,
+          "height": 2948
+        },
+        {
+          "src": "/media/livis-optimized/05-1179-c25e62ee58b1c8d2.webp",
+          "bytes": 190926,
+          "width": 1179,
+          "height": 4344
+        }
+      ]
+    },
+    {
+      "original": "/media/livis-final/06.png",
+      "sourceSha256": "565ea0a1449e72e222de1c63e49048d5761d3e8f3566599fd3b127b87bb6309c",
+      "originalBytes": 338108,
+      "kind": "image",
+      "variants": [
+        {
+          "src": "/media/livis-optimized/06-480-6cacf6d3f538126a.webp",
+          "bytes": 59172,
+          "width": 480,
+          "height": 1588
+        },
+        {
+          "src": "/media/livis-optimized/06-800-e7b137461b27d8c8.webp",
+          "bytes": 112690,
+          "width": 800,
+          "height": 2646
+        },
+        {
+          "src": "/media/livis-optimized/06-1179-8a682047fb9ba9dc.webp",
+          "bytes": 180646,
+          "width": 1179,
+          "height": 3900
+        }
+      ]
+    },
+    {
+      "original": "/media/livis-final/07.png",
+      "sourceSha256": "8f44ee30110c33e5cc338dc40b52a4f46d850459dad9df4fff5cec564944c2d6",
+      "originalBytes": 270112,
+      "kind": "image",
+      "variants": [
+        {
+          "src": "/media/livis-optimized/07-480-e923ec3b1a4989f5.webp",
+          "bytes": 29372,
+          "width": 480,
+          "height": 1041
+        },
+        {
+          "src": "/media/livis-optimized/07-800-dc31ec76ef9e6814.webp",
+          "bytes": 54954,
+          "width": 800,
+          "height": 1734
+        },
+        {
+          "src": "/media/livis-optimized/07-1179-92fbf9441d48766e.webp",
+          "bytes": 84044,
+          "width": 1179,
+          "height": 2556
+        }
+      ]
+    },
+    {
+      "original": "/media/livis-final/08.png",
+      "sourceSha256": "22251cde33c5fb0630a0d1b95d78fbeb3c502982dd32567ae152a5a3de2ff0ef",
+      "originalBytes": 236002,
+      "kind": "image",
+      "variants": [
+        {
+          "src": "/media/livis-optimized/08-480-d6bbe73602646601.webp",
+          "bytes": 29818,
+          "width": 480,
+          "height": 1041
+        },
+        {
+          "src": "/media/livis-optimized/08-800-05ff0536bc2813a6.webp",
+          "bytes": 56588,
+          "width": 800,
+          "height": 1734
+        },
+        {
+          "src": "/media/livis-optimized/08-1179-153cddd62b07d7ae.webp",
+          "bytes": 88080,
+          "width": 1179,
+          "height": 2556
+        }
+      ]
+    },
+    {
+      "original": "/media/livis-final/09.mp4",
+      "sourceSha256": "4498a20a5b6e5e63d38633fef4667d4eeb70c769232290ec07327cbd76d025e0",
+      "originalBytes": 956320,
+      "kind": "video",
+      "width": 640,
+      "height": 384,
+      "duration": 50.479,
+      "src": "/media/livis-optimized/09-406702d1343c058f.mp4",
+      "bytes": 942265,
+      "poster": {
+        "src": "/media/livis-optimized/09-poster-756599f0edae0651.webp",
+        "bytes": 2848
+      }
+    },
+    {
+      "original": "/media/livis-final/10.mp4",
+      "sourceSha256": "6f932f023017ce3d3f5bd10e11ba9a88489c5010d6f231ad3e26d07676e49af7",
+      "originalBytes": 564201,
+      "kind": "video",
+      "width": 640,
+      "height": 384,
+      "duration": 24.937,
+      "src": "/media/livis-optimized/10-db350d8b20b2bd24.mp4",
+      "bytes": 557102,
+      "poster": {
+        "src": "/media/livis-optimized/10-poster-23a605beb752f9f1.webp",
+        "bytes": 2972
+      }
+    }
+  ]
+}

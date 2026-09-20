@@ -15,7 +15,8 @@ import { ACCESS_COOKIE, hasPortfolioAccess, PASSWORD_PROTECTION_ENABLED } from "
 import { livisCase } from "@/lib/livis-case";
 import { getProject, portfolio } from "@/lib/portfolio";
 
-export const dynamic = "force-dynamic";
+// Public snapshots can be prerendered and cached. If password protection is
+// enabled, the cookies() check below still makes protected routes dynamic.
 
 export function generateStaticParams() {
   return portfolio.projects.map((project) => ({ slug: project.slug }));
@@ -45,7 +46,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     if (!allowed) redirect(`/unlock?next=${encodeURIComponent(`/projects/${project.slug}`)}`);
   }
 
-  const caseProjects = portfolio.projects.filter((item) => item.featured);
+  // Alive Briefing is marked Coming Soon on the homepage; its old case must
+  // not remain reachable through the recommendation at the end of a project.
+  const caseProjects = portfolio.projects.filter((item) => item.featured && item.slug !== "alive-briefing");
   const index = caseProjects.findIndex((item) => item.slug === project.slug);
   const nextProject = caseProjects[(index + 1) % caseProjects.length] ?? project;
   const isDistilledCase = project.slug === "alive-briefing" || project.slug === "from-query-to-quest";

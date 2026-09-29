@@ -10,6 +10,9 @@ import sharp from "sharp";
 // read-only inputs; builds use checked-in derivatives, including without Obsidian.
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const snapshot = JSON.parse(await readFile(path.join(root, "content/livis.generated.json"), "utf8"));
+const comparison = JSON.parse(await readFile(path.join(root, "content/livis-comparison.json"), "utf8"));
+const cover = JSON.parse(await readFile(path.join(root, "content/livis-cover.json"), "utf8"));
+const previous = JSON.parse(await readFile(path.join(root, "content/livis-media.generated.json"), "utf8"));
 const outputDir = path.join(root, "public/media/livis-optimized");
 const temporaryDir = await mkdtemp(path.join(os.tmpdir(), "livis-media-"));
 const digest = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -24,10 +27,22 @@ async function save(bytes, label, extension) {
 try {
   const media = [];
   let videoTool;
-  for (const original of snapshot.media) {
+  for (const original of [...snapshot.media, ...comparison.media, cover]) {
     const source = path.join(root, "public", original.src);
     const bytes = await readFile(source);
     if (digest(bytes) !== original.sha256) throw new Error(`Source checksum mismatch: ${original.src}`);
+    // Preserve unchanged derivatives, including video containers, across image updates.
+    const existing = previous.media.find(item => item.original === original.src && item.sourceSha256 === original.sha256);
+    if (existing) {
+      const assets = existing.kind === "image" ? existing.variants : [existing, existing.poster];
+      const valid = await Promise.all(assets.map(async asset => {
+        try {
+          const bytes = await readFile(path.join(root, "public", asset.src));
+          return bytes.length === asset.bytes && path.basename(asset.src).includes(digest(bytes).slice(0, 16));
+        } catch { return false; }
+      }));
+      if (valid.every(Boolean)) { media.push(existing); continue; }
+    }
     const label = path.basename(source, path.extname(source));
     const common = { original: original.src, sourceSha256: original.sha256, originalBytes: bytes.length };
     if (original.kind === "image") {

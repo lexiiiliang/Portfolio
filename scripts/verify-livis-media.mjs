@@ -7,6 +7,8 @@ import sharp from "sharp";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const source = JSON.parse(await readFile(path.join(root, "content/livis.generated.json"), "utf8"));
+const comparison = JSON.parse(await readFile(path.join(root, "content/livis-comparison.json"), "utf8"));
+const cover = JSON.parse(await readFile(path.join(root, "content/livis-cover.json"), "utf8"));
 const display = JSON.parse(await readFile(path.join(root, "content/livis-media.generated.json"), "utf8"));
 const hash = bytes => createHash("sha256").update(bytes).digest("hex");
 
@@ -18,8 +20,9 @@ async function asset(item) {
   return bytes;
 }
 
-assert.equal(display.media.length, source.media.length);
-for (const original of source.media) {
+const originals = [...source.media, ...comparison.media, cover];
+assert.equal(display.media.length, originals.length);
+for (const original of originals) {
   const media = display.media.find(item => item.original === original.src);
   assert.ok(media, `Missing derivative: ${original.src}`);
   assert.equal(media.sourceSha256, original.sha256, `Run media:livis after changing ${original.src}`);

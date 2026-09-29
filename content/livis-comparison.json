@@ -1,0 +1,49 @@
+{
+  "description": "User-supplied replacement diagrams for decision 03. Presentation assets supplement the verbatim case source.",
+  "media": [
+    {
+      "kind": "image",
+      "src": "/media/livis-comparison/problem.png",
+      "original": "问题.png",
+      "label": "缺少明确的消息来源与上下文提示",
+      "shortLabel": "问题",
+      "alt": "问题：任务消息混排在当前活跃会话中，消息类型和来源不清，失败或报错难以回溯。",
+      "sha256": "cdffac5a85a429a5e33472c94a673fb7aba7fef1b0e283a36be9a30cba1a8ed6",
+      "width": 1722,
+      "height": 2400
+    },
+    {
+      "kind": "image",
+      "src": "/media/livis-comparison/option-1.png",
+      "original": "方案1.png",
+      "label": "消息流内嵌任务卡片",
+      "shortLabel": "任务卡片",
+      "alt": "方案 1：消息流内嵌任务卡片。优势：复用创建阶段的卡片样式，保持任务全流程的一致性。问题：卡片占用较多垂直空间，容易造成任务标题与正文之间的视觉比例失衡。",
+      "sha256": "97b2923e1f6b98831890668f34aa22e66cb43dcedba97af0d914e110c642e4c1",
+      "width": 2544,
+      "height": 2400
+    },
+    {
+      "kind": "image",
+      "src": "/media/livis-comparison/option-2.png",
+      "original": "方案2.png",
+      "label": "回复操作栏任务入口",
+      "shortLabel": "操作栏入口",
+      "alt": "方案 2：回复操作栏任务入口。优势：以轻量入口补充任务上下文，让用户明确该入口支持跳转进入任务详情页。局限：位于回复末尾，长回答中不易定位；操作栏空间有限，长标题可能被截断。",
+      "sha256": "6ee51f80abe61745210d25caacd1afe6beeb8073c7642891310a78b2baee2545",
+      "width": 2544,
+      "height": 2400
+    },
+    {
+      "kind": "image",
+      "src": "/media/livis-comparison/option-3.png",
+      "original": "方案3.png",
+      "label": "任务消息前置标签",
+      "shortLabel": "前置标签",
+      "alt": "方案 3：任务消息前置标签。优势：用户在开始阅读时即可识别消息的任务属性，并快速建立任务与回答结果之间的关联。问题：需要占用原有的 COT 思考过程入口，带来一定 IM 框架的改造成本。",
+      "sha256": "763c7a40f51e08ecc171f4935b31569682999aeee3fcbd2193cb5da9e383feb7",
+      "width": 2544,
+      "height": 2400
+    }
+  ]
+}

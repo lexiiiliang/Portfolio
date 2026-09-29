@@ -1,8 +1,28 @@
 /* eslint-disable @next/next/no-img-element -- Prebuilt responsive assets work in both Next.js and vinext. */
 import mediaSnapshot from "@/content/livis-media.generated.json";
+import comparisonSource from "@/content/livis-comparison.json";
+import coverSource from "@/content/livis-cover.json";
 import { livisCase, type LivisBlock } from "@/lib/livis-case";
 import { QueryCaseMarkdown } from "./QueryCaseMarkdown";
 import { QueryCaseNavigation } from "./QueryCaseInteractions";
+import { LivisSourceComparison } from "./LivisSourceComparison";
+
+const coverVariants = (() => {
+  const variants = mediaSnapshot.media.find(item => item.original === coverSource.src && item.sourceSha256 === coverSource.sha256)?.variants;
+  if (!variants?.length) throw new Error("Generate Livis cover derivatives.");
+  return variants;
+})();
+
+// These four user-supplied diagrams replace only the decision 03 comparison.
+// The approved narrative and its source snapshot stay verbatim.
+const comparisonImages = comparisonSource.media.map(image => {
+  const display = mediaSnapshot.media.find(item => item.original === image.src && item.sourceSha256 === image.sha256);
+  const variants = display?.variants;
+  if (!variants?.length) throw new Error(`Generate Livis comparison derivatives for ${image.src}`);
+  return { src: (variants.find(item => item.width >= 800) ?? variants.at(-1)!).src,
+    srcSet: variants.map(item => `${item.src} ${item.width}w`).join(", "),
+    width: image.width, height: image.height, alt: image.alt, label: image.label, shortLabel: image.shortLabel };
+});
 
 function Caption({ children }: { children?: string }) {
   return children ? <figcaption><QueryCaseMarkdown>{children}</QueryCaseMarkdown></figcaption> : null;
@@ -116,6 +136,9 @@ function Block({ block, sectionId }: { block: LivisBlock; sectionId: string }) {
   }
   if (markdown.startsWith("|") && markdown.includes("![")) {
     const rows = markdown.split("\n").map((row) => row.replace(/^\||\|$/g, "").split("|").map((cell) => cell.trim()));
+    if (sectionId === "livis-section-4" && rows[0][0] === "缺少来源信息") {
+      return <LivisSourceComparison problem={comparisonImages[0]} options={comparisonImages.slice(1)} />;
+    }
     return <figure className="livis-comparison"><div className={`livis-comparison-grid livis-comparison-${rows[0].length}`}>
       {rows[0].map((heading, index) => <div className="livis-comparison-column" key={heading}>
         <div className="livis-comparison-heading"><QueryCaseMarkdown>{heading}</QueryCaseMarkdown></div>
@@ -173,8 +196,8 @@ export function LivisHero() {
         <h1 id="livis-title">{livisCase.title}</h1>
         <div className="query-hero-question"><QueryCaseMarkdown>{subtitle.markdown}</QueryCaseMarkdown></div>
       </header>
-      <div className="query-hero-artifact livis-cover-placeholder" role="img" aria-label="封面占位">
-        <span>封面占位</span>
+      <div className="query-hero-artifact livis-cover">
+        <img src={(coverVariants.find(item => item.width >= 800) ?? coverVariants.at(-1)!).src} srcSet={coverVariants.map(item => `${item.src} ${item.width}w`).join(", ")} sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1100px) calc((100vw - 104px) / 2), (max-width: 1216px) calc((100vw - 152px) / 2), 532px" width={coverSource.width} height={coverSource.height} alt={coverSource.alt} loading="eager" fetchPriority="high" />
       </div>
       <div className="query-hero-introduction">
         {introduction.map((block, index) => <QueryCaseMarkdown key={index}>{block.markdown}</QueryCaseMarkdown>)}

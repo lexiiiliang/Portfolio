@@ -281,6 +281,166 @@
         "src": "/media/livis-optimized/10-poster-23a605beb752f9f1.webp",
         "bytes": 2972
       }
+    },
+    {
+      "original": "/media/livis-comparison/problem.png",
+      "sourceSha256": "cdffac5a85a429a5e33472c94a673fb7aba7fef1b0e283a36be9a30cba1a8ed6",
+      "originalBytes": 219858,
+      "kind": "image",
+      "variants": [
+        {
+          "src": "/media/livis-optimized/problem-480-9eff9081e188ae17.webp",
+          "bytes": 25526,
+          "width": 480,
+          "height": 669
+        },
+        {
+          "src": "/media/livis-optimized/problem-800-b946033c2c956621.webp",
+          "bytes": 55314,
+          "width": 800,
+          "height": 1115
+        },
+        {
+          "src": "/media/livis-optimized/problem-1200-6d05df7b72d598e5.webp",
+          "bytes": 96546,
+          "width": 1200,
+          "height": 1672
+        },
+        {
+          "src": "/media/livis-optimized/problem-1722-7e7bcaa7a66be0d2.webp",
+          "bytes": 147270,
+          "width": 1722,
+          "height": 2400
+        }
+      ]
+    },
+    {
+      "original": "/media/livis-comparison/option-1.png",
+      "sourceSha256": "97b2923e1f6b98831890668f34aa22e66cb43dcedba97af0d914e110c642e4c1",
+      "originalBytes": 348642,
+      "kind": "image",
+      "variants": [
+        {
+          "src": "/media/livis-optimized/option-1-480-2a9026c6fc91b60f.webp",
+          "bytes": 15514,
+          "width": 480,
+          "height": 453
+        },
+        {
+          "src": "/media/livis-optimized/option-1-800-371f752633f4b764.webp",
+          "bytes": 34706,
+          "width": 800,
+          "height": 755
+        },
+        {
+          "src": "/media/livis-optimized/option-1-1200-88ce09739e8d8e40.webp",
+          "bytes": 61776,
+          "width": 1200,
+          "height": 1132
+        },
+        {
+          "src": "/media/livis-optimized/option-1-1760-f94adfae3ebcbaed.webp",
+          "bytes": 101384,
+          "width": 1760,
+          "height": 1660
+        }
+      ]
+    },
+    {
+      "original": "/media/livis-comparison/option-2.png",
+      "sourceSha256": "6ee51f80abe61745210d25caacd1afe6beeb8073c7642891310a78b2baee2545",
+      "originalBytes": 311600,
+      "kind": "image",
+      "variants": [
+        {
+          "src": "/media/livis-optimized/option-2-480-8c87e36f69b54259.webp",
+          "bytes": 16206,
+          "width": 480,
+          "height": 453
+        },
+        {
+          "src": "/media/livis-optimized/option-2-800-8011ad5df0688290.webp",
+          "bytes": 36578,
+          "width": 800,
+          "height": 755
+        },
+        {
+          "src": "/media/livis-optimized/option-2-1200-e5d44680a22a0fa6.webp",
+          "bytes": 65436,
+          "width": 1200,
+          "height": 1132
+        },
+        {
+          "src": "/media/livis-optimized/option-2-1760-a237bde3b292987e.webp",
+          "bytes": 106680,
+          "width": 1760,
+          "height": 1660
+        }
+      ]
+    },
+    {
+      "original": "/media/livis-comparison/option-3.png",
+      "sourceSha256": "763c7a40f51e08ecc171f4935b31569682999aeee3fcbd2193cb5da9e383feb7",
+      "originalBytes": 313869,
+      "kind": "image",
+      "variants": [
+        {
+          "src": "/media/livis-optimized/option-3-480-d1134318123bef28.webp",
+          "bytes": 16094,
+          "width": 480,
+          "height": 453
+        },
+        {
+          "src": "/media/livis-optimized/option-3-800-b1136f20232107b7.webp",
+          "bytes": 36620,
+          "width": 800,
+          "height": 755
+        },
+        {
+          "src": "/media/livis-optimized/option-3-1200-0b8edf52b9004cc8.webp",
+          "bytes": 66254,
+          "width": 1200,
+          "height": 1132
+        },
+        {
+          "src": "/media/livis-optimized/option-3-1760-3fb2b42cf8ca69c1.webp",
+          "bytes": 108328,
+          "width": 1760,
+          "height": 1660
+        }
+      ]
+    },
+    {
+      "original": "/media/livis-cover/cover.png",
+      "sourceSha256": "e392a0610e7785ed1f5af965178e7b0ec63546b4dbf11dd7d159c5dbecd3a10a",
+      "originalBytes": 1670188,
+      "kind": "image",
+      "variants": [
+        {
+          "src": "/media/livis-optimized/cover-480-198bd43360ab4a6f.webp",
+          "bytes": 16696,
+          "width": 480,
+          "height": 270
+        },
+        {
+          "src": "/media/livis-optimized/cover-800-dde7bfbadb20d003.webp",
+          "bytes": 34644,
+          "width": 800,
+          "height": 450
+        },
+        {
+          "src": "/media/livis-optimized/cover-1200-1988f2b2dcc6f2ee.webp",
+          "bytes": 56312,
+          "width": 1200,
+          "height": 675
+        },
+        {
+          "src": "/media/livis-optimized/cover-1760-357ec7c9f403b3f2.webp",
+          "bytes": 93536,
+          "width": 1760,
+          "height": 990
+        }
+      ]
     }
   ]
 }

@@ -1,21 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { TextRotation } from "./CharacterRotation";
 
 const GREETINGS = ["Hi!", "¡Hola!", "Hej!", "嗨!"] as const;
+const CYCLE_MS = 2900;
 
 export function GreetingCarousel() {
   const [greetingIndex, setGreetingIndex] = useState(0);
-  const [visibleCharacters, setVisibleCharacters] = useState(GREETINGS[0].length);
-  const [isDeleting, setIsDeleting] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
-
   const greeting = GREETINGS[greetingIndex];
 
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
     const syncPreference = () => setReduceMotion(preference.matches);
-
     syncPreference();
     preference.addEventListener("change", syncPreference);
     return () => preference.removeEventListener("change", syncPreference);
@@ -23,43 +21,23 @@ export function GreetingCarousel() {
 
   useEffect(() => {
     if (reduceMotion) return;
-
-    let delay = isDeleting ? 54 : 92;
-
-    if (!isDeleting && visibleCharacters === greeting.length) delay = 1250;
-    if (isDeleting && visibleCharacters === 0) delay = 220;
-
-    const timeout = window.setTimeout(() => {
-      if (!isDeleting && visibleCharacters === greeting.length) {
-        setIsDeleting(true);
-        return;
-      }
-
-      if (isDeleting && visibleCharacters === 0) {
-        setGreetingIndex((current) => (current + 1) % GREETINGS.length);
-        setIsDeleting(false);
-        return;
-      }
-
-      setVisibleCharacters((current) => current + (isDeleting ? -1 : 1));
-    }, delay);
-
-    return () => window.clearTimeout(timeout);
-  }, [greeting, isDeleting, reduceMotion, visibleCharacters]);
-
-  const visibleGreeting = reduceMotion
-    ? GREETINGS[0]
-    : greeting.slice(0, visibleCharacters);
+    const interval = window.setInterval(() => {
+      setGreetingIndex((current) => (current + 1) % GREETINGS.length);
+    }, CYCLE_MS);
+    return () => window.clearInterval(interval);
+  }, [reduceMotion]);
 
   return (
     <span className="greeting-carousel">
       <span className="greeting-carousel-anchor" aria-hidden="true">
-        <span>Hi!</span>
-        <span>嗨!</span>
+        {GREETINGS.map((word) => <span key={word}>{word}</span>)}
       </span>
       <span className="greeting-carousel-visual" aria-hidden="true">
-        <span className="greeting-carousel-word">{visibleGreeting}</span>
+        <span className="greeting-carousel-word">
+          <TextRotation text={greeting} />
+        </span>
       </span>
+      <span className="greeting-carousel-reduced" aria-hidden="true">Hi!</span>
       <span className="sr-only">Hi, Hola, Hej, 嗨</span>
     </span>
   );

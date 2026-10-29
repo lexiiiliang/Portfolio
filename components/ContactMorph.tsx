@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type FocusEvent, type PointerEvent } from "react";
 import type { LocalizedLink } from "@/lib/portfolio";
 import { Localized } from "./Localized";
+import { TextRotation } from "./CharacterRotation";
 
 type ContactKey = "email" | "github" | "linkedin" | "cv";
 
@@ -59,65 +60,6 @@ type FlipAnimations = {
   shape: Animation;
   icon: Animation;
 };
-
-function TypewriterText({ text }: { text: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const [displayed, setDisplayed] = useState(text);
-  const [leaving, setLeaving] = useState(false);
-  const displayedRef = useRef(text);
-
-  useEffect(() => {
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-    let timer = 0;
-    const update = () => {
-      clearTimeout(timer);
-      if (reduced.matches) {
-        timer = window.setTimeout(() => {
-          displayedRef.current = text;
-          setDisplayed(text);
-          setLeaving(false);
-        }, 0);
-        return;
-      }
-      if (displayedRef.current === text) {
-        timer = window.setTimeout(() => setLeaving(false), 0);
-        return;
-      }
-      timer = window.setTimeout(() => {
-        setLeaving(true);
-        timer = window.setTimeout(() => {
-          displayedRef.current = text;
-          setDisplayed(text);
-          setLeaving(false);
-        }, 150);
-      }, 65);
-    };
-    update();
-    reduced.addEventListener("change", update);
-    return () => { clearTimeout(timer); reduced.removeEventListener("change", update); };
-  }, [text]);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    node.dataset.typingReady = "true";
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { node.dataset.started = "true"; observer.disconnect(); }
-    }, { rootMargin: `0px 0px -${Math.round(innerHeight * .4)}px 0px`, threshold: .2 });
-    observer.observe(node.closest(".contact-morph-prompt") || node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <span ref={ref} className="contact-typewriter-text" data-leaving={leaving}>
-      <span key={displayed} className="contact-typewriter-visible">
-        {Array.from(displayed).map((character, index) => (
-          <span key={index} className="contact-typed-character" style={{ animationDelay: `${index * (displayed.length > 24 ? 23 : 38)}ms` }}>{character}</span>
-        ))}
-      </span>
-    </span>
-  );
-}
 
 function ContactIcon({ kind }: { kind: ContactKey }) {
   const iconProps = {
@@ -289,8 +231,8 @@ export function ContactMorph({ contacts }: { contacts: LocalizedLink[] }) {
     <div className="contact-morph">
       <h2 id="contact" className="contact-morph-prompt">
         <span className="contact-typewriter-line" data-scroll-reveal="contact-prompt" aria-hidden="true">
-          <span className="copy-en"><TypewriterText text={activePrompt.en} /></span>
-          <span className="copy-zh"><TypewriterText text={activePrompt.zh} /></span>
+          <span className="copy-en"><TextRotation text={activePrompt.en} /></span>
+          <span className="copy-zh"><TextRotation text={activePrompt.zh} /></span>
         </span>
         <span className="sr-only" aria-live="polite">
           <Localized en={activePrompt.en} zh={activePrompt.zh} />

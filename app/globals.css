@@ -718,6 +718,64 @@ html[data-lang="zh"] .copy-en {
   text-align: right;
 }
 
+.text-rotation-stack { display: inline-grid; max-width: 100%; }
+.text-rotation-current,
+.text-rotation-outgoing { grid-area: 1 / 1; }
+.text-rotation-outgoing { pointer-events: none; }
+.text-rotation-outgoing .character-rotation-letter {
+  animation: character-rotation-exit 180ms cubic-bezier(.4, 0, 1, 1) both;
+}
+@keyframes character-rotation-exit {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(.24em); }
+}
+
+.character-rotation-word { display: inline-block; white-space: nowrap; }
+
+/* Bonjour-style character rotation: small downward exit, soft arrival from above. */
+.character-rotation-letter {
+  display: inline-block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.character-rotation[data-phase="exit"] .character-rotation-letter {
+  opacity: 0;
+  transform: translateY(.24em);
+  transition: opacity 220ms cubic-bezier(.4, 0, 1, 1),
+    transform 220ms cubic-bezier(.4, 0, 1, 1);
+}
+
+.character-rotation[data-phase="gap"] .character-rotation-letter {
+  opacity: 0;
+  transform: translateY(-.24em);
+}
+
+.character-rotation[data-phase="enter"] .character-rotation-letter {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms cubic-bezier(0, 0, .3, 1),
+    transform 500ms cubic-bezier(0, 0, .3, 1);
+}
+
+.greeting-carousel-reduced {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .character-rotation[data-phase] .character-rotation-letter {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .text-rotation-outgoing { display: none; }
+  .greeting-carousel-visual { display: none; }
+  .greeting-carousel-reduced { display: block; }
+}
+
 @keyframes greeting-caret {
   0%, 46% { opacity: 1; }
   47%, 100% { opacity: 0; }
